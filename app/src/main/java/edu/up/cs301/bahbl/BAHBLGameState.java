@@ -16,8 +16,7 @@ public class BAHBLGameState extends GameState {
 	private int storyProgress;
 	private int moneyCount;
 
-	//Each customer can have an ID number
-	private int customer;
+	private BAHBLCustomerBase customer;
 
 	//Tells us what we have in our inventory
 	private boolean hasKey;
@@ -29,11 +28,11 @@ public class BAHBLGameState extends GameState {
 	public BAHBLGameState(){
 		storyProgress = 0;
 		moneyCount = 0;
-		customer = 78151920; //This is the word "ghost" but in numbers
 		hasKey = false;
 		hasPokeball = false;
 		hasInfoBot = false;
 		hasMysticManItem = false;
+		customer = new BAHBLGhost();
 	}
 
 	//Copy Constructor
@@ -48,6 +47,18 @@ public class BAHBLGameState extends GameState {
 	}
 
 	//Methods
+	@Override
+	public String toString(){
+		return "Scene: " + storyProgress + "/n"     //Story Progress
+				+ "Customer: " + customer + "/n"  	//Character
+				+ "Money: " + moneyCount + "/n"  	//Money
+				+ "Inventory Items: " + "/n"  		//In our inventory
+				+ " " + "/n"  //Item 1
+				+ " " + "/n"  //Item 2
+				+ " " + "/n"  //Item 3
+				+ " " + "/n";  //Item 4
+
+	}
 
 	//Getter Methods
 
