@@ -30,7 +30,7 @@ public class BAHBLHumanPlayer extends GameHumanPlayer implements OnClickListener
 	private TextView counterValueTextView;
 	
 	// the most recent game state, as given to us by the CounterLocalGame
-	private BAHBLState state;
+	private BAHBLGameState state;
 	
 	// the android activity that we are running
 	private GameMainActivity myActivity;
@@ -59,7 +59,7 @@ public class BAHBLHumanPlayer extends GameHumanPlayer implements OnClickListener
 	 */
 	protected void updateDisplay() {
 		// set the text in the appropriate widget
-		counterValueTextView.setText("" + state.getCounter());
+		//counterValueTextView.setText("" + state.getCounter());
 	}
 
 	/**
@@ -100,10 +100,10 @@ public class BAHBLHumanPlayer extends GameHumanPlayer implements OnClickListener
 	@Override
 	public void receiveInfo(GameInfo info) {
 		// ignore the message if it's not a CounterState message
-		if (!(info instanceof BAHBLState)) return;
+		if (!(info instanceof BAHBLGameState)) return;
 		
 		// update our state; then update the display
-		this.state = (BAHBLState)info;
+		this.state = (BAHBLGameState)info;
 		updateDisplay();
 	}
 	

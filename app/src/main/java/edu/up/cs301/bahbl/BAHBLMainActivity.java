@@ -83,7 +83,7 @@ public class BAHBLMainActivity extends GameMainActivity {
 	 */
 	@Override
 	public LocalGame createLocalGame(GameState state) {
-		if (state == null) state = new BAHBLState(0);
+		if (state == null) state = new BAHBLGameState();
 		return new BAHBLLocalGame(state);
 	}
 

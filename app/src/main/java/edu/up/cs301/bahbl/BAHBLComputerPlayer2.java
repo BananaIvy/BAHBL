@@ -29,7 +29,7 @@ public class BAHBLComputerPlayer2 extends BAHBLComputerPlayer1 {
 	 */
 	
 	// the most recent game state, as given to us by the CounterLocalGame
-	private BAHBLState currentGameState = null;
+	private BAHBLGameState currentGameState = null;
 	
 	// If this player is running the GUI, the activity (null if the player is
 	// not running a GUI).
@@ -70,9 +70,9 @@ public class BAHBLComputerPlayer2 extends BAHBLComputerPlayer1 {
 		if (game == null) {
 			return;
 		}
-		else if (info instanceof BAHBLState) {
+		else if (info instanceof BAHBLGameState) {
 			// if we indeed have a counter-state, update the GUI
-			currentGameState = (BAHBLState)info;
+			currentGameState = (BAHBLGameState)info;
 			updateDisplay();
 		}
 	}
@@ -89,9 +89,9 @@ public class BAHBLComputerPlayer2 extends BAHBLComputerPlayer1 {
 			guiHandler.post(
 					new Runnable() {
 						public void run() {
-						if (counterValueTextView != null && currentGameState != null) {
-							counterValueTextView.setText("" + currentGameState.getCounter());
-						}
+						//if (counterValueTextView != null && currentGameState != null) {
+							//counterValueTextView.setText("" + currentGameState.getCounter());
+						//}
 					}});
 		}
 	}
