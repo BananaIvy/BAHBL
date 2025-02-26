@@ -36,6 +36,7 @@ public class BAHBLGameState extends GameState {
 		hasMysticManItem = false;
 	}
 
+	//Copy Constructor
 	public BAHBLGameState(BAHBLGameState currentState){
 		storyProgress = currentState.storyProgress;
 		moneyCount = currentState.moneyCount;
