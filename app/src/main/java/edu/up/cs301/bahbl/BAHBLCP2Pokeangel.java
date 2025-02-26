@@ -22,7 +22,7 @@ import android.widget.TextView;
 * @author Andrew M. Nuxoll
 * @version September 2013
 */
-public class BAHBLComputerPlayer2 extends BAHBLComputerPlayer1 {
+public class BAHBLCP2Pokeangel extends BAHBLComputerPlayerBase {
 	
 	/*
 	 * instance variables
@@ -52,8 +52,17 @@ public class BAHBLComputerPlayer2 extends BAHBLComputerPlayer1 {
 	public BAHBLComputerPlayer2(String name) {
 		super(name);
 	}
-	
-    /**
+
+	/**
+	 * constructor
+	 *
+	 * @param name the player's name (e.g., "John")
+	 */
+	public BAHBLCP2Pokeangel(String name) {
+		super(name);
+	}
+
+	/**
      * callback method--game's state has changed
      * 
      * @param info

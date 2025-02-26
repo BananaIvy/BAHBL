@@ -44,13 +44,13 @@ public class BAHBLMainActivity extends GameMainActivity {
 		// a computer player type (player type 1)
 		playerTypes.add(new GamePlayerType("Computer Player") {
 			public GamePlayer createPlayer(String name) {
-				return new BAHBLComputerPlayer1(name);
+				return new BAHBLCP1Ghost(name);
 			}});
 		
 		// a computer player type (player type 2)
 		playerTypes.add(new GamePlayerType("Computer Player (GUI)") {
 			public GamePlayer createPlayer(String name) {
-				return new BAHBLComputerPlayer2(name);
+				return new BAHBLCP2Pokeangel(name);
 			}});
 
 		// Create a game configuration class for Counter:

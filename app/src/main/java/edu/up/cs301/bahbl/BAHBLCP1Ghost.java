@@ -13,7 +13,7 @@ import edu.up.cs301.GameFramework.utilities.Tickable;
  * @author Andrew M. Nuxoll
  * @version September 2013
  */
-public class BAHBLComputerPlayer1 extends GameComputerPlayer implements Tickable {
+public class BAHBLCP1Ghost extends BAHBLComputerPlayerBase {
 	
     /**
      * Constructor for objects of class BAHBLComputerPlayer1
@@ -21,13 +21,9 @@ public class BAHBLComputerPlayer1 extends GameComputerPlayer implements Tickable
      * @param name
      * 		the player's name
      */
-    public BAHBLComputerPlayer1(String name) {
+    public BAHBLCP1Ghost(String name) {
         // invoke superclass constructor
         super(name);
-        
-        // start the timer, ticking 20 times per second
-        getTimer().setInterval(50);
-        getTimer().start();
     }
     
     /**
@@ -38,21 +34,7 @@ public class BAHBLComputerPlayer1 extends GameComputerPlayer implements Tickable
      */
 	@Override
 	protected void receiveInfo(GameInfo info) {
-		// Do nothing, as we ignore all state in deciding our next move. It
-		// depends totally on the timer and random numbers.
+		// Do something, most likely
 	}
-	
-	/**
-	 * callback method: the timer ticked
-	 */
-	protected void timerTicked() {
-		// 5% of the time, increment or decrement the counter
-		if (Math.random() >= 0.05) return; // do nothing 95% of the time
 
-		// "flip a coin" to determine whether to increment or decrement
-		boolean move = Math.random() >= 0.5;
-		
-		// send the move-action to the game
-		game.sendAction(new BAHBLMoveAction(this, move));
-	}
 }
