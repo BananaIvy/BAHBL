@@ -6,18 +6,19 @@ public abstract class BAHBLCustomerBase {
 
 
     //Instance Variables
-    private String CustomerName;
+    private String customerName;
     private int likeability;
     private static int idNumber = 0;
     private boolean haveGiven;
     private boolean haveReceived;
     private String goodResponse;
     private String badResponse;
+    private boolean playersTurn;
 
 
     //creates a CustomerBase object
     public BAHBLCustomerBase (String name){
-        CustomerName = name;
+        customerName = name;
         likeability = 0;
         idNumber++;
         boolean haveGiven = false;
@@ -31,5 +32,13 @@ public abstract class BAHBLCustomerBase {
     public int getItem (){
         /* IMPLEMENT THIS AFTER */
         return 0;
+    }
+
+    public String getCustomerName(){
+        return customerName;
+    }
+
+    public boolean getPlayersTurn(){
+        return playersTurn;
     }
 }

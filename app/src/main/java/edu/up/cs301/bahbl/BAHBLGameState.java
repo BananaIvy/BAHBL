@@ -58,7 +58,7 @@ public class BAHBLGameState extends GameState {
 		String bag = returnNo(hasBag) + "Bag";
 
 		return "Scene: " + storyProgress + "/n"     //Story Progress
-				+ "Customer: " + customer.getName() + "/n"  	//Character
+				+ "Customer: " + customer.getCustomerName() + "/n"  	//Character
 				+ "Money: " + moneyCount + "/n"  	//Money
 				+ "Inventory Items: " + "/n"  		//In our inventory
 				+ key + "/n"  //Item 1 = Key

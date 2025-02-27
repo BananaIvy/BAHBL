@@ -19,20 +19,21 @@ public class BAHBLItemAction extends GameAction {
      * @param player the player who created the action
      */
     public BAHBLItemAction(GamePlayer player, ImageButton item) {
+
         super(player);
-        if(item == R.id.key){
+        if(item.getId() == R.id.key){
             thisItem = key;
         }
-        else if(item == R.id.infoBot){
+        else if(item.getId() == R.id.infoBot){
             thisItem = infoBot;
         }
-        else if(item == R.id.bag){
+        else if(item.getId() == R.id.bag){
             thisItem = bag;
         }
-        else if(item == R.id.pokeball){
+        else if(item.getId() == R.id.pokeball){
             thisItem = pokeball;
         }
-        else if(item == R.id.pokedex){
+        else if(item.getId() == R.id.pokedex){
             thisItem = pokedex;
         }
 
