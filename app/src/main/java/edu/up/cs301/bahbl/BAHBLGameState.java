@@ -80,12 +80,13 @@ public class BAHBLGameState extends GameState {
 		//This action is valid when it is the players turn
 		if(customer.getPlayersTurn()){
 			//Modify the state of the game to match action taken
-			if(action.getWhichButton() == 1){ //top button
+			if(action.getWhichButton() == customer.getGoodButton()){ //customers good button
 
+				storyProgress++;
 				return true;
 			}
-			if(action.getWhichButton() == 2){//bottom button
-
+			if(action.getWhichButton() == customer.getBadButton()){//customers bad button
+				storyProgress++;
 				return true;
 			}
 		}
