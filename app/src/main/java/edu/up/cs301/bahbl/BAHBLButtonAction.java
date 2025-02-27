@@ -19,11 +19,15 @@ public class BAHBLButtonAction extends GameAction {
     public BAHBLButtonAction(GamePlayer player, Button button) {
         super(player);
         thisButton = button;
-        if(button == R.id.button1){
+        if(button.getId() == R.id.Option1){
             whichButton = topButton;
         }
-        else if (button = R.id.button2){
+        else if (button.getId() == R.id.Option2){
             whichButton = bottomButton;
         }
+    }
+
+    public int getWhichButton(){
+        return whichButton;
     }
 }

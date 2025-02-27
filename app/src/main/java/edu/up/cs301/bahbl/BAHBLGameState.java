@@ -80,11 +80,16 @@ public class BAHBLGameState extends GameState {
 		//This action is valid when it is the players turn
 		if(customer.getPlayersTurn()){
 			//Modify the state of the game to match action taken
-			return true;
+			if(action.getWhichButton() == 1){ //top button
+
+				return true;
+			}
+			if(action.getWhichButton() == 2){//bottom button
+
+				return true;
+			}
 		}
-		else{
-			return false; //action is not valid
-		}
+		return false; //action is not valid
 	}
 
 	public boolean itemAction(BAHBLItemAction action){
