@@ -14,7 +14,7 @@ import edu.up.cs301.GameFramework.infoMessage.GameInfo;
 public class BAHBLGhost extends BAHBLCustomerBase {
 
     public BAHBLGhost() {
-
+        super();
     }
 
 }
