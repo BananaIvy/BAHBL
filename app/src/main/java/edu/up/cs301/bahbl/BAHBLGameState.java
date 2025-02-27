@@ -72,6 +72,7 @@ public class BAHBLGameState extends GameState {
 
 	}
 
+	//If we don't have an item, then the word "No" is added before the item in toString
 	String returnNo(boolean has){
 		if(!has){return "No ";}
 		else{return "";}
@@ -89,7 +90,7 @@ public class BAHBLGameState extends GameState {
 				updateCustomerDialogue(customer.getHappyResponse());
 				return true;
 			}
-			if(action.getWhichButton() == customer.getBadButton()){//customers bad button
+			if(action.getWhichButton() == customer.getBadButton()){ //customers bad button
 				updateCustomerDialogue(customer.getMadResponse());
 				return true;
 			}
