@@ -11,12 +11,15 @@ import android.widget.TextView;
 
 
 /**
-*
+* 
+* @author Steven R. Vegdahl
+* @author Andrew M. Nuxoll
+* @version September 2013
 */
 public class BAHBLPokeangel extends BAHBLCustomerBase {
 	
 	public BAHBLPokeangel(){
-
+		super();
 	}
 
 }
