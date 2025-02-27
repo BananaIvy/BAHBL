@@ -2,10 +2,8 @@ package edu.up.cs301.bahbl;
 
 import edu.up.cs301.GameFramework.players.GameHumanPlayer;
 import edu.up.cs301.GameFramework.GameMainActivity;
-import edu.up.cs301.GameFramework.actionMessage.GameAction;
 import edu.up.cs301.GameFramework.infoMessage.GameInfo;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
 
@@ -120,7 +118,7 @@ public class BAHBLHumanPlayer extends GameHumanPlayer implements OnClickListener
 		this.myActivity = activity;
 		
 	    // Load the layout resource for our GUI
-		activity.setContentView(R.layout.counter_human_player);
+		activity.setContentView(R.layout.bahbl_human_player);
 		
 //		// make this object the listener for both the '+' and '-' 'buttons
 //		Button plusButton = (Button) activity.findViewById(R.id.plusButton);
