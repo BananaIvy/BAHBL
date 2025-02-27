@@ -32,4 +32,10 @@ public abstract class BAHBLCustomerBase {
         /* IMPLEMENT THIS AFTER */
         return 0;
     }
+
+
+    //getName method
+    public String getName(){
+        return CustomerName;
+    }
 }

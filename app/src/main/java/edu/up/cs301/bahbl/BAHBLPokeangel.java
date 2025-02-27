@@ -19,7 +19,7 @@ import android.widget.TextView;
 public class BAHBLPokeangel extends BAHBLCustomerBase {
 	
 	public BAHBLPokeangel(){
-		super();
+		super("Poke Angel");
 	}
 
 }
