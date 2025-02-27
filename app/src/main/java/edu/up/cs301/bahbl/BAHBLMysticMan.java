@@ -5,5 +5,4 @@ public class BAHBLMysticMan extends BAHBLCustomerBase{
     public BAHBLMysticMan(){
         super("Mystic Man");
     }
-
 }

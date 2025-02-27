@@ -6,4 +6,3 @@ public class BAHBLNux extends BAHBLCustomerBase{
         super("Nux");
     }
 }
-
