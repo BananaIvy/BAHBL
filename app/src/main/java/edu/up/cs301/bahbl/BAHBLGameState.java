@@ -151,9 +151,7 @@ public class BAHBLGameState extends GameState {
 
 	//Getter Methods
 
-	public String getCustomerDialogue(){
-		return customerDialogue;
-	}
+	public String getCustomerDialogue(){return customerDialogue;}
 
 	//Setter Methods
 }
