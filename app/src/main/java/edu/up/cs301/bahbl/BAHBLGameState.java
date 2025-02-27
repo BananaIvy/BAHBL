@@ -2,7 +2,6 @@ package edu.up.cs301.bahbl;
 
 import edu.up.cs301.GameFramework.infoMessage.GameState;
 
-
 /**
  * This contains the state for the Counter game. The state consist of simply
  * the value of the counter.
@@ -58,7 +57,7 @@ public class BAHBLGameState extends GameState {
 		String bag = returnNo(hasBag) + "Bag";
 
 		return "Scene: " + storyProgress + "/n"     //Story Progress
-				+ "Customer: " + customer.getName() + "/n"  	//Character
+				+ "Customer: " + customer.getCustomerName() + "/n"  	//Character
 				+ "Money: " + moneyCount + "/n"  	//Money
 				+ "Inventory Items: " + "/n"  		//In our inventory
 				+ key + "/n"  //Item 1 = Key
@@ -81,11 +80,16 @@ public class BAHBLGameState extends GameState {
 		//This action is valid when it is the players turn
 		if(customer.getPlayersTurn()){
 			//Modify the state of the game to match action taken
-			return true;
+			if(action.getWhichButton() == 1){ //top button
+
+				return true;
+			}
+			if(action.getWhichButton() == 2){//bottom button
+
+				return true;
+			}
 		}
-		else{
-			return false; //action is not valid
-		}
+		return false; //action is not valid
 	}
 
 	public boolean itemAction(BAHBLItemAction action){
@@ -93,19 +97,19 @@ public class BAHBLGameState extends GameState {
 		if(customer.getPlayersTurn()){
 			//Checks if we have the item that was clicked
 			if(action.getThisItem() == 1 && hasKey){
-
+				return true;
 			}
 			else if(action.getThisItem() == 2 && hasInfoBot){
-
+				return true;
 			}
 			else if(action.getThisItem() == 3 && hasBag){
-
+				return true;
 			}
 			else if(action.getThisItem() == 4 && hasPokeball){
-
+				return true;
 			}
 			else if(action.getThisItem() == 5 && hasPokeDex){
-
+				return true;
 			}
 			else{
 				return false; //we do not have the item, invalid move
@@ -135,7 +139,6 @@ public class BAHBLGameState extends GameState {
 			return false; //action is not valid
 		}
 	}
-
 
 	//Getter Methods
 

@@ -123,7 +123,7 @@
             app:srcCompat="@drawable/subject" />
 
         <ImageButton
-            android:id="@+id/Pokeball"
+            android:id="@+id/pokeball"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:clickable="true"
@@ -133,7 +133,7 @@
             app:srcCompat="@drawable/pokeball" />
 
         <ImageButton
-            android:id="@+id/emptySlot1"
+            android:id="@+id/infoBot"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:clickable="true"
@@ -141,7 +141,7 @@
             android:text="empty" />
 
         <ImageButton
-            android:id="@+id/emptySlot2"
+            android:id="@+id/pokedex"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:clickable="true"
@@ -149,7 +149,7 @@
             android:text="empty" />
 
         <ImageButton
-            android:id="@+id/emptySlot3"
+            android:id="@+id/bag"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:clickable="true"
