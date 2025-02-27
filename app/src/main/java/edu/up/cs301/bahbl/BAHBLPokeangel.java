@@ -22,4 +22,5 @@ public class BAHBLPokeangel extends BAHBLCustomerBase {
 		super("Poke Angel");
 	}
 
+
 }

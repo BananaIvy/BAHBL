@@ -8,7 +8,8 @@ import edu.up.cs301.GameFramework.infoMessage.GameInfo;
  * @author Andrew M. Nuxoll
  * @version September 2013
  */
-public class BAHBLGhost extends BAHBLCustomerBase {
+public class
+BAHBLGhost extends BAHBLCustomerBase {
 
     public BAHBLGhost() {
         super("Ghost");
