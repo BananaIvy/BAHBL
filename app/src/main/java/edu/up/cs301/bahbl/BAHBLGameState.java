@@ -22,7 +22,8 @@ public class BAHBLGameState extends GameState {
 	private boolean hasKey;
 	private boolean hasPokeball;
 	private boolean hasInfoBot;
-	private boolean hasMysticManItem;
+	private boolean hasBag;
+	private boolean hasPokeDex;
 
 	//Constructor for start of game
 	public BAHBLGameState(){
@@ -31,7 +32,8 @@ public class BAHBLGameState extends GameState {
 		hasKey = false;
 		hasPokeball = false;
 		hasInfoBot = false;
-		hasMysticManItem = false;
+		hasBag = false;
+		hasPokeDex = false;
 		customer = new BAHBLGhost();
 	}
 
@@ -43,22 +45,97 @@ public class BAHBLGameState extends GameState {
 		hasKey = currentState.hasKey;
 		hasPokeball = currentState.hasPokeball;
 		hasInfoBot = currentState.hasInfoBot;
-		hasMysticManItem = currentState.hasMysticManItem;
+		hasBag = currentState.hasBag;
+		hasPokeDex = currentState.hasPokeDex;
 	}
 
 	//Methods
 	@Override
 	public String toString(){
+		String key = returnNo(hasKey) + "Key";
+		String pokeball  = returnNo(hasPokeball) + "Pokeball";
+		String infoBot = returnNo(hasInfoBot) + "Info Bot";
+		String bag = returnNo(hasBag) + "Bag";
+
 		return "Scene: " + storyProgress + "/n"     //Story Progress
-				+ "Customer: " + customer + "/n"  	//Character
+				+ "Customer: " + customer.getName() + "/n"  	//Character
 				+ "Money: " + moneyCount + "/n"  	//Money
 				+ "Inventory Items: " + "/n"  		//In our inventory
-				+ " " + "/n"  //Item 1
-				+ " " + "/n"  //Item 2
-				+ " " + "/n"  //Item 3
-				+ " " + "/n";  //Item 4
+				+ key + "/n"  //Item 1 = Key
+				+ pokeball + "/n"  //Item 2
+				+ infoBot + "/n"  //Item 3
+				+ bag + "/n";  //Item 4
 
 	}
+
+	String returnNo(boolean has){
+		if(!has){return "No ";}
+		else{return "";}
+	}
+
+
+	/*
+	Methods for each action
+	 */
+	public boolean buttonAction(BAHBLButtonAction action){
+		//This action is valid when it is the players turn
+		if(customer.getPlayersTurn()){
+			//Modify the state of the game to match action taken
+			return true;
+		}
+		else{
+			return false; //action is not valid
+		}
+	}
+
+	public boolean itemAction(BAHBLItemAction action){
+		//This action is valid when it is the players turn
+		if(customer.getPlayersTurn()){
+			//Checks if we have the item that was clicked
+			if(action.getThisItem() == 1 && hasKey){
+
+			}
+			else if(action.getThisItem() == 2 && hasInfoBot){
+
+			}
+			else if(action.getThisItem() == 3 && hasBag){
+
+			}
+			else if(action.getThisItem() == 4 && hasPokeball){
+
+			}
+			else if(action.getThisItem() == 5 && hasPokeDex){
+
+			}
+			else{
+				return false; //we do not have the item, invalid move
+			}
+		}
+		return false; //if action doesn't return true, then by default it's invalid
+    }
+
+	public boolean registerAction(BAHBLRegisterAction action){
+		//This action is valid when it is the players turn
+		if(customer.getPlayersTurn()){
+			//Modify the state of the game to match action taken
+			return true;
+		}
+		else{
+			return false; //action is not valid
+		}
+	}
+
+	public boolean progressTextAction(BAHBLProgressTextAction action){
+		//This action is valid when it's the customers turn to speak & there's no action to do
+		if(!customer.getPlayersTurn()){
+			//Modify the state of the game to match action taken
+			return true;
+		}
+		else{
+			return false; //action is not valid
+		}
+	}
+
 
 	//Getter Methods
 
