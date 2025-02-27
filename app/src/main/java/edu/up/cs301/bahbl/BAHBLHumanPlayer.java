@@ -77,11 +77,11 @@ public class BAHBLHumanPlayer extends GameHumanPlayer implements OnClickListener
 		GameAction action = null;
 		if (button.getId() == R.id.plusButton) {
 			// plus button: create "increment" action
-			action = new BAHBLMoveAction(this, true);
+		//	action = new BAHBLMoveAction(this, true);
 		}
 		else if (button.getId() == R.id.minusButton) {
 			// minus button: create "decrement" action
-			action = new BAHBLMoveAction(this, false);
+		//	action = new BAHBLMoveAction(this, false);
 		}
 		else {
 			// something else was pressed: ignore
