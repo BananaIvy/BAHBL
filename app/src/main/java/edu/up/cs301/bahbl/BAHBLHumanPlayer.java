@@ -27,7 +27,7 @@ public class BAHBLHumanPlayer extends GameHumanPlayer implements OnClickListener
 	/* instance variables */
 	
 	// The TextView the displays the current counter value
-	private TextView counterValueTextView;
+	private TextView customerDialogue;
 	
 	// the most recent game state, as given to us by the CounterLocalGame
 	private BAHBLGameState state;
@@ -51,7 +51,7 @@ public class BAHBLHumanPlayer extends GameHumanPlayer implements OnClickListener
 	 * 		the top object in the GUI's view heirarchy
 	 */
 	public View getTopView() {
-		return myActivity.findViewById(R.id.top_gui_layout);
+		return myActivity.findViewById(R.id.main);
 	}
 	
 	/**
@@ -59,7 +59,7 @@ public class BAHBLHumanPlayer extends GameHumanPlayer implements OnClickListener
 	 */
 	protected void updateDisplay() {
 		// set the text in the appropriate widget
-		//counterValueTextView.setText("" + state.getCounter());
+		customerDialogue.setText(state.getCustomerDialogue());
 	}
 
 	/**
@@ -74,21 +74,21 @@ public class BAHBLHumanPlayer extends GameHumanPlayer implements OnClickListener
 		if (game == null) return;
 
 		// Construct the action and send it to the game
-		GameAction action = null;
-		if (button.getId() == R.id.plusButton) {
-			// plus button: create "increment" action
-		//	action = new BAHBLMoveAction(this, true);
-		}
-		else if (button.getId() == R.id.minusButton) {
-			// minus button: create "decrement" action
-		//	action = new BAHBLMoveAction(this, false);
-		}
-		else {
-			// something else was pressed: ignore
-			return;
-		}
+//		GameAction action = null;
+//		if (button.getId() == R.id.plusButton) {
+//			// plus button: create "increment" action
+//		//	action = new BAHBLMoveAction(this, true);
+//		}
+//		else if (button.getId() == R.id.minusButton) {
+//			// minus button: create "decrement" action
+//		//	action = new BAHBLMoveAction(this, false);
+//		}
+//		else {
+//			// something else was pressed: ignore
+//			return;
+//		}
 		
-		game.sendAction(action); // send action to the game
+	//	game.sendAction(action); // send action to the game
 	}// onClick
 	
 	/**
@@ -122,16 +122,16 @@ public class BAHBLHumanPlayer extends GameHumanPlayer implements OnClickListener
 	    // Load the layout resource for our GUI
 		activity.setContentView(R.layout.counter_human_player);
 		
-		// make this object the listener for both the '+' and '-' 'buttons
-		Button plusButton = (Button) activity.findViewById(R.id.plusButton);
-		plusButton.setOnClickListener(this);
-		Button minusButton = (Button) activity.findViewById(R.id.minusButton);
-		minusButton.setOnClickListener(this);
-
-		// remember the field that we update to display the counter's value
-		this.counterValueTextView =
-				(TextView) activity.findViewById(R.id.counterValueTextView);
-		
+//		// make this object the listener for both the '+' and '-' 'buttons
+//		Button plusButton = (Button) activity.findViewById(R.id.plusButton);
+//		plusButton.setOnClickListener(this);
+//		Button minusButton = (Button) activity.findViewById(R.id.minusButton);
+//		minusButton.setOnClickListener(this);
+//
+//		// remember the field that we update to display the counter's value
+//		this.counterValueTextView =
+//				(TextView) activity.findViewById(R.id.counterValueTextView);
+//
 		// if we have a game state, "simulate" that we have just received
 		// the state from the game so that the GUI values are updated
 		if (state != null) {

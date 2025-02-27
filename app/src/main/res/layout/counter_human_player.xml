@@ -93,7 +93,8 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/customerTalking"
+            android:id="@+id/customerDialogue"
+            android:clickable="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="2"

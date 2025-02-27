@@ -1,5 +1,7 @@
 package edu.up.cs301.bahbl;
 
+import android.widget.TextView;
+
 import edu.up.cs301.GameFramework.infoMessage.GameState;
 
 /**
@@ -16,6 +18,7 @@ public class BAHBLGameState extends GameState {
 	private int moneyCount;
 
 	private BAHBLCustomerBase customer;
+	private String customerDialogue;
 
 	//Tells us what we have in our inventory
 	private boolean hasKey;
@@ -34,6 +37,7 @@ public class BAHBLGameState extends GameState {
 		hasBag = false;
 		hasPokeDex = false;
 		customer = new BAHBLGhost();
+		customerDialogue = customer.getGreetingDialogue();
 	}
 
 	//Copy Constructor
@@ -46,6 +50,7 @@ public class BAHBLGameState extends GameState {
 		hasInfoBot = currentState.hasInfoBot;
 		hasBag = currentState.hasBag;
 		hasPokeDex = currentState.hasPokeDex;
+		customerDialogue = currentState.customerDialogue;
 	}
 
 	//Methods
@@ -56,14 +61,14 @@ public class BAHBLGameState extends GameState {
 		String infoBot = returnNo(hasInfoBot) + "Info Bot";
 		String bag = returnNo(hasBag) + "Bag";
 
-		return "Scene: " + storyProgress + "/n"     //Story Progress
+		return "Scene: " + storyProgress + "/n"     					//Story Progress
 				+ "Customer: " + customer.getCustomerName() + "/n"  	//Character
-				+ "Money: " + moneyCount + "/n"  	//Money
-				+ "Inventory Items: " + "/n"  		//In our inventory
-				+ key + "/n"  //Item 1 = Key
-				+ pokeball + "/n"  //Item 2
-				+ infoBot + "/n"  //Item 3
-				+ bag + "/n";  //Item 4
+				+ "Money: " + moneyCount + "/n"  						//Money
+				+ "Inventory Items: " + "/n"  							//In our inventory
+				+ key + "/n"  											//Item 1 = Key
+				+ pokeball + "/n" 				 						//Item 2
+				+ infoBot + "/n"  										//Item 3
+				+ bag + "/n";  											//Item 4
 
 	}
 
@@ -81,12 +86,11 @@ public class BAHBLGameState extends GameState {
 		if(customer.getPlayersTurn()){
 			//Modify the state of the game to match action taken
 			if(action.getWhichButton() == customer.getGoodButton()){ //customers good button
-
-				storyProgress++;
+				updateCustomerDialogue(customer.getHappyResponse());
 				return true;
 			}
 			if(action.getWhichButton() == customer.getBadButton()){//customers bad button
-				storyProgress++;
+				updateCustomerDialogue(customer.getMadResponse());
 				return true;
 			}
 		}
@@ -141,7 +145,15 @@ public class BAHBLGameState extends GameState {
 		}
 	}
 
+	public void updateCustomerDialogue(String newDialogue){
+		customerDialogue = newDialogue;
+	}
+
 	//Getter Methods
+
+	public String getCustomerDialogue(){
+		return customerDialogue;
+	}
 
 	//Setter Methods
 }

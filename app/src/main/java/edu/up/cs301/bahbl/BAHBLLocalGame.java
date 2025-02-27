@@ -74,6 +74,7 @@ public class BAHBLLocalGame extends LocalGame {
 			// denote that this was an illegal move
 			//return false;
 		//}
+		return false;
 	}//makeMove
 	
 	/**
