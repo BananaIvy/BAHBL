@@ -51,7 +51,11 @@ public class BAHBLMainActivity extends GameMainActivity {
 
 		// Add the default players to the configuration
 		defaultConfig.addPlayer("Human", 0); // player 1: a human player
-		defaultConfig.addPlayer("Computer", 1); // player 2: a computer player
+
+		//We do not need a computer in our game, but I am commenting it out as we don't know if this will
+		//cause issues
+
+		//defaultConfig.addPlayer("Computer", 1); // player 2: a computer player
 		
 		// Set the default remote-player setup:
 		// - player name: "Remote Player"

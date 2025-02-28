@@ -26,6 +26,7 @@ public class BAHBLLocalGame extends LocalGame {
 
 	// the game's state
 	private BAHBLGameState gameState;
+	private BAHBLCustomerBase customerBase;
 	
 	/**
 	 * can this player move
@@ -58,23 +59,17 @@ public class BAHBLLocalGame extends LocalGame {
 	protected boolean makeMove(GameAction action) {
 		Log.i("action", action.getClass().toString());
 		
-		//if (action instanceof BAHBLMoveAction) {
+		if (action instanceof BAHBLButtonAction) {
 		
-			// cast so that we Java knows it's a CounterMoveAction
-			//BAHBLMoveAction cma = (BAHBLMoveAction)action;
+			//if(customerBase.getGoodButton() == 1)
 
-			// Update the counter values based upon the action
-			//int result = gameState.getCounter() + (cma.isPlus() ? 1 : -1);
-			//gameState.setCounter(result);
-			
-			// denote that this was a legal/successful move
-			//return true;
-		//}
-		//else {
+			return true;
+		}
+		else {
 			// denote that this was an illegal move
-			//return false;
-		//}
-		return false;
+			return false;
+		}
+		//return false;
 	}//makeMove
 	
 	/**

@@ -27,7 +27,7 @@ public class BAHBLHumanPlayer extends GameHumanPlayer implements OnClickListener
 	/* instance variables */
 	
 	// The TextView the displays the current counter value
-	private TextView customerDialogue;
+	private TextView customerDialogue = null;
 	
 	// the most recent game state, as given to us by the CounterLocalGame
 	private BAHBLGameState state;
@@ -55,11 +55,11 @@ public class BAHBLHumanPlayer extends GameHumanPlayer implements OnClickListener
 	}
 	
 	/**
-	 * sets the counter value in the text view
+	 * sets the dialog in the text view
 	 */
 	protected void updateDisplay() {
 		// set the text in the appropriate widget
-		customerDialogue.setText(state.getCustomerDialogue());
+		customerDialogue.setText(state.getCustomerDialogue() + "");
 	}
 
 	/**
@@ -74,19 +74,20 @@ public class BAHBLHumanPlayer extends GameHumanPlayer implements OnClickListener
 		if (game == null) return;
 
 		// Construct the action and send it to the game
-//		GameAction action = null;
-//		if (button.getId() == R.id.plusButton) {
-//			// plus button: create "increment" action
-//		//	action = new BAHBLMoveAction(this, true);
-//		}
-//		else if (button.getId() == R.id.minusButton) {
-//			// minus button: create "decrement" action
-//		//	action = new BAHBLMoveAction(this, false);
-//		}
-//		else {
-//			// something else was pressed: ignore
-//			return;
-//		}
+		GameAction action = null;
+		if (button.getId() == R.id.Option1) {
+		//chooses the good dialog option
+ 		action = new BAHBLButtonAction(this, button);
+
+		}
+		else if (button.getId() == R.id.Option2) {
+			//chooses the bad dialog option
+			action = new BAHBLButtonAction(this, button);
+		}
+		else {
+			// something else was pressed: ignore
+			return;
+		}
 		
 	//	game.sendAction(action); // send action to the game
 	}// onClick
@@ -121,12 +122,16 @@ public class BAHBLHumanPlayer extends GameHumanPlayer implements OnClickListener
 		
 	    // Load the layout resource for our GUI
 		activity.setContentView(R.layout.counter_human_player);
+
+		//Initialize the widget reference member variables
+		this.customerDialogue = (TextView)activity.findViewById(R.id.customerDialogue);
 		
 //		// make this object the listener for both the '+' and '-' 'buttons
-//		Button plusButton = (Button) activity.findViewById(R.id.plusButton);
-//		plusButton.setOnClickListener(this);
-//		Button minusButton = (Button) activity.findViewById(R.id.minusButton);
-//		minusButton.setOnClickListener(this);
+		Button goodButton = (Button) activity.findViewById(R.id.Option1);
+		goodButton.setOnClickListener(this);
+		Button badButton = (Button) activity.findViewById(R.id.Option2);
+		badButton.setOnClickListener(this);
+
 //
 //		// remember the field that we update to display the counter's value
 //		this.counterValueTextView =
