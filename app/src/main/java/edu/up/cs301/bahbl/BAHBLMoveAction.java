@@ -4,7 +4,7 @@ import edu.up.cs301.GameFramework.players.GamePlayer;
 import edu.up.cs301.GameFramework.actionMessage.GameAction;
 
 /**
- * A CounterMoveAction is an action that is a "move" the game: either increasing
+ * A BAHBLMoveAction is an action that is a "move" the game: either increasing
  * or decreasing the counter value.
  *
  * @author Steven R. Vegdahl
@@ -13,14 +13,14 @@ import edu.up.cs301.GameFramework.actionMessage.GameAction;
  */
 public class BAHBLMoveAction extends GameAction {
 
-    // to satisfy the serializable interface
-    private static final long serialVersionUID = 28062013L;
+	// to satisfy the serializable interface
+	private static final long serialVersionUID = 28062013L;
 
     //whether this move is a plus (true) or minus (false)
     private boolean isPlus;
 
     /**
-     * Constructor for the BAHBLMoveAction class.
+     * Constructor for the CounterMoveAction class.
      *
      * @param player
      *            the player making the move
@@ -30,15 +30,6 @@ public class BAHBLMoveAction extends GameAction {
     public BAHBLMoveAction(GamePlayer player, boolean isPlus) {
         super(player);
         this.isPlus = isPlus;
-    }
-
-    /**
-     * constructor for GameAction
-     *
-     * @param player the player who created the action
-     */
-    public BAHBLMoveAction(GamePlayer player) {
-        super(player);
     }
 
     /**

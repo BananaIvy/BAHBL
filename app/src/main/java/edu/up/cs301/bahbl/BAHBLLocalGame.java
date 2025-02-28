@@ -27,7 +27,7 @@ public class BAHBLLocalGame extends LocalGame {
 	// the game's state
 	private BAHBLGameState gameState;
 	private BAHBLCustomerBase customerBase;
-	
+
 	/**
 	 * can this player move
 	 * 
@@ -62,7 +62,17 @@ public class BAHBLLocalGame extends LocalGame {
 		if (action instanceof BAHBLButtonAction) {
 		
 			//if(customerBase.getGoodButton() == 1)
+			// cast so that we Java knows it's a CounterMoveAction
+			BAHBLButtonAction cma = (BAHBLButtonAction) action;
 
+			return true;
+		}
+		else {
+			// Update the counter values based upon the action
+			int result = gameState.getStoryProgress() + 1;
+			gameState.setStoryProgress(result);
+
+			// denote that this was a legal/successful move
 			return true;
 		}
 		else {
@@ -70,6 +80,8 @@ public class BAHBLLocalGame extends LocalGame {
 			return false;
 		}
 		//return false;
+			return false;
+		}
 	}//makeMove
 	
 	/**
@@ -93,31 +105,32 @@ public class BAHBLLocalGame extends LocalGame {
 	 */
 	@Override
 	protected String checkIfGameOver() {
-		
-		// get the value of the counter
-		//int counterVal = this.gameState.getCounter();
-		
-//		if (counterVal >= TARGET_MAGNITUDE) {
-//			// counter has reached target magnitude, so return message that
-//			// player 0 has won.
-//			return playerNames[0]+" has won.";
-//		}
-//		else if (counterVal <= -TARGET_MAGNITUDE) {
-//			// counter has reached negative of target magnitude; if there
-//			// is a second player, return message that this player has won,
-//			// otherwise that the first player has lost
-//			if (playerNames.length >= 2) {
-//				return playerNames[1]+" has won.";
-//			}
-//			else {
-//				return playerNames[0]+" has lost.";
-//			}
-//		}else {
-//			// game is still between the two limit: return null, as the game
-//			// is not yet over
-//			return null;
-//		}
-		return null;
+
+        // get the value of the counter
+        int counterVal = this.gameState.getStoryProgress();
+
+        if (counterVal >= 10) {
+            // counter has reached target magnitude, so return message that
+            // player 0 has won.
+            return playerNames[0]+" has won.";
+        }
+        else if (counterVal >= 11) {
+            // counter has reached negative of target magnitude; if there
+            // is a second player, return message that this player has won,
+            // otherwise that the first player has lost
+            if (playerNames.length >= 2) {
+                return playerNames[1]+" has won.";
+            }
+            else {
+                return playerNames[0]+" has lost.";
+            }
+        }else {
+            // game is still between the two limit: return null, as the game
+            // is not yet over
+            return null;
+        }
+
+        return null;
 
 	}
 

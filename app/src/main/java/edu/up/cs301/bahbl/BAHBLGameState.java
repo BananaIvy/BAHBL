@@ -87,11 +87,11 @@ public class BAHBLGameState extends GameState {
 		if(customer.getPlayersTurn()){
 			//Modify the state of the game to match action taken
 			if(action.getWhichButton() == customer.getGoodButton()){ //customers good button
-				updateCustomerDialogue(customer.getHappyResponse());
+				setCustomerDialogue(customer.getHappyResponse());
 				return true;
 			}
 			if(action.getWhichButton() == customer.getBadButton()){ //customers bad button
-				updateCustomerDialogue(customer.getMadResponse());
+				setCustomerDialogue(customer.getMadResponse());
 				return true;
 			}
 		}
@@ -146,13 +146,30 @@ public class BAHBLGameState extends GameState {
 		}
 	}
 
-	public void updateCustomerDialogue(String newDialogue){
-		customerDialogue = newDialogue;
-	}
 
 	//Getter Methods
-
 	public String getCustomerDialogue(){return customerDialogue;}
+	public int getStoryProgress() {return storyProgress;}
+	public int getMoneyCount() {return moneyCount;}
+	public BAHBLCustomerBase getCustomer() {return customer;}
+	public boolean isHasBag() {return hasBag;}
+	public boolean isHasInfoBot() {return hasInfoBot;}
+	public boolean isHasKey() {return hasKey;}
+	public boolean isHasPokeball() {return hasPokeball;}
+	public boolean isHasPokeDex() {return hasPokeDex;}
+
 
 	//Setter Methods
+	public void setCustomer(BAHBLCustomerBase customer) {this.customer = customer;}
+	public void setCustomerDialogue(String newDialogue){
+		customerDialogue = newDialogue;
+	}
+	public void setHasBag(boolean hasBag) {this.hasBag = hasBag;}
+	public void setHasInfoBot(boolean hasInfoBot) {this.hasInfoBot = hasInfoBot;}
+	public void setHasKey(boolean hasKey) {this.hasKey = hasKey;}
+	public void setHasPokeball(boolean hasPokeball) {this.hasPokeball = hasPokeball;}
+	public void setHasPokeDex(boolean hasPokeDex) {this.hasPokeDex = hasPokeDex;}
+	public void setMoneyCount(int moneyCount) {this.moneyCount = moneyCount;}
+	public void setStoryProgress(int storyProgress) {this.storyProgress = storyProgress;}
+
 }
