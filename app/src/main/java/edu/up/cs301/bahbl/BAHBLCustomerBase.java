@@ -45,9 +45,9 @@ public abstract class BAHBLCustomerBase {
 
         //Base dialogue examples
         greetingDialogue = "Hello.";
-        happyResponse = "Thank you";
+        happyResponse = "Thank you!";
         madResponse = ">:(";
-        loreDialogue = "This item once killed my father. It was also once my father";
+        loreDialogue = "This item once killed my father. It also was once my father.";
         farewellDialogue = "Goodbye.";
 
         goodButtonText = "You're a good customer :)";
