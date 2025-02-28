@@ -121,7 +121,7 @@ public class BAHBLHumanPlayer extends GameHumanPlayer implements OnClickListener
 		this.myActivity = activity;
 		
 	    // Load the layout resource for our GUI
-		activity.setContentView(R.layout.counter_human_player);
+		activity.setContentView(R.layout.bahbl_human_player);
 
 		//Initialize the widget reference member variables
 		this.customerDialogue = (TextView)activity.findViewById(R.id.customerDialogue);
