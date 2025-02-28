@@ -84,11 +84,5 @@ public class BAHBLLocalGame extends LocalGame {
             // denote that this was a legal/successful move
             return true;
         }
-		else{
-            // denote that this was an illegal move
-            return false;
-        }
-        //return false;
-        return false;
     }
 }//makeMove
