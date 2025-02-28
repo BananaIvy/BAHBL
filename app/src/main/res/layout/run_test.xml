@@ -22,6 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="3"
+            android:layout_gravity="center"
             android:orientation="horizontal">
 
             <EditText
@@ -30,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:gravity="start|top"
+                android:gravity="center|left"
                 android:inputType="textMultiLine" />
 
             <Button
@@ -38,6 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_gravity="center"
                 android:text="Run Test" />
 
             <EditText
@@ -46,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:gravity="start|top"
+                android:gravity="center|right"
                 android:inputType="textMultiLine" />
         </LinearLayout>
 
