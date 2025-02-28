@@ -5,6 +5,7 @@ import android.util.Log;
 import edu.up.cs301.GameFramework.LocalGame;
 import edu.up.cs301.GameFramework.actionMessage.GameAction;
 import edu.up.cs301.GameFramework.infoMessage.GameState;
+import edu.up.cs301.GameFramework.players.GamePlayer;
 
 /**
  * A class that represents the state of a game. In our counter game, the only
@@ -28,18 +29,28 @@ public class BAHBLLocalGame extends LocalGame {
     private BAHBLGameState gameState;
     private BAHBLCustomerBase customerBase;
 
-    /**
+	@Override
+	protected void sendUpdatedStateTo(GamePlayer p) {
+
+	}
+
+	/**
      * can this player move
      *
      * @return true, because all player are always allowed to move at all times,
      * as this is a fully asynchronous game
      */
-    @Override
+
     protected boolean canMove(int playerIdx) {
         return true;
     }
 
-    /**
+	@Override
+	protected String checkIfGameOver() {
+		return "";
+	}
+
+	/**
      * This ctor should be called when a new counter game is started
      */
     public BAHBLLocalGame(GameState state) {
@@ -54,7 +65,7 @@ public class BAHBLLocalGame extends LocalGame {
     /**
      * The only type of GameAction that should be sent is CounterMoveAction
      */
-    @Override
+
     protected boolean makeMove(GameAction action) {
         Log.i("action", action.getClass().toString());
 
