@@ -2,65 +2,28 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id = "@+id/topLayout">
 
-    <LinearLayout
+
+    <Button
+        android:id="@+id/runTestButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="0"
+        android:text="     Run Test     " />
+
+
+    <EditText
+        android:id="@+id/editTextTextMultiLine"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_weight="3"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine" />
 
-        <EditText
-            android:id="@+id/editTextTextMultiLine"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:ems="10"
-            android:layout_weight="2"
-            android:gravity="start|top"
-            android:inputType="textMultiLine" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="3"
-            android:layout_gravity="center"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/editTextTextMultiLine2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:gravity="center|left"
-                android:inputType="textMultiLine" />
-
-            <Button
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_gravity="center"
-                android:text="Run Test" />
-
-            <EditText
-                android:id="@+id/editTextTextMultiLine3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:gravity="center|right"
-                android:inputType="textMultiLine" />
-        </LinearLayout>
-
-        <EditText
-            android:id="@+id/editTextTextMultiLine4"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:ems="10"
-            android:gravity="start|top"
-            android:inputType="textMultiLine" />
 
     </LinearLayout>
-
-</LinearLayout>

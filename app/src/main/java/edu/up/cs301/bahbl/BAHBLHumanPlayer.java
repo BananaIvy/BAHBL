@@ -25,6 +25,9 @@ import android.view.View.OnClickListener;
 public class BAHBLHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 	/* instance variables */
+
+	// The TextView the displays the current counter value
+	private TextView testResultsTextView;
 	
 	// The TextView the displays the current counter value
 	private TextView customerDialogue = null;
@@ -51,7 +54,7 @@ public class BAHBLHumanPlayer extends GameHumanPlayer implements OnClickListener
 	 * 		the top object in the GUI's view heirarchy
 	 */
 	public View getTopView() {
-		return myActivity.findViewById(R.id.main);
+		return myActivity.findViewById(R.id.topLayout);
 	}
 	
 	/**
@@ -73,21 +76,27 @@ public class BAHBLHumanPlayer extends GameHumanPlayer implements OnClickListener
 		// if we are not yet connected to a game, ignore
 		if (game == null) return;
 
-		// Construct the action and send it to the game
-		GameAction action = null;
-		if (button.getId() == R.id.Option1) {
-		//chooses the good dialog option
- 		action = new BAHBLButtonAction(this, button);
+		testResultsTextView.setText("");
 
-		}
-		else if (button.getId() == R.id.Option2) {
+
+
+		//MODIFIED CODE COMMENTED OUT FOR NOW!!!
+
+		// Construct the action and send it to the game
+		//GameAction action = null;
+		//if (button.getId() == R.id.Option1) {
+		//chooses the good dialog option
+ 		//action = new BAHBLButtonAction(this, button);
+
+		//}
+		//else if (button.getId() == R.id.Option2) {
 			//chooses the bad dialog option
-			action = new BAHBLButtonAction(this, button);
-		}
-		else {
+			//action = new BAHBLButtonAction(this, button);
+		//}
+		//else {
 			// something else was pressed: ignore
-			return;
-		}
+			//return;
+		//}
 		
 	//	game.sendAction(action); // send action to the game
 	}// onClick
@@ -121,16 +130,25 @@ public class BAHBLHumanPlayer extends GameHumanPlayer implements OnClickListener
 		this.myActivity = activity;
 		
 	    // Load the layout resource for our GUI
-		activity.setContentView(R.layout.bahbl_human_player);
+		activity.setContentView(R.layout.run_test);
+
+		this.testResultsTextView = (TextView) activity.findViewById(R.id.editTextTextMultiLine);
+
+		Button runTestButton = (Button)activity.findViewById(R.id.runTestButton);
+		runTestButton.setOnClickListener(this);
+
+
+		//Code for our game. NOT FOR PART E SO WE COMMENT OUT!!!!
+
 
 		//Initialize the widget reference member variables
-		this.customerDialogue = (TextView)activity.findViewById(R.id.customerDialogue);
-		
+		//this.customerDialogue = (TextView)activity.findViewById(R.id.customerDialogue);
+
 //		// make this object the listener for both the '+' and '-' 'buttons
-		Button goodButton = (Button) activity.findViewById(R.id.Option1);
-		goodButton.setOnClickListener(this);
-		Button badButton = (Button) activity.findViewById(R.id.Option2);
-		badButton.setOnClickListener(this);
+		//Button goodButton = (Button) activity.findViewById(R.id.Option1);
+		//goodButton.setOnClickListener(this);
+		//Button badButton = (Button) activity.findViewById(R.id.Option2);
+		//badButton.setOnClickListener(this);
 
 //
 //		// remember the field that we update to display the counter's value
@@ -139,9 +157,9 @@ public class BAHBLHumanPlayer extends GameHumanPlayer implements OnClickListener
 //
 		// if we have a game state, "simulate" that we have just received
 		// the state from the game so that the GUI values are updated
-		if (state != null) {
-			receiveInfo(state);
-		}
+		//if (state != null) {
+			//receiveInfo(state);
+		//}
 	}
 
 }// class CounterHumanPlayer
