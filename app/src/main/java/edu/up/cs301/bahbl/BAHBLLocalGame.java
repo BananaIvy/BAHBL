@@ -27,14 +27,14 @@ public class BAHBLLocalGame extends LocalGame {
 
     // the game's state
     private BAHBLGameState gameState;
-    private BAHBLCustomerBase customerBase;
+    private BAHBLCustomerBase customer = gameState.getCustomer();
 
-	@Override
-	protected void sendUpdatedStateTo(GamePlayer p) {
+    @Override
+    protected void sendUpdatedStateTo(GamePlayer p) {
 
-	}
+    }
 
-	/**
+    /**
      * can this player move
      *
      * @return true, because all player are always allowed to move at all times,
@@ -45,12 +45,12 @@ public class BAHBLLocalGame extends LocalGame {
         return true;
     }
 
-	@Override
-	protected String checkIfGameOver() {
-		return "";
-	}
+    @Override
+    protected String checkIfGameOver() {
+        return "";
+    }
 
-	/**
+    /**
      * This ctor should be called when a new counter game is started
      */
     public BAHBLLocalGame(GameState state) {
@@ -71,18 +71,27 @@ public class BAHBLLocalGame extends LocalGame {
 
         if (action instanceof BAHBLButtonAction) {
 
-            //if(customerBase.getGoodButton() == 1)
-            // cast so that we Java knows it's a CounterMoveAction
-            BAHBLButtonAction cma = (BAHBLButtonAction) action;
+            if (customer.getGoodButton() == ((BAHBLButtonAction) action).getWhichButton()) {
+                // Update the counter values based upon the action
+                int result = gameState.getStoryProgress() + 1;
+                gameState.setStoryProgress(result);
+                gameState.setText(customer.getHappyResponse());
 
-            return true;
-        } else {
-            // Update the counter values based upon the action
-            int result = gameState.getStoryProgress() + 1;
-            gameState.setStoryProgress(result);
 
-            // denote that this was a legal/successful move
-            return true;
+            }
+
+            if (customer.getBadButton() == ((BAHBLButtonAction) action).getWhichButton()) {
+                // Update the counter values based upon the action
+                int result = gameState.getStoryProgress() + 1;
+                gameState.setStoryProgress(result);
+                gameState.setText(customer.getMadResponse());
+            }
+
+                // denote that this was a legal/successful move
+                return true;
+
         }
-    }
-}//makeMove
+
+        return false;
+    }//makeMove
+}

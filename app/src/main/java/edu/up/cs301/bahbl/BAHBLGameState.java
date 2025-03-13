@@ -19,6 +19,7 @@ public class BAHBLGameState extends GameState {
 
 	private BAHBLCustomerBase customer;
 	private String customerDialogue;
+	private String text;
 
 	//Tells us what we have in our inventory
 	private boolean hasKey;
@@ -38,6 +39,7 @@ public class BAHBLGameState extends GameState {
 		hasPokeDex = false;
 		customer = new BAHBLGhost();
 		customerDialogue = customer.getGreetingDialogue();
+		text = "";
 	}
 
 	//Copy Constructor
@@ -51,6 +53,7 @@ public class BAHBLGameState extends GameState {
 		hasBag = currentState.hasBag;
 		hasPokeDex = currentState.hasPokeDex;
 		customerDialogue = currentState.customerDialogue;
+		text = currentState.text;
 	}
 
 	//Methods
@@ -73,7 +76,7 @@ public class BAHBLGameState extends GameState {
 	}
 
 	//If we don't have an item, then the word "No" is added before the item in toString
-	String returnNo(boolean has){
+	public String returnNo(boolean has){
 		if(!has){return "No ";}
 		else{return "";}
 	}
@@ -158,12 +161,13 @@ public class BAHBLGameState extends GameState {
 	public boolean isHasPokeball() {return hasPokeball;}
 	public boolean isHasPokeDex() {return hasPokeDex;}
 
+	public String getText() {return text;}
 
 	//Setter Methods
 	public void setCustomer(BAHBLCustomerBase customer) {this.customer = customer;}
-	public void setCustomerDialogue(String newDialogue){
-		customerDialogue = newDialogue;
-	}
+	public void setCustomerDialogue(String newDialogue){customerDialogue = newDialogue;}
+
+	public void setText(String text) {this.text = text;}
 	public void setHasBag(boolean hasBag) {this.hasBag = hasBag;}
 	public void setHasInfoBot(boolean hasInfoBot) {this.hasInfoBot = hasInfoBot;}
 	public void setHasKey(boolean hasKey) {this.hasKey = hasKey;}
