@@ -10,7 +10,7 @@ package edu.up.cs301.bahbl;
  * author:AlexanderBaker
  * version:02/26/2025
  */
-public class BAHBLLug extends BAHBLCustomerBase{
+public class BahCLug extends BahCustomerBase {
 
 
     //instance variables
@@ -27,7 +27,7 @@ public class BAHBLLug extends BAHBLCustomerBase{
      * <p>
      * param String name - sets the name for the character
      */
-    public BAHBLLug(){
+    public BahCLug(){
         super();
         setCustomerName("Lug");
         setLikeability(75);

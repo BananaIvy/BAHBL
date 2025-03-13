@@ -15,7 +15,7 @@ import edu.up.cs301.GameFramework.gameConfiguration.*;
  * @author Steven R. Vegdahl
  * @version July 2013
  */
-public class BAHBLMainActivity extends GameMainActivity {
+public class BahMainActivity extends GameMainActivity {
 	
 	// the port number that this game will use when playing over the network
 	private static final int PORT_NUMBER = 2234;
@@ -38,7 +38,7 @@ public class BAHBLMainActivity extends GameMainActivity {
 		// a human player player type (player type 0)
 		playerTypes.add(new GamePlayerType("Local Human Player") {
 			public GamePlayer createPlayer(String name) {
-				return new BAHBLHumanPlayer(name);
+				return new BahHumanPlayer(name);
 			}});
 
 		// Create a game configuration class for Counter:
@@ -75,8 +75,8 @@ public class BAHBLMainActivity extends GameMainActivity {
 	 */
 	@Override
 	public LocalGame createLocalGame(GameState state) {
-		if (state == null) state = new BAHBLGameState();
-		return new BAHBLLocalGame(state);
+		if (state == null) state = new BahGameState();
+		return new BahLocalGame(state);
 	}
 
 }

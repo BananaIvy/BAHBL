@@ -4,14 +4,14 @@ import edu.up.cs301.GameFramework.players.GamePlayer;
 import edu.up.cs301.GameFramework.actionMessage.GameAction;
 
 /**
- * A BAHBLMoveAction is an action that is a "move" the game: either increasing
+ * A BahActionMove is an action that is a "move" the game: either increasing
  * or decreasing the counter value.
  *
  * @author Steven R. Vegdahl
  * @author Andrew M. Nuxoll
  * @version September 2012
  */
-public class BAHBLMoveAction extends GameAction {
+public class BahActionMove extends GameAction {
 
 	// to satisfy the serializable interface
 	private static final long serialVersionUID = 28062013L;
@@ -27,7 +27,7 @@ public class BAHBLMoveAction extends GameAction {
      * @param isPlus
      *            value to initialize this.isPlus
      */
-    public BAHBLMoveAction(GamePlayer player, boolean isPlus) {
+    public BahActionMove(GamePlayer player, boolean isPlus) {
         super(player);
         this.isPlus = isPlus;
     }

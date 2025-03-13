@@ -1,14 +1,5 @@
 package edu.up.cs301.bahbl;
 
-import edu.up.cs301.GameFramework.GameMainActivity;
-import edu.up.cs301.GameFramework.infoMessage.GameInfo;
-import android.app.Activity;
-import android.os.Handler;
-import android.util.Log;
-import android.widget.Button;
-import android.widget.TextView;
-
-
 
 /**
 * 
@@ -16,10 +7,10 @@ import android.widget.TextView;
 * @author Andrew M. Nuxoll
 * @version September 2013
 */
-public class BAHBLPokeangel extends BAHBLCustomerBase {
+public class BahCPokeangel extends BahCustomerBase {
 
 	
-	public BAHBLPokeangel(){
+	public BahCPokeangel(){
 		super();
 		setCustomerName("Pokeangel");
 		setGreetingDialogue("Greetings, mortal soul. I seek sustenance in this fine establishment. However, all who encounter me must answer my riddle in order to remain in my holy presence." +

@@ -16,7 +16,7 @@ import edu.up.cs301.GameFramework.players.GamePlayer;
  * @author Andrew M. Nuxoll
  * @version July 2013
  */
-public class BAHBLLocalGame extends LocalGame {
+public class BahLocalGame extends LocalGame {
 
     // When a counter game is played, any number of players. The first player
     // is trying to get the counter value to TARGET_MAGNITUDE; the second player,
@@ -26,8 +26,8 @@ public class BAHBLLocalGame extends LocalGame {
     public static final int TARGET_MAGNITUDE = 10;
 
     // the game's state
-    private BAHBLGameState gameState;
-    private BAHBLCustomerBase customer = gameState.getCustomer();
+    private BahGameState gameState;
+    private BahCustomerBase customer = gameState.getCustomer();
 
     @Override
     protected void sendUpdatedStateTo(GamePlayer p) {
@@ -53,12 +53,12 @@ public class BAHBLLocalGame extends LocalGame {
     /**
      * This ctor should be called when a new counter game is started
      */
-    public BAHBLLocalGame(GameState state) {
+    public BahLocalGame(GameState state) {
         // initialize the game state, with the counter value starting at 0
-        if (!(state instanceof BAHBLGameState)) {
-            state = new BAHBLGameState();
+        if (!(state instanceof BahGameState)) {
+            state = new BahGameState();
         }
-        this.gameState = (BAHBLGameState) state;
+        this.gameState = (BahGameState) state;
         super.state = state;
     }
 
@@ -69,9 +69,9 @@ public class BAHBLLocalGame extends LocalGame {
     protected boolean makeMove(GameAction action) {
         Log.i("action", action.getClass().toString());
 
-        if (action instanceof BAHBLButtonAction) {
+        if (action instanceof BahActionButton) {
 
-            if (customer.getGoodButton() == ((BAHBLButtonAction) action).getWhichButton()) {
+            if (customer.getGoodButton() == ((BahActionButton) action).getWhichButton()) {
                 // Update the counter values based upon the action
                 int result = gameState.getStoryProgress() + 1;
                 gameState.setStoryProgress(result);
@@ -80,7 +80,7 @@ public class BAHBLLocalGame extends LocalGame {
 
             }
 
-            if (customer.getBadButton() == ((BAHBLButtonAction) action).getWhichButton()) {
+            if (customer.getBadButton() == ((BahActionButton) action).getWhichButton()) {
                 // Update the counter values based upon the action
                 int result = gameState.getStoryProgress() + 1;
                 gameState.setStoryProgress(result);

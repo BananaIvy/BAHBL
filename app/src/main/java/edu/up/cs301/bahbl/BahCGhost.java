@@ -1,16 +1,14 @@
 package edu.up.cs301.bahbl;
 
-import edu.up.cs301.GameFramework.infoMessage.GameInfo;
-
 /**
  * 
  * @author Laura Patla
  * @version 2/26/25
  */
 public class
-BAHBLGhost extends BAHBLCustomerBase {
+BahCGhost extends BahCustomerBase {
 
-    public BAHBLGhost() {
+    public BahCGhost() {
         super();
         setCustomerName("Ghost");
         setLikeability(75);

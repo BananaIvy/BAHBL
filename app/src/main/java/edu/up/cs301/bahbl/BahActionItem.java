@@ -4,7 +4,7 @@ import android.widget.ImageButton;
 import edu.up.cs301.GameFramework.actionMessage.GameAction;
 import edu.up.cs301.GameFramework.players.GamePlayer;
 
-public class BAHBLItemAction extends GameAction {
+public class BahActionItem extends GameAction {
 
     private int thisItem;
     private final int key = 1;
@@ -18,7 +18,7 @@ public class BAHBLItemAction extends GameAction {
      *
      * @param player the player who created the action
      */
-    public BAHBLItemAction(GamePlayer player, ImageButton item) {
+    public BahActionItem(GamePlayer player, ImageButton item) {
 
         super(player);
         if(item.getId() == R.id.key){

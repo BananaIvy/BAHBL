@@ -22,7 +22,7 @@ import android.view.View.OnClickListener;
  * @author Andrew M. Nuxoll
  * @version July 2013
  */
-public class BAHBLHumanPlayer extends GameHumanPlayer implements OnClickListener {
+public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 	/* instance variables */
 
@@ -33,7 +33,7 @@ public class BAHBLHumanPlayer extends GameHumanPlayer implements OnClickListener
 	private TextView customerDialogue = null;
 	
 	// the most recent game state, as given to us by the CounterLocalGame
-	private BAHBLGameState state;
+	private BahGameState state;
 	
 	// the android activity that we are running
 	private GameMainActivity myActivity;
@@ -45,7 +45,7 @@ public class BAHBLHumanPlayer extends GameHumanPlayer implements OnClickListener
 	 * @param name
 	 * 		the player's name
 	 */
-	public BAHBLHumanPlayer(String name) {
+	public BahHumanPlayer(String name) {
 		super(name);
 	}
 
@@ -83,7 +83,7 @@ public class BAHBLHumanPlayer extends GameHumanPlayer implements OnClickListener
 		//MODIFIED CODE COMMENTED OUT FOR NOW!!!
 
 		//sends it to see which button it iws
- 		action = new BAHBLButtonAction(this, button);
+ 		action = new BahActionButton(this, button);
 
 	}// onClick
 
@@ -101,10 +101,10 @@ public class BAHBLHumanPlayer extends GameHumanPlayer implements OnClickListener
 	@Override
 	public void receiveInfo(GameInfo info) {
 		// ignore the message if it's not a CounterState message
-		if (!(info instanceof BAHBLGameState)) return;
+		if (!(info instanceof BahGameState)) return;
 		
 		// update our state; then update the display
-		this.state = (BAHBLGameState)info;
+		this.state = (BahGameState)info;
 		updateDisplay();
 	}
 	

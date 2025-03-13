@@ -1,8 +1,8 @@
 package edu.up.cs301.bahbl;
 
-public class BAHBLMysticMan extends BAHBLCustomerBase{
+public class BahCMysticMan extends BahCustomerBase {
 
-    public BAHBLMysticMan(){
+    public BahCMysticMan(){
         super();
         setCustomerName("Mystic Man");
 

@@ -1,9 +1,9 @@
 package edu.up.cs301.bahbl;
 
-public class BAHBLNux extends BAHBLCustomerBase{
+public class BahCNux extends BahCustomerBase {
 
 
-    public BAHBLNux(){
+    public BahCNux(){
         super();
         setCustomerName("Demon Lord Nux");
     }

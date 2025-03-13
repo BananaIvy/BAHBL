@@ -1,7 +1,5 @@
 package edu.up.cs301.bahbl;
 
-import android.widget.TextView;
-
 import edu.up.cs301.GameFramework.infoMessage.GameState;
 
 /**
@@ -11,13 +9,13 @@ import edu.up.cs301.GameFramework.infoMessage.GameState;
  * @author Savannah M
  * @version Feb 2025
  */
-public class BAHBLGameState extends GameState {
+public class BahGameState extends GameState {
 
 	//Tracks where in the story we are
 	private int storyProgress;
 	private int moneyCount;
 
-	private BAHBLCustomerBase customer;
+	private BahCustomerBase customer;
 	private String customerDialogue;
 	private String text;
 
@@ -29,7 +27,7 @@ public class BAHBLGameState extends GameState {
 	private boolean hasPokeDex;
 
 	//Constructor for start of game
-	public BAHBLGameState(){
+	public BahGameState(){
 		storyProgress = 0;
 		moneyCount = 0;
 		hasKey = false;
@@ -37,13 +35,13 @@ public class BAHBLGameState extends GameState {
 		hasInfoBot = false;
 		hasBag = false;
 		hasPokeDex = false;
-		customer = new BAHBLGhost();
+		customer = new BahCGhost();
 		customerDialogue = customer.getGreetingDialogue();
 		text = "";
 	}
 
 	//Copy Constructor
-	public BAHBLGameState(BAHBLGameState currentState){
+	public BahGameState(BahGameState currentState){
 		storyProgress = currentState.storyProgress;
 		moneyCount = currentState.moneyCount;
 		customer = currentState.customer;
@@ -85,7 +83,7 @@ public class BAHBLGameState extends GameState {
 	/*
 	Methods for each action
 	 */
-	public boolean buttonAction(BAHBLButtonAction action){
+	public boolean buttonAction(BahActionButton action){
 		//This action is valid when it is the players turn
 		if(customer.getPlayersTurn()){
 			//Modify the state of the game to match action taken
@@ -101,7 +99,7 @@ public class BAHBLGameState extends GameState {
 		return false; //action is not valid
 	}
 
-	public boolean itemAction(BAHBLItemAction action){
+	public boolean itemAction(BahActionItem action){
 		//This action is valid when it is the players turn
 		if(customer.getPlayersTurn()){
 			//Checks if we have the item that was clicked
@@ -127,7 +125,7 @@ public class BAHBLGameState extends GameState {
 		return false; //if action doesn't return true, then by default it's invalid
     }
 
-	public boolean registerAction(BAHBLRegisterAction action){
+	public boolean registerAction(BahActionRegister action){
 		//This action is valid when it is the players turn
 		if(customer.getPlayersTurn()){
 			//Modify the state of the game to match action taken
@@ -138,7 +136,7 @@ public class BAHBLGameState extends GameState {
 		}
 	}
 
-	public boolean progressTextAction(BAHBLProgressTextAction action){
+	public boolean progressTextAction(BahActionProgressText action){
 		//This action is valid when it's the customers turn to speak & there's no action to do
 		if(!customer.getPlayersTurn()){
 			//Modify the state of the game to match action taken
@@ -154,7 +152,7 @@ public class BAHBLGameState extends GameState {
 	public String getCustomerDialogue(){return customerDialogue;}
 	public int getStoryProgress() {return storyProgress;}
 	public int getMoneyCount() {return moneyCount;}
-	public BAHBLCustomerBase getCustomer() {return customer;}
+	public BahCustomerBase getCustomer() {return customer;}
 	public boolean isHasBag() {return hasBag;}
 	public boolean isHasInfoBot() {return hasInfoBot;}
 	public boolean isHasKey() {return hasKey;}
@@ -164,7 +162,7 @@ public class BAHBLGameState extends GameState {
 	public String getText() {return text;}
 
 	//Setter Methods
-	public void setCustomer(BAHBLCustomerBase customer) {this.customer = customer;}
+	public void setCustomer(BahCustomerBase customer) {this.customer = customer;}
 	public void setCustomerDialogue(String newDialogue){customerDialogue = newDialogue;}
 
 	public void setText(String text) {this.text = text;}

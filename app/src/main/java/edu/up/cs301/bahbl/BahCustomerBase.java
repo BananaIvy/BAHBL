@@ -4,7 +4,7 @@ package edu.up.cs301.bahbl;
  * @author Laura Patla
  * @version 2/26/25
  */
-public abstract class BAHBLCustomerBase {
+public abstract class BahCustomerBase {
 
     private String customerName;
     private int likeability;
@@ -34,7 +34,7 @@ public abstract class BAHBLCustomerBase {
     /*
     Default constructor/set-up for a customer
      */
-    public BAHBLCustomerBase (){
+    public BahCustomerBase(){
         customerName = "Customer";
         likeability = 50;
         goodButton = 1;
