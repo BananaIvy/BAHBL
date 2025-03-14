@@ -84,6 +84,9 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 		BahGameState firstInstance = new BahGameState();
 
+		BahGameState firstCopy = new BahGameState(firstInstance);
+
+
 		//MODIFIED CODE COMMENTED OUT FOR NOW!!!
 
 		//sends it to see which button it iws
