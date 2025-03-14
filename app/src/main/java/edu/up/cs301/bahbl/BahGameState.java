@@ -15,6 +15,7 @@ public class BahGameState extends GameState {
 	private int storyProgress;
 	private int moneyCount;
 
+
 	private BahCustomerBase customer;
 	private String customerDialogue;
 	private String text;

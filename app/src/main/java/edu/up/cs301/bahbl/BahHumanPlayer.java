@@ -80,12 +80,14 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		// if we are not yet connected to a game, ignore
 		if (game == null) return;
 
-		//testResultsTextView.setText("");
+		testResultsTextView.setText("");
+
+		BahGameState firstInstance = new BahGameState();
 
 		//MODIFIED CODE COMMENTED OUT FOR NOW!!!
 
 		//sends it to see which button it iws
- 		action = new BahActionButton(this, button);
+ 		//action = new BahActionButton(this, button);
 
 	}// onClick
 
@@ -123,25 +125,25 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		this.myActivity = activity;
 		
 	    // Load the layout resource for our GUI
-		activity.setContentView(R.layout.bahbl_human_player);
+		activity.setContentView(R.layout.run_test);
 
-		//this.testResultsTextView = (TextView) activity.findViewById(R.id.editTextTextMultiLine);
+		this.testResultsTextView = (TextView) activity.findViewById(R.id.editTextTextMultiLine);
 
-		//Button runTestButton = (Button)activity.findViewById(R.id.runTestButton);
-		//runTestButton.setOnClickListener(this);
+		Button runTestButton = (Button)activity.findViewById(R.id.runTestButton);
+		runTestButton.setOnClickListener(this);
 
 
 		//Code for our game. NOT FOR PART E SO WE COMMENT OUT!!!!
 
 
 		//Initialize the widget reference member variables
-		this.customerDialogue = (TextView)activity.findViewById(R.id.customerDialogue);
+		//this.customerDialogue = (TextView)activity.findViewById(R.id.customerDialogue);
 
 //		// make this object the listener for both the '+' and '-' 'buttons
-		Button goodButton = (Button) activity.findViewById(R.id.Option1);
-		goodButton.setOnClickListener(this);
-		Button badButton = (Button) activity.findViewById(R.id.Option2);
-		badButton.setOnClickListener(this);
+		//Button goodButton = (Button) activity.findViewById(R.id.Option1);
+		//goodButton.setOnClickListener(this);
+		//Button badButton = (Button) activity.findViewById(R.id.Option2);
+		//badButton.setOnClickListener(this);
 
 //
 //		// remember the field that we update to display the counter's value
