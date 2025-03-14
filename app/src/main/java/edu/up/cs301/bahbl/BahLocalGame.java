@@ -27,7 +27,7 @@ public class BahLocalGame extends LocalGame {
 
     // the game's state
     private BahGameState gameState;
-    private BahCustomerBase customer = gameState.getCustomer();
+    private BahCustomerBase customer;
 
     @Override
     protected void sendUpdatedStateTo(GamePlayer p) {
@@ -68,6 +68,8 @@ public class BahLocalGame extends LocalGame {
 
     protected boolean makeMove(GameAction action) {
         Log.i("action", action.getClass().toString());
+
+        customer = gameState.getCustomer();
 
         if (action instanceof BahActionButton) {
 

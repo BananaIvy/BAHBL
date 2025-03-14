@@ -64,7 +64,9 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	 */
 	protected void updateDisplay() {
 		// set the text in the appropriate widget
-		customerDialogue.setText(state.getText() + "");
+		String tempText = state.getText();
+
+		customerDialogue.setText(tempText + "");
 	}
 
 	/**
