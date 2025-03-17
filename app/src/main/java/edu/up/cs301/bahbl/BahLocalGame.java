@@ -161,6 +161,7 @@ public class BahLocalGame extends LocalGame {
 //                return false; //action is not valid
 //            }
         }
+
         //If the register is clicked
         if (action instanceof BahActionRegister) {
             //Add money to register count and set the text to goodbye text.
@@ -174,11 +175,21 @@ public class BahLocalGame extends LocalGame {
 //            else{
 //                return false; //action is not valid
 //            }
+
+            gameState.setMoneyCount( gameState.getMoneyCount() + 1 );
+            gameState.setText(gameState.getCustomer().getFarewellDialogue());
+            return true;
         }
+
+
         if (action instanceof BahActionMove) {
-
+            return true;
         }
 
-        return false;
+        else {
+            return false;
+        }
+
     }//makeMove
+
 }
