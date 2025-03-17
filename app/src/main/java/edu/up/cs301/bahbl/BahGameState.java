@@ -90,7 +90,8 @@ public class BahGameState extends GameState {
 
 
 	//Getter Methods
-	public int getCustomerDialogueType(){return customerDialogueType;}
+
+	public int getCustomerDialogueType() {return customerDialogueType;}
 	public int getStoryProgress() {return storyProgress;}
 	public int getMoneyCount() {return moneyCount;}
 	public BahCustomerBase getCustomer() {return customer;}
@@ -99,8 +100,27 @@ public class BahGameState extends GameState {
 	public boolean isHasKey() {return hasKey;}
 	public boolean isHasPokeball() {return hasPokeball;}
 	public boolean isHasPokeDex() {return hasPokeDex;}
-	public String getCustomerDialogue() {return customerDialogue;}
 	public int getTextIndex() {return textIndex;}
+
+	//Returns the corresponding dialogue based on the index markers
+	public String getCustomerDialogue() {
+		if(customerDialogueType == 1){
+			return customer.getGreetingDialogue(textIndex);
+		}
+		if(customerDialogueType == 2){
+			return customer.getHappyResponse(textIndex);
+		}
+		if(customerDialogueType == 3){
+			return customer.getMadResponse(textIndex);
+		}
+		if(customerDialogueType == 4){
+			return customer.getLoreDialogue(textIndex);
+		}
+		if(customerDialogueType == 5){
+			return customer.getFarewellDialogue(textIndex);
+		}
+		return "somethings wrong with getCustomerDialogue";
+	}
 
 	//Setter Methods
 	public void setCustomer(BahCustomerBase customer) {this.customer = customer;}
@@ -131,5 +151,6 @@ public class BahGameState extends GameState {
 			this.customerDialogue = customer.getFarewellDialogue(index);
 		}
 	}
+
 
 }

@@ -62,8 +62,6 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	 * sets the dialog in the text view
 	 */
 	protected void updateDisplay() {
-		//Ensures that customer dialogue string matches the gamestate
-		state.setCustomerDialogue(state.getCustomerDialogueType(),state.getTextIndex());
 		// set the text in the appropriate widget
 		String tempText = state.getCustomerDialogue();
 
