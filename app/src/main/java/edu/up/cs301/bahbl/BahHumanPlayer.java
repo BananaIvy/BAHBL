@@ -85,7 +85,8 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		BahGameState firstInstance = new BahGameState();
 
 		BahGameState firstCopy = new BahGameState(firstInstance);
-
+		//TODO here you're pretending that the player is clicking the buttons, and calling on what said actions would call
+		//todo you're also printing an explanation of this as a string added to thing
 
 
 
