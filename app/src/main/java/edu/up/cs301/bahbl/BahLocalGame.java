@@ -152,20 +152,9 @@ public class BahLocalGame extends LocalGame {
 //            }
         }
 
-        //If the register is clicked
+        //If the register is clicked, adds money collected, displays the farewellDialogue
+        //ends the Customer's interaction
         if (action instanceof BahActionRegister) {
-            //Add money to register count and set the text to goodbye text.
-            //This should end a customer interaction.
-            //PULLED OVER FROM GAMESTATE
-//            //This action is valid when it is the players turn
-//            if(customer.getPlayersTurn()){
-//                //Modify the state of the game to match action taken
-//                return true;
-//            }
-//            else{
-//                return false; //action is not valid
-//            }
-
             gameState.setMoneyCount( gameState.getMoneyCount() + 1 );
             gameState.setText(gameState.getCustomer().getFarewellDialogue());
             return true;
