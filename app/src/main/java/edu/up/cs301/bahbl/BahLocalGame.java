@@ -140,16 +140,30 @@ public class BahLocalGame extends LocalGame {
         }
         //Progresses the text
         if (action instanceof BahActionProgressText) {
-            //If it's the goodbye text it needs to progress the story count
-            //PULLED OVER FROM GAME STATE
-//            //This action is valid when it's the customers turn to speak & there's no action to do
-//            if(!customer.getPlayersTurn()){
-//                //Modify the state of the game to match action taken
-//                return true;
-//            }
-//            else{
-//                return false; //action is not valid
-//            }
+            //it's not
+
+            //This action is valid when it's the players turn to press a button
+            if(customer.getPlayersTurn()){
+                //It's now the customers turn to talk
+                customer.setPlayersTurn(false);
+                //if Dialogue == greeting
+                    //Update the text to the next text in the greeting-text array
+                    //if last-of-greeting-array-text
+                        //Update the options (button texts) to be clickable
+                        //update text to response options
+                        //make it players turn
+                //if Dialogue == goodbye
+                    //Update the text to the next text in the goodbye-text Array
+                    //if last-of-goodbye-array-text
+                        //ProgressStory + 1
+                        //Somehow make it move to next customer
+                        //make it players turn
+
+                return true;
+            }
+            else{
+                return false; //action is not valid
+            }
         }
 
         //If the register is clicked, adds money collected, displays the farewellDialogue
