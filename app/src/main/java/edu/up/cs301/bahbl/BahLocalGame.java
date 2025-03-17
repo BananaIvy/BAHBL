@@ -78,47 +78,27 @@ public class BahLocalGame extends LocalGame {
         //If one of the buttons is pressed
         if (action instanceof BahActionButton) {
 
-            //PULLED OVER FROM GAME STATE
-//            //This action is valid when it is the players turn
-//            if(customer.getPlayersTurn()){
-//                //Modify the state of the game to match action taken
-//                if(action.getWhichButton() == customer.getGoodButton()){ //customers good button
-//                    setCustomerDialogue(customer.getHappyResponse());
-//                    return true;
-//                }
-//                if(action.getWhichButton() == customer.getBadButton()){ //customers bad button
-//                    setCustomerDialogue(customer.getMadResponse());
-//                    return true;
-//                }
-//            }
-//            return false; //action is not valid
-
-            if (customer.getGoodButton() == ((BahActionButton) action).getWhichButton()) {
-                // Update the counter values based upon the action
-                int result = gameState.getStoryProgress() + 1;
-                gameState.setStoryProgress(result);
-                gameState.setText(customer.getHappyResponse());
-
-
-            }
-
-            if (customer.getBadButton() == ((BahActionButton) action).getWhichButton()) {
-                // Update the counter values based upon the action
-                int result = gameState.getStoryProgress() + 1;
-                gameState.setStoryProgress(result);
-                gameState.setText(customer.getMadResponse());
-            }
-
-                //progresses the story if the goodbye text is called
-                if(customer.getFarewellDialogue() == gameState.getText()){
-                    gameState.setStoryProgress(gameState.getStoryProgress() + 1);
+            //This action is valid when it is the players turn
+            if(customer.getPlayersTurn()){
+                //If the buttons is the good button
+                if (customer.getGoodButton() == ((BahActionButton) action).getWhichButton()) {
+                    // Update the counter values based upon the action
+                    gameState.setText(customer.getHappyResponse());
                 }
-
-
+                //if the button is the bad button
+                if (customer.getBadButton() == ((BahActionButton) action).getWhichButton()) {
+                    // Update the counter values based upon the action
+                    gameState.setText(customer.getMadResponse());
+                }
                 // denote that this was a legal/successful move
                 return true;
 
+            }
+            return false; //action is not valid
         }
+
+
+
         //If an Item is clicked
         if (action instanceof BahActionItem) {
             //Check if the item matches the customers item
