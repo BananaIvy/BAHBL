@@ -71,6 +71,7 @@ public class BahLocalGame extends LocalGame {
 
         customer = gameState.getCustomer();
 
+        //If one of the buttons is pressed
         if (action instanceof BahActionButton) {
 
             if (customer.getGoodButton() == ((BahActionButton) action).getWhichButton()) {
@@ -91,6 +92,22 @@ public class BahLocalGame extends LocalGame {
 
                 // denote that this was a legal/successful move
                 return true;
+
+        }
+        //If an Item is clicked
+        if (action instanceof BahActionItem) {
+            //Check if the item matches the customers item
+        }
+        //Progresses the text
+        if (action instanceof BahActionProgressText) {
+            //If it's the goodbye text it needs to progress the story count
+        }
+        //If the register is clicked
+        if (action instanceof BahActionRegister) {
+            //Add money to register count and set the text to goodbye text.
+            //This should end a customer interaction.
+        }
+        if (action instanceof BahActionMove) {
 
         }
 
