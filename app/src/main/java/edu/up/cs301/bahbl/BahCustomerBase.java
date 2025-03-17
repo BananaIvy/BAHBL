@@ -51,85 +51,58 @@ public abstract class BahCustomerBase {
 
         //Base dialogue examples
         greetingDialogue = new String[1];
-        greetingDialogue[1] = "Hello";
+        greetingDialogue[0] = "Hello";
         happyResponse = new String[1];
-        happyResponse[1] = "Thank you!";
+        happyResponse[0] = "Thank you!";
         madResponse = new String[1];
-        madResponse[1] = ">:(";
-        loreDialogue = new String[2];
-        loreDialogue[1] = "This item once killed my father.";
-        loreDialogue[2] = "It also was once my father.";
+        madResponse[0] = ">:(";
         farewellDialogue = new String[1];
-        farewellDialogue[1] = "Goodbye.";
+        farewellDialogue[0] = "Goodbye.";
+        loreDialogue = new String[2];
+        loreDialogue[0] = "This item once killed my father.";
+        loreDialogue[1] = "It also was once my father.";
+
 
         goodButtonText = "You're a good customer :)";
-        badButtonText = "You're a bad customer :/";
+        badButtonText = "You're bad lol >:p";
     }
 
+    //Resets all the Dialogue Strings to be empty arrays.
+    public void resetDialogue(){
+        this.greetingDialogue = new String[0];
+        this.happyResponse = new String[0];
+        this.madResponse = new String[0];
+        this.loreDialogue = new String[0];
+        this.farewellDialogue = new String[0];
+    }
 
     //Getter methods
     public int getItem(){ return item;}
-    public String getCustomerName(){
-        return customerName;
-    }
-    public boolean getPlayersTurn(){
-        return playersTurn;
-    }
-    public int getGoodButton(){
-        return goodButton;
-    }
-    public int getBadButton(){
-        return badButton;
-    }
-    public boolean isHasGiven() {
-        return hasGiven;
-    }
-    public boolean isHasReceived() {
-        return hasReceived;
-    }
-    public int getLikeability() {
-        return likeability;
-    }
-    public String getHappyResponse(int index) {
-        return happyResponse[index];
-    }
-    public int getHappyLength() {
-        return happyResponse.length;
-    }
-    public String getMadResponse(int index) {
-        return madResponse[index];
-    }
-    public int getMadLength() {
-        return madResponse.length;
-    }
-    public String getLoreDialogue(int index) {
-        return loreDialogue[index];
-    }
-    public int getLoreLength() {
-        return loreDialogue.length;
-    }
-    public String getGreetingDialogue(int index) {
-        return greetingDialogue[index];
-    }
-    public int getGreetingLength() {
-        return greetingDialogue.length;
-    }
-    public String getFarewellDialogue(int index) {
-        return farewellDialogue[index];
-    }
-    public int getFarewellLength() {
-        return farewellDialogue.length;
-    }
-    public String getGoodButtonText() {
-        return goodButtonText;
-    }
-    public String getBadButtonText() {
-        return badButtonText;
-    }
-
+    public String getCustomerName(){return customerName;}
+    public boolean getPlayersTurn(){return playersTurn;}
+    public int getGoodButton(){return goodButton;}
+    public int getBadButton(){return badButton;}
+    public boolean isHasGiven() {return hasGiven;}
+    public boolean isHasReceived() {return hasReceived;}
+    public int getLikeability() {return likeability;}
+    public String getHappyResponse(int index) {return happyResponse[index];}
+    public int getHappyLength() {return happyResponse.length;}
+    public String getMadResponse(int index) {return madResponse[index];}
+    public int getMadLength() {return madResponse.length;}
+    public String getLoreDialogue(int index) {return loreDialogue[index];}
+    public int getLoreLength() {return loreDialogue.length;}
+    public String getGreetingDialogue(int index) {return greetingDialogue[index];}
+    public int getGreetingLength() {return greetingDialogue.length;}
+    public String getFarewellDialogue(int index) {return farewellDialogue[index];}
+    public int getFarewellLength() {return farewellDialogue.length;}
+    public String getGoodButtonText() {return goodButtonText;}
+    public String getBadButtonText() {return badButtonText;}
 
     //Setter methods
     public void setItem(int item){ this.item = item;}
+    public void setLikeability(int likeability) {this.likeability = likeability;}
+    public void setHasGiven(boolean hasGiven) {this.hasGiven = hasGiven;}
+    public void setHasReceived(boolean hasReceived) {this.hasReceived = hasReceived;}
     public void setPlayersTurn(boolean playersTurn) {this.playersTurn = playersTurn;}
     public void setCustomerName(String customerName) {this.customerName = customerName;}
     public void setBadButton(int badButton) {this.badButton = badButton;}
@@ -141,7 +114,50 @@ public abstract class BahCustomerBase {
     public void setHappyResponse(String happyResponse, int index) {this.happyResponse[index] = happyResponse;}
     public void setMadResponse(String madResponse, int index) {this.madResponse[index] = madResponse;}
     public void setLoreDialogue(String loreDialogue, int index) {this.loreDialogue[index] = loreDialogue;}
-    public void setLikeability(int likeability) {this.likeability = likeability;}
-    public void setHasGiven(boolean hasGiven) {this.hasGiven = hasGiven;}
-    public void setHasReceived(boolean hasReceived) {this.hasReceived = hasReceived;}
+   //Increases the size of a String Array to
+    public void addFarewellDialogue(String dialogue) {
+        String[] temptText = new String[this.farewellDialogue.length + 1];
+        int i = 0;
+        for(String s : this.farewellDialogue){
+            temptText[i++] = s;
+        }
+        this.farewellDialogue = temptText;
+        this.farewellDialogue[this.farewellDialogue.length - 1] = dialogue;
+    }
+    public void addGreetingDialogue(String dialogue) {
+        String[] temptText = new String[this.greetingDialogue.length + 1];
+        int i = 0;
+        for(String s : this.greetingDialogue){
+            temptText[i++] = s;
+        }
+        this.greetingDialogue = temptText;
+        this.greetingDialogue[this.greetingDialogue.length - 1] = dialogue;
+    }
+    public void addLoreDialogue(String dialogue) {
+        String[] temptText = new String[this.loreDialogue.length + 1];
+        int i = 0;
+        for(String s : this.loreDialogue){
+            temptText[i++] = s;
+        }
+        this.loreDialogue = temptText;
+        this.loreDialogue[this.loreDialogue.length - 1] = dialogue;
+    }
+    public void addHappyResponse(String dialogue) {
+        String[] temptText = new String[this.happyResponse.length + 1];
+        int i = 0;
+        for(String s : this.happyResponse){
+            temptText[i++] = s;
+        }
+        this.happyResponse = temptText;
+        this.happyResponse[this.happyResponse.length - 1] = dialogue;
+    }
+    public void addMadResponse(String dialogue) {
+        String[] temptText = new String[this.madResponse.length + 1];
+        int i = 0;
+        for(String s : this.madResponse){
+            temptText[i++] = s;
+        }
+        this.madResponse = temptText;
+        this.madResponse[this.madResponse.length - 1] = dialogue;
+    }
 }

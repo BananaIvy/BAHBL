@@ -19,9 +19,10 @@ public class BahGameState extends GameState {
 	private BahCustomerBase customer;
 	//this int represents which set of customer dialogue we're currently on. The ints have the following meanings:
 	//1: greeting, 2: happy response, 3: mad response, 4: lore 5: goodbye
-	private int customerDialogue;
+	private int customerDialogueType;
 	//this number represents the index of the current text being displayed
-	private int text;
+	private int textIndex;
+	private String customerDialogue;
 
 	//Tells us what we have in our inventory
 	private boolean hasKey;
@@ -40,8 +41,9 @@ public class BahGameState extends GameState {
 		hasBag = false;
 		hasPokeDex = false;
 		customer = new BahCGhost();
-		customerDialogue = 1;
-		text = 0;
+		customerDialogueType = 1;
+		textIndex = 0;
+		customerDialogue = customer.getGreetingDialogue(0);
 	}
 
 	//Copy Constructor
@@ -54,8 +56,9 @@ public class BahGameState extends GameState {
 		hasInfoBot = currentState.hasInfoBot;
 		hasBag = currentState.hasBag;
 		hasPokeDex = currentState.hasPokeDex;
-		customerDialogue = currentState.customerDialogue;
-		text = currentState.text;
+		customerDialogueType = currentState.customerDialogueType;
+		textIndex = currentState.textIndex;
+		customerDialogue = currentState.getCustomerDialogue();
 	}
 
 	//Methods
@@ -68,6 +71,8 @@ public class BahGameState extends GameState {
 
 		return "Scene: " + storyProgress + "/n"     					//Story Progress
 				+ "Customer: " + customer.getCustomerName() + "/n"  	//Character
+				+ "Dialogue Type: " + customerDialogueType + "/n"		//Dialogue Type
+				+ "Dialogue Progress: " + textIndex + "/n"					//Dialogue Progress
 				+ "Money: " + moneyCount + "/n"  						//Money
 				+ "Inventory Items: " + "/n"  							//In our inventory
 				+ key + "/n"  											//Item 1 = Key
@@ -85,7 +90,7 @@ public class BahGameState extends GameState {
 
 
 	//Getter Methods
-	public int getCustomerDialogue(){return customerDialogue;}
+	public int getCustomerDialogueType(){return customerDialogueType;}
 	public int getStoryProgress() {return storyProgress;}
 	public int getMoneyCount() {return moneyCount;}
 	public BahCustomerBase getCustomer() {return customer;}
@@ -94,14 +99,13 @@ public class BahGameState extends GameState {
 	public boolean isHasKey() {return hasKey;}
 	public boolean isHasPokeball() {return hasPokeball;}
 	public boolean isHasPokeDex() {return hasPokeDex;}
-
-	public int getText() {return text;}
+	public String getCustomerDialogue() {return customerDialogue;}
+	public int getTextIndex() {return textIndex;}
 
 	//Setter Methods
 	public void setCustomer(BahCustomerBase customer) {this.customer = customer;}
-	public void setCustomerDialogue(int newDialogue){customerDialogue = newDialogue;}
-
-	public void setText(int text) {this.text = text;}
+	public void setCustomerDialogueType(int newDialogueType){this.customerDialogueType = newDialogueType;}
+	public void setTextIndex(int textIndex) {this.textIndex = textIndex;}
 	public void setHasBag(boolean hasBag) {this.hasBag = hasBag;}
 	public void setHasInfoBot(boolean hasInfoBot) {this.hasInfoBot = hasInfoBot;}
 	public void setHasKey(boolean hasKey) {this.hasKey = hasKey;}
@@ -109,5 +113,23 @@ public class BahGameState extends GameState {
 	public void setHasPokeDex(boolean hasPokeDex) {this.hasPokeDex = hasPokeDex;}
 	public void setMoneyCount(int moneyCount) {this.moneyCount = moneyCount;}
 	public void setStoryProgress(int storyProgress) {this.storyProgress = storyProgress;}
+	public void setCustomerDialogue(String customerDialogue) {this.customerDialogue = customerDialogue;}
+	public void setCustomerDialogue(int customerTextType, int index) {
+		if(customerTextType == 1){
+			this.customerDialogue = customer.getGreetingDialogue(index);
+		}
+		if(customerTextType == 2){
+			this.customerDialogue = customer.getHappyResponse(index);
+		}
+		if(customerTextType == 3){
+			this.customerDialogue = customer.getMadResponse(index);
+		}
+		if(customerTextType == 4){
+			this.customerDialogue = customer.getLoreDialogue(index);
+		}
+		if(customerTextType == 5){
+			this.customerDialogue = customer.getFarewellDialogue(index);
+		}
+	}
 
 }

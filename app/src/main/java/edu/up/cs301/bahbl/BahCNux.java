@@ -7,5 +7,8 @@ public class BahCNux extends BahCustomerBase {
         super();
         setCustomerName("Demon Lord Nux");
         setItem(5);
+        setBadButton(1);
+        setGoodButton(2);
+        resetDialogue();
     }
 }
