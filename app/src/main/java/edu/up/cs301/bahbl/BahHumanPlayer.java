@@ -26,10 +26,9 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 	/* instance variables */
 
-	// The TextView the displays the current counter value
+	// leftover from frankengaming the code, possibly unnecessary
 	private TextView testResultsTextView;
-	
-	// The TextView the displays the current counter value
+
 	private TextView customerDialogue = null;
 	
 	// the most recent game state, as given to us by the CounterLocalGame
@@ -87,6 +86,10 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		BahGameState firstCopy = new BahGameState(firstInstance);
 		//TODO here you're pretending that the player is clicking the buttons, and calling on what said actions would call
 		//todo you're also printing an explanation of this as a string added to thing
+
+		//todo: 1) Customer Greets - Click Dialog, Customer promts - Click Button, 3)Customer Reacts - Click Dialog,
+		// todo 4) Customer Reacts - Click Inventory Item, 5) Customer Reacts - Click Dialog, 6) Customer give money - Click register
+		//todo 7) Customer says goodbye - Click Dialog
 
 
 

@@ -15,7 +15,7 @@ public abstract class BahCustomerBase {
     private int likeability;
     private int item;
 
-    //Determines whether or not you need to skip text or choose an action
+    //shows true if the player may perform click actions of their own, and false if the customer is talking
     private boolean playersTurn;
 
     //Tracks the status of the items the customer has
@@ -23,11 +23,11 @@ public abstract class BahCustomerBase {
     private boolean hasReceived;
 
     //Possible customer dialogue
-    private String happyResponse;
-    private String madResponse;
-    private String loreDialogue;
-    private String greetingDialogue;
-    private String farewellDialogue;
+    private String[] happyResponse;
+    private String[] madResponse;
+    private String[] loreDialogue;
+    private String[] greetingDialogue;
+    private String[] farewellDialogue;
 
     //If goodButton = 1, then that's the top button. If 2, then bottom button
     private int goodButton;
@@ -50,11 +50,17 @@ public abstract class BahCustomerBase {
         playersTurn = false;
 
         //Base dialogue examples
-        greetingDialogue = "Hello.";
-        happyResponse = "Thank you!";
-        madResponse = ">:(";
-        loreDialogue = "This item once killed my father. It also was once my father.";
-        farewellDialogue = "Goodbye.";
+        greetingDialogue = new String[1];
+        greetingDialogue[1] = "Hello";
+        happyResponse = new String[1];
+        happyResponse[1] = "Thank you!";
+        madResponse = new String[1];
+        madResponse[1] = ">:(";
+        loreDialogue = new String[2];
+        loreDialogue[1] = "This item once killed my father.";
+        loreDialogue[2] = "It also was once my father.";
+        farewellDialogue = new String[1];
+        farewellDialogue[1] = "Goodbye.";
 
         goodButtonText = "You're a good customer :)";
         badButtonText = "You're a bad customer :/";
@@ -84,20 +90,35 @@ public abstract class BahCustomerBase {
     public int getLikeability() {
         return likeability;
     }
-    public String getHappyResponse() {
-        return happyResponse;
+    public String getHappyResponse(int index) {
+        return happyResponse[index];
     }
-    public String getMadResponse() {
-        return madResponse;
+    public int getHappyLength() {
+        return happyResponse.length;
     }
-    public String getLoreDialogue() {
-        return loreDialogue;
+    public String getMadResponse(int index) {
+        return madResponse[index];
     }
-    public String getGreetingDialogue() {
-        return greetingDialogue;
+    public int getMadLength() {
+        return madResponse.length;
     }
-    public String getFarewellDialogue() {
-        return farewellDialogue;
+    public String getLoreDialogue(int index) {
+        return loreDialogue[index];
+    }
+    public int getLoreLength() {
+        return loreDialogue.length;
+    }
+    public String getGreetingDialogue(int index) {
+        return greetingDialogue[index];
+    }
+    public int getGreetingLength() {
+        return greetingDialogue.length;
+    }
+    public String getFarewellDialogue(int index) {
+        return farewellDialogue[index];
+    }
+    public int getFarewellLength() {
+        return farewellDialogue.length;
     }
     public String getGoodButtonText() {
         return goodButtonText;
@@ -115,11 +136,11 @@ public abstract class BahCustomerBase {
     public void setBadButtonText(String badButtonText) {this.badButtonText = badButtonText;}
     public void setGoodButton(int goodButton) {this.goodButton = goodButton;}
     public void setGoodButtonText(String goodButtonText) {this.goodButtonText = goodButtonText;}
-    public void setFarewellDialogue(String farewellDialogue) {this.farewellDialogue = farewellDialogue;}
-    public void setGreetingDialogue(String greetingDialogue) {this.greetingDialogue = greetingDialogue;}
-    public void setHappyResponse(String happyResponse) {this.happyResponse = happyResponse;}
-    public void setMadResponse(String madResponse) {this.madResponse = madResponse;}
-    public void setLoreDialogue(String loreDialogue) {this.loreDialogue = loreDialogue;}
+    public void setFarewellDialogue(String farewellDialogue, int index) {this.farewellDialogue[index] = farewellDialogue;}
+    public void setGreetingDialogue(String greetingDialogue, int index) {this.greetingDialogue[index] = greetingDialogue;}
+    public void setHappyResponse(String happyResponse, int index) {this.happyResponse[index] = happyResponse;}
+    public void setMadResponse(String madResponse, int index) {this.madResponse[index] = madResponse;}
+    public void setLoreDialogue(String loreDialogue, int index) {this.loreDialogue[index] = loreDialogue;}
     public void setLikeability(int likeability) {this.likeability = likeability;}
     public void setHasGiven(boolean hasGiven) {this.hasGiven = hasGiven;}
     public void setHasReceived(boolean hasReceived) {this.hasReceived = hasReceived;}

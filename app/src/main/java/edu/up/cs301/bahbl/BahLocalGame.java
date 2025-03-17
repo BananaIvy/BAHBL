@@ -18,13 +18,7 @@ import edu.up.cs301.GameFramework.players.GamePlayer;
  */
 public class BahLocalGame extends LocalGame {
 
-    // When a counter game is played, any number of players. The first player
-    // is trying to get the counter value to TARGET_MAGNITUDE; the second player,
-    // if present, is trying to get the counter to -TARGET_MAGNITUDE. The
-    // remaining players are neither winners nor losers, but can interfere by
-    // modifying the counter.
-    public static final int TARGET_MAGNITUDE = 10;
-
+    private int textProgress;
     // the game's state
     private BahGameState gameState;
     private BahCustomerBase customer;
@@ -65,6 +59,7 @@ public class BahLocalGame extends LocalGame {
         }
         this.gameState = (BahGameState) state;
         super.state = state;
+        textProgress = 0;
     }
 
     /**
@@ -84,12 +79,16 @@ public class BahLocalGame extends LocalGame {
                 //If the buttons is the good button
                 if (customer.getGoodButton() == ((BahActionButton) action).getWhichButton()) {
                     // Update the counter values based upon the action
-                    gameState.setText(customer.getHappyResponse());
+                    gameState.setText(0);
+                    //set the next set of dialogue to be the customer's happy response
+                    gameState.setCustomerDialogue(2);
                 }
                 //if the button is the bad button
                 if (customer.getBadButton() == ((BahActionButton) action).getWhichButton()) {
                     // Update the counter values based upon the action
-                    gameState.setText(customer.getMadResponse());
+                    gameState.setText(0);
+                    //set the next set of dialogue to be the customer's negative response
+                    gameState.setCustomerDialogue(3);
                 }
                 // denote that this was a legal/successful move
                 return true;
@@ -109,7 +108,8 @@ public class BahLocalGame extends LocalGame {
 
                     if(customer.getItem() == 1){
                         gameState.setHasKey(false);
-                        gameState.setText(customer.getLoreDialogue());
+                        gameState.setCustomerDialogue(4);
+                        gameState.setText(0);
                     } else {
                         return false;
                     }
@@ -123,7 +123,7 @@ public class BahLocalGame extends LocalGame {
 
                     if(customer.getItem() == 2){
                         gameState.setHasKey(false);
-                        gameState.setText(customer.getLoreDialogue());
+                        gameState.setText(0);
                     } else {
                         return false;
                     }
@@ -137,7 +137,7 @@ public class BahLocalGame extends LocalGame {
 
                     if(customer.getItem() == 3){
                         gameState.setHasKey(false);
-                        gameState.setText(customer.getLoreDialogue());
+                        gameState.setText(0);
                     } else {
                         return false;
                     }
@@ -151,7 +151,7 @@ public class BahLocalGame extends LocalGame {
 
                     if(customer.getItem() == 4){
                         gameState.setHasKey(false);
-                        gameState.setText(customer.getLoreDialogue());
+                        gameState.setText(0);
                     } else {
                         return false;
                     }
@@ -165,7 +165,7 @@ public class BahLocalGame extends LocalGame {
 
                     if(customer.getItem() == 5){
                         gameState.setHasKey(false);
-                        gameState.setText(customer.getLoreDialogue());
+                        gameState.setText(0);
                     } else {
                         return false;
                     }
@@ -180,24 +180,30 @@ public class BahLocalGame extends LocalGame {
         }
         //Progresses the text
         if (action instanceof BahActionProgressText) {
-            //it's not
+            //This action is valid when it's not the players turn to press a button
+            //It's now the customers turn to talk
+            if(!customer.getPlayersTurn()){
+                //Thread.sleep(500); todo this currently throws an interrupted thread exception, need to figure out what to do about that
 
-            //This action is valid when it's the players turn to press a button
-            if(customer.getPlayersTurn()){
-                //It's now the customers turn to talk
-                customer.setPlayersTurn(false);
-                //if Dialogue == greeting
-                    //Update the text to the next text in the greeting-text array
-                    //if last-of-greeting-array-text
-                        //Update the options (button texts) to be clickable
-                        //update text to response options
-                        //make it players turn
-                //if Dialogue == goodbye
+                if(gameState.getCustomerDialogue() == 1) {
+                    //if it is the greeting dialogue
+                    if(textProgress + 1>= gameState.getCustomer().getGreetingLength()) {
+                        //if we've reached the end of the array already (so the next index would be out of bounds)
+                        textProgress = 0;
+                        //here I need to make the buttons clickable and give them the responses
+                        customer.setPlayersTurn(true);
+                    }
+                    else {
+                        textProgress++;
+                    }
+                    //todo add the same type of if elses for the other dialogue sets
+                    //if Dialogue == goodbye
                     //Update the text to the next text in the goodbye-text Array
                     //if last-of-goodbye-array-text
-                        //ProgressStory + 1
-                        //Somehow make it move to next customer
-                        //make it players turn
+                    //ProgressStory + 1
+                    //setCustomer to the next one
+                    //make it players turn
+                }
 
                 return true;
             }
@@ -209,8 +215,8 @@ public class BahLocalGame extends LocalGame {
         //If the register is clicked, adds money collected, displays the farewellDialogue
         //ends the Customer's interaction
         if (action instanceof BahActionRegister) {
-            gameState.setMoneyCount( gameState.getMoneyCount() + 1 );
-            gameState.setText(gameState.getCustomer().getFarewellDialogue());
+            gameState.setMoneyCount(gameState.getMoneyCount() + 1);
+            gameState.setText(0);
             return true;
         }
 

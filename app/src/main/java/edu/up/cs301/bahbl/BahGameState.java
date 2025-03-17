@@ -17,8 +17,11 @@ public class BahGameState extends GameState {
 
 
 	private BahCustomerBase customer;
-	private String customerDialogue;
-	private String text;
+	//this int represents which set of customer dialogue we're currently on. The ints have the following meanings:
+	//1: greeting, 2: happy response, 3: mad response, 4: lore 5: goodbye
+	private int customerDialogue;
+	//this number represents the index of the current text being displayed
+	private int text;
 
 	//Tells us what we have in our inventory
 	private boolean hasKey;
@@ -37,8 +40,8 @@ public class BahGameState extends GameState {
 		hasBag = false;
 		hasPokeDex = false;
 		customer = new BahCGhost();
-		customerDialogue = customer.getGreetingDialogue();
-		text = "";
+		customerDialogue = 1;
+		text = 0;
 	}
 
 	//Copy Constructor
@@ -82,7 +85,7 @@ public class BahGameState extends GameState {
 
 
 	//Getter Methods
-	public String getCustomerDialogue(){return customerDialogue;}
+	public int getCustomerDialogue(){return customerDialogue;}
 	public int getStoryProgress() {return storyProgress;}
 	public int getMoneyCount() {return moneyCount;}
 	public BahCustomerBase getCustomer() {return customer;}
@@ -92,13 +95,13 @@ public class BahGameState extends GameState {
 	public boolean isHasPokeball() {return hasPokeball;}
 	public boolean isHasPokeDex() {return hasPokeDex;}
 
-	public String getText() {return text;}
+	public int getText() {return text;}
 
 	//Setter Methods
 	public void setCustomer(BahCustomerBase customer) {this.customer = customer;}
-	public void setCustomerDialogue(String newDialogue){customerDialogue = newDialogue;}
+	public void setCustomerDialogue(int newDialogue){customerDialogue = newDialogue;}
 
-	public void setText(String text) {this.text = text;}
+	public void setText(int text) {this.text = text;}
 	public void setHasBag(boolean hasBag) {this.hasBag = hasBag;}
 	public void setHasInfoBot(boolean hasInfoBot) {this.hasInfoBot = hasInfoBot;}
 	public void setHasKey(boolean hasKey) {this.hasKey = hasKey;}
