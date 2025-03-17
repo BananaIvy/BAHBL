@@ -28,6 +28,7 @@ public class BahLocalGame extends LocalGame {
     // the game's state
     private BahGameState gameState;
     private BahCustomerBase customer;
+    private BahActionItem item;
 
     @Override
     protected void sendUpdatedStateTo(GamePlayer p) {
@@ -123,29 +124,29 @@ public class BahLocalGame extends LocalGame {
         if (action instanceof BahActionItem) {
             //Check if the item matches the customers item
             //PULLED OVER FROM GAMESTATE
-//            //This action is valid when it is the players turn
-//            if(customer.getPlayersTurn()){
-//                //Checks if we have the item that was clicked
-//                if(action.getThisItem() == 1 && hasKey){
-//                    return true;
-//                }
-//                else if(action.getThisItem() == 2 && hasInfoBot){
-//                    return true;
-//                }
-//                else if(action.getThisItem() == 3 && hasBag){
-//                    return true;
-//                }
-//                else if(action.getThisItem() == 4 && hasPokeball){
-//                    return true;
-//                }
-//                else if(action.getThisItem() == 5 && hasPokeDex){
-//                    return true;
-//                }
-//                else{
-//                    return false; //we do not have the item, invalid move
-//                }
-//            }
-//            return false; //if action doesn't return true, then by default it's invalid
+            //This action is valid when it is the players turn
+            if(customer.getPlayersTurn()){
+                //Checks if we have the item that was clicked
+                if(BahActionItem.getThisItem() == 1 && gameState.isHasKey()){
+                    return true;
+                }
+                else if(action.getThisItem() == 2 && gameState.isHasInfoBot()){
+                    return true;
+                }
+                else if(action.getThisItem() == 3 && gameState.isHasBag()){
+                    return true;
+                }
+                else if(action.getThisItem() == 4 && gameState.isHasPokeball()){
+                    return true;
+                }
+                else if(action.getThisItem() == 5 && gameState.isHasPokeDex()){
+                    return true;
+                }
+                else{
+                    return false; //we do not have the item, invalid move
+                }
+            }
+            return false; //if action doesn't return true, then by default it's invalid
         }
         //Progresses the text
         if (action instanceof BahActionProgressText) {

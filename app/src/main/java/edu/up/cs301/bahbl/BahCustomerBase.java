@@ -13,6 +13,7 @@ public abstract class BahCustomerBase {
     //todo make them know their special item
     private String customerName;
     private int likeability;
+    private boolean Item;
 
     //Determines whether or not you need to skip text or choose an action
     private boolean playersTurn;
