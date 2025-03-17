@@ -93,12 +93,9 @@ public class BahLocalGame extends LocalGame {
                 }
                 // denote that this was a legal/successful move
                 return true;
-
             }
             return false; //action is not valid
         }
-
-
 
         //If an Item is clicked
         if (action instanceof BahActionItem) {
@@ -107,19 +104,19 @@ public class BahLocalGame extends LocalGame {
             //This action is valid when it is the players turn
             if(customer.getPlayersTurn()){
                 //Checks if we have the item that was clicked
-                if(BahActionItem.getThisItem() == 1 && gameState.isHasKey()){
+                if(((BahActionItem) action).getThisItem() == 1 && gameState.isHasKey()){
                     return true;
                 }
-                else if(action.getThisItem() == 2 && gameState.isHasInfoBot()){
+                else if(((BahActionItem) action).getThisItem() == 2 && gameState.isHasInfoBot()){
                     return true;
                 }
-                else if(action.getThisItem() == 3 && gameState.isHasBag()){
+                else if(((BahActionItem) action).getThisItem() == 3 && gameState.isHasBag()){
                     return true;
                 }
-                else if(action.getThisItem() == 4 && gameState.isHasPokeball()){
+                else if(((BahActionItem) action).getThisItem() == 4 && gameState.isHasPokeball()){
                     return true;
                 }
-                else if(action.getThisItem() == 5 && gameState.isHasPokeDex()){
+                else if(((BahActionItem) action).getThisItem() == 5 && gameState.isHasPokeDex()){
                     return true;
                 }
                 else{
