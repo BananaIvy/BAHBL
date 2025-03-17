@@ -106,30 +106,70 @@ public class BahLocalGame extends LocalGame {
                     //Needs to check whether or not the item is the customers item
                     //If it is, update having the item to false & change the text to loreDialogue
                     //If it's not, return false or flash the screen.
+
+                    if(customer.getItem() == 1){
+                        gameState.setHasKey(false);
+                        gameState.setText(customer.getLoreDialogue());
+                    } else {
+                        return false;
+                    }
+
                     return true;
                 }
                 else if(((BahActionItem) action).getThisItem() == 2 && gameState.isHasInfoBot()){
                     //Needs to check whether or not the item is the customers item
                     //If it is, update having the item to false & change the text to loreDialogue
                     //If it's not, return false or flash the screen.
+
+                    if(customer.getItem() == 2){
+                        gameState.setHasKey(false);
+                        gameState.setText(customer.getLoreDialogue());
+                    } else {
+                        return false;
+                    }
+
                     return true;
                 }
                 else if(((BahActionItem) action).getThisItem() == 3 && gameState.isHasBag()){
                     //Needs to check whether or not the item is the customers item
                     //If it is, update having the item to false & change the text to loreDialogue
                     //If it's not, return false or flash the screen.
+
+                    if(customer.getItem() == 3){
+                        gameState.setHasKey(false);
+                        gameState.setText(customer.getLoreDialogue());
+                    } else {
+                        return false;
+                    }
+
                     return true;
                 }
                 else if(((BahActionItem) action).getThisItem() == 4 && gameState.isHasPokeball()){
                     //Needs to check whether or not the item is the customers item
                     //If it is, update having the item to false & change the text to loreDialogue
                     //If it's not, return false or flash the screen.
+
+                    if(customer.getItem() == 4){
+                        gameState.setHasKey(false);
+                        gameState.setText(customer.getLoreDialogue());
+                    } else {
+                        return false;
+                    }
+
                     return true;
                 }
                 else if(((BahActionItem) action).getThisItem() == 5 && gameState.isHasPokeDex()){
                     //Needs to check whether or not the item is the customers item
                     //If it is, update having the item to false & change the text to loreDialogue
                     //If it's not, return false or flash the screen.
+
+                    if(customer.getItem() == 5){
+                        gameState.setHasKey(false);
+                        gameState.setText(customer.getLoreDialogue());
+                    } else {
+                        return false;
+                    }
+
                     return true;
                 }
                 else{
