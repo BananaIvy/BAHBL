@@ -6,8 +6,14 @@ package edu.up.cs301.bahbl;
  */
 public abstract class BahCustomerBase {
 
+    //todo this customer base needs to have arrays for each large block of text, so you can progress to the next line in their story
+    //todo and not have to print their entire chunk on the screen.
+    //todo there should be an instance variable in localgame that will keep track of the index of the string being shown
+
+    //todo make them know their special item
     private String customerName;
     private int likeability;
+    private boolean Item;
 
     //Determines whether or not you need to skip text or choose an action
     private boolean playersTurn;
