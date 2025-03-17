@@ -78,6 +78,21 @@ public class BahLocalGame extends LocalGame {
         //If one of the buttons is pressed
         if (action instanceof BahActionButton) {
 
+            //PULLED OVER FROM GAME STATE
+//            //This action is valid when it is the players turn
+//            if(customer.getPlayersTurn()){
+//                //Modify the state of the game to match action taken
+//                if(action.getWhichButton() == customer.getGoodButton()){ //customers good button
+//                    setCustomerDialogue(customer.getHappyResponse());
+//                    return true;
+//                }
+//                if(action.getWhichButton() == customer.getBadButton()){ //customers bad button
+//                    setCustomerDialogue(customer.getMadResponse());
+//                    return true;
+//                }
+//            }
+//            return false; //action is not valid
+
             if (customer.getGoodButton() == ((BahActionButton) action).getWhichButton()) {
                 // Update the counter values based upon the action
                 int result = gameState.getStoryProgress() + 1;
@@ -107,15 +122,57 @@ public class BahLocalGame extends LocalGame {
         //If an Item is clicked
         if (action instanceof BahActionItem) {
             //Check if the item matches the customers item
+            //PULLED OVER FROM GAMESTATE
+//            //This action is valid when it is the players turn
+//            if(customer.getPlayersTurn()){
+//                //Checks if we have the item that was clicked
+//                if(action.getThisItem() == 1 && hasKey){
+//                    return true;
+//                }
+//                else if(action.getThisItem() == 2 && hasInfoBot){
+//                    return true;
+//                }
+//                else if(action.getThisItem() == 3 && hasBag){
+//                    return true;
+//                }
+//                else if(action.getThisItem() == 4 && hasPokeball){
+//                    return true;
+//                }
+//                else if(action.getThisItem() == 5 && hasPokeDex){
+//                    return true;
+//                }
+//                else{
+//                    return false; //we do not have the item, invalid move
+//                }
+//            }
+//            return false; //if action doesn't return true, then by default it's invalid
         }
         //Progresses the text
         if (action instanceof BahActionProgressText) {
             //If it's the goodbye text it needs to progress the story count
+            //PULLED OVER FROM GAME STATE
+//            //This action is valid when it's the customers turn to speak & there's no action to do
+//            if(!customer.getPlayersTurn()){
+//                //Modify the state of the game to match action taken
+//                return true;
+//            }
+//            else{
+//                return false; //action is not valid
+//            }
         }
         //If the register is clicked
         if (action instanceof BahActionRegister) {
             //Add money to register count and set the text to goodbye text.
             //This should end a customer interaction.
+            //PULLED OVER FROM GAMESTATE
+//            //This action is valid when it is the players turn
+//            if(customer.getPlayersTurn()){
+//                //Modify the state of the game to match action taken
+//                return true;
+//            }
+//            else{
+//                return false; //action is not valid
+//            }
         }
         if (action instanceof BahActionMove) {
 
