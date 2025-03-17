@@ -1,7 +1,5 @@
 package edu.up.cs301.bahbl;
 
-//import space
-
 /**
  * This class creates the Customer Character "Lug"
  * implements the variables and the methods from
@@ -13,20 +11,6 @@ package edu.up.cs301.bahbl;
 public class BahCLug extends BahCustomerBase {
 
 
-    //instance variables
-    private String happyResponse;
-    private String madResponse;
-    private String loreDialogue;
-    private String greetingDialogue;
-    private String farewellDialogue;
-
-
-    /**
-     * constructor for the Lug object
-     * implements the CustomerBase constructor
-     * <p>
-     * param String name - sets the name for the character
-     */
     public BahCLug(){
         super();
         setCustomerName("Lug");

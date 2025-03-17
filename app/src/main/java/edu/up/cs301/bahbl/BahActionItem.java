@@ -6,6 +6,8 @@ import edu.up.cs301.GameFramework.players.GamePlayer;
 
 public class BahActionItem extends GameAction {
 
+
+    //Instance Variables
     private int thisItem;
     private final int key = 1;
     private final int infoBot = 2;
@@ -13,13 +15,13 @@ public class BahActionItem extends GameAction {
     private final int pokeball = 4;
     private final int pokedex = 5;
 
+
     /**
      * constructor for GameAction
      *
      * @param player the player who created the action
      */
     public BahActionItem(GamePlayer player, ImageButton item) {
-
         super(player);
         if(item.getId() == R.id.key){
             thisItem = key;
@@ -36,9 +38,10 @@ public class BahActionItem extends GameAction {
         else if(item.getId() == R.id.pokedex){
             thisItem = pokedex;
         }
-
     }
 
+
+    //Methods
     public int getThisItem(){
         return thisItem;
     }

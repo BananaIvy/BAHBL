@@ -7,10 +7,14 @@ import edu.up.cs301.GameFramework.players.GamePlayer;
 
 public class BahActionButton extends GameAction {
 
+
+    //Instance Variables
     private View thisButton;
     private int whichButton;
     private final int topButton = 1;
     private final int bottomButton = 2;
+
+
     /**
      * constructor for GameAction
      *
@@ -27,6 +31,8 @@ public class BahActionButton extends GameAction {
         }
     }
 
+
+    //Methods
     public int getWhichButton(){
         return whichButton;
     }
