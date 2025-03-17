@@ -17,6 +17,7 @@ public class BahCLug extends BahCustomerBase {
         setLikeability(75);
         setHasGiven(false);
         setHasReceived(false);
+        setItem(2);
 
         //dialogues
         setHappyResponse("Your assistance is most appreciated. I would express my gratitude in" +

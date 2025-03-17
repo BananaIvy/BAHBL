@@ -17,6 +17,7 @@ public class BahCGhost extends BahCustomerBase {
         setLikeability(75);
         setHasGiven(false);
         setHasReceived(false);
+        setItem(1);
 
         //dialogues
         setHappyResponse("Great! I'm glad to hear it, now get to work.");

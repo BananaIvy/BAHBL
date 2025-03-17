@@ -5,6 +5,7 @@ public class BahCMysticMan extends BahCustomerBase {
     public BahCMysticMan(){
         super();
         setCustomerName("Mystic Man");
+        setItem(3);
 
     }
 }

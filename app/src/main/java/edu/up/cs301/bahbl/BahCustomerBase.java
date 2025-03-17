@@ -13,7 +13,7 @@ public abstract class BahCustomerBase {
     //todo make them know their special item
     private String customerName;
     private int likeability;
-    private boolean Item;
+    private int item;
 
     //Determines whether or not you need to skip text or choose an action
     private boolean playersTurn;
@@ -62,6 +62,7 @@ public abstract class BahCustomerBase {
 
 
     //Getter methods
+    public int getItem(){ return item;}
     public String getCustomerName(){
         return customerName;
     }
@@ -107,6 +108,7 @@ public abstract class BahCustomerBase {
 
 
     //Setter methods
+    public void setItem(int item){ this.item = item;}
     public void setPlayersTurn(boolean playersTurn) {this.playersTurn = playersTurn;}
     public void setCustomerName(String customerName) {this.customerName = customerName;}
     public void setBadButton(int badButton) {this.badButton = badButton;}

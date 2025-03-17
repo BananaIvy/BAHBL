@@ -6,5 +6,6 @@ public class BahCNux extends BahCustomerBase {
     public BahCNux(){
         super();
         setCustomerName("Demon Lord Nux");
+        setItem(5);
     }
 }
