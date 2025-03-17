@@ -99,24 +99,37 @@ public class BahLocalGame extends LocalGame {
 
         //If an Item is clicked
         if (action instanceof BahActionItem) {
-            //Check if the item matches the customers item
-            //PULLED OVER FROM GAMESTATE
             //This action is valid when it is the players turn
             if(customer.getPlayersTurn()){
                 //Checks if we have the item that was clicked
                 if(((BahActionItem) action).getThisItem() == 1 && gameState.isHasKey()){
+                    //Needs to check whether or not the item is the customers item
+                    //If it is, update having the item to false & change the text to loreDialogue
+                    //If it's not, return false or flash the screen.
                     return true;
                 }
                 else if(((BahActionItem) action).getThisItem() == 2 && gameState.isHasInfoBot()){
+                    //Needs to check whether or not the item is the customers item
+                    //If it is, update having the item to false & change the text to loreDialogue
+                    //If it's not, return false or flash the screen.
                     return true;
                 }
                 else if(((BahActionItem) action).getThisItem() == 3 && gameState.isHasBag()){
+                    //Needs to check whether or not the item is the customers item
+                    //If it is, update having the item to false & change the text to loreDialogue
+                    //If it's not, return false or flash the screen.
                     return true;
                 }
                 else if(((BahActionItem) action).getThisItem() == 4 && gameState.isHasPokeball()){
+                    //Needs to check whether or not the item is the customers item
+                    //If it is, update having the item to false & change the text to loreDialogue
+                    //If it's not, return false or flash the screen.
                     return true;
                 }
                 else if(((BahActionItem) action).getThisItem() == 5 && gameState.isHasPokeDex()){
+                    //Needs to check whether or not the item is the customers item
+                    //If it is, update having the item to false & change the text to loreDialogue
+                    //If it's not, return false or flash the screen.
                     return true;
                 }
                 else{
