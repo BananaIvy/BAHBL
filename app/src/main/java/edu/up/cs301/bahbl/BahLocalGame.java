@@ -47,6 +47,10 @@ public class BahLocalGame extends LocalGame {
 
     @Override
     protected String checkIfGameOver() {
+        if(gameState.getStoryProgress() == 1){
+            return "Game is over!";
+        }
+
         return "";
     }
 
@@ -88,6 +92,12 @@ public class BahLocalGame extends LocalGame {
                 gameState.setStoryProgress(result);
                 gameState.setText(customer.getMadResponse());
             }
+
+                //progresses the story if the goodbye text is called
+                if(customer.getFarewellDialogue() == gameState.getText()){
+                    gameState.setStoryProgress(gameState.getStoryProgress() + 1);
+                }
+
 
                 // denote that this was a legal/successful move
                 return true;
