@@ -21,7 +21,7 @@ public class BahGameState extends GameState {
 	//1: greeting, 2: happy response, 3: mad response, 4: lore 5: goodbye
 	private int customerDialogueType;
 	//this number represents the index of the current text being displayed
-	private int textIndex;
+	private int dialogueIndex;
 	private String customerDialogue;
 
 	//Tells us what we have in our inventory
@@ -42,7 +42,7 @@ public class BahGameState extends GameState {
 		hasPokeDex = false;
 		customer = new BahCGhost();
 		customerDialogueType = 1;
-		textIndex = 0;
+		dialogueIndex = 0;
 		customerDialogue = customer.getGreetingDialogue(0);
 	}
 
@@ -57,8 +57,8 @@ public class BahGameState extends GameState {
 		hasBag = currentState.hasBag;
 		hasPokeDex = currentState.hasPokeDex;
 		customerDialogueType = currentState.customerDialogueType;
-		textIndex = currentState.textIndex;
-		customerDialogue = currentState.getCustomerDialogue();
+		dialogueIndex = currentState.dialogueIndex;
+		customerDialogue = currentState.getCurrentCustomerDialogue();
 	}
 
 	//Methods
@@ -72,7 +72,7 @@ public class BahGameState extends GameState {
 		return "Scene: " + storyProgress + "/n"     					//Story Progress
 				+ "Customer: " + customer.getCustomerName() + "/n"  	//Character
 				+ "Dialogue Type: " + customerDialogueType + "/n"		//Dialogue Type
-				+ "Dialogue Progress: " + textIndex + "/n"					//Dialogue Progress
+				+ "Dialogue Progress: " + dialogueIndex + "/n"					//Dialogue Progress
 				+ "Money: " + moneyCount + "/n"  						//Money
 				+ "Inventory Items: " + "/n"  							//In our inventory
 				+ key + "/n"  											//Item 1 = Key
@@ -88,7 +88,7 @@ public class BahGameState extends GameState {
 		else{return "";}
 	}
 
-	public void nextDialogue(){this.textIndex++;}
+	public void nextDialogue(){this.dialogueIndex++;}
 
 	//Getter Methods
 	public int getCustomerDialogueType() {return customerDialogueType;}
@@ -100,24 +100,24 @@ public class BahGameState extends GameState {
 	public boolean isHasKey() {return hasKey;}
 	public boolean isHasPokeball() {return hasPokeball;}
 	public boolean isHasPokeDex() {return hasPokeDex;}
-	public int getTextIndex() {return textIndex;}
-
+	public int getDialogueIndex() {return dialogueIndex;}
+	public String getCustomerDialogue(){return customerDialogue;}
 	//Returns the corresponding dialogue based on the index markers
-	public String getCustomerDialogue() {
+	public String getCurrentCustomerDialogue() {
 		if(customerDialogueType == 1){
-			return customer.getGreetingDialogue(textIndex);
+			return customer.getGreetingDialogue(dialogueIndex);
 		}
 		if(customerDialogueType == 2){
-			return customer.getHappyResponse(textIndex);
+			return customer.getHappyResponse(dialogueIndex);
 		}
 		if(customerDialogueType == 3){
-			return customer.getMadResponse(textIndex);
+			return customer.getMadResponse(dialogueIndex);
 		}
 		if(customerDialogueType == 4){
-			return customer.getLoreDialogue(textIndex);
+			return customer.getLoreDialogue(dialogueIndex);
 		}
 		if(customerDialogueType == 5){
-			return customer.getFarewellDialogue(textIndex);
+			return customer.getFarewellDialogue(dialogueIndex);
 		}
 		return "somethings wrong with getCustomerDialogue";
 	}
@@ -125,13 +125,12 @@ public class BahGameState extends GameState {
 	//Setter Methods
 	public void setCustomer(BahCustomerBase customer) {this.customer = customer;}
 	public void setCustomerDialogueType(int newDialogueType){this.customerDialogueType = newDialogueType;}
-	public void setTextIndex(int textIndex) {this.textIndex = textIndex;}
+	public void setDialogueIndex(int dialogueIndex) {this.dialogueIndex = dialogueIndex;}
 	public void setHasBag(boolean hasBag) {this.hasBag = hasBag;}
 	public void setHasInfoBot(boolean hasInfoBot) {this.hasInfoBot = hasInfoBot;}
 	public void setHasKey(boolean hasKey) {this.hasKey = hasKey;}
 	public void setHasPokeball(boolean hasPokeball) {this.hasPokeball = hasPokeball;}
 	public void setHasPokeDex(boolean hasPokeDex) {this.hasPokeDex = hasPokeDex;}
-	public void setMoneyCount(int moneyCount) {this.moneyCount = moneyCount;}
 	public void setStoryProgress(int storyProgress) {this.storyProgress = storyProgress;}
 	public void setCustomerDialogue(String customerDialogue) {this.customerDialogue = customerDialogue;}
 	public void setCustomerDialogue(int customerTextType, int index) {
@@ -151,6 +150,9 @@ public class BahGameState extends GameState {
 			this.customerDialogue = customer.getFarewellDialogue(index);
 		}
 	}
+	//We don't want to be able to set the money, just add or lose money.
+	public void addMoney(int moneyCount) {this.moneyCount = this.moneyCount + moneyCount;}
+	public void loseMoney(int moneyCount) {this.moneyCount = this.moneyCount - moneyCount;}
 
 
 }
