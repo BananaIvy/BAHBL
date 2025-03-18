@@ -6,6 +6,7 @@ import edu.up.cs301.GameFramework.actionMessage.GameAction;
 import edu.up.cs301.GameFramework.infoMessage.GameInfo;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
 
@@ -26,13 +27,19 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 	/* instance variables */
 
-	// leftover from frankengaming the code, possibly unnecessary
-	private TextView testResultsTextView;
+	// Initializes all the widgets
+	private TextView 		testResultsTextView	= null;
+	private TextView 		customerDialogue 	= null;
+	private ImageButton 	registerMoney 		= null;
+	private	Button 			goodButton 			= null;
+	private	Button 			badButton 			= null;
+	private ImageButton 	register 			= null;
+	private ImageButton		key					= null;
+	private ImageButton		pokeball	    	= null;
+	private ImageButton		infoBot				= null;
+	private ImageButton		pokeDex				= null;
+	private ImageButton		bag					= null;
 
-	private TextView customerDialogue = null;
-
-	private TextView registerMoney = null;
-	
 	// the most recent game state, as given to us by the CounterLocalGame
 	private BahGameState state;
 	
@@ -81,77 +88,78 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		// if we are not yet connected to a game, ignore
 		if (game == null) return;
 
-		testResultsTextView.setText("");
 
-		BahGameState firstInstance = new BahGameState();
-
-		BahGameState firstCopy = new BahGameState(firstInstance);
-
-		//When an action is created/sent then Local game makes the changes happen in game state as a reaction
-		//We need to manually change gamestate stuff in this process here.
-		//You get your first customer
-		firstInstance.setCustomer(new BahCGhost());
-		firstInstance.setCustomerDialogue("Ghost Boss greets you! \n");
-		//Will give greeting dialogue
-		testResultsTextView.append(firstInstance.getCustomerDialogue());
-
-		//You click a button to respond to the customers text by clicking Button 1
-		game.sendAction(new BahActionButton(this));
-		//In response the dialogueType variable gets increased
-		firstInstance.setCustomerDialogueType(2);
-		firstInstance.setCustomerDialogue("You clicked the top-Happy button where you sign away your soul! \n");
-		//Will update to happy response
-		testResultsTextView.append(firstInstance.getCustomerDialogue());
-
-		//You progress the text
-		game.sendAction(new BahActionProgressText(this));
-        //MONEY CHECK :D
-        testResultsTextView.append("You currently have: $" + firstInstance.getMoneyCount() + "\n");
-		//Will set to goodbye message
-		firstInstance.setCustomerDialogue("Boss says bye & gave you key\n");
-		firstInstance.setHasKey(true);
-		testResultsTextView.append(firstInstance.getCustomerDialogue());
-
-		//Customer greets you
-		firstInstance.setCustomer(new BahCPokeangel());
-		testResultsTextView.append("Current Customer is now: " + firstInstance.getCustomer().toString() + "\n");
-		firstInstance.setCustomerDialogue("Customer greets you \n");
-		testResultsTextView.append(firstInstance.getCustomerDialogue());
-
-		//You click a button to respond to the customers text by clicking Button 1
-		game.sendAction(new BahActionButton(this));
-		testResultsTextView.append("You've clicked option 1 for this customer! :D \n");
-
-		//You give the customer an item
-		game.sendAction(new BahActionItem(this));
-		testResultsTextView.append("You have given the customer an item, yada yada they talk\n");
-
-		//You click the register
-		game.sendAction(new BahActionRegister(this));
-		testResultsTextView.append("You've clicked the register. \n");
-		//You get money as a result
-		firstInstance.addMoney(1);
-		testResultsTextView.append("You now have: $" + firstInstance.getMoneyCount() + "\n");
-		//Will set to goodbye message
-		firstInstance.setCustomerDialogue("Customer says goodbye \n");
-		testResultsTextView.append(firstInstance.getCustomerDialogue());
-
-		//You progress the text & move on to the next customer
-		game.sendAction(new BahActionProgressText(this));
-		testResultsTextView.append("You get sick of interacting with customers and no more progress is needed for this example! \n" + "You 'won' cuz you got some munz \n");
-
-
-		//////////////////////////////////
-
-		BahGameState secondInstance = new BahGameState();
-		BahGameState secondCopy = new BahGameState(secondInstance);
-
-		//todo compare these two to make sure they're equal by printing them to EditText view or smth
-		testResultsTextView.append(firstCopy.toString() + "\n");
-		testResultsTextView.append(secondCopy.toString());
-
-		//Savi did this code which might be going ahead:
-
+//		testResultsTextView.setText("");
+//
+//		BahGameState firstInstance = new BahGameState();
+//
+//		BahGameState firstCopy = new BahGameState(firstInstance);
+//
+//		//When an action is created/sent then Local game makes the changes happen in game state as a reaction
+//		//We need to manually change gamestate stuff in this process here.
+//		//You get your first customer
+//		firstInstance.setCustomer(new BahCGhost());
+//		firstInstance.setCustomerDialogue("Ghost Boss greets you! \n");
+//		//Will give greeting dialogue
+//		testResultsTextView.append(firstInstance.getCustomerDialogue());
+//
+//		//You click a button to respond to the customers text by clicking Button 1
+//		game.sendAction(new BahActionButton(this));
+//		//In response the dialogueType variable gets increased
+//		firstInstance.setCustomerDialogueType(2);
+//		firstInstance.setCustomerDialogue("You clicked the top-Happy button where you sign away your soul! \n");
+//		//Will update to happy response
+//		testResultsTextView.append(firstInstance.getCustomerDialogue());
+//
+//		//You progress the text
+//		game.sendAction(new BahActionProgressText(this));
+//        //MONEY CHECK :D
+//        testResultsTextView.append("You currently have: $" + firstInstance.getMoneyCount() + "\n");
+//		//Will set to goodbye message
+//		firstInstance.setCustomerDialogue("Boss says bye & gave you key\n");
+//		firstInstance.setHasKey(true);
+//		testResultsTextView.append(firstInstance.getCustomerDialogue());
+//
+//		//Customer greets you
+//		firstInstance.setCustomer(new BahCPokeangel());
+//		testResultsTextView.append("Current Customer is now: " + firstInstance.getCustomer().toString() + "\n");
+//		firstInstance.setCustomerDialogue("Customer greets you \n");
+//		testResultsTextView.append(firstInstance.getCustomerDialogue());
+//
+//		//You click a button to respond to the customers text by clicking Button 1
+//		game.sendAction(new BahActionButton(this));
+//		testResultsTextView.append("You've clicked option 1 for this customer! :D \n");
+//
+//		//You give the customer an item
+//		game.sendAction(new BahActionItem(this));
+//		testResultsTextView.append("You have given the customer an item, yada yada they talk\n");
+//
+//		//You click the register
+//		game.sendAction(new BahActionRegister(this));
+//		testResultsTextView.append("You've clicked the register. \n");
+//		//You get money as a result
+//		firstInstance.addMoney(1);
+//		testResultsTextView.append("You now have: $" + firstInstance.getMoneyCount() + "\n");
+//		//Will set to goodbye message
+//		firstInstance.setCustomerDialogue("Customer says goodbye \n");
+//		testResultsTextView.append(firstInstance.getCustomerDialogue());
+//
+//		//You progress the text & move on to the next customer
+//		game.sendAction(new BahActionProgressText(this));
+//		testResultsTextView.append("You get sick of interacting with customers and no more progress is needed for this example! \n" + "You 'won' cuz you got some munz \n");
+//
+//
+//		//////////////////////////////////
+//
+//		BahGameState secondInstance = new BahGameState();
+//		BahGameState secondCopy = new BahGameState(secondInstance);
+//
+//		//todo compare these two to make sure they're equal by printing them to EditText view or smth
+//		testResultsTextView.append(firstCopy.toString() + "\n");
+//		testResultsTextView.append(secondCopy.toString());
+//
+//		//Savi did this code which might be going ahead:
+//
 		if(button.getId() == R.id.Option1){
 			game.sendAction(new BahActionButton(this, button));
 			customerDialogue.append("You clicked button 1!");
@@ -217,31 +225,34 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		this.myActivity = activity;
 		
 	    // Load the layout resource for our GUI
-		activity.setContentView(R.layout.run_test);
+		activity.setContentView(R.layout.bahbl_human_player);
 
-		this.testResultsTextView = (TextView) activity.findViewById(R.id.editTextTextMultiLine);
+		//this.testResultsTextView = (TextView) activity.findViewById(R.id.editTextTextMultiLine);
 
-		Button runTestButton = (Button)activity.findViewById(R.id.runTestButton);
-		runTestButton.setOnClickListener(this);
-
-
-		//Code for our game. NOT FOR PART E SO WE COMMENT OUT!!!!
+		//Button runTestButton = (Button)activity.findViewById(R.id.runTestButton);
+		//runTestButton.setOnClickListener(this);
 
 
 		//Initialize the widget reference member variables
-		//this.customerDialogue = (TextView)activity.findViewById(R.id.customerDialogue);
+		this.customerDialogue = (TextView)activity.findViewById(R.id.customerDialogue);
+		this.goodButton = (Button) activity.findViewById(R.id.Option1);
+		this.badButton = (Button) activity.findViewById(R.id.Option2);
+		this.register = (android.widget.ImageButton) activity.findViewById((R.id.register_screen));
+		this.infoBot = (android.widget.ImageButton) activity.findViewById(R.id.infoBot);
+		this.bag = (android.widget.ImageButton) activity.findViewById(R.id.bag);
+		this.pokeball = (android.widget.ImageButton) activity.findViewById((R.id.pokeball));
+		this.pokeDex = (android.widget.ImageButton) activity.findViewById((R.id.pokedex));
 
-//		// make this object the listener for both the '+' and '-' 'buttons
-		//Button goodButton = (Button) activity.findViewById(R.id.Option1);
-		//goodButton.setOnClickListener(this);
-		//Button badButton = (Button) activity.findViewById(R.id.Option2);
-		//badButton.setOnClickListener(this);
+		// make this object listen for widget clicks
+		customerDialogue.setOnClickListener(this);
+		goodButton.setOnClickListener(this);
+		badButton.setOnClickListener(this);
+		register.setOnClickListener(this);
+		infoBot.setOnClickListener(this);
+		bag.setOnClickListener(this);
+		pokeball.setOnClickListener(this);
+		pokeDex.setOnClickListener(this);
 
-//
-//		// remember the field that we update to display the counter's value
-		//this.counterValueTextView =
-				//(TextView) activity.findViewById(R.id.counterValueTextView);
-//
 		// if we have a game state, "simulate" that we have just received
 		// the state from the game so that the GUI values are updated
 		if (state != null) {
