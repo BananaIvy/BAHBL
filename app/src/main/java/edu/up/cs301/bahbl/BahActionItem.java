@@ -41,6 +41,12 @@ public class BahActionItem extends GameAction {
         }
     }
 
+    //Default for part E
+    public BahActionItem(GamePlayer player){
+        super(player);
+        thisItem = pokeball;
+    }
+
 
     //Methods
     public int getThisItem(){

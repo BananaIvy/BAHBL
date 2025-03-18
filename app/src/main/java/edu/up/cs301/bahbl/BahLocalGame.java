@@ -71,8 +71,15 @@ public class BahLocalGame extends LocalGame {
 
         customer = gameState.getCustomer();
 
+        //If the register is clicked, adds money collected, displays the farewellDialogue
+        //ends the Customer's interaction
+        if (action instanceof BahActionRegister) {
+            gameState.addMoney(1);
+            gameState.setDialogueIndex(0);
+            return true;
+        }
         //If one of the buttons is pressed
-        if (action instanceof BahActionButton) {
+        else if (action instanceof BahActionButton) {
 
             //This action is valid when it is the players turn
             if(customer.getPlayersTurn()){
@@ -93,11 +100,10 @@ public class BahLocalGame extends LocalGame {
                 // denote that this was a legal/successful move
                 return true;
             }
-            return false; //action is not valid
         }
 
         //If an Item is clicked
-        if (action instanceof BahActionItem) {
+        else if (action instanceof BahActionItem) {
             //This action is valid when it is the players turn
             if(customer.getPlayersTurn()){
                 //Checks if we have the item that was clicked
@@ -172,14 +178,10 @@ public class BahLocalGame extends LocalGame {
 
                     return true;
                 }
-                else{
-                    return false; //we do not have the item, invalid move
-                }
-            }
-            return false; //if action doesn't return true, then by default it's invalid
+            } //Action Item
         }
         //Progresses the text
-        if (action instanceof BahActionProgressText) {
+        else if (action instanceof BahActionProgressText) {
             //This action is valid when it's not the players turn to press a button
             //It's now the customers turn to talk
             if(!customer.getPlayersTurn()){
@@ -201,30 +203,14 @@ public class BahLocalGame extends LocalGame {
                     //ProgressStory + 1
                     //make it players turn
                 }
-
                 return true;
             }
-            else{
-                return false; //action is not valid
-            }
         }
 
-        //If the register is clicked, adds money collected, displays the farewellDialogue
-        //ends the Customer's interaction
-        if (action instanceof BahActionRegister) {
-            gameState.addMoney(gameState.getMoneyCount() + 1);
-            gameState.setDialogueIndex(0);
-            return true;
-        }
-
-
-        if (action instanceof BahActionMove) {
-            return true;
-        }
-
-        else {
+        else if (action instanceof BahActionMove) {
             return false;
         }
+        return false;
 
     }//makeMove
 

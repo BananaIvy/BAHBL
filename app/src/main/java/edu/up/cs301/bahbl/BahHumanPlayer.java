@@ -113,12 +113,13 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		testResultsTextView.append(firstInstance.getCustomerDialogue());
 
 		//You click the register
-		game.sendAction(new BahActionRegister(this));
+		game.sendAction(new BahActionProgressText(this));
         //You get money as a result
         firstInstance.addMoney(1);
         testResultsTextView.append("You now have: $" + firstInstance.getMoneyCount() + "\n");
 		//Will set to goodbye message
-		firstInstance.setCustomerDialogue("Customer says goodbye + \n");
+		firstInstance.setCustomerDialogue("Boss says bye & gave you key + \n");
+		firstInstance.setHasKey(true);
 		testResultsTextView.append(firstInstance.getCustomerDialogue());
 
 		//You progress the text & move on to the next customer
@@ -133,6 +134,10 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		game.sendAction(new BahActionButton(this));
 		testResultsTextView.append("You've clicked option 1 for this customer! :D \n");
 
+		//You give the customer an item
+		game.sendAction(new BahActionItem(this));
+		testResultsTextView.append("You have given the customer an item");
+
 		//You click the register
 		game.sendAction(new BahActionRegister(this));
 		//You get money as a result
@@ -144,15 +149,17 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 		//You progress the text & move on to the next customer
 		game.sendAction(new BahActionProgressText(this));
-		testResultsTextView.append("You get sick of interacting with customers so you greet the boss & call it a day! \n");
+		testResultsTextView.append("You get sick of interacting with customers and no more progress is needed for this example! \n" + "You 'won' cuz you got some munz \n");
 
+
+		//
 
 		BahGameState secondInstance = new BahGameState();
 
 		BahGameState secondCopy = new BahGameState(firstInstance);
 
 		//todo compare these two to make sure they're equal by printing them to EditText view or smth
-		testResultsTextView.append(firstCopy.toString());
+		testResultsTextView.append(firstCopy.toString() + "\n");
 		testResultsTextView.append(secondCopy.toString());
 
 		//Savi did this code which might be going ahead:
