@@ -132,8 +132,6 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		//You click a button to respond to the customers text by clicking Button 1
 		game.sendAction(new BahActionButton(this));
 		testResultsTextView.append("You've clicked option 1 for this customer! :D");
-		//Will update to happy response
-		customerDialogue.append(firstInstance.getCustomerDialogue());
 
 		//You click the register
 		game.sendAction(new BahActionRegister(this));
