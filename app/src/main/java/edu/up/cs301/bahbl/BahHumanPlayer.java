@@ -117,9 +117,11 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
         //MONEY CHECK :D
         testResultsTextView.append("You currently have: $" + firstInstance.getMoneyCount() + "\n");
 		//Will set to goodbye message
-		firstInstance.setCustomerDialogue("Boss says bye & gave you key + \n");
+		firstInstance.setCustomerDialogue("Boss says bye & gave you key\n");
 		firstInstance.setHasKey(true);
 		testResultsTextView.append(firstInstance.getCustomerDialogue());
+
+		//Customer greets you
 		firstInstance.setCustomer(new BahCPokeangel());
 		testResultsTextView.append("Current Customer is now: " + firstInstance.getCustomer().toString() + "\n");
 		firstInstance.setCustomerDialogue("Customer greets you \n");
@@ -131,10 +133,11 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 		//You give the customer an item
 		game.sendAction(new BahActionItem(this));
-		testResultsTextView.append("You have given the customer an item");
+		testResultsTextView.append("You have given the customer an item, yada yada they talk\n");
 
 		//You click the register
 		game.sendAction(new BahActionRegister(this));
+		testResultsTextView.append("You've clicked the register. \n");
 		//You get money as a result
 		firstInstance.addMoney(1);
 		testResultsTextView.append("You now have: $" + firstInstance.getMoneyCount() + "\n");
