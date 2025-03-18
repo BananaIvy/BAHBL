@@ -86,18 +86,9 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		BahGameState firstInstance = new BahGameState();
 
 		BahGameState firstCopy = new BahGameState(firstInstance);
-		//TODO here you're pretending that the player is clicking the buttons, and calling on what said actions would call
-		//todo you're also printing an explanation of this as a string added to thing
-
-		//todo: 1) Customer Greets - Click Dialog, Customer promts - Click Button, 3)Customer Reacts - Click Dialog,
-		// todo 4) Customer Reacts - Click Inventory Item, 5) Customer Reacts - Click Dialog, 6) Customer give money - Click register
-		//todo 7) Customer says goodbye - Click Dialog
 
 		//When an action is created/sent then Local game makes the changes happen in game state as a reaction
-		//so we don't need to manually affect most of the gamestate variables here.
-
-		//todo might need to make all the action be sent to gamestate.
-		//todo append custom texts to testResultsTextView
+		//We need to manually change gamestate stuff in this process here.
 		//You get your first customer
 		firstInstance.setCustomer(new BahCGhost());
 		firstInstance.setCustomerDialogue("Ghost Boss greets you! \n");
