@@ -69,7 +69,8 @@ public class BahGameState extends GameState {
 		String infoBot = returnNo(hasInfoBot) + "Info Bot";
 		String bag = returnNo(hasBag) + "Bag";
 
-		return "Scene: " + storyProgress + "\n"     					//Story Progress
+		return  "GAMESTATE-TO-STRING! \n"
+				+ "Scene: " + storyProgress + "\n"     					//Story Progress
 				+ "Customer: " + customer.getCustomerName() + "\n"  	//Character
 				+ "Dialogue Type: " + customerDialogueType + "\n"		//Dialogue Type
 				+ "Dialogue Progress: " + dialogueIndex + "\n"					//Dialogue Progress
