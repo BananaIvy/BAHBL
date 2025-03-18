@@ -1,31 +1,66 @@
 package edu.up.cs301.bahbl;
 
-
 /**
-* 
-* @author Steven R. Vegdahl
-* @author Andrew M. Nuxoll
-* @version September 2013
-*/
+ * This class creates the Customer Character "Ghost"
+ * implements the variables and the methods from
+ * the CustomerBase class
+ * <p>
+ * @author Laura Patla
+ * @version 3/17/25
+ */
 public class BahCPokeangel extends BahCustomerBase {
 
 	
 	public BahCPokeangel(){
 		super();
 		setCustomerName("Pokeangel");
+		setLikeability(50);
+		setHasGiven(false);
+		setHasReceived(false);
 		setItem(4);
 		setBadButton(1);
 		setGoodButton(2);
 		resetDialogue();
 
-		addGreetingDialogue("Greetings, mortal soul. I seek sustenance in this fine establishment. However, all who encounter me must answer my riddle in order to remain in my holy presence." +
-				"A puppy can go through the Green Glass Door, but a dog cannot. A school can go through the Green Glass Door, but a house cannot. Which of these can go through the Green Glass Door?");
-		addHappyResponse("Indeed! You are wise beyond your years, mortal. May you bloom and bear rich fruit ere your time here comes to an end.");
-		addMadResponse ("Alas, you disappoint me. I am afraid I must depart. Your presence sickens me.");
-		addLoreDialogue("Alas, I have fallen from grace, like a gently floating petal on the wind. I must earn my way back to my eternal redemption.");
-		addFarewellDialogue("May the ruler and overlord of all look kindly on you, mortal. Your current soul is too scarred to find rest here.");
+
+		/* dialogues */
+		//happy response
+		addHappyResponse("Indeed!");
+		addHappyResponse("You are wise beyond your years mortal!");
+		addHappyResponse("May you bloom and bear rich fruit,");
+		addHappyResponse("Ere your time here comes to an end!");
+
+		//mad response
+		addMadResponse("Alas,");
+		addMadResponse("You have disappointed me :(");
+		addMadResponse("I am afraid I must depart...");
+		addMadResponse("Your presence sickens me.");
+
+		//greeting response
+		addGreetingDialogue("Greetings, mortal soul!");
+		addGreetingDialogue("I seek sustenance in this fine establishment.");
+		addGreetingDialogue("However, all who encounter me must first answer my riddle.");
+		addGreetingDialogue("Only then will you be allowed to remain in my holy presence.");
+		addGreetingDialogue("Here is the riddle.");
+		addGreetingDialogue("A puppy can go through the Green Glass Door...");
+		addGreetingDialogue("But a dog cannot!");
+		addGreetingDialogue("A school can go through the Green Glass Door...");
+		addGreetingDialogue("But a house cannot!");
+		addGreetingDialogue("Therefore, which of these can go through the Green Glass Door");
+
+		//lore response
+		addLoreDialogue("Alas, I have fallen from grace.");
+		addLoreDialogue("Like a gently floating petal on the wind.");
+		addLoreDialogue("I must earn my way back to my eternal redemption");
+
+		//farewell response
+		addFarewellDialogue("May the ruler and overlord of all look kindly on you, mortal.");
+		addFarewellDialogue("Your current soul is too scarred to find rest here.");
+
+		//button text responses
 		setGoodButtonText("A pepper");
 		setBadButtonText("A piper");
+
 	}
 
 }
