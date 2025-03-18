@@ -22,12 +22,15 @@ public class BahCGhost extends BahCustomerBase {
         setGoodButton(2);
         resetDialogue();
 
+
         /* dialogues */
         //happy response
-        addHappyResponse("Great! I'm glad to hear it, now get to work.");
+        addHappyResponse("Great! I'm glad to hear it!");
+        addHappyResponse("Now get to work!!!");
 
         //mad response
-        addMadResponse("Now, come on, I hired you for a reason. Don't disappoint me.");
+        addMadResponse("Now, come on, I hired you for a reason.");
+        addMadResponse("Don't disappoint me!");
 
         //greeting responses ("Welcome to BAHBL!");
         addGreetingDialogue("Hey, I'm glad you showed up!");
@@ -68,6 +71,5 @@ public class BahCGhost extends BahCustomerBase {
         setBadButtonText("Uhhhh....");
 
     }
-
 
 }
