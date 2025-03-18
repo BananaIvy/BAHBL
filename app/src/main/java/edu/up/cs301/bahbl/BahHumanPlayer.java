@@ -152,11 +152,10 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		testResultsTextView.append("You get sick of interacting with customers and no more progress is needed for this example! \n" + "You 'won' cuz you got some munz \n");
 
 
-		//
+		//////////////////////////////////
 
 		BahGameState secondInstance = new BahGameState();
-
-		BahGameState secondCopy = new BahGameState(firstInstance);
+		BahGameState secondCopy = new BahGameState(secondInstance);
 
 		//todo compare these two to make sure they're equal by printing them to EditText view or smth
 		testResultsTextView.append(firstCopy.toString() + "\n");
