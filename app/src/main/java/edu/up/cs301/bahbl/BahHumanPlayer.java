@@ -141,8 +141,8 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		BahGameState secondCopy = new BahGameState(firstInstance);
 
 		//todo compare these two to make sure they're equal by printing them to EditText view or smth
-		firstCopy.toString();
-		secondCopy.toString();
+		testResultsTextView.append(firstCopy.toString());
+		testResultsTextView.append(secondCopy.toString());
 
 		//Savi did this code which might be going ahead:
 
