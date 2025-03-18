@@ -79,14 +79,14 @@ public class BahLocalGame extends LocalGame {
                 //If the buttons is the good button
                 if (customer.getGoodButton() == ((BahActionButton) action).getWhichButton()) {
                     // Update the counter values based upon the action
-                    gameState.setTextIndex(0);
+                    gameState.setDialogueIndex(0);
                     //set the next set of dialogue to be the customer's happy response
                     gameState.setCustomerDialogueType(2);
                 }
                 //if the button is the bad button
                 if (customer.getBadButton() == ((BahActionButton) action).getWhichButton()) {
                     // Update the counter values based upon the action
-                    gameState.setTextIndex(0);
+                    gameState.setDialogueIndex(0);
                     //set the next set of dialogue to be the customer's negative response
                     gameState.setCustomerDialogueType(3);
                 }
@@ -109,7 +109,7 @@ public class BahLocalGame extends LocalGame {
                     if(customer.getItem() == 1){
                         gameState.setHasKey(false);
                         gameState.setCustomerDialogueType(4);
-                        gameState.setTextIndex(0);
+                        gameState.setDialogueIndex(0);
                     } else {
                         return false;
                     }
@@ -123,7 +123,7 @@ public class BahLocalGame extends LocalGame {
 
                     if(customer.getItem() == 2){
                         gameState.setHasKey(false);
-                        gameState.setTextIndex(0);
+                        gameState.setDialogueIndex(0);
                     } else {
                         return false;
                     }
@@ -137,7 +137,7 @@ public class BahLocalGame extends LocalGame {
 
                     if(customer.getItem() == 3){
                         gameState.setHasKey(false);
-                        gameState.setTextIndex(0);
+                        gameState.setDialogueIndex(0);
                     } else {
                         return false;
                     }
@@ -151,7 +151,7 @@ public class BahLocalGame extends LocalGame {
 
                     if(customer.getItem() == 4){
                         gameState.setHasKey(false);
-                        gameState.setTextIndex(0);
+                        gameState.setDialogueIndex(0);
                     } else {
                         return false;
                     }
@@ -165,7 +165,7 @@ public class BahLocalGame extends LocalGame {
 
                     if(customer.getItem() == 5){
                         gameState.setHasKey(false);
-                        gameState.setTextIndex(0);
+                        gameState.setDialogueIndex(0);
                     } else {
                         return false;
                     }
@@ -183,8 +183,6 @@ public class BahLocalGame extends LocalGame {
             //This action is valid when it's not the players turn to press a button
             //It's now the customers turn to talk
             if(!customer.getPlayersTurn()){
-                //Thread.sleep(500); todo this currently throws an interrupted thread exception, need to figure out what to do about that
-
                 if(gameState.getCustomerDialogueType() == 1) {
                     //if it is the greeting dialogue
                     if(textProgress + 1>= gameState.getCustomer().getGreetingLength()) {
@@ -214,8 +212,8 @@ public class BahLocalGame extends LocalGame {
         //If the register is clicked, adds money collected, displays the farewellDialogue
         //ends the Customer's interaction
         if (action instanceof BahActionRegister) {
-            gameState.setMoneyCount(gameState.getMoneyCount() + 1);
-            gameState.setTextIndex(0);
+            gameState.addMoney(gameState.getMoneyCount() + 1);
+            gameState.setDialogueIndex(0);
             return true;
         }
 

@@ -1,4 +1,7 @@
 package edu.up.cs301.bahbl;
+
+import androidx.annotation.NonNull;
+
 /**
  * this is the base that all the different customers are based on.
  * @author Laura Patla
@@ -71,6 +74,11 @@ public abstract class BahCustomerBase {
         this.farewellDialogue = new String[0];
     }
 
+    @Override
+    public String toString() {
+        return customerName;
+    }
+
     //Getter methods
     public int getItem(){ return item;}
     public String getCustomerName(){return customerName;}
@@ -104,12 +112,13 @@ public abstract class BahCustomerBase {
     public void setBadButtonText(String badButtonText) {this.badButtonText = badButtonText;}
     public void setGoodButton(int goodButton) {this.goodButton = goodButton;}
     public void setGoodButtonText(String goodButtonText) {this.goodButtonText = goodButtonText;}
+    //For overwriting dialogue within the array
     public void setFarewellDialogue(String farewellDialogue, int index) {this.farewellDialogue[index] = farewellDialogue;}
     public void setGreetingDialogue(String greetingDialogue, int index) {this.greetingDialogue[index] = greetingDialogue;}
     public void setHappyResponse(String happyResponse, int index) {this.happyResponse[index] = happyResponse;}
     public void setMadResponse(String madResponse, int index) {this.madResponse[index] = madResponse;}
     public void setLoreDialogue(String loreDialogue, int index) {this.loreDialogue[index] = loreDialogue;}
-   //Increases the size of a String Array to
+   //Appends the dialogue into the array
     public void addFarewellDialogue(String dialogue) {
         String[] temptText = new String[this.farewellDialogue.length + 1];
         int i = 0;

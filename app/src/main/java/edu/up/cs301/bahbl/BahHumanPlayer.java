@@ -100,40 +100,52 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		//todo append custom texts to testResultsTextView
 		//You get your first customer
 		firstInstance.setCustomer(new BahCGhost());
-		firstInstance.setCustomerDialogueType(0);
-		firstInstance.setTextIndex(0);
+		firstInstance.setCustomerDialogue("Ghost Boss greets you! /n");
 		//Will give greeting dialogue
-		customerDialogue.setText(firstInstance.getCustomerDialogue());
+		testResultsTextView.append(firstInstance.getCustomerDialogue());
 
 		//You click a button to respond to the customers text by clicking Button 1
 		game.sendAction(new BahActionButton(this));
+		//In response the dialogueType variable gets increased
+		firstInstance.setCustomerDialogueType(2);
+		firstInstance.setCustomerDialogue("You clicked the top-Happy button where you sign away your soul! /n");
 		//Will update to happy response
-		customerDialogue.setText(firstInstance.getCustomerDialogue());
+		testResultsTextView.append(firstInstance.getCustomerDialogue());
 
 		//You click the register
 		game.sendAction(new BahActionRegister(this));
-		registerMoney.setText(firstInstance.getMoneyCount());
+        //You get money as a result
+        firstInstance.addMoney(1);
+        testResultsTextView.append("You now have: $" + firstInstance.getMoneyCount());
 		//Will set to goodbye message
-		customerDialogue.setText(firstInstance.getCustomerDialogue());
+		firstInstance.setCustomerDialogue("Customer says goodbye");
+		testResultsTextView.append(firstInstance.getCustomerDialogue());
 
 		//You progress the text & move on to the next customer
 		game.sendAction(new BahActionProgressText(this));
+		testResultsTextView.append("You have progressed the text");
 		firstInstance.setCustomer(new BahCPokeangel());
+		testResultsTextView.append("Current Customer is now: " + firstInstance.getCustomer().toString());
+		firstInstance.setCustomerDialogue("Customer greets you");
+		testResultsTextView.append(firstInstance.getCustomerDialogue());
 
 		//You click a button to respond to the customers text by clicking Button 1
 		game.sendAction(new BahActionButton(this));
-		//Will update to happy response
-		customerDialogue.setText(firstInstance.getCustomerDialogue());
+		testResultsTextView.append("You've clicked option 1 for this customer! :D");
 
 		//You click the register
 		game.sendAction(new BahActionRegister(this));
-		registerMoney.setText(firstInstance.getMoneyCount());
+		//You get money as a result
+		firstInstance.addMoney(1);
+		testResultsTextView.append("You now have: $" + firstInstance.getMoneyCount());
 		//Will set to goodbye message
-		customerDialogue.setText(firstInstance.getCustomerDialogue());
+		firstInstance.setCustomerDialogue("Customer says goodbye");
+		testResultsTextView.append(firstInstance.getCustomerDialogue());
 
 		//You progress the text & move on to the next customer
 		game.sendAction(new BahActionProgressText(this));
 		firstInstance.setCustomer(new BahCGhost());
+		testResultsTextView.append("You get sick of interacting with customers so you greet the boss & call it a day!");
 
 
 		BahGameState secondInstance = new BahGameState();
@@ -141,8 +153,8 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		BahGameState secondCopy = new BahGameState(firstInstance);
 
 		//todo compare these two to make sure they're equal by printing them to EditText view or smth
-		firstCopy.toString();
-		secondCopy.toString();
+		testResultsTextView.append(firstCopy.toString());
+		testResultsTextView.append(secondCopy.toString());
 
 		//Savi did this code which might be going ahead:
 

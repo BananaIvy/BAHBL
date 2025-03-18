@@ -37,7 +37,7 @@ public class BahCLug extends BahCustomerBase {
                 "home planet but this infoBot will give me the coordinates I need!");
         addFarewellDialogue("If I was coded with feelings and emotions I would be sad about my " +
                 "departure, but since I am not I will leave you with a 'farewell!'");
-        setGoodButtonText("Give Lug the infoBot you found");
+        setGoodButtonText("I've seen the infoBot!");
         setBadButtonText("Tell Lug you haven't seen an infoBot");
     }
 
