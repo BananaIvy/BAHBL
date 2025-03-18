@@ -69,16 +69,16 @@ public class BahGameState extends GameState {
 		String infoBot = returnNo(hasInfoBot) + "Info Bot";
 		String bag = returnNo(hasBag) + "Bag";
 
-		return "Scene: " + storyProgress + "/n"     					//Story Progress
-				+ "Customer: " + customer.getCustomerName() + "/n"  	//Character
-				+ "Dialogue Type: " + customerDialogueType + "/n"		//Dialogue Type
-				+ "Dialogue Progress: " + dialogueIndex + "/n"					//Dialogue Progress
-				+ "Money: " + moneyCount + "/n"  						//Money
-				+ "Inventory Items: " + "/n"  							//In our inventory
-				+ key + "/n"  											//Item 1 = Key
-				+ pokeball + "/n" 				 						//Item 2
-				+ infoBot + "/n"  										//Item 3
-				+ bag + "/n";  											//Item 4
+		return "Scene: " + storyProgress + "\n"     					//Story Progress
+				+ "Customer: " + customer.getCustomerName() + "\n"  	//Character
+				+ "Dialogue Type: " + customerDialogueType + "\n"		//Dialogue Type
+				+ "Dialogue Progress: " + dialogueIndex + "\n"					//Dialogue Progress
+				+ "Money: " + moneyCount + "\n"  						//Money
+				+ "Inventory Items: " + "\n"  							//In our inventory
+				+ key + "\n"  											//Item 1 = Key
+				+ pokeball + "\n" 				 						//Item 2
+				+ infoBot + "\n"  										//Item 3
+				+ bag + "\n";  											//Item 4
 
 	}
 
