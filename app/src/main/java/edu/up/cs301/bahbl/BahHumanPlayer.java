@@ -106,33 +106,33 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		customerDialogue.setText(firstInstance.getCustomerDialogue());
 
 		//You click a button to respond to the customers text by clicking Button 1
-		BahActionButton clickedButton = new BahActionButton(this);
+		game.sendAction(new BahActionButton(this));
 		//Will update to happy response
 		customerDialogue.setText(firstInstance.getCustomerDialogue());
 
 		//You click the register
-		BahActionRegister clickedRegister = new BahActionRegister(this);
+		game.sendAction(new BahActionRegister(this));
 		registerMoney.setText(firstInstance.getMoneyCount());
 		//Will set to goodbye message
 		customerDialogue.setText(firstInstance.getCustomerDialogue());
 
 		//You progress the text & move on to the next customer
-		BahActionProgressText clickedText = new BahActionProgressText(this);
+		game.sendAction(new BahActionProgressText(this));
 		firstInstance.setCustomer(new BahCPokeangel());
 
 		//You click a button to respond to the customers text by clicking Button 1
-		BahActionButton clickedButtonAgain = new BahActionButton(this);
+		game.sendAction(new BahActionButton(this));
 		//Will update to happy response
 		customerDialogue.setText(firstInstance.getCustomerDialogue());
 
 		//You click the register
-		BahActionRegister clickedRegisterAgain = new BahActionRegister(this);
+		game.sendAction(new BahActionRegister(this));
 		registerMoney.setText(firstInstance.getMoneyCount());
 		//Will set to goodbye message
 		customerDialogue.setText(firstInstance.getCustomerDialogue());
 
 		//You progress the text & move on to the next customer
-		BahActionProgressText clickedTextAgain = new BahActionProgressText(this);
+		game.sendAction(new BahActionProgressText(this));
 		firstInstance.setCustomer(new BahCGhost());
 
 
