@@ -22,29 +22,52 @@ public class BahCGhost extends BahCustomerBase {
         setGoodButton(2);
         resetDialogue();
 
-        //dialogues
+        /* dialogues */
+        //happy response
         addHappyResponse("Great! I'm glad to hear it, now get to work.");
+
+        //mad response
         addMadResponse("Now, come on, I hired you for a reason. Don't disappoint me.");
-        addGreetingDialogue("Welcome to BAHBL!");
-                //"Hey, I'm glad you showed up. I wasn't too sure you would. The last guy quit
-                // suddenly and, well, let's just say you didn't look the most
-                // trustworthy yourself." +
-                //" But, don't worry about it, I'm sure you'll be great for the job.
-                // Here's the key to the register. If anyone tries to rob you, swallow it.");
-        addLoreDialogue("Now, I'll try and keep this simple and quick. When a " +
-                "customer comes up, you'll greet them politely and tap on the" +
-                " register to collect their money and send them away." +
-                " They may try to offer you items, which you can keep under the counter if you" +
-                " like, but don't take anything dangerous. Some of the folks in these" +
-                " parts are a little unsavory." +
-                " Feel free to give away anything you have under the counter" +
-                " (besides the key of course!), but note that most customers won't want those" +
-                " items. Now, if you have no more questions," +
-                "just tap on the register to start your shift.");
-        addFarewellDialogue("All right, get to work, and remember, if you die, that" +
-                " waiver you signed means I can't be held accountable.");
+
+        //greeting responses ("Welcome to BAHBL!");
+        addGreetingDialogue("Hey, I'm glad you showed up!");
+        addGreetingDialogue("I wasn't too sure you would.");
+        addGreetingDialogue("The last guy quit suddenly and,");
+        addGreetingDialogue("well...");
+        addGreetingDialogue("Let's just say you didn't look the most trustworthy yourself.");
+        addGreetingDialogue("But, don't worry about it.");
+        addGreetingDialogue("I'm sure you'll be great for the job!");
+        addGreetingDialogue("Now, here's the key to the register!");
+        addGreetingDialogue("And if anyone tries to rob you...");
+        addGreetingDialogue("SWALLOW IT!");
+
+        //lore responses
+        addLoreDialogue("Now, I'll try and keep this simple and quick.");
+        addLoreDialogue("When a customer comes up, you'll greet them politely,");
+        addLoreDialogue("Tap the register to collect their money,");
+        addLoreDialogue("And send them on their way! Simple!");
+        addLoreDialogue("Now, they may try to offer you items,");
+        addLoreDialogue("Which you can keep under the register if you'd like,");
+        addLoreDialogue("But, don't take anything dangerous!");
+        addLoreDialogue("Some of the folks in these parts a little unsavory.");
+        addLoreDialogue("Feel free to give away anything you have under the counter.");
+        addLoreDialogue("Besides the key of course! ;)");
+        addLoreDialogue("But note that most customers won't want those items.");
+        addLoreDialogue("Now, if you have absolutely no more questions,");
+        addLoreDialogue("Tap the register to start your shift!");
+
+        //farewell responses
+        addFarewellDialogue("All right, get to work");
+        addFarewellDialogue("And remember,");
+        addFarewellDialogue("If you die...");
+        addFarewellDialogue("That waiver you signed...");
+        addFarewellDialogue("Means I can't be held accountable.");
+
+        //button text responses
         setGoodButtonText("I've got this, no worries!");
         setBadButtonText("Uhhhh....");
+
     }
+
 
 }
