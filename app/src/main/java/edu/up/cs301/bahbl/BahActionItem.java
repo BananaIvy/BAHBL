@@ -1,5 +1,6 @@
 package edu.up.cs301.bahbl;
 
+import android.view.View;
 import android.widget.ImageButton;
 import edu.up.cs301.GameFramework.actionMessage.GameAction;
 import edu.up.cs301.GameFramework.players.GamePlayer;
@@ -21,7 +22,7 @@ public class BahActionItem extends GameAction {
      *
      * @param player the player who created the action
      */
-    public BahActionItem(GamePlayer player, ImageButton item) {
+    public BahActionItem(GamePlayer player, View item) {
         super(player);
         if(item.getId() == R.id.key){
             thisItem = key;

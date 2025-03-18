@@ -201,7 +201,6 @@ public class BahLocalGame extends LocalGame {
                     //Update the text to the next text in the goodbye-text Array
                     //if last-of-goodbye-array-text
                     //ProgressStory + 1
-                    //setCustomer to the next one
                     //make it players turn
                 }
 

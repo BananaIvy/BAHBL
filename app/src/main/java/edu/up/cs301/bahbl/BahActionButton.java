@@ -31,6 +31,12 @@ public class BahActionButton extends GameAction {
         }
     }
 
+    //For Project E specifically
+    public BahActionButton(GamePlayer player){
+        super(player);
+        whichButton = 1;
+    }
+
 
     //Methods
     public int getWhichButton(){

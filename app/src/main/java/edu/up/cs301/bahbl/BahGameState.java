@@ -88,9 +88,9 @@ public class BahGameState extends GameState {
 		else{return "";}
 	}
 
+	public void nextDialogue(){this.textIndex++;}
 
 	//Getter Methods
-
 	public int getCustomerDialogueType() {return customerDialogueType;}
 	public int getStoryProgress() {return storyProgress;}
 	public int getMoneyCount() {return moneyCount;}

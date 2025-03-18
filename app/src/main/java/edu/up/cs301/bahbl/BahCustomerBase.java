@@ -6,11 +6,6 @@ package edu.up.cs301.bahbl;
  */
 public abstract class BahCustomerBase {
 
-    //todo this customer base needs to have arrays for each large block of text, so you can progress to the next line in their story
-    //todo and not have to print their entire chunk on the screen.
-    //todo there should be an instance variable in localgame that will keep track of the index of the string being shown
-
-    //todo make them know their special item
     private String customerName;
     private int likeability;
     private int item;
@@ -23,11 +18,11 @@ public abstract class BahCustomerBase {
     private boolean hasReceived;
 
     //Possible customer dialogue
-    private String[] happyResponse;
-    private String[] madResponse;
-    private String[] loreDialogue;
-    private String[] greetingDialogue;
-    private String[] farewellDialogue;
+    private String[] greetingDialogue;  //1
+    private String[] happyResponse;     //2
+    private String[] madResponse;       //3
+    private String[] loreDialogue;      //4
+    private String[] farewellDialogue;  //5
 
     //If goodButton = 1, then that's the top button. If 2, then bottom button
     private int goodButton;

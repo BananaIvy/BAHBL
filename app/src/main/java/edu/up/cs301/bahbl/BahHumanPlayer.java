@@ -30,6 +30,8 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	private TextView testResultsTextView;
 
 	private TextView customerDialogue = null;
+
+	private TextView registerMoney = null;
 	
 	// the most recent game state, as given to us by the CounterLocalGame
 	private BahGameState state;
@@ -91,15 +93,90 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		// todo 4) Customer Reacts - Click Inventory Item, 5) Customer Reacts - Click Dialog, 6) Customer give money - Click register
 		//todo 7) Customer says goodbye - Click Dialog
 
+		//When an action is created/sent then Local game makes the changes happen in game state as a reaction
+		//so we don't need to manually affect most of the gamestate variables here.
+
+		//todo might need to make all the action be sent to gamestate.
+		//todo append custom texts to testResultsTextView
+		//You get your first customer
+		firstInstance.setCustomer(new BahCGhost());
+		firstInstance.setCustomerDialogueType(0);
+		firstInstance.setTextIndex(0);
+		//Will give greeting dialogue
+		customerDialogue.setText(firstInstance.getCustomerDialogue());
+
+		//You click a button to respond to the customers text by clicking Button 1
+		BahActionButton clickedButton = new BahActionButton(this);
+		//Will update to happy response
+		customerDialogue.setText(firstInstance.getCustomerDialogue());
+
+		//You click the register
+		BahActionRegister clickedRegister = new BahActionRegister(this);
+		registerMoney.setText(firstInstance.getMoneyCount());
+		//Will set to goodbye message
+		customerDialogue.setText(firstInstance.getCustomerDialogue());
+
+		//You progress the text & move on to the next customer
+		BahActionProgressText clickedText = new BahActionProgressText(this);
+		firstInstance.setCustomer(new BahCPokeangel());
+
+		//You click a button to respond to the customers text by clicking Button 1
+		BahActionButton clickedButtonAgain = new BahActionButton(this);
+		//Will update to happy response
+		customerDialogue.setText(firstInstance.getCustomerDialogue());
+
+		//You click the register
+		BahActionRegister clickedRegisterAgain = new BahActionRegister(this);
+		registerMoney.setText(firstInstance.getMoneyCount());
+		//Will set to goodbye message
+		customerDialogue.setText(firstInstance.getCustomerDialogue());
+
+		//You progress the text & move on to the next customer
+		BahActionProgressText clickedTextAgain = new BahActionProgressText(this);
+		firstInstance.setCustomer(new BahCGhost());
 
 
-		//MODIFIED CODE COMMENTED OUT FOR NOW!!!
+		BahGameState secondInstance = new BahGameState();
 
-		//sends it to see which button it iws
- 		//action = new BahActionButton(this, button);
+		BahGameState secondCopy = new BahGameState(firstInstance);
+
+		//todo compare these two to make sure they're equal by printing them to EditText view or smth
+		firstCopy.toString();
+		secondCopy.toString();
+
+		//Savi did this code which might be going ahead:
+
+		if(button.getId() == R.id.Option1){
+			game.sendAction(new BahActionButton(this, button));
+			customerDialogue.append("You clicked button 1!");
+		}
+		if(button.getId() == R.id.Option2){
+			game.sendAction(new BahActionButton(this, button));
+			customerDialogue.append("You clicked button 2!");
+		}
+		if(button.getId() == R.id.customerDialogue){
+			game.sendAction(new BahActionProgressText(this));
+			customerDialogue.append("You clicked to Progess Text!");
+		}
+		if(button.getId() == R.id.register_keyboard){
+			game.sendAction(new BahActionRegister(this));
+			customerDialogue.append("You clicked the register!");
+		}
+		if(isItem(button)){
+			game.sendAction(new BahActionItem(this, button));
+			customerDialogue.append("You clicked an item!");
+		}
+
+
 
 	}// onClick
 
+	public boolean isItem(View button){
+		if(button.getId() == R.id.infoBot || button.getId() == R.id.bag || button.getId() == R.id.pokedex || button.getId() == R.id.pokeball || button.getId() == R.id.key){
+			return true;
+		}
+		return false;
+	}
 
 	public GameAction getAction() {
 		return action;
