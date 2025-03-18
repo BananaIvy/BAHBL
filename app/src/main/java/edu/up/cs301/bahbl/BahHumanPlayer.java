@@ -112,19 +112,14 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		//Will update to happy response
 		testResultsTextView.append(firstInstance.getCustomerDialogue());
 
-		//You click the register
+		//You progress the text
 		game.sendAction(new BahActionProgressText(this));
-        //You get money as a result
-        firstInstance.addMoney(1);
-        testResultsTextView.append("You now have: $" + firstInstance.getMoneyCount() + "\n");
+        //MONEY CHECK :D
+        testResultsTextView.append("You currently have: $" + firstInstance.getMoneyCount() + "\n");
 		//Will set to goodbye message
 		firstInstance.setCustomerDialogue("Boss says bye & gave you key + \n");
 		firstInstance.setHasKey(true);
 		testResultsTextView.append(firstInstance.getCustomerDialogue());
-
-		//You progress the text & move on to the next customer
-		game.sendAction(new BahActionProgressText(this));
-		testResultsTextView.append("You have progressed the text \n");
 		firstInstance.setCustomer(new BahCPokeangel());
 		testResultsTextView.append("Current Customer is now: " + firstInstance.getCustomer().toString() + "\n");
 		firstInstance.setCustomerDialogue("Customer greets you \n");
