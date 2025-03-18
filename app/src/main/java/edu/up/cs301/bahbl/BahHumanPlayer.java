@@ -242,6 +242,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		this.bag = (android.widget.ImageButton) activity.findViewById(R.id.bag);
 		this.pokeball = (android.widget.ImageButton) activity.findViewById((R.id.pokeball));
 		this.pokeDex = (android.widget.ImageButton) activity.findViewById((R.id.pokedex));
+		this.key  = (android.widget.ImageButton) activity.findViewById((R.id.key));
 
 		// make this object listen for widget clicks
 		customerDialogue.setOnClickListener(this);
@@ -252,6 +253,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		bag.setOnClickListener(this);
 		pokeball.setOnClickListener(this);
 		pokeDex.setOnClickListener(this);
+		key.setOnClickListener(this);
 
 		// if we have a game state, "simulate" that we have just received
 		// the state from the game so that the GUI values are updated
