@@ -65,7 +65,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	 */
 	protected void updateDisplay() {
 		// set the text in the appropriate widget
-		String tempText = state.getCurrentCustomerDialogue();
+		String tempText = state.getCustomerDialogue();
 
 		customerDialogue.setText(tempText);
 	}
@@ -105,7 +105,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		testResultsTextView.append(firstInstance.getCustomerDialogue());
 
 		//You click a button to respond to the customers text by clicking Button 1
-		BahActionButton clickedButton = new BahActionButton(this);
+		game.sendAction(new BahActionButton(this));
 		//In response the dialogueType variable gets increased
 		firstInstance.setCustomerDialogueType(2);
 		firstInstance.setCustomerDialogue("You clicked the top-Happy button where you sign away your soul! /n");
@@ -113,16 +113,16 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		testResultsTextView.append(firstInstance.getCustomerDialogue());
 
 		//You click the register
-		BahActionRegister clickedRegister = new BahActionRegister(this);
-		//You get money as a result
-		firstInstance.addMoney(1);
-		testResultsTextView.append("You now have: $" + firstInstance.getMoneyCount());
+		game.sendAction(new BahActionRegister(this));
+        //You get money as a result
+        firstInstance.addMoney(1);
+        testResultsTextView.append("You now have: $" + firstInstance.getMoneyCount());
 		//Will set to goodbye message
 		firstInstance.setCustomerDialogue("Customer says goodbye");
 		testResultsTextView.append(firstInstance.getCustomerDialogue());
 
 		//You progress the text & move on to the next customer
-		BahActionProgressText clickedText = new BahActionProgressText(this);
+		game.sendAction(new BahActionProgressText(this));
 		testResultsTextView.append("You have progressed the text");
 		firstInstance.setCustomer(new BahCPokeangel());
 		testResultsTextView.append("Current Customer is now: " + firstInstance.getCustomer().toString());
@@ -130,13 +130,13 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		testResultsTextView.append(firstInstance.getCustomerDialogue());
 
 		//You click a button to respond to the customers text by clicking Button 1
-		BahActionButton clickedButtonAgain = new BahActionButton(this);
+		game.sendAction(new BahActionButton(this));
 		testResultsTextView.append("You've clicked option 1 for this customer! :D");
 		//Will update to happy response
 		customerDialogue.append(firstInstance.getCustomerDialogue());
 
 		//You click the register
-		BahActionRegister clickedRegisterAGAIN = new BahActionRegister(this);
+		game.sendAction(new BahActionRegister(this));
 		//You get money as a result
 		firstInstance.addMoney(1);
 		testResultsTextView.append("You now have: $" + firstInstance.getMoneyCount());
@@ -145,6 +145,8 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		testResultsTextView.append(firstInstance.getCustomerDialogue());
 
 		//You progress the text & move on to the next customer
+		game.sendAction(new BahActionProgressText(this));
+		firstInstance.setCustomer(new BahCGhost());
 		testResultsTextView.append("You get sick of interacting with customers so you greet the boss & call it a day!");
 
 
@@ -153,8 +155,8 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		BahGameState secondCopy = new BahGameState(firstInstance);
 
 		//todo compare these two to make sure they're equal by printing them to EditText view or smth
-		firstCopy.toString();
-		secondCopy.toString();
+		testResultsTextView.append(firstCopy.toString());
+		testResultsTextView.append(secondCopy.toString());
 
 		//Savi did this code which might be going ahead:
 
