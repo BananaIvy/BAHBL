@@ -28,9 +28,9 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	/* instance variables */
 
 	// Initializes all the widgets
-	private TextView 		testResultsTextView	= null;
+	//private TextView 		testResultsTextView	= null;
 	private TextView 		customerDialogue 	= null;
-	private ImageButton 	registerMoney 		= null;
+	private TextView 	registerMoney 		= null;
 	private	Button 			goodButton 			= null;
 	private	Button 			badButton 			= null;
 	private ImageButton 	register 			= null;
@@ -243,6 +243,8 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		this.pokeball = (android.widget.ImageButton) activity.findViewById((R.id.pokeball));
 		this.pokeDex = (android.widget.ImageButton) activity.findViewById((R.id.pokedex));
 		this.key  = (android.widget.ImageButton) activity.findViewById((R.id.key));
+		this.registerMoney  = (TextView) activity.findViewById((R.id.total_monitor));
+
 
 		// make this object listen for widget clicks
 		customerDialogue.setOnClickListener(this);
