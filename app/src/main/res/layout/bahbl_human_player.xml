@@ -29,6 +29,7 @@
             android:layout_marginTop="10dp"
             android:layout_weight="1"
             android:background="#00FFFFFF"
+            android:contentDescription="This is the screen that's clickable"
             app:srcCompat="@drawable/register_screen_correcta" />
 
 
@@ -53,6 +54,7 @@
             android:layout_gravity="top"
             android:layout_weight="2"
             android:background="#00FFFFFF"
+            android:contentDescription="This is the customer!"
             app:srcCompat="@drawable/pokeangel" />
 
     </LinearLayout>
@@ -70,6 +72,7 @@
             android:layout_height="125dp"
             android:layout_weight="1"
             android:layout_marginLeft="40dp"
+            android:contentDescription="This the keyboard we don't care about. Tis a visual"
             app:srcCompat="@drawable/register_keyboard_correcta" />
 
         <LinearLayout
@@ -96,12 +99,12 @@
 
         <TextView
             android:id="@+id/customerDialogue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
+            android:layout_width="300sp"
+            android:layout_height="140sp"
             android:layout_weight="1"
             android:clickable="true"
             android:layout_marginRight="50dp"
+            android:layout_gravity="center"
             android:text="BATTLE ME!!!!!!!!!"
             android:textColor="#FFFFFF"
             android:textSize="30sp" />
@@ -124,6 +127,7 @@
             android:src="@drawable/subject"
             android:text="key"
             android:background="#00FFFFFF"
+            android:contentDescription="This is the key's slot"
             app:srcCompat="@drawable/subject" />
 
         <ImageButton
@@ -134,6 +138,7 @@
             android:src="@drawable/pokeball"
             android:text="pokeball"
             android:background="#00FFFFFF"
+            android:contentDescription="This is the pokeballs slot"
             app:srcCompat="@drawable/pokeball" />
 
         <ImageButton
@@ -142,6 +147,7 @@
             android:layout_height="120dp"
             android:clickable="true"
             android:background="#00FFFFFF"
+            android:contentDescription="This is the infobots slot"
             android:text="empty" />
 
         <ImageButton
@@ -150,6 +156,7 @@
             android:layout_height="120dp"
             android:clickable="true"
             android:background="#00FFFFFF"
+            android:contentDescription="This is the pokedex's slot"
             android:text="empty" />
 
         <ImageButton
@@ -158,6 +165,7 @@
             android:layout_height="120dp"
             android:clickable="true"
             android:background="#00FFFFFF"
+            android:contentDescription="This is the bags slot"
             android:text="empty" />
 
         <ImageButton
@@ -166,6 +174,7 @@
             android:layout_height="120dp"
             android:clickable="true"
             android:background="#00FFFFFF"
+            android:contentDescription="This is an empty slot"
             android:text="empty" />
 
         <ImageButton
@@ -174,6 +183,7 @@
             android:layout_height="120dp"
             android:clickable="true"
             android:background="#00FFFFFF"
+            android:contentDescription="This is an empty slot"
             android:text="empty" />
 
     </LinearLayout>

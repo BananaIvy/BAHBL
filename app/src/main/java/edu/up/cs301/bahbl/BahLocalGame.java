@@ -18,7 +18,6 @@ import edu.up.cs301.GameFramework.players.GamePlayer;
  */
 public class BahLocalGame extends LocalGame {
 
-    private int textProgress;
     // the game's state
     private BahGameState gameState;
     private BahCustomerBase customer;
@@ -42,7 +41,7 @@ public class BahLocalGame extends LocalGame {
 
     @Override
     protected String checkIfGameOver() {
-        if(gameState.getStoryProgress() == 1){
+        if(gameState.getStoryProgress() == 6){
             return "Game is over!";
         }
 
@@ -55,11 +54,9 @@ public class BahLocalGame extends LocalGame {
     public BahLocalGame(GameState state) {
         // initialize the game state, with the counter value starting at 0
         if (!(state instanceof BahGameState)) {
-            state = new BahGameState();
+            this.gameState = (BahGameState) state;
         }
-        this.gameState = (BahGameState) state;
-        super.state = state;
-        textProgress = 0;
+        this.customer = gameState.getCustomer();
     }
 
     /**
@@ -68,8 +65,6 @@ public class BahLocalGame extends LocalGame {
 
     protected boolean makeMove(GameAction action) {
         Log.i("action", action.getClass().toString());
-
-        customer = gameState.getCustomer();
 
         //If the register is clicked, adds money collected, displays the farewellDialogue
         //ends the Customer's interaction
@@ -185,24 +180,8 @@ public class BahLocalGame extends LocalGame {
             //This action is valid when it's not the players turn to press a button
             //It's now the customers turn to talk
             if(!customer.getPlayersTurn()){
-                if(gameState.getCustomerDialogueType() == 1) {
-                    //if it is the greeting dialogue
-                    if(textProgress + 1>= gameState.getCustomer().getGreetingLength()) {
-                        //if we've reached the end of the array already (so the next index would be out of bounds)
-                        textProgress = 0;
-                        //here I need to make the buttons clickable and give them the responses
-                        customer.setPlayersTurn(true);
-                    }
-                    else {
-                        textProgress++;
-                    }
-                    //todo add the same type of if elses for the other dialogue sets
-                    //if Dialogue == goodbye
-                    //Update the text to the next text in the goodbye-text Array
-                    //if last-of-goodbye-array-text
-                    //ProgressStory + 1
-                    //make it players turn
-                }
+                gameState.getCurrentCustomerDialogue();
+
                 return true;
             }
         }
