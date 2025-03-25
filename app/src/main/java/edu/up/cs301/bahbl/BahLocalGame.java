@@ -23,7 +23,20 @@ public class BahLocalGame extends LocalGame {
     private BahCustomerBase customer;
     private BahActionItem item;
 
-    @Override
+    /**
+     * This ctor should be called when a new counter game is started
+     */
+    public BahLocalGame(GameState state) {
+        // initialize the game state, with the counter value starting at 0
+        if (!(state instanceof BahGameState)) {
+            //Then tis an issue
+            Log.i("Issue in Local Game constructor","tis not a Bahgamestate");
+        }
+        this.gameState = (BahGameState) state;
+        this.customer = gameState.getCustomer();
+    }
+
+
     protected void sendUpdatedStateTo(GamePlayer p) {
 
     }
@@ -48,18 +61,6 @@ public class BahLocalGame extends LocalGame {
         return "";
     }
 
-    /**
-     * This ctor should be called when a new counter game is started
-     */
-    public BahLocalGame(GameState state) {
-        // initialize the game state, with the counter value starting at 0
-        if (!(state instanceof BahGameState)) {
-            //Then tis an issue
-            Log.i("Issue in Local Game constructor","tis not a Bahgamestate");
-        }
-        this.gameState = (BahGameState) state;
-        this.customer = gameState.getCustomer();
-    }
 
     /**
      * The only type of GameAction that should be sent is CounterMoveAction
