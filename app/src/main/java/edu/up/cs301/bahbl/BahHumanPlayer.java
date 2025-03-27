@@ -42,6 +42,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 	// the most recent game state, as given to us by the CounterLocalGame
 	private BahGameState state;
+
 	
 	// the android activity that we are running
 	private GameMainActivity myActivity;
@@ -75,6 +76,10 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		String tempText = state.getCustomerDialogue();
 
 		customerDialogue.setText(tempText);
+
+
+		goodButton.isClickable();
+
 	}
 
 	/**
@@ -162,23 +167,23 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 //
 		if(button.getId() == R.id.Option1){
 			game.sendAction(new BahActionButton(this, button));
-			customerDialogue.append("You clicked button 1!");
+
 		}
 		if(button.getId() == R.id.Option2){
 			game.sendAction(new BahActionButton(this, button));
-			customerDialogue.append("You clicked button 2!");
+
 		}
 		if(button.getId() == R.id.customerDialogue){
 			game.sendAction(new BahActionProgressText(this));
-			customerDialogue.append("You clicked to Progess Text!");
+
 		}
 		if(button.getId() == R.id.register_keyboard){
 			game.sendAction(new BahActionRegister(this));
-			customerDialogue.append("You clicked the register!");
+
 		}
 		if(isItem(button)){
 			game.sendAction(new BahActionItem(this, button));
-			customerDialogue.append("You clicked an item!");
+
 		}
 
 
