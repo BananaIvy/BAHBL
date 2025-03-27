@@ -141,6 +141,23 @@ public class BahGameState extends GameState {
 	public void setHasPokeDex(boolean hasPokeDex) {this.hasPokeDex = hasPokeDex;}
 	public void setStoryProgress(int storyProgress) {this.storyProgress = storyProgress;}
 	public void setCustomerDialogue(String customerDialogue) {this.customerDialogue = customerDialogue;}
+	public void setCustomerDialogue(int customerTextType, int index) {
+		if(customerTextType == 1){
+			this.customerDialogue = customer.getGreetingDialogue(index);
+		}
+		if(customerTextType == 2){
+			this.customerDialogue = customer.getHappyResponse(index);
+		}
+		if(customerTextType == 3){
+			this.customerDialogue = customer.getMadResponse(index);
+		}
+		if(customerTextType == 4){
+			this.customerDialogue = customer.getLoreDialogue(index);
+		}
+		if(customerTextType == 5){
+			this.customerDialogue = customer.getFarewellDialogue(index);
+		}
+	}
 	//We don't want to be able to set the money, just add or lose money.
 	public void addMoney(int moneyCount) {this.moneyCount = this.moneyCount + moneyCount;}
 	public void loseMoney(int moneyCount) {this.moneyCount = this.moneyCount - moneyCount;}

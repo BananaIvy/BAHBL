@@ -24,20 +24,6 @@ public class BahLocalGame extends LocalGame {
     private BahCustomerBase customer;
     private BahActionItem item;
 
-    /**
-     * This ctor should be called when a new counter game is started
-     */
-    public BahLocalGame(GameState state) {
-        // initialize the game state, with the counter value starting at 0
-        if (!(state instanceof BahGameState)) {
-            //Then tis an issue
-            Log.i("Issue in Local Game constructor", "tis not a Bahgamestate");
-        }
-        this.gameState = (BahGameState) state;
-        this.customer = gameState.getCustomer();
-    }
-
-
     @Override
     protected void sendUpdatedStateTo(GamePlayer p) {
 
@@ -56,13 +42,25 @@ public class BahLocalGame extends LocalGame {
 
     @Override
     protected String checkIfGameOver() {
-        if (gameState.getStoryProgress() == 6) {
+        if(gameState.getStoryProgress() == 1){
             return "Game is over!";
         }
 
         return "";
     }
 
+    /**
+     * This ctor should be called when a new counter game is started
+     */
+    public BahLocalGame(GameState state) {
+        // initialize the game state, with the counter value starting at 0
+        if (!(state instanceof BahGameState)) {
+            state = new BahGameState();
+        }
+        this.gameState = (BahGameState) state;
+        super.state = state;
+        textProgress = 0;
+    }
 
     /**
      * The only type of GameAction that should be sent is CounterMoveAction
@@ -76,7 +74,6 @@ public class BahLocalGame extends LocalGame {
         //If the register is clicked, adds money collected, displays the farewellDialogue
         //ends the Customer's interaction
         if (action instanceof BahActionRegister) {
-            gameState.setCustomerDialogue("The register was clicked");
             gameState.addMoney(1);
             gameState.setDialogueIndex(0);
             return true;
@@ -85,7 +82,7 @@ public class BahLocalGame extends LocalGame {
         else if (action instanceof BahActionButton) {
 
             //This action is valid when it is the players turn
-            if (customer.getPlayersTurn()) {
+            if(customer.getPlayersTurn()){
                 //If the buttons is the good button
                 if (customer.getGoodButton() == ((BahActionButton) action).getWhichButton()) {
                     // Update the counter values based upon the action
@@ -107,65 +104,82 @@ public class BahLocalGame extends LocalGame {
 
         //If an Item is clicked
         else if (action instanceof BahActionItem) {
-            //Checks if we have the item that was clicked
-            if (((BahActionItem) action).getThisItem() == 1 && gameState.isHasKey()) {
-                if (customer.getItem() == 1) {
-                    //The item IS the customers item
+            //This action is valid when it is the players turn
+            if(customer.getPlayersTurn()){
+                //Checks if we have the item that was clicked
+                if(((BahActionItem) action).getThisItem() == 1 && gameState.isHasKey()){
+                    //Needs to check whether or not the item is the customers item
+                    //If it is, update having the item to false & change the text to loreDialogue
+                    //If it's not, return false or flash the screen.
+
+                    if(customer.getItem() == 1){
+                        gameState.setHasKey(false);
+                        gameState.setCustomerDialogueType(4);
+                        gameState.setDialogueIndex(0);
+                    } else {
+                        return false;
+                    }
+
                     return true;
-                } else {
-                    return false;
                 }
-            } else if (((BahActionItem) action).getThisItem() == 2 && gameState.isHasInfoBot()) {
+                else if(((BahActionItem) action).getThisItem() == 2 && gameState.isHasInfoBot()){
+                    //Needs to check whether or not the item is the customers item
+                    //If it is, update having the item to false & change the text to loreDialogue
+                    //If it's not, return false or flash the screen.
 
-                if (customer.getItem() == 2) {
-                    //The item IS the customers item
+                    if(customer.getItem() == 2){
+                        gameState.setHasKey(false);
+                        gameState.setDialogueIndex(0);
+                    } else {
+                        return false;
+                    }
+
                     return true;
-                } else {
-                    return false;
                 }
+                else if(((BahActionItem) action).getThisItem() == 3 && gameState.isHasBag()){
+                    //Needs to check whether or not the item is the customers item
+                    //If it is, update having the item to false & change the text to loreDialogue
+                    //If it's not, return false or flash the screen.
 
-            } else if (((BahActionItem) action).getThisItem() == 3 && gameState.isHasBag()) {
-                //Needs to check whether or not the item is the customers item
-                //If it is, update having the item to false & change the text to loreDialogue
-                //If it's not, return false or flash the screen.
+                    if(customer.getItem() == 3){
+                        gameState.setHasKey(false);
+                        gameState.setDialogueIndex(0);
+                    } else {
+                        return false;
+                    }
 
-                if (customer.getItem() == 3) {
-                    gameState.setHasKey(false);
-                    gameState.setDialogueIndex(0);
-                } else {
-                    return false;
+                    return true;
                 }
+                else if(((BahActionItem) action).getThisItem() == 4 && gameState.isHasPokeball()){
+                    //Needs to check whether or not the item is the customers item
+                    //If it is, update having the item to false & change the text to loreDialogue
+                    //If it's not, return false or flash the screen.
 
-                return true;
-            } else if (((BahActionItem) action).getThisItem() == 4 && gameState.isHasPokeball()) {
-                //Needs to check whether or not the item is the customers item
-                //If it is, update having the item to false & change the text to loreDialogue
-                //If it's not, return false or flash the screen.
+                    if(customer.getItem() == 4){
+                        gameState.setHasKey(false);
+                        gameState.setDialogueIndex(0);
+                    } else {
+                        return false;
+                    }
 
-                if (customer.getItem() == 4) {
-                    gameState.setHasKey(false);
-                    gameState.setDialogueIndex(0);
-                } else {
-                    return false;
+                    return true;
                 }
+                else if(((BahActionItem) action).getThisItem() == 5 && gameState.isHasPokeDex()){
+                    //Needs to check whether or not the item is the customers item
+                    //If it is, update having the item to false & change the text to loreDialogue
+                    //If it's not, return false or flash the screen.
 
-                return true;
-            } else if (((BahActionItem) action).getThisItem() == 5 && gameState.isHasPokeDex()) {
-                //Needs to check whether or not the item is the customers item
-                //If it is, update having the item to false & change the text to loreDialogue
-                //If it's not, return false or flash the screen.
+                    if(customer.getItem() == 5){
+                        gameState.setHasKey(false);
+                        gameState.setDialogueIndex(0);
+                    } else {
+                        return false;
+                    }
 
-                if (customer.getItem() == 5) {
-                    gameState.setHasKey(false);
-                    gameState.setDialogueIndex(0);
-                } else {
-                    return false;
+                    return true;
                 }
-
-                return true;
-            }
-        } //Action Item
-
+            } //Action Item
+        }
         //Progresses the text
         else if (action instanceof BahActionProgressText) {
             //This action is valid when it's not the players turn to press a button
@@ -173,15 +187,10 @@ public class BahLocalGame extends LocalGame {
             if(!customer.getPlayersTurn()){
                 if(gameState.getCustomerDialogueType() == 1) {
                     //if it is the greeting dialogue
-
-                    if((gameState.getDialogueIndex() + 1) >= gameState.getCustomer().getGreetingLength()) {
+                    if(textProgress + 1>= gameState.getCustomer().getGreetingLength()) {
                         //if we've reached the end of the array already (so the next index would be out of bounds)
-
-                        gameState.setDialogueIndex(0);
+                        textProgress = 0;
                         //here I need to make the buttons clickable and give them the responses
-
-
-
                         customer.setPlayersTurn(true);
                     }
                     else {
