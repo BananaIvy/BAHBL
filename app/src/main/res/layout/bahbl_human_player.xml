@@ -25,22 +25,22 @@
         <ImageButton
             android:id="@+id/register_screen"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:adjustViewBounds="true"
             android:scaleY="1.3"
             android:scaleX="1.3"
-            android:layout_marginTop="80dp"
+            android:layout_marginRight="150dp"
             android:layout_weight="1"
             android:background="#00FFFFFF"
             android:contentDescription="This is the screen that's clickable"
-            app:srcCompat="@drawable/register_screen_" />
+            android:src="@drawable/register_screen_"/>
 
 
         <TextView
             android:id="@+id/total_monitor"
             android:layout_width="wrap_content"
             android:layout_height="150dp"
-            android:layout_marginLeft="-370dp"
+            android:layout_marginLeft="-670dp"
             android:layout_marginTop="165dp"
             android:layout_marginRight="50dp"
             android:layout_weight="0"
@@ -55,10 +55,10 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="top"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:background="#00FFFFFF"
             android:contentDescription="This is the customer!"
-            app:srcCompat="@drawable/pokeangel" />
+            android:src="@drawable/pokeangel"/>
 
     </LinearLayout>
 
@@ -76,7 +76,7 @@
             android:layout_marginLeft="50dp"
             android:layout_weight="1"
             android:contentDescription="This the keyboard we don't care about. Tis a visual"
-            app:srcCompat="@drawable/register_keyboard" />
+            android:src="@drawable/register_keyboard"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -102,8 +102,8 @@
 
         <TextView
             android:id="@+id/customerDialogue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="350dp"
+            android:layout_height="160dp"
             android:layout_weight="10"
             android:clickable="true"
             android:layout_gravity="top"
@@ -130,7 +130,7 @@
             android:text="key"
             android:background="#00FFFFFF"
             android:contentDescription="This is the key's slot"
-            app:srcCompat="@drawable/subject" />
+            />
 
         <ImageButton
             android:id="@+id/pokeball"
@@ -141,7 +141,7 @@
             android:text="pokeball"
             android:background="#00FFFFFF"
             android:contentDescription="This is the pokeballs slot"
-            app:srcCompat="@drawable/pokeball" />
+            />
 
         <ImageButton
             android:id="@+id/infoBot"
