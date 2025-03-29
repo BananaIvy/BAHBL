@@ -13,23 +13,16 @@ import edu.up.cs301.GameFramework.actionMessage.GameAction;
  */
 public class BahActionMove extends GameAction {
 
-	// to satisfy the serializable interface
-	private static final long serialVersionUID = 28062013L;
-
-    //whether this move is a plus (true) or minus (false)
-    private boolean isPlus;
 
     /**
      * Constructor for the CounterMoveAction class.
      *
      * @param player
      *            the player making the move
-     * @param isPlus
-     *            value to initialize this.isPlus
+     *
      */
-    public BahActionMove(GamePlayer player, boolean isPlus) {
+    public BahActionMove(GamePlayer player) {
         super(player);
-        this.isPlus = isPlus;
     }
 
     /**
@@ -38,8 +31,5 @@ public class BahActionMove extends GameAction {
      * @return
      * 		a boolean that tells whether this move is a "plus"
      */
-    public boolean isPlus() {
-        return isPlus;
 
-    }
 }//class CounterMoveAction
