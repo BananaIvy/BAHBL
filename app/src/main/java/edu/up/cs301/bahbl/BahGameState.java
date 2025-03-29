@@ -31,6 +31,8 @@ public class BahGameState extends GameState {
 	private boolean hasBag;
 	private boolean hasPokeDex;
 	private Boolean buttonIsVisiable;
+	private String goodButtonText;
+	private String badButtonText;
 
 	//Constructor for start of game
 	public BahGameState(){
@@ -46,6 +48,8 @@ public class BahGameState extends GameState {
 		dialogueIndex = 0;
 		customerDialogue = customer.getGreetingDialogue(0);
 		buttonIsVisiable = false;
+		goodButtonText = "";
+		badButtonText = "";
 	}
 
 	//Copy Constructor
@@ -62,6 +66,8 @@ public class BahGameState extends GameState {
 		dialogueIndex = currentState.dialogueIndex;
 		customerDialogue = currentState.getCurrentCustomerDialogue();
 		buttonIsVisiable = currentState.buttonIsVisiable;
+		goodButtonText = currentState.goodButtonText;
+		badButtonText = currentState.badButtonText;
 	}
 
 	//Methods
@@ -96,6 +102,9 @@ public class BahGameState extends GameState {
 
 	//Getter Methods
 
+
+	public String getGoodButtonText() {return goodButtonText;}
+	public String getBadButtonText() {return badButtonText;}
 	public Boolean getButtonIsVisiable() {return buttonIsVisiable;}
 	public int getCustomerDialogueType() {return customerDialogueType;}
 	public int getStoryProgress() {return storyProgress;}
@@ -130,6 +139,9 @@ public class BahGameState extends GameState {
 
 	//Setter Methods
 
+
+	public void setGoodButtonText(String goodButtonText) {this.goodButtonText = goodButtonText;}
+	public void setBadButtonText(String badButtonText) {this.badButtonText = badButtonText;}
 	public void setButtonIsVisiable(Boolean buttonIsVisiable) {this.buttonIsVisiable = buttonIsVisiable;}
 	public void setCustomer(BahCustomerBase customer) {this.customer = customer;}
 	public void setCustomerDialogueType(int newDialogueType){this.customerDialogueType = newDialogueType;}

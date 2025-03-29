@@ -187,14 +187,37 @@ public class BahLocalGame extends LocalGame {
             if(!customer.getPlayersTurn()){
                 if(gameState.getCustomerDialogueType() == 1) {
                     //if it is the greeting dialogue
-                    if(textProgress + 1>= gameState.getCustomer().getGreetingLength()) {
+
+                    if(gameState.getDialogueIndex() + 1>= gameState.getCustomer().getGreetingLength()) {
                         //if we've reached the end of the array already (so the next index would be out of bounds)
-                        textProgress = 0;
+
+                        gameState.setDialogueIndex(0);
                         //here I need to make the buttons clickable and give them the responses
+
+                        gameState.setButtonIsVisiable(true);
+                        gameState.setBadButtonText(customer.getBadButtonText());
+                        gameState.setGoodButtonText(customer.getGoodButtonText());
+
                         customer.setPlayersTurn(true);
                     }
                     else {
                         textProgress++;
+                    }
+
+                    if(gameState.getCustomerDialogueType() == 2){
+
+                    }
+
+                    if(gameState.getCustomerDialogueType() == 3){
+
+                    }
+
+                    if(gameState.getCustomerDialogueType() == 4){
+
+                    }
+
+                    if(gameState.getCustomerDialogueType() == 5){
+
                     }
                     //todo add the same type of if elses for the other dialogue sets
                     //if Dialogue == goodbye
