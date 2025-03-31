@@ -229,10 +229,6 @@ public class BahLocalGame extends LocalGame {
                 return true;
             }
         }
-
-        else if (action instanceof BahActionMove) {
-            return false;
-        }
         return false;
 
     }//makeMove
