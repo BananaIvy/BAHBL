@@ -225,7 +225,7 @@ public class BahLocalGame extends LocalGame {
                     else { //End of Greeting Dialogue
                         customer.setPlayersTurn(true);
                         //Reset the Index
-                        gameState.setDialogueIndex(0);
+                        //gameState.setDialogueIndex(0);
 
 
                         //Enable button's as part of the conversation.
@@ -245,7 +245,7 @@ public class BahLocalGame extends LocalGame {
                     }
                     //otherwise set the index back to zero
                     else {
-                        gameState.setDialogueIndex(0);
+                        //gameState.setDialogueIndex(0);
                         customer.setPlayersTurn(true);
                     }
                 }
@@ -257,7 +257,7 @@ public class BahLocalGame extends LocalGame {
                     }
                     //otherwise set the index back to zero
                     else {
-                        gameState.setDialogueIndex(0);
+                        //gameState.setDialogueIndex(0);
                         customer.setPlayersTurn(true);
                     }
                 }
@@ -267,7 +267,7 @@ public class BahLocalGame extends LocalGame {
                         gameState.setDialogueIndex(gameState.getDialogueIndex() + 1);
                     }
                     else{
-                        gameState.setDialogueIndex(0);
+                        //gameState.setDialogueIndex(0);
                         customer.setPlayersTurn(true);
                     }
                 }
@@ -277,7 +277,7 @@ public class BahLocalGame extends LocalGame {
                         gameState.setDialogueIndex(gameState.getDialogueIndex() + 1);
                     }
                     else{
-                        gameState.setDialogueIndex(0);
+                        //gameState.setDialogueIndex(0);
                         customer.setPlayersTurn(true);
                         gameState.setCustomerDialogueType(1);
                         gameState.nextCustomer();
@@ -287,6 +287,7 @@ public class BahLocalGame extends LocalGame {
             return true;
 
         }
+        gameState.setDialogueIndex(0);
         return false;
 
     }//makeMove
