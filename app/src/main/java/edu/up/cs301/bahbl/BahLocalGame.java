@@ -303,4 +303,19 @@ public class BahLocalGame extends LocalGame {
 
     }//makeMove
 
+    /*
+     * ENDINGS
+     */
+    private void goodEnding(){
+        //todo
+    }
+
+    private void badEnding(){
+        //todo
+    }
+
+    private void loreEnding(){
+        //todo
+    }
+
 }
