@@ -1,5 +1,6 @@
 package edu.up.cs301.bahbl;
 
+import android.util.EventLog;
 import android.util.Log;
 
 import edu.up.cs301.GameFramework.LocalGame;
@@ -206,11 +207,27 @@ public class BahLocalGame extends LocalGame {
                 }
                 //Happy Response
                 else if(gameState.getCustomerDialogueType() == 2){
-
+                    //if we have more to go in the array, then go ahead and set the textview to the current dialogue, then index to the next line in the array
+                    if(gameState.getDialogueIndex()+1 < customer.getHappyLength()) {
+                        gameState.setCustomerDialogue(customer.getHappyResponse(gameState.getDialogueIndex()));
+                        gameState.setDialogueIndex(gameState.getDialogueIndex()+1);
+                    }
+                    //otherwise set the index back to zero
+                    else {
+                        gameState.setDialogueIndex(0);
+                    }
                 }
                 //Mad Response
                 else if(gameState.getCustomerDialogueType() == 3){
-
+                    //if we have more to go in the array, then go ahead and set the textview to the current dialogue, then index to the next line in the array
+                    if(gameState.getDialogueIndex()+1 < customer.getMadLength()) {
+                        gameState.setCustomerDialogue(customer.getMadResponse(gameState.getDialogueIndex()));
+                        gameState.setDialogueIndex(gameState.getDialogueIndex()+1);
+                    }
+                    //otherwise set the index back to zero
+                    else {
+                        gameState.setDialogueIndex(0);
+                    }
                 }
                 //Lore
                 else if(gameState.getCustomerDialogueType() == 4){
