@@ -47,12 +47,12 @@ public class BahCPokeangel extends BahCustomerBase {
 		addGreetingDialogue("But a dog cannot!");
 		addGreetingDialogue("A school can go through the Green Glass Door...");
 		addGreetingDialogue("But a house cannot!");
-		addGreetingDialogue("Therefore, which of these can go through the Green Glass Door");
+		addGreetingDialogue("Therefore, which of these can go through the Green Glass Door?");
 
 		//lore response
 		addLoreDialogue("Alas, I have fallen from grace.");
 		addLoreDialogue("Like a gently floating petal on the wind.");
-		addLoreDialogue("I must earn my way back to my eternal redemption");
+		addLoreDialogue("I must earn my way back to my eternal redemption.");
 
 		//farewell response
 		addFarewellDialogue("Thank you, and may the ruler and overlord of all look kindly on you, mortal.");
