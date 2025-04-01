@@ -21,7 +21,7 @@ public class BahCGhost extends BahCustomerBase {
         setBadButton(1);
         setGoodButton(2);
         resetDialogue();
-        setMoney(80);
+        setMoney(20);
 
 
         /* dialogues */
