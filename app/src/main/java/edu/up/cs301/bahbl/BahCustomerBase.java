@@ -64,7 +64,6 @@ public abstract class BahCustomerBase {
         loreDialogue[0] = "This item once killed my father.";
         loreDialogue[1] = "It also was once my father.";
 
-
         goodButtonText = "You're a good customer :)";
         badButtonText = "You're bad lol >:p";
     }

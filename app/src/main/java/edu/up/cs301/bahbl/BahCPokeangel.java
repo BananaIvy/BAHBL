@@ -30,14 +30,12 @@ public class BahCPokeangel extends BahCustomerBase {
 		addHappyResponse("You are wise beyond your years mortal!");
 		addHappyResponse("May you bloom and bear rich fruit,");
 		addHappyResponse("Ere your time here comes to an end!");
-		addHappyResponse("Take my money! Click the register!");
 
 		//mad response
 		addMadResponse("Alas,");
 		addMadResponse("You have disappointed me :(");
 		addMadResponse("I am afraid I must depart...");
 		addMadResponse("Your presence sickens me.");
-		addHappyResponse("Take my money! Click the register!");
 
 		//greeting response
 		addGreetingDialogue("Greetings, mortal soul!");
