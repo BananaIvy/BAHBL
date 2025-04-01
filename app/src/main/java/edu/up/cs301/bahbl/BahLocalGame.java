@@ -76,6 +76,7 @@ public class BahLocalGame extends LocalGame {
         //ends the Customer's interaction
         if (action instanceof BahActionRegister) {
             gameState.addMoney(customer.getMoney());
+            //if the response buttons (good and bad) are still visible, make them invisible
             gameState.setButtonIsVisible(false);
             //Set text to goodbye
             gameState.setDialogueIndex(0);
