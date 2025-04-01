@@ -10,5 +10,8 @@ public class BahCMysticMan extends BahCustomerBase {
         setGoodButton(2);
         resetDialogue();
 
+        addHappyResponse("The money is yours, all you have to do is click...");
+        addMadResponse("The money is yours, all you have to do is click...");
+
     }
 }
