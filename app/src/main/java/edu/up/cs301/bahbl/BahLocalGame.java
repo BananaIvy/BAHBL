@@ -194,7 +194,7 @@ public class BahLocalGame extends LocalGame {
                         gameState.setDialogueIndex(0);
                         //here I need to make the buttons clickable and give them the responses
 
-                        gameState.setButtonIsVisiable(true);
+                        gameState.setButtonIsVisible(true);
                         gameState.setBadButtonText(customer.getBadButtonText());
                         gameState.setGoodButtonText(customer.getGoodButtonText());
 
