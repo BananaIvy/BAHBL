@@ -73,14 +73,16 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	 * sets the dialog in the text view
 	 */
 	protected void updateDisplay() {
-		// set the text in the appropriate widget
+		// Customer text/Dialogue
 		String tempText = state.getCustomerDialogue();
 		customerDialogue.setText(tempText);
 		tempText = "" + state.getMoneyCount();
 
+		// Register Text
 		tempText = "" + Integer.toString(state.getMoneyCount());
 		registerMoney.setText(tempText);
 
+		//Button Texts
 		if (state.getCustomer().getGoodButton() == 1) {
 			tempText = state.getGoodButtonText();
 			button1.setText(tempText);
@@ -121,6 +123,36 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			int resID = R.drawable.purple_delete_button;
 			customer.setImageResource(resID);
 		}
+
+		//Items
+		if(state.isHasKey()){
+			key.setClickable(true);}
+		else{
+			key.setClickable(false);
+		}
+		if(state.isHasPokeball()){
+			pokeball.setClickable(true);}
+		else{
+			pokeball.setClickable(false);
+		}
+		if(state.isHasBag()){
+			bag.setClickable(true);}
+		else{
+			bag.setClickable(false);
+		}
+		if(state.isHasInfoBot()){
+			infoBot.setClickable(true);}
+		else{
+			infoBot.setClickable(false);
+		}
+		if(state.isHasPokeDex()){
+			pokeDex.setClickable(true);}
+		else{
+			pokeDex.setClickable(false);
+		}
+
+
+
 
 		if(state.getCustomer().getPlayersTurn() == false){
 			customerDialogue.setClickable(true);
