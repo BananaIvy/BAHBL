@@ -30,7 +30,9 @@ public class BahGameState extends GameState {
 	private boolean hasInfoBot;
 	private boolean hasBag;
 	private boolean hasPokeDex;
-	private Boolean buttonIsVisible;
+	private Boolean buttonIsVisiable;
+	private String goodButtonText;
+	private String badButtonText;
 
 	//Constructor for start of game
 	public BahGameState(){
@@ -45,7 +47,9 @@ public class BahGameState extends GameState {
 		customerDialogueType = 1;
 		dialogueIndex = 0;
 		customerDialogue = customer.getGreetingDialogue(0);
-		buttonIsVisible = false;
+		buttonIsVisiable = false;
+		goodButtonText = "";
+		badButtonText = "";
 	}
 
 	//Copy Constructor
@@ -61,7 +65,9 @@ public class BahGameState extends GameState {
 		customerDialogueType = currentState.customerDialogueType;
 		dialogueIndex = currentState.dialogueIndex;
 		customerDialogue = currentState.getCurrentCustomerDialogue();
-		buttonIsVisible = currentState.buttonIsVisible;
+		buttonIsVisiable = currentState.buttonIsVisiable;
+		goodButtonText = currentState.goodButtonText;
+		badButtonText = currentState.badButtonText;
 	}
 
 	//Methods
@@ -96,7 +102,10 @@ public class BahGameState extends GameState {
 
 	//Getter Methods
 
-	public Boolean getButtonIsVisible() {return buttonIsVisible;}
+
+	public String getGoodButtonText() {return goodButtonText;}
+	public String getBadButtonText() {return badButtonText;}
+	public Boolean getButtonIsVisiable() {return buttonIsVisiable;}
 	public int getCustomerDialogueType() {return customerDialogueType;}
 	public int getStoryProgress() {return storyProgress;}
 	public int getMoneyCount() {return moneyCount;}
@@ -130,7 +139,10 @@ public class BahGameState extends GameState {
 
 	//Setter Methods
 
-	public void setButtonIsVisible(Boolean buttonIsVisible) {this.buttonIsVisible = buttonIsVisible;}
+
+	public void setGoodButtonText(String goodButtonText) {this.goodButtonText = goodButtonText;}
+	public void setBadButtonText(String badButtonText) {this.badButtonText = badButtonText;}
+	public void setButtonIsVisible(Boolean buttonIsVisiable) {this.buttonIsVisiable = buttonIsVisiable;}
 	public void setCustomer(BahCustomerBase customer) {this.customer = customer;}
 	public void setCustomerDialogueType(int newDialogueType){this.customerDialogueType = newDialogueType;}
 	public void setDialogueIndex(int dialogueIndex) {this.dialogueIndex = dialogueIndex;}

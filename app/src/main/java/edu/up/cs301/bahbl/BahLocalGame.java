@@ -27,7 +27,8 @@ public class BahLocalGame extends LocalGame {
     @Override
     protected void sendUpdatedStateTo(GamePlayer p) {
 
-    }
+    }//Laura your immune system is weak sauce.
+
 
     /**
      * can this player move
@@ -194,7 +195,7 @@ public class BahLocalGame extends LocalGame {
                         gameState.setDialogueIndex(0);
                         //here I need to make the buttons clickable and give them the responses
 
-                        gameState.setButtonIsVisiable(true);
+                        gameState.setButtonIsVisible(true);
                         gameState.setBadButtonText(customer.getBadButtonText());
                         gameState.setGoodButtonText(customer.getGoodButtonText());
 
