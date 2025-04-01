@@ -55,7 +55,7 @@ public class BahCPokeangel extends BahCustomerBase {
 		addLoreDialogue("I must earn my way back to my eternal redemption");
 
 		//farewell response
-		addFarewellDialogue("May the ruler and overlord of all look kindly on you, mortal.");
+		addFarewellDialogue("Thank you, and may the ruler and overlord of all look kindly on you, mortal.");
 		addFarewellDialogue("Your current soul is too scarred to find rest here.");
 
 		//button text responses
