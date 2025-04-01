@@ -223,8 +223,14 @@ public class BahLocalGame extends LocalGame {
                 }
                 //Goodbye
                 else if(gameState.getCustomerDialogueType() == 5){
-
+                    gameState.setDialogueIndex(0);
+                    while(gameState.getDialogueIndex() + 1 < gameState.getCustomer().getFarewellLength()){
+                        gameState.setCustomerDialogue(gameState.getCurrentCustomerDialogue());
+                        gameState.setDialogueIndex(gameState.getDialogueIndex() + 1);
+                    }
                 }
+
+
                 //todo add the same type of if elses for the other dialogue sets
                 //if Dialogue == goodbye
                 //Update the text to the next text in the goodbye-text Array
