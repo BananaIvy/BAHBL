@@ -155,7 +155,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			game.sendAction(new BahActionProgressText(this));
 
 		}
-		else if(button.getId() == R.id.register_keyboard){
+		else if(button.getId() == R.id.total_monitor){
 			game.sendAction(new BahActionRegister(this));
 
 		}
