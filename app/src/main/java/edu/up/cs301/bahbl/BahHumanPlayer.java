@@ -77,11 +77,8 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 		customerDialogue.setText(tempText);
 
-		goodButton.setText("" + state.getGoodButtonText());
-		badButton.setText("" + state.getBadButtonText());
 
-		goodButton.setEnabled(state.getButtonIsVisiable());
-		badButton.setEnabled(state.getButtonIsVisiable());
+		goodButton.isClickable();
 
 	}
 
@@ -95,6 +92,8 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	public void onClick(View button) {
 		// if we are not yet connected to a game, ignore
 		if (game == null) return;
+
+		//Savi did this code which might be going ahead:
 
 		if(button.getId() == R.id.Option1){
 			game.sendAction(new BahActionButton(this, button));
