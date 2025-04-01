@@ -102,18 +102,7 @@ public class BahLocalGame extends LocalGame {
                     gameState.setCustomerDialogueType(2);
                     //The customer gives the item, we can changes this later to better fit the game.
                     customer.setHasGiven(true);
-                    //Sets the different items as showing given depending on the customer
-                    if(customer.getCustomerName().equals("Ghost")){
-                        gameState.setHasPokeball(true);
-                    }else if(customer.getCustomerName().equals("Pokeangel")){
-                        gameState.setHasInfoBot(true);
-                    }else if (customer.getCustomerName().equals("Lug")) {
-                        gameState.setHasBag(true);
-                    }else if(customer.getCustomerName().equals("Mystic Man")){
-                        gameState.setHasPokeDex(true);
-                    } else if(customer.getCustomerName().equals("Demon Lord Nux")){
-                        gameState.setHasKey(true);
-                    }
+
                 }
                 //if the button is the bad button
                 if (customer.getBadButton() == ((BahActionButton) action).getWhichButton()) {
@@ -276,9 +265,21 @@ public class BahLocalGame extends LocalGame {
                     }
                     else{
                         //gameState.setDialogueIndex(0);
-                        //For now we get the key back
-                        gameState.setHasKey(true);
                         customer.setPlayersTurn(true);
+                        //Sets the different items as showing given depending on the customer
+                        if(customer.getCustomerName().equals("Ghost")){
+                            gameState.setHasPokeball(true);
+                            //todo : For now we get the key back. Make endings!!
+                            gameState.setHasKey(true);
+                        }else if(customer.getCustomerName().equals("Pokeangel")){
+                            gameState.setHasInfoBot(true);
+                        }else if (customer.getCustomerName().equals("Lug")) {
+                            gameState.setHasBag(true);
+                        }else if(customer.getCustomerName().equals("Mystic Man")){
+                            gameState.setHasPokeDex(true);
+                        } else if(customer.getCustomerName().equals("Demon Lord Nux")){
+                            gameState.setHasKey(true);
+                        }
                     }
                 }
                 //Goodbye
