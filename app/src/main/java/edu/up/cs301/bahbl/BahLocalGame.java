@@ -236,8 +236,9 @@ public class BahLocalGame extends LocalGame {
                 }
                 //Lore
                 else if(gameState.getCustomerDialogueType() == 4){
-                    if(gameState.getDialogueIndex() + 1 < gameState.getCustomer().getLoreLength()){
-                        gameState.setDialogueIndex(0);
+                    if(gameState.getDialogueIndex() + 1 < gameState.getCustomer().getLoreLength()) {
+                        gameState.setCustomerDialogue(customer.getLoreDialogue(gameState.getDialogueIndex()));
+                        gameState.setDialogueIndex(gameState.getDialogueIndex() + 1);
                     }
                     else{
                         gameState.setDialogueIndex(0);
@@ -247,10 +248,13 @@ public class BahLocalGame extends LocalGame {
                 //Goodbye
                 else if(gameState.getCustomerDialogueType() == 5){
                     gameState.setDialogueIndex(0);
-                    while(gameState.getDialogueIndex() + 1 < gameState.getCustomer().getFarewellLength()){
+                    if(gameState.getDialogueIndex() + 1 < gameState.getCustomer().getFarewellLength()){
                         gameState.setCustomerDialogue(gameState.getCurrentCustomerDialogue());
                         gameState.setDialogueIndex(gameState.getDialogueIndex() + 1);
-                        customer.setPlayersTurn(false);
+                    }
+                    else{
+                        gameState.setDialogueIndex(0);
+                        customer.setPlayersTurn(true);
                     }
                 }
             }
