@@ -10,6 +10,7 @@ public class BahCNux extends BahCustomerBase {
         setBadButton(1);
         setGoodButton(2);
         resetDialogue();
+        setMoney(100);
 
         addHappyResponse("MONEY! TAKE! NO POKEMON!");
         addMadResponse("MONEY! TAKE! NO POKEMON!");
