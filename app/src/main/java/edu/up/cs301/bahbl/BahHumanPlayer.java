@@ -75,9 +75,9 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	protected void updateDisplay() {
 		// set the text in the appropriate widget
 		String tempText = state.getCustomerDialogue();
-
 		customerDialogue.setText(tempText);
-		registerMoney.setText(state.getMoneyCount());
+		tempText = "" + state.getMoneyCount();
+		registerMoney.setText(tempText);
 
 		goodButton.isClickable();
 
@@ -160,11 +160,6 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		
 	    // Load the layout resource for our GUI
 		activity.setContentView(R.layout.bahbl_human_player);
-
-		//this.testResultsTextView = (TextView) activity.findViewById(R.id.editTextTextMultiLine);
-
-		//Button runTestButton = (Button)activity.findViewById(R.id.runTestButton);
-		//runTestButton.setOnClickListener(this);
 
 
 		//Initialize the widget reference member variables
