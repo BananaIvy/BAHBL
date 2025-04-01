@@ -19,7 +19,6 @@ import edu.up.cs301.GameFramework.players.GamePlayer;
  */
 public class BahLocalGame extends LocalGame {
 
-    private int textProgress;
     // the game's state
     private BahGameState gameState;
     private BahCustomerBase customer;
@@ -27,7 +26,8 @@ public class BahLocalGame extends LocalGame {
 
     @Override
     protected void sendUpdatedStateTo(GamePlayer p) {
-
+        BahGameState copyState = new BahGameState(gameState);
+        p.sendInfo(copyState);
     }
 
 
@@ -44,11 +44,11 @@ public class BahLocalGame extends LocalGame {
 
     @Override
     protected String checkIfGameOver() {
-        if(gameState.getStoryProgress() == 1){
-            return "Game is over!";
+        if(gameState.getStoryProgress() == 5){
+            return "You reached the end! Game is Over";
         }
 
-        return "";
+        return null;
     }
 
     /**
@@ -61,7 +61,6 @@ public class BahLocalGame extends LocalGame {
         }
         this.gameState = (BahGameState) state;
         super.state = state;
-        textProgress = 0;
     }
 
     /**
@@ -77,7 +76,10 @@ public class BahLocalGame extends LocalGame {
         //ends the Customer's interaction
         if (action instanceof BahActionRegister) {
             gameState.addMoney(1);
+            gameState.setButtonIsVisible(false);
+            //Set text to goodbye
             gameState.setDialogueIndex(0);
+            gameState.setCustomerDialogueType(5);
             return true;
         }
         //If one of the buttons is pressed
@@ -186,23 +188,26 @@ public class BahLocalGame extends LocalGame {
         else if (action instanceof BahActionProgressText) {
             //This action is valid when it's not the players turn to press a button
             //It's now the customers turn to talk
+
             if(!customer.getPlayersTurn()){
                 //Greeting dialogue
                 if(gameState.getCustomerDialogueType() == 1) {
 
-                    //if we've reached the end of the array already (so the next index would be out of bounds)
-                    if (gameState.getDialogueIndex() + 1 >= gameState.getCustomer().getGreetingLength()) {
+                    //if there's more text to scroll through
+                    if (gameState.getDialogueIndex() < customer.getGreetingLength()) {
+                        //Go to next Dialogue Index
+                        gameState.setDialogueIndex(gameState.getDialogueIndex()+1);
 
+                    } else { //End of Greeting Dialogue
+                        //Reset the Index
                         gameState.setDialogueIndex(0);
-                        //here I need to make the buttons clickable and give them the responses
 
+                        //Enable button's as part of the conversation.
                         gameState.setButtonIsVisible(true);
                         gameState.setBadButtonText(customer.getBadButtonText());
                         gameState.setGoodButtonText(customer.getGoodButtonText());
 
-                        customer.setPlayersTurn(true);
-                    } else {
-                        textProgress++;
+                        gameState.getCustomer().setPlayersTurn(true);
                     }
                 }
                 //Happy Response
@@ -231,12 +236,23 @@ public class BahLocalGame extends LocalGame {
                 }
                 //Lore
                 else if(gameState.getCustomerDialogueType() == 4){
+                    if(gameState.getDialogueIndex() + 1 >= gameState.getCustomer().getLoreLength()){
+                        gameState.setDialogueIndex(0);
+                        customer.setPlayersTurn(true);
+                    } else{
 
+                    }
                 }
                 //Goodbye
                 else if(gameState.getCustomerDialogueType() == 5){
-
+                    gameState.setDialogueIndex(0);
+                    while(gameState.getDialogueIndex() + 1 < gameState.getCustomer().getFarewellLength()){
+                        gameState.setCustomerDialogue(gameState.getCurrentCustomerDialogue());
+                        gameState.setDialogueIndex(gameState.getDialogueIndex() + 1);
+                    }
                 }
+
+
                 //todo add the same type of if elses for the other dialogue sets
                 //if Dialogue == goodbye
                 //Update the text to the next text in the goodbye-text Array
