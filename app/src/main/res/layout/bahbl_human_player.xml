@@ -52,7 +52,7 @@
             android:textSize="105sp" />
 
         <ImageButton
-            android:id="@+id/Pokeangel_customer"
+            android:id="@+id/customer"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginLeft="-130dp"
