@@ -205,19 +205,19 @@ public class BahLocalGame extends LocalGame {
                     }
                 }
                 //Happy Response
-                if(gameState.getCustomerDialogueType() == 2){
+                else if(gameState.getCustomerDialogueType() == 2){
 
                 }
                 //Mad Response
-                if(gameState.getCustomerDialogueType() == 3){
+                else if(gameState.getCustomerDialogueType() == 3){
 
                 }
                 //Lore
-                if(gameState.getCustomerDialogueType() == 4){
+                else if(gameState.getCustomerDialogueType() == 4){
 
                 }
                 //Goodbye
-                if(gameState.getCustomerDialogueType() == 5){
+                else if(gameState.getCustomerDialogueType() == 5){
 
                 }
                 //todo add the same type of if elses for the other dialogue sets
