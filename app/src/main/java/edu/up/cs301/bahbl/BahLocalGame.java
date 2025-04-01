@@ -194,7 +194,7 @@ public class BahLocalGame extends LocalGame {
                 if(gameState.getCustomerDialogueType() == 1) {
 
                     //if there's more text to scroll through
-                    if (gameState.getDialogueIndex() < customer.getGreetingLength()) {
+                    if (gameState.getDialogueIndex()+1 < customer.getGreetingLength()) {
                         //Go to next Dialogue Index
                         gameState.setDialogueIndex(gameState.getDialogueIndex()+1);
 
@@ -254,6 +254,7 @@ public class BahLocalGame extends LocalGame {
                     else{
                         gameState.setDialogueIndex(0);
                         customer.setPlayersTurn(true);
+                        gameState.nextCustomer();
                     }
                 }
             }
