@@ -183,6 +183,7 @@ public class BahLocalGame extends LocalGame {
         else if (action instanceof BahActionProgressText) {
             //This action is valid when it's not the players turn to press a button
             //It's now the customers turn to talk
+
             if(!customer.getPlayersTurn()){
                 //Greeting dialogue
                 if(gameState.getCustomerDialogueType() == 1) {
@@ -201,7 +202,7 @@ public class BahLocalGame extends LocalGame {
                         gameState.setBadButtonText(customer.getBadButtonText());
                         gameState.setGoodButtonText(customer.getGoodButtonText());
 
-                        customer.setPlayersTurn(true);
+                        gameState.getCustomer().setPlayersTurn(true);
                     }
                 }
                 //Happy Response
@@ -218,7 +219,7 @@ public class BahLocalGame extends LocalGame {
                         gameState.setDialogueIndex(0);
                         customer.setPlayersTurn(true);
                     } else{
-                        textProgress++;
+
                     }
                 }
                 //Goodbye
