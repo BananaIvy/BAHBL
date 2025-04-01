@@ -247,6 +247,7 @@ public class BahLocalGame extends LocalGame {
                     while(gameState.getDialogueIndex() + 1 < gameState.getCustomer().getFarewellLength()){
                         gameState.setCustomerDialogue(gameState.getCurrentCustomerDialogue());
                         gameState.setDialogueIndex(gameState.getDialogueIndex() + 1);
+                        customer.setPlayersTurn(false);
                     }
                 }
             }
