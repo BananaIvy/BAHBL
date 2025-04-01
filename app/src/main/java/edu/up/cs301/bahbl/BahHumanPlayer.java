@@ -76,10 +76,13 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		// set the text in the appropriate widget
 		String tempText = state.getCustomerDialogue();
 		customerDialogue.setText(tempText);
-		tempText = " " + state.getMoneyCount();
+
+		tempText = "" + Integer.toString(state.getMoneyCount());
 		registerMoney.setText(tempText);
+
 		tempText = state.getGoodButtonText();
 		goodButton.setText(tempText);
+
 		tempText = state.getBadButtonText();
 		badButton.setText(tempText);
 
@@ -110,7 +113,8 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		}
 
 		if(state.getCustomer().getPlayersTurn() == false){
-			customerDialogue.setClickable(false);
+			customerDialogue.setClickable(true);
+			//Todo rewrite the players turn implementations so that this can work.
 		}
 		else{
 			customerDialogue.setClickable(true);
