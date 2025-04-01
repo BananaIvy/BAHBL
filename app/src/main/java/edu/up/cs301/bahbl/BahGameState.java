@@ -174,8 +174,8 @@ public class BahGameState extends GameState {
 		}
 	}
 	//We don't want to be able to set the money, just add or lose money.
-	public void addMoney(int moneyCount) {this.moneyCount = this.moneyCount + moneyCount;}
-	public void loseMoney(int moneyCount) {this.moneyCount = this.moneyCount - moneyCount;}
+	public void addMoney(int moneyCount) {this.moneyCount += moneyCount;}
+	public void loseMoney(int moneyCount) {this.moneyCount -= moneyCount;}
 	public void nextCustomer(){
 		customerIndex++;
 		customer = customers[customerIndex];

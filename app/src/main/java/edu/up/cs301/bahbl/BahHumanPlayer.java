@@ -76,10 +76,14 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		// set the text in the appropriate widget
 		String tempText = state.getCustomerDialogue();
 		customerDialogue.setText(tempText);
-		tempText = "" + state.getMoneyCount();
+		tempText = " " + state.getMoneyCount();
 		registerMoney.setText(tempText);
+		tempText = state.getGoodButtonText();
+		goodButton.setText(tempText);
+		tempText = state.getBadButtonText();
+		badButton.setText(tempText);
 
-
+		//Changes the customer to the gamestates one
 		if(state.getCustomer() instanceof BahCGhost) {
 			int resID = R.drawable.pngimg_com___pokemon_squirtle;
 			customer.setImageResource(resID);
@@ -105,7 +109,13 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			customer.setImageResource(resID);
 		}
 
-		goodButton.isClickable();
+		if(state.getCustomer().getPlayersTurn() == false){
+			customerDialogue.setClickable(false);
+		}
+		else{
+			customerDialogue.setClickable(true);
+		}
+
 
 	}
 
