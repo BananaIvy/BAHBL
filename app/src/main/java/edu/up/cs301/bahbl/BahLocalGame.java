@@ -186,11 +186,11 @@ public class BahLocalGame extends LocalGame {
             //This action is valid when it's not the players turn to press a button
             //It's now the customers turn to talk
             if(!customer.getPlayersTurn()){
+                //Greeting dialogue
                 if(gameState.getCustomerDialogueType() == 1) {
-                    //if it is the greeting dialogue
 
+                    //if we've reached the end of the array already (so the next index would be out of bounds)
                     if (gameState.getDialogueIndex() + 1 >= gameState.getCustomer().getGreetingLength()) {
-                        //if we've reached the end of the array already (so the next index would be out of bounds)
 
                         gameState.setDialogueIndex(0);
                         //here I need to make the buttons clickable and give them the responses
