@@ -74,7 +74,10 @@ public class BahLocalGame extends LocalGame {
         //ends the Customer's interaction
         if (action instanceof BahActionRegister) {
             gameState.addMoney(1);
+            gameState.setButtonIsVisible(false);
+            //Set text to goodbye
             gameState.setDialogueIndex(0);
+            gameState.setCustomerDialogueType(5);
             return true;
         }
         //If one of the buttons is pressed
