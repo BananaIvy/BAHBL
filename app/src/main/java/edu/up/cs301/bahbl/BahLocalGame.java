@@ -81,6 +81,8 @@ public class BahLocalGame extends LocalGame {
             gameState.setDialogueIndex(0);
             gameState.setCustomerDialogueType(5);
             return true;
+            //todo set something in customer so they respond negatively if you immediately press register w/o talking to them
+            //todo will need booleans and crap, might take a hot minute
         }
         //If one of the buttons is pressed
         else if (action instanceof BahActionButton) {
@@ -194,13 +196,14 @@ public class BahLocalGame extends LocalGame {
                 if(gameState.getCustomerDialogueType() == 1) {
 
                     //if there's more text to scroll through
-                    if (gameState.getDialogueIndex()+1 < customer.getGreetingLength()) {
+                    if (gameState.getDialogueIndex() < customer.getGreetingLength()) {
                         //Go to next Dialogue Index
                         gameState.setDialogueIndex(gameState.getDialogueIndex()+1);
 
                     } else { //End of Greeting Dialogue
                         //Reset the Index
                         gameState.setDialogueIndex(0);
+                        customer.setPlayersTurn(true);
 
                         //Enable button's as part of the conversation.
                         gameState.setButtonIsVisible(true);
@@ -212,7 +215,9 @@ public class BahLocalGame extends LocalGame {
                 else if(gameState.getCustomerDialogueType() == 2){
                     //if we have more to go in the array, then go ahead and set the textview to the current dialogue, then index to the next line in the array
                     if(gameState.getDialogueIndex()+1 < customer.getHappyLength()) {
-                        gameState.setCustomerDialogue(customer.getHappyResponse(gameState.getDialogueIndex()));
+                        //so in theory, this line isn't necessary because a method somewhere else does it. I'm keeping it in comments in case
+                        //that's untrue, so that we can just uncomment to get it back
+                        // gameState.setCustomerDialogue(customer.getHappyResponse(gameState.getDialogueIndex()));
                         gameState.setDialogueIndex(gameState.getDialogueIndex()+1);
                     }
                     //otherwise set the index back to zero
@@ -225,7 +230,6 @@ public class BahLocalGame extends LocalGame {
                 else if(gameState.getCustomerDialogueType() == 3){
                     //if we have more to go in the array, then go ahead and set the textview to the current dialogue, then index to the next line in the array
                     if(gameState.getDialogueIndex()+1 < customer.getMadLength()) {
-                        gameState.setCustomerDialogue(customer.getMadResponse(gameState.getDialogueIndex()));
                         gameState.setDialogueIndex(gameState.getDialogueIndex()+1);
                     }
                     //otherwise set the index back to zero
@@ -237,7 +241,6 @@ public class BahLocalGame extends LocalGame {
                 //Lore
                 else if(gameState.getCustomerDialogueType() == 4){
                     if(gameState.getDialogueIndex() + 1 < gameState.getCustomer().getLoreLength()) {
-                        gameState.setCustomerDialogue(customer.getLoreDialogue(gameState.getDialogueIndex()));
                         gameState.setDialogueIndex(gameState.getDialogueIndex() + 1);
                     }
                     else{
@@ -248,7 +251,6 @@ public class BahLocalGame extends LocalGame {
                 //Goodbye
                 else if(gameState.getCustomerDialogueType() == 5){
                     if(gameState.getDialogueIndex() + 1 < gameState.getCustomer().getFarewellLength()){
-                        gameState.setCustomerDialogue(gameState.getCurrentCustomerDialogue());
                         gameState.setDialogueIndex(gameState.getDialogueIndex() + 1);
                     }
                     else{
