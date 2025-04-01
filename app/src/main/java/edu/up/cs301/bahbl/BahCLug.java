@@ -25,6 +25,14 @@ public class BahCLug extends BahCustomerBase {
 
 
         /* dialogues */
+
+        //greeting response
+        addGreetingDialogue("Greetings!");
+        addGreetingDialogue("My designator is X57345ROBOT!");
+        addGreetingDialogue("But you can call me Lug!");
+        addGreetingDialogue("It is a pleasure to make your acquaintance!");
+        addGreetingDialogue("I am searching for a small, red infobot. Would you happen to have seen it?");
+
         //happy response
         addHappyResponse("Your assistance is most appreciated!");
         addHappyResponse("I would express my gratitude in a more...");
@@ -45,12 +53,6 @@ public class BahCLug extends BahCustomerBase {
         addMadResponse("Unless of course my math is incorrect...");
         addMadResponse("Which is statistically impossible!");
 
-        //greeting response
-        addGreetingDialogue("Greetings!");
-        addGreetingDialogue("My designator is X57345ROBOT!");
-        addGreetingDialogue("But you can call me Lug!");
-        addGreetingDialogue("It is a pleasure to make your acquaintance!");
-
         //lore response
         addLoreDialogue("This infoBot was the last thing I needed to get back!");
         addLoreDialogue("I got stuck down here after trying to travel to another planet.");
@@ -67,7 +69,7 @@ public class BahCLug extends BahCustomerBase {
 
         //button text responses
         setGoodButtonText("I've seen the infoBot!");
-        setBadButtonText("Tell Lug you haven't seen an infoBot");
+        setBadButtonText("I haven't seen an infoBot");
 
     }
 
