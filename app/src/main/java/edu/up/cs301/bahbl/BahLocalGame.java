@@ -218,6 +218,7 @@ public class BahLocalGame extends LocalGame {
                     //otherwise set the index back to zero
                     else {
                         gameState.setDialogueIndex(0);
+                        customer.setPlayersTurn(true);
                     }
                 }
                 //Mad Response
@@ -230,6 +231,7 @@ public class BahLocalGame extends LocalGame {
                     //otherwise set the index back to zero
                     else {
                         gameState.setDialogueIndex(0);
+                        customer.setPlayersTurn(true);
                     }
                 }
                 //Lore
@@ -239,6 +241,7 @@ public class BahLocalGame extends LocalGame {
                     }
                     else{
                         gameState.setDialogueIndex(0);
+                        customer.setPlayersTurn(true);
                     }
                 }
                 //Goodbye
@@ -250,7 +253,6 @@ public class BahLocalGame extends LocalGame {
                     }
                 }
             }
-            customer.setPlayersTurn(true);
             return true;
 
         }
