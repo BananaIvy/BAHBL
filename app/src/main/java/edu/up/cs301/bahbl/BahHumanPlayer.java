@@ -76,7 +76,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		// set the text in the appropriate widget
 		String tempText = state.getCustomerDialogue();
 		customerDialogue.setText(tempText);
-		tempText = " " + state.getMoneyCount();
+		tempText = "" + state.getMoneyCount();
 		registerMoney.setText(tempText);
 		tempText = state.getGoodButtonText();
 		goodButton.setText(tempText);

@@ -44,9 +44,9 @@
             android:layout_marginTop="125dp"
             android:layout_marginLeft="-370dp"
             android:layout_marginRight="340dp"
-            android:layout_weight="0"
+            android:layout_weight="1"
             android:background="#00FFFFFF"
-            android:text="0"
+            android:text=""
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             android:textColor="#7FD06E"
             android:textSize="105sp" />
