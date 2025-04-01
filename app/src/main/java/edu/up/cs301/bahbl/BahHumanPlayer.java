@@ -79,6 +79,32 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		tempText = "" + state.getMoneyCount();
 		registerMoney.setText(tempText);
 
+
+		if(state.getCustomer() instanceof BahCGhost) {
+			int resID = R.drawable.pngimg_com___pokemon_squirtle;
+			customer.setImageResource(resID);
+		}
+		else if(state.getCustomer() instanceof BahCPokeangel){
+			int resID = R.drawable.pokeangel;
+			customer.setImageResource(resID);
+		}
+		else if(state.getCustomer() instanceof BahCLug){
+			int resID = R.drawable.lug;
+			customer.setImageResource(resID);
+		}
+		else if(state.getCustomer() instanceof BahCMysticMan){
+			int resID = R.drawable.mysteryman;
+			customer.setImageResource(resID);
+		}
+		else if(state.getCustomer() instanceof BahCNux){
+			int resID = R.drawable.nux;
+			customer.setImageResource(resID);
+		}
+		else{
+			int resID = R.drawable.purple_delete_button;
+			customer.setImageResource(resID);
+		}
+
 		goodButton.isClickable();
 
 	}
