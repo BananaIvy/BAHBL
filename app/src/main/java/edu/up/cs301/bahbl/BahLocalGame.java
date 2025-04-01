@@ -27,7 +27,8 @@ public class BahLocalGame extends LocalGame {
     @Override
     protected void sendUpdatedStateTo(GamePlayer p) {
 
-    }
+    }//Laura your immune system is weak sauce.
+
 
     /**
      * can this player move
