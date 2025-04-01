@@ -1,7 +1,5 @@
 package edu.up.cs301.bahbl;
 
-import androidx.annotation.NonNull;
-
 /**
  * this is the base that all the different customers are based on.
  * @author Laura Patla
@@ -19,6 +17,7 @@ public abstract class BahCustomerBase {
     //Tracks the status of the items the customer has
     private boolean hasGiven;
     private boolean hasReceived;
+    private boolean hasFinishedResponse = false;
 
     //Possible customer dialogue
     private String[] greetingDialogue;  //1
@@ -105,6 +104,7 @@ public abstract class BahCustomerBase {
     public int getFarewellLength() {return farewellDialogue.length;}
     public String getGoodButtonText() {return goodButtonText;}
     public String getBadButtonText() {return badButtonText;}
+    public boolean getHasFinishedResponse() {return hasFinishedResponse;}
 
     //Setter methods
 
@@ -120,6 +120,7 @@ public abstract class BahCustomerBase {
     public void setGoodButton(int goodButton) {this.goodButton = goodButton;}
     public void setGoodButtonText(String goodButtonText) {this.goodButtonText = goodButtonText;}
     //For overwriting dialogue within the array
+    public void setHasFinishedResponse(boolean hasFinishedResponse) {this.hasFinishedResponse = hasFinishedResponse;}
     public void setFarewellDialogue(String farewellDialogue, int index) {this.farewellDialogue[index] = farewellDialogue;}
     public void setGreetingDialogue(String greetingDialogue, int index) {this.greetingDialogue[index] = greetingDialogue;}
     public void setHappyResponse(String happyResponse, int index) {this.happyResponse[index] = happyResponse;}
