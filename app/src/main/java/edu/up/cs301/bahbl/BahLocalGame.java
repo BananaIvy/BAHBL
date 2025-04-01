@@ -214,7 +214,12 @@ public class BahLocalGame extends LocalGame {
                 }
                 //Lore
                 else if(gameState.getCustomerDialogueType() == 4){
-
+                    if(gameState.getDialogueIndex() + 1 >= gameState.getCustomer().getLoreLength()){
+                        gameState.setDialogueIndex(0);
+                        customer.setPlayersTurn(true);
+                    } else{
+                        textProgress++;
+                    }
                 }
                 //Goodbye
                 else if(gameState.getCustomerDialogueType() == 5){
