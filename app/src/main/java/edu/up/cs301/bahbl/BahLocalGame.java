@@ -81,6 +81,8 @@ public class BahLocalGame extends LocalGame {
             //Set text to goodbye
             gameState.setDialogueIndex(0);
             gameState.setCustomerDialogueType(5);
+            //it is now the next customer's turn to talk, so the player cannot click anything but the dialogue
+            customer.setPlayersTurn(false);
             return true;
             //todo set something in customer so they respond negatively if you immediately press register w/o talking to them
             //todo will need booleans and crap, might take a hot minute
@@ -104,6 +106,8 @@ public class BahLocalGame extends LocalGame {
                     //set the next set of dialogue to be the customer's negative response
                     gameState.setCustomerDialogueType(3);
                 }
+                //make it so the player can only click the text now
+                customer.setPlayersTurn(false);
                 // denote that this was a legal/successful move
                 return true;
             }
@@ -197,14 +201,16 @@ public class BahLocalGame extends LocalGame {
                 if(gameState.getCustomerDialogueType() == 1) {
 
                     //if there's more text to scroll through
-                    if (gameState.getDialogueIndex() < customer.getGreetingLength()-1) {
+                    if (gameState.getDialogueIndex() < customer.getGreetingLength()-2) {
                         //Go to next Dialogue Index
                         gameState.setDialogueIndex(gameState.getDialogueIndex()+1);
 
-                    } else { //End of Greeting Dialogue
+                    }
+                    else { //End of Greeting Dialogue
+                        customer.setPlayersTurn(true);
                         //Reset the Index
                         gameState.setDialogueIndex(0);
-                        customer.setPlayersTurn(true);
+
 
                         //Enable button's as part of the conversation.
                         gameState.setButtonIsVisible(true);
