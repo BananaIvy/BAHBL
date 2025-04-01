@@ -39,7 +39,7 @@ public class BahGameState extends GameState {
 	public BahGameState(){
 		storyProgress = 0;
 		moneyCount = 0;
-		hasKey = false;
+		hasKey = true;
 		hasPokeball = false;
 		hasInfoBot = false;
 		hasBag = false;
