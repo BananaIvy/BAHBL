@@ -247,7 +247,6 @@ public class BahLocalGame extends LocalGame {
                 }
                 //Goodbye
                 else if(gameState.getCustomerDialogueType() == 5){
-                    gameState.setDialogueIndex(0);
                     if(gameState.getDialogueIndex() + 1 < gameState.getCustomer().getFarewellLength()){
                         gameState.setCustomerDialogue(gameState.getCurrentCustomerDialogue());
                         gameState.setDialogueIndex(gameState.getDialogueIndex() + 1);
