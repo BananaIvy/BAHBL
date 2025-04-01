@@ -141,14 +141,16 @@ public class BahLocalGame extends LocalGame {
                     //If it's not, return false or flash the screen.
 
                     if(customer.getItem() == 1){
+                        //todo set an if case for how much money you have to determine if
+                        //todo THIS IS WHERE WE SHOULD TRIGGER ENDING EVENTS
                         gameState.setHasKey(false);
                         gameState.setCustomerDialogueType(4);
                         gameState.setDialogueIndex(0);
-                    } else {
+                        customer.setPlayersTurn(false);
+                    }
+                    else{
                         return false;
                     }
-
-                    return true;
                 }
                 else if(((BahActionItem) action).getThisItem() == 2 && gameState.isHasInfoBot()){
                     //Needs to check whether or not the item is the customers item
@@ -156,13 +158,14 @@ public class BahLocalGame extends LocalGame {
                     //If it's not, return false or flash the screen.
 
                     if(customer.getItem() == 2){
-                        gameState.setHasKey(false);
+                        gameState.setHasInfoBot(false);
+                        gameState.setCustomerDialogueType(4);
                         gameState.setDialogueIndex(0);
+                        customer.setPlayersTurn(false);
                     } else {
                         return false;
                     }
 
-                    return true;
                 }
                 else if(((BahActionItem) action).getThisItem() == 3 && gameState.isHasBag()){
                     //Needs to check whether or not the item is the customers item
@@ -170,13 +173,14 @@ public class BahLocalGame extends LocalGame {
                     //If it's not, return false or flash the screen.
 
                     if(customer.getItem() == 3){
-                        gameState.setHasKey(false);
+                        gameState.setHasBag(false);
+                        gameState.setCustomerDialogueType(4);
                         gameState.setDialogueIndex(0);
+                        customer.setPlayersTurn(false);
                     } else {
                         return false;
                     }
 
-                    return true;
                 }
                 else if(((BahActionItem) action).getThisItem() == 4 && gameState.isHasPokeball()){
                     //Needs to check whether or not the item is the customers item
@@ -184,13 +188,14 @@ public class BahLocalGame extends LocalGame {
                     //If it's not, return false or flash the screen.
 
                     if(customer.getItem() == 4){
-                        gameState.setHasKey(false);
+                        gameState.setHasPokeball(false);
+                        gameState.setCustomerDialogueType(4);
                         gameState.setDialogueIndex(0);
+                        customer.setPlayersTurn(false);
                     } else {
                         return false;
                     }
 
-                    return true;
                 }
                 else if(((BahActionItem) action).getThisItem() == 5 && gameState.isHasPokeDex()){
                     //Needs to check whether or not the item is the customers item
@@ -198,14 +203,16 @@ public class BahLocalGame extends LocalGame {
                     //If it's not, return false or flash the screen.
 
                     if(customer.getItem() == 5){
-                        gameState.setHasKey(false);
+                        gameState.setHasPokeDex(false);
+                        gameState.setCustomerDialogueType(4);
                         gameState.setDialogueIndex(0);
+                        customer.setPlayersTurn(false);
                     } else {
                         return false;
                     }
 
-                    return true;
                 }
+                return true;
             } //Action Item
         }
         //Progresses the text
@@ -269,6 +276,8 @@ public class BahLocalGame extends LocalGame {
                     }
                     else{
                         //gameState.setDialogueIndex(0);
+                        //For now we get the key back
+                        gameState.setHasKey(true);
                         customer.setPlayersTurn(true);
                     }
                 }
