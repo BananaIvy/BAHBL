@@ -218,6 +218,7 @@ public class BahLocalGame extends LocalGame {
                     //otherwise set the index back to zero
                     else {
                         gameState.setDialogueIndex(0);
+                        customer.setPlayersTurn(true);
                     }
                 }
                 //Mad Response
@@ -230,15 +231,17 @@ public class BahLocalGame extends LocalGame {
                     //otherwise set the index back to zero
                     else {
                         gameState.setDialogueIndex(0);
+                        customer.setPlayersTurn(true);
                     }
                 }
                 //Lore
                 else if(gameState.getCustomerDialogueType() == 4){
-                    if(gameState.getDialogueIndex() + 1 >= gameState.getCustomer().getLoreLength()){
+                    if(gameState.getDialogueIndex() + 1 < gameState.getCustomer().getLoreLength()){
                         gameState.setDialogueIndex(0);
                     }
                     else{
                         gameState.setDialogueIndex(0);
+                        customer.setPlayersTurn(true);
                     }
                 }
                 //Goodbye
@@ -254,7 +257,6 @@ public class BahLocalGame extends LocalGame {
                     }
                 }
             }
-            customer.setPlayersTurn(true);
             return true;
 
         }

@@ -30,7 +30,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	// Initializes all the widgets
 	//private TextView 		testResultsTextView	= null;
 	private TextView 		customerDialogue 	= null;
-	private TextView 	registerMoney 		= null;
+	private TextView 		registerMoney 		= null;
 	private	Button 			goodButton 			= null;
 	private	Button 			badButton 			= null;
 	private ImageButton 	register 			= null;
@@ -39,6 +39,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	private ImageButton		infoBot				= null;
 	private ImageButton		pokeDex				= null;
 	private ImageButton		bag					= null;
+	private ImageButton     customer           = null;
 
 	// the most recent game state, as given to us by the CounterLocalGame
 	private BahGameState state;
@@ -177,6 +178,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		this.pokeDex = (android.widget.ImageButton) activity.findViewById((R.id.pokedex));
 		this.key  = (android.widget.ImageButton) activity.findViewById((R.id.key));
 		this.registerMoney  = (TextView) activity.findViewById((R.id.total_monitor));
+		this.customer = (ImageButton) activity.findViewById(R.id.customer);
 
 
 		// make this object listen for widget clicks
@@ -189,6 +191,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		pokeball.setOnClickListener(this);
 		pokeDex.setOnClickListener(this);
 		key.setOnClickListener(this);
+		customer.setOnClickListener(this);
 
 		// if we have a game state, "simulate" that we have just received
 		// the state from the game so that the GUI values are updated

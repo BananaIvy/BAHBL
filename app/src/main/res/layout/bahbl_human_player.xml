@@ -46,13 +46,13 @@
             android:layout_marginRight="340dp"
             android:layout_weight="0"
             android:background="#00FFFFFF"
-            android:text="13.50"
+            android:text="0"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             android:textColor="#7FD06E"
             android:textSize="105sp" />
 
         <ImageButton
-            android:id="@+id/Pokeangel_customer"
+            android:id="@+id/customer"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginLeft="-130dp"
