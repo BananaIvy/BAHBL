@@ -154,6 +154,7 @@
             android:layout_height="120dp"
             android:clickable="true"
             android:background="#00FFFFFF"
+            android:src="@drawable/in"
             android:contentDescription="This is the infobots slot"
             android:text="empty" />
 
@@ -162,6 +163,7 @@
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:clickable="true"
+            android:src="@drawable/pokedex"
             android:background="#00FFFFFF"
             android:contentDescription="This is the pokedex's slot"
             android:text="empty" />
@@ -172,6 +174,7 @@
             android:layout_height="120dp"
             android:clickable="true"
             android:background="#00FFFFFF"
+            android:src="@drawable/bag"
             android:contentDescription="This is the bags slot"
             android:text="empty" />
 
@@ -194,5 +197,11 @@
             android:text="empty" />
 
     </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/pokedex" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>
