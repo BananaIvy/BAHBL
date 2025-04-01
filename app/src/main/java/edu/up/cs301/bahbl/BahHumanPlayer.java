@@ -229,7 +229,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		customerDialogue.setOnClickListener(this);
 		button1.setOnClickListener(this);
 		button2.setOnClickListener(this);
-		register.setOnClickListener(this);
+		registerMoney.setOnClickListener(this);
 		infoBot.setOnClickListener(this);
 		bag.setOnClickListener(this);
 		pokeball.setOnClickListener(this);
