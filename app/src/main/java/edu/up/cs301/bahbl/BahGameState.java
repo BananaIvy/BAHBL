@@ -145,7 +145,7 @@ public class BahGameState extends GameState {
 
 	public void setGoodButtonText(String goodButtonText) {this.goodButtonText = goodButtonText;}
 	public void setBadButtonText(String badButtonText) {this.badButtonText = badButtonText;}
-	public void setButtonIsVisible(Boolean buttonIsVisiable) {this.buttonIsVisiable = buttonIsVisiable;}
+	public void setButtonIsVisible(Boolean buttonIsVisible) {this.buttonIsVisiable = buttonIsVisible;}
 	public void setCustomer(BahCustomerBase customer) {this.customer = customer;}
 	public void setCustomerDialogueType(int newDialogueType){this.customerDialogueType = newDialogueType;}
 	public void setDialogueIndex(int dialogueIndex) {this.dialogueIndex = dialogueIndex;}

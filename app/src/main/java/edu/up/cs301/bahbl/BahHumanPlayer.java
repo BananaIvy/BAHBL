@@ -31,8 +31,8 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	//private TextView 		testResultsTextView	= null;
 	private TextView 		customerDialogue 	= null;
 	private TextView 		registerMoney 		= null;
-	private	Button 			goodButton 			= null;
-	private	Button 			badButton 			= null;
+	private	Button 			button1 			= null;
+	private	Button 			button2 			= null;
 	private ImageButton 	register 			= null;
 	private ImageButton		key					= null;
 	private ImageButton		pokeball	    	= null;
@@ -81,11 +81,20 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		tempText = "" + Integer.toString(state.getMoneyCount());
 		registerMoney.setText(tempText);
 
-		tempText = state.getGoodButtonText();
-		goodButton.setText(tempText);
+		if (state.getCustomer().getGoodButton() == 1) {
+			tempText = state.getGoodButtonText();
+			button1.setText(tempText);
 
-		tempText = state.getBadButtonText();
-		badButton.setText(tempText);
+			tempText = state.getBadButtonText();
+			button2.setText(tempText);
+		}
+		else{
+			tempText = state.getGoodButtonText();
+			button2.setText(tempText);
+
+			tempText = state.getBadButtonText();
+			button1.setText(tempText);
+		}
 
 		//Changes the customer to the gamestates one
 		if(state.getCustomer() instanceof BahCGhost) {
@@ -101,7 +110,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			customer.setImageResource(resID);
 		}
 		else if(state.getCustomer() instanceof BahCMysticMan){
-			int resID = R.drawable.mysteryman;
+			int resID = R.drawable.mysticman;
 			customer.setImageResource(resID);
 		}
 		else if(state.getCustomer() instanceof BahCNux){
@@ -147,7 +156,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			game.sendAction(new BahActionProgressText(this));
 
 		}
-		else if(button.getId() == R.id.register_keyboard){
+		else if(button.getId() == R.id.total_monitor){
 			game.sendAction(new BahActionRegister(this));
 
 		}
@@ -205,8 +214,8 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 		//Initialize the widget reference member variables
 		this.customerDialogue = (TextView)activity.findViewById(R.id.customerDialogue);
-		this.goodButton = (Button) activity.findViewById(R.id.Option1);
-		this.badButton = (Button) activity.findViewById(R.id.Option2);
+		this.button1 = (Button) activity.findViewById(R.id.Option1);
+		this.button2 = (Button) activity.findViewById(R.id.Option2);
 		this.register = (android.widget.ImageButton) activity.findViewById((R.id.register_screen));
 		this.infoBot = (android.widget.ImageButton) activity.findViewById(R.id.infoBot);
 		this.bag = (android.widget.ImageButton) activity.findViewById(R.id.bag);
@@ -219,9 +228,9 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 		// make this object listen for widget clicks
 		customerDialogue.setOnClickListener(this);
-		goodButton.setOnClickListener(this);
-		badButton.setOnClickListener(this);
-		register.setOnClickListener(this);
+		button1.setOnClickListener(this);
+		button2.setOnClickListener(this);
+		registerMoney.setOnClickListener(this);
 		infoBot.setOnClickListener(this);
 		bag.setOnClickListener(this);
 		pokeball.setOnClickListener(this);

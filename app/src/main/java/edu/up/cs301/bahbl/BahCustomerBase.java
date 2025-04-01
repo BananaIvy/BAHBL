@@ -2,7 +2,7 @@ package edu.up.cs301.bahbl;
 
 /**
  * this is the base that all the different customers are based on.
- * @author Laura Patla
+ * @author Laura Patla, Savannah
  * @version 2/26/25
  */
 public abstract class BahCustomerBase {
