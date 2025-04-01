@@ -17,7 +17,7 @@ public abstract class BahCustomerBase {
     //Tracks the status of the items the customer has
     private boolean hasGiven;
     private boolean hasReceived;
-    private boolean hasFinishedResponse = false;
+    private boolean hasFinishedResponse;
 
     //Possible customer dialogue
     private String[] greetingDialogue;  //1
@@ -49,6 +49,7 @@ public abstract class BahCustomerBase {
         hasReceived = false;
         playersTurn = false;
         money = 10;
+        hasFinishedResponse = false;
 
         //Base dialogue examples
         greetingDialogue = new String[1];
