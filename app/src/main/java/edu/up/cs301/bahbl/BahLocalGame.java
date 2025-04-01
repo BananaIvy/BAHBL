@@ -44,7 +44,7 @@ public class BahLocalGame extends LocalGame {
 
     @Override
     protected String checkIfGameOver() {
-        if(gameState.getStoryProgress() == 5){
+        if(gameState.getStoryProgress() >= 7){
             return "You reached the end! Game is Over";
         }
 
@@ -100,6 +100,8 @@ public class BahLocalGame extends LocalGame {
                     gameState.setDialogueIndex(0);
                     //set the next set of dialogue to be the customer's happy response
                     gameState.setCustomerDialogueType(2);
+                    //The customer gives the item, we can changes this later to better fit the game.
+                    customer.setHasGiven(true);
                 }
                 //if the button is the bad button
                 if (customer.getBadButton() == ((BahActionButton) action).getWhichButton()) {
