@@ -16,22 +16,29 @@ public class BahCNux extends BahCustomerBase {
         addGreetingDialogue("Well hello past student...funny seeing you here...");
         addGreetingDialogue("How did you end up here?");
         addGreetingDialogue("Ah well it doesn't matter.");
-        addGreetingDialogue("I'm here for my monthly check in your boss.");
+        addGreetingDialogue("I'm here to check on your boss.");
+        addGreetingDialogue("He's had some shady goings-on in the past");
         addGreetingDialogue("I have to make sure all my stores are in working order.");
-        addGreetingDialogue("...and make sure there are no pesky Pokemon anywhere.");
-        addGreetingDialogue("THEY ARE CONSTANTLY AROUND ME AND WON'T LEAVE.");
-        addGreetingDialogue("If you see them make sure to tell me.");
+        addGreetingDialogue("...and remove any pesky pokemon.");
+        addGreetingDialogue("I CAN'T SEEM TO GET RID OF THEM!");
+        addGreetingDialogue("CONSTANTLY. POKEMON. EVERYWHERE!!!");
+        addGreetingDialogue("EVERYWHERE I GO, THEY FOLLOW ME.");
+        addGreetingDialogue("I CAN'T SEEM TO ESCAPE!");
+        addGreetingDialogue("IS THIS MY ETERNAL PUNISHMENT?!?");
+        addGreetingDialogue("Sorry, not sure what came over me there.");
+        addGreetingDialogue("If you see any Pokemon around here, you must tell me.");
         addGreetingDialogue("Have you seen any Pokemon?");
 
         //Button responses
         setGoodButtonText("Nope. None in this store!");
-        setBadButtonText("Yeah! They have been all over the place!");
+        setBadButtonText("Yeah! They're all over the place!");
 
         //Good Response
-        addHappyResponse("That's good! I hoped would be none.");
-        addHappyResponse("Make sure to keep an eye out for them and report them.");
+        addHappyResponse("EXCELLENT! Perhaps that pesticide worked this time.");
+        addHappyResponse("Be sure to stay vigilant. We cannot let them overrun this store.");
         addHappyResponse("For your troubles I have something for you...");
-        addHappyResponse("MONEY! TAKE! NO POKEMON!");
+        addHappyResponse("-YEOWWCH!!!");
+        addHappyResponse("MONEY! TAKE! NO POKEMON! AGHHGHGH!!!");
 
         //Mad Response
         addMadResponse("NO! I THOUGHT I GOT RID OF THEM!");
