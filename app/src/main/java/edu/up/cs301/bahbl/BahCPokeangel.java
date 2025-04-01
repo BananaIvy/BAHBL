@@ -21,6 +21,7 @@ public class BahCPokeangel extends BahCustomerBase {
 		setBadButton(1);
 		setGoodButton(2);
 		resetDialogue();
+		setMoney(55);
 
 
 		/* dialogues */

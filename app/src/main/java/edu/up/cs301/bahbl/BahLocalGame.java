@@ -75,7 +75,7 @@ public class BahLocalGame extends LocalGame {
         //If the register is clicked, adds money collected, displays the farewellDialogue
         //ends the Customer's interaction
         if (action instanceof BahActionRegister) {
-            gameState.addMoney(1);
+            gameState.addMoney(customer.getMoney());
             gameState.setButtonIsVisible(false);
             //Set text to goodbye
             gameState.setDialogueIndex(0);

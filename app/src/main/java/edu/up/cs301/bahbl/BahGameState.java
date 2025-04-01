@@ -15,7 +15,8 @@ public class BahGameState extends GameState {
 	private int storyProgress;
 	private int moneyCount;
 
-	private BahCustomerBase[] customers;
+	private BahCustomerBase[] customers = {new BahCGhost(), new BahCPokeangel(), new BahCLug(), new BahCMysticMan(), new BahCNux()};
+	private int customerIndex;
 	private BahCustomerBase customer;
 	//this int represents which set of customer dialogue we're currently on. The ints have the following meanings:
 	//1: greeting, 2: happy response, 3: mad response, 4: lore 5: goodbye
@@ -50,6 +51,7 @@ public class BahGameState extends GameState {
 		buttonIsVisiable = false;
 		goodButtonText = "";
 		badButtonText = "";
+		customerIndex = 0;
 	}
 
 	//Copy Constructor
@@ -68,6 +70,7 @@ public class BahGameState extends GameState {
 		buttonIsVisiable = currentState.buttonIsVisiable;
 		goodButtonText = currentState.goodButtonText;
 		badButtonText = currentState.badButtonText;
+		customerIndex = currentState.customerIndex;
 	}
 
 	//Methods
@@ -173,6 +176,10 @@ public class BahGameState extends GameState {
 	//We don't want to be able to set the money, just add or lose money.
 	public void addMoney(int moneyCount) {this.moneyCount = this.moneyCount + moneyCount;}
 	public void loseMoney(int moneyCount) {this.moneyCount = this.moneyCount - moneyCount;}
+	public void nextCustomer(){
+		customerIndex++;
+		customer = customers[customerIndex];
+	}
 
 
 }

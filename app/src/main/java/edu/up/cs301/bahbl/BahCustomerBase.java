@@ -35,6 +35,9 @@ public abstract class BahCustomerBase {
     private String goodButtonText;
     private String badButtonText;
 
+    //Gives the customer a different amount of money
+    private int money;
+
     /*
     Default constructor/set-up for a customer
      */
@@ -46,6 +49,7 @@ public abstract class BahCustomerBase {
         hasGiven = false;
         hasReceived = false;
         playersTurn = false;
+        money = 10;
 
         //Base dialogue examples
         greetingDialogue = new String[1];
@@ -80,6 +84,8 @@ public abstract class BahCustomerBase {
     }
 
     //Getter methods
+
+    public int getMoney() {return money;}
     public int getItem(){ return item;}
     public String getCustomerName(){return customerName;}
     public boolean getPlayersTurn(){return playersTurn;}
@@ -102,6 +108,8 @@ public abstract class BahCustomerBase {
     public String getBadButtonText() {return badButtonText;}
 
     //Setter methods
+
+    public void setMoney(int money) {this.money = money;}
     public void setItem(int item){ this.item = item;}
     public void setLikeability(int likeability) {this.likeability = likeability;}
     public void setHasGiven(boolean hasGiven) {this.hasGiven = hasGiven;}
