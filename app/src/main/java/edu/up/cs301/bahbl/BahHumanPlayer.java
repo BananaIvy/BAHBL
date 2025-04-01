@@ -109,6 +109,13 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			customer.setImageResource(resID);
 		}
 
+		if(state.getCustomer().getPlayersTurn() == false){
+			customerDialogue.setClickable(false);
+		}
+		else{
+			customerDialogue.setClickable(true);
+		}
+
 
 	}
 
