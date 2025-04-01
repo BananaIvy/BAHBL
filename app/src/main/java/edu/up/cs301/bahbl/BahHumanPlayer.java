@@ -110,7 +110,8 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		}
 
 		if(state.getCustomer().getPlayersTurn() == false){
-			customerDialogue.setClickable(false);
+			customerDialogue.setClickable(true);
+			//Todo rewrite the players turn implementations so that this can work.
 		}
 		else{
 			customerDialogue.setClickable(true);
