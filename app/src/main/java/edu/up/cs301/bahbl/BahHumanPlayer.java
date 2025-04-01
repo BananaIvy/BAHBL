@@ -126,32 +126,45 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 		//Items
 		if(state.isHasKey()){
-			key.setClickable(true);}
+			key.setClickable(true);
+			key.setVisibility(View.VISIBLE);
+		}
 		else{
 			key.setClickable(false);
+			key.setVisibility(View.INVISIBLE);
 		}
 		if(state.isHasPokeball()){
-			pokeball.setClickable(true);}
+			pokeball.setClickable(true);
+			pokeball.setVisibility(View.VISIBLE);
+		}
 		else{
 			pokeball.setClickable(false);
+			pokeball.setVisibility(View.INVISIBLE);
 		}
 		if(state.isHasBag()){
-			bag.setClickable(true);}
+			bag.setClickable(true);
+			bag.setVisibility(View.VISIBLE);
+		}
 		else{
 			bag.setClickable(false);
+			bag.setVisibility(View.INVISIBLE);
 		}
 		if(state.isHasInfoBot()){
-			infoBot.setClickable(true);}
+			infoBot.setClickable(true);
+			infoBot.setVisibility(View.VISIBLE);
+		}
 		else{
 			infoBot.setClickable(false);
+			infoBot.setVisibility(View.INVISIBLE);
 		}
 		if(state.isHasPokeDex()){
-			pokeDex.setClickable(true);}
+			pokeDex.setClickable(true);
+			pokeDex.setVisibility(View.VISIBLE);
+		}
 		else{
 			pokeDex.setClickable(false);
+			pokeDex.setVisibility(View.INVISIBLE);
 		}
-
-
 
 
 		if(state.getCustomer().getPlayersTurn() == false){
