@@ -49,7 +49,6 @@ public class BahCGhost extends BahCustomerBase {
         addGreetingDialogue("Now, there's a key to the register under the desk!");
         addGreetingDialogue("And if anyone tries to rob you...");
         addGreetingDialogue("SWALLOW IT!");
-        addGreetingDialogue("To collect the money from the customer, click the register.");
 
         //lore responses
         addLoreDialogue("Now, I'll try and keep this simple and quick.");
