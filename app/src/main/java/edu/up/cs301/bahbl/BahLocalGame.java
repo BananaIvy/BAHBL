@@ -18,7 +18,6 @@ import edu.up.cs301.GameFramework.players.GamePlayer;
  */
 public class BahLocalGame extends LocalGame {
 
-    private int textProgress;
     // the game's state
     private BahGameState gameState;
     private BahCustomerBase customer;
@@ -43,11 +42,11 @@ public class BahLocalGame extends LocalGame {
 
     @Override
     protected String checkIfGameOver() {
-        if(gameState.getStoryProgress() == 1){
-            return "Game is over!";
+        if(gameState.getStoryProgress() == 5){
+            return "You reached the end! Game is Over";
         }
 
-        return "";
+        return null;
     }
 
     /**
@@ -60,7 +59,6 @@ public class BahLocalGame extends LocalGame {
         }
         this.gameState = (BahGameState) state;
         super.state = state;
-        textProgress = 0;
     }
 
     /**
@@ -189,19 +187,21 @@ public class BahLocalGame extends LocalGame {
                 //Greeting dialogue
                 if(gameState.getCustomerDialogueType() == 1) {
 
-                    //if we've reached the end of the array already (so the next index would be out of bounds)
-                    if (gameState.getDialogueIndex() + 1 >= gameState.getCustomer().getGreetingLength()) {
+                    //if there's more text to scroll through
+                    if (gameState.getDialogueIndex() < customer.getGreetingLength()) {
+                        //Go to next Dialogue Index
+                        gameState.setDialogueIndex(gameState.getDialogueIndex()+1);
 
+                    } else { //End of Greeting Dialogue
+                        //Reset the Index
                         gameState.setDialogueIndex(0);
-                        //here I need to make the buttons clickable and give them the responses
 
+                        //Enable button's as part of the conversation.
                         gameState.setButtonIsVisible(true);
                         gameState.setBadButtonText(customer.getBadButtonText());
                         gameState.setGoodButtonText(customer.getGoodButtonText());
 
                         customer.setPlayersTurn(true);
-                    } else {
-                        textProgress++;
                     }
                 }
                 //Happy Response

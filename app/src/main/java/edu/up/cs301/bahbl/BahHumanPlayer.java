@@ -93,25 +93,23 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		// if we are not yet connected to a game, ignore
 		if (game == null) return;
 
-		//Savi did this code which might be going ahead:
-
 		if(button.getId() == R.id.Option1){
 			game.sendAction(new BahActionButton(this, button));
 
 		}
-		if(button.getId() == R.id.Option2){
+		else if(button.getId() == R.id.Option2){
 			game.sendAction(new BahActionButton(this, button));
 
 		}
-		if(button.getId() == R.id.customerDialogue){
+		else if(button.getId() == R.id.customerDialogue){
 			game.sendAction(new BahActionProgressText(this));
 
 		}
-		if(button.getId() == R.id.register_keyboard){
+		else if(button.getId() == R.id.register_keyboard){
 			game.sendAction(new BahActionRegister(this));
 
 		}
-		if(isItem(button)){
+		else if(isItem(button)){
 			game.sendAction(new BahActionItem(this, button));
 
 		}
