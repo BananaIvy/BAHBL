@@ -31,13 +31,12 @@ public class BahCGhost extends BahCustomerBase {
         addHappyResponse("It may come in handy...keep it close...");
         addHappyResponse("You can also give people items!");
         addHappyResponse("Try with the key!");
-        addHappyResponse("Now get to work!!!");
 
         //mad response
         addMadResponse("Now, come on, I hired you for a reason.");
+        addMadResponse("Don't disappoint me!");
         addMadResponse("You can also give people items!");
         addMadResponse("Try with the key!");
-        addMadResponse("Don't disappoint me!");
 
         //greeting responses ("Welcome to BAHBL!");
         addGreetingDialogue("Hey, I'm glad you showed up!");

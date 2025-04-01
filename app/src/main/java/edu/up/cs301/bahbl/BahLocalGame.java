@@ -127,6 +127,7 @@ public class BahLocalGame extends LocalGame {
                 // denote that this was a legal/successful move
                 return true;
             }
+
         }
 
         //If an Item is clicked
