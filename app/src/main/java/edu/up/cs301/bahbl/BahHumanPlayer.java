@@ -30,7 +30,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	// Initializes all the widgets
 	//private TextView 		testResultsTextView	= null;
 	private TextView 		customerDialogue 	= null;
-	private TextView 	registerMoney 		= null;
+	private TextView 		registerMoney 		= null;
 	private	Button 			goodButton 			= null;
 	private	Button 			badButton 			= null;
 	private ImageButton 	register 			= null;

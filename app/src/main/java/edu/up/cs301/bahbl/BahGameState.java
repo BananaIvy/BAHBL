@@ -15,7 +15,7 @@ public class BahGameState extends GameState {
 	private int storyProgress;
 	private int moneyCount;
 
-
+	private BahCustomerBase[] customers;
 	private BahCustomerBase customer;
 	//this int represents which set of customer dialogue we're currently on. The ints have the following meanings:
 	//1: greeting, 2: happy response, 3: mad response, 4: lore 5: goodbye
