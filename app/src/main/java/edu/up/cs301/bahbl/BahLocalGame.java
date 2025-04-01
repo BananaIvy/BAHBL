@@ -76,6 +76,7 @@ public class BahLocalGame extends LocalGame {
         //ends the Customer's interaction
         if (action instanceof BahActionRegister) {
             gameState.addMoney(customer.getMoney());
+            //if the response buttons (good and bad) are still visible, make them invisible
             gameState.setButtonIsVisible(false);
             //Set text to goodbye
             gameState.setDialogueIndex(0);
@@ -196,7 +197,7 @@ public class BahLocalGame extends LocalGame {
                 if(gameState.getCustomerDialogueType() == 1) {
 
                     //if there's more text to scroll through
-                    if (gameState.getDialogueIndex() < customer.getGreetingLength()) {
+                    if (gameState.getDialogueIndex() < customer.getGreetingLength()-1) {
                         //Go to next Dialogue Index
                         gameState.setDialogueIndex(gameState.getDialogueIndex()+1);
 
