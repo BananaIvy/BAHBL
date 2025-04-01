@@ -189,7 +189,7 @@ public class BahLocalGame extends LocalGame {
                 if(gameState.getCustomerDialogueType() == 1) {
                     //if it is the greeting dialogue
 
-                    if(gameState.getDialogueIndex() + 1>= gameState.getCustomer().getGreetingLength()) {
+                    if (gameState.getDialogueIndex() + 1 >= gameState.getCustomer().getGreetingLength()) {
                         //if we've reached the end of the array already (so the next index would be out of bounds)
 
                         gameState.setDialogueIndex(0);
@@ -200,35 +200,35 @@ public class BahLocalGame extends LocalGame {
                         gameState.setGoodButtonText(customer.getGoodButtonText());
 
                         customer.setPlayersTurn(true);
-                    }
-                    else {
+                    } else {
                         textProgress++;
                     }
-
-                    if(gameState.getCustomerDialogueType() == 2){
-
-                    }
-
-                    if(gameState.getCustomerDialogueType() == 3){
-
-                    }
-
-                    if(gameState.getCustomerDialogueType() == 4){
-
-                    }
-
-                    if(gameState.getCustomerDialogueType() == 5){
-
-                    }
-                    //todo add the same type of if elses for the other dialogue sets
-                    //if Dialogue == goodbye
-                    //Update the text to the next text in the goodbye-text Array
-                    //if last-of-goodbye-array-text
-                    //ProgressStory + 1
-                    //make it players turn
                 }
-                return true;
+                //Happy Response
+                if(gameState.getCustomerDialogueType() == 2){
+
+                }
+                //Mad Response
+                if(gameState.getCustomerDialogueType() == 3){
+
+                }
+                //Lore
+                if(gameState.getCustomerDialogueType() == 4){
+
+                }
+                //Goodbye
+                if(gameState.getCustomerDialogueType() == 5){
+
+                }
+                //todo add the same type of if elses for the other dialogue sets
+                //if Dialogue == goodbye
+                //Update the text to the next text in the goodbye-text Array
+                //if last-of-goodbye-array-text
+                //ProgressStory + 1
+                //make it players turn
             }
+            return true;
+
         }
         return false;
 
