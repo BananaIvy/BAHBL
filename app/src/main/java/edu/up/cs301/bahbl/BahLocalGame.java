@@ -25,7 +25,8 @@ public class BahLocalGame extends LocalGame {
 
     @Override
     protected void sendUpdatedStateTo(GamePlayer p) {
-
+        BahGameState copyState = new BahGameState(gameState);
+        p.sendInfo(copyState);
     }
 
 
