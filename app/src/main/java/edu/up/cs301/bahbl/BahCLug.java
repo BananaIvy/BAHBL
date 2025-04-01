@@ -21,7 +21,7 @@ public class BahCLug extends BahCustomerBase {
         setBadButton(1);
         setGoodButton(2);
         resetDialogue();
-        setMoney(7);
+        setMoney(45);
 
 
         /* dialogues */
