@@ -93,78 +93,8 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		// if we are not yet connected to a game, ignore
 		if (game == null) return;
 
+		//Savi did this code which might be going ahead:
 
-//		testResultsTextView.setText("");
-//
-//		BahGameState firstInstance = new BahGameState();
-//
-//		BahGameState firstCopy = new BahGameState(firstInstance);
-//
-//		//When an action is created/sent then Local game makes the changes happen in game state as a reaction
-//		//We need to manually change gamestate stuff in this process here.
-//		//You get your first customer
-//		firstInstance.setCustomer(new BahCGhost());
-//		firstInstance.setCustomerDialogue("Ghost Boss greets you! \n");
-//		//Will give greeting dialogue
-//		testResultsTextView.append(firstInstance.getCustomerDialogue());
-//
-//		//You click a button to respond to the customers text by clicking Button 1
-//		game.sendAction(new BahActionButton(this));
-//		//In response the dialogueType variable gets increased
-//		firstInstance.setCustomerDialogueType(2);
-//		firstInstance.setCustomerDialogue("You clicked the top-Happy button where you sign away your soul! \n");
-//		//Will update to happy response
-//		testResultsTextView.append(firstInstance.getCustomerDialogue());
-//
-//		//You progress the text
-//		game.sendAction(new BahActionProgressText(this));
-//        //MONEY CHECK :D
-//        testResultsTextView.append("You currently have: $" + firstInstance.getMoneyCount() + "\n");
-//		//Will set to goodbye message
-//		firstInstance.setCustomerDialogue("Boss says bye & gave you key\n");
-//		firstInstance.setHasKey(true);
-//		testResultsTextView.append(firstInstance.getCustomerDialogue());
-//
-//		//Customer greets you
-//		firstInstance.setCustomer(new BahCPokeangel());
-//		testResultsTextView.append("Current Customer is now: " + firstInstance.getCustomer().toString() + "\n");
-//		firstInstance.setCustomerDialogue("Customer greets you \n");
-//		testResultsTextView.append(firstInstance.getCustomerDialogue());
-//
-//		//You click a button to respond to the customers text by clicking Button 1
-//		game.sendAction(new BahActionButton(this));
-//		testResultsTextView.append("You've clicked option 1 for this customer! :D \n");
-//
-//		//You give the customer an item
-//		game.sendAction(new BahActionItem(this));
-//		testResultsTextView.append("You have given the customer an item, yada yada they talk\n");
-//
-//		//You click the register
-//		game.sendAction(new BahActionRegister(this));
-//		testResultsTextView.append("You've clicked the register. \n");
-//		//You get money as a result
-//		firstInstance.addMoney(1);
-//		testResultsTextView.append("You now have: $" + firstInstance.getMoneyCount() + "\n");
-//		//Will set to goodbye message
-//		firstInstance.setCustomerDialogue("Customer says goodbye \n");
-//		testResultsTextView.append(firstInstance.getCustomerDialogue());
-//
-//		//You progress the text & move on to the next customer
-//		game.sendAction(new BahActionProgressText(this));
-//		testResultsTextView.append("You get sick of interacting with customers and no more progress is needed for this example! \n" + "You 'won' cuz you got some munz \n");
-//
-//
-//		//////////////////////////////////
-//
-//		BahGameState secondInstance = new BahGameState();
-//		BahGameState secondCopy = new BahGameState(secondInstance);
-//
-//		//todo compare these two to make sure they're equal by printing them to EditText view or smth
-//		testResultsTextView.append(firstCopy.toString() + "\n");
-//		testResultsTextView.append(secondCopy.toString());
-//
-//		//Savi did this code which might be going ahead:
-//
 		if(button.getId() == R.id.Option1){
 			game.sendAction(new BahActionButton(this, button));
 
