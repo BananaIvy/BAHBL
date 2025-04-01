@@ -77,7 +77,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		String tempText = state.getCustomerDialogue();
 
 		customerDialogue.setText(tempText);
-
+		registerMoney.setText(state.getMoneyCount());
 
 		goodButton.isClickable();
 
