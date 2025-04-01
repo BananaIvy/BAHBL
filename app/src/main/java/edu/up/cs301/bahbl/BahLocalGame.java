@@ -206,8 +206,6 @@ public class BahLocalGame extends LocalGame {
                         gameState.setButtonIsVisible(true);
                         gameState.setBadButtonText(customer.getBadButtonText());
                         gameState.setGoodButtonText(customer.getGoodButtonText());
-
-                        gameState.getCustomer().setPlayersTurn(true);
                     }
                 }
                 //Happy Response
@@ -238,9 +236,9 @@ public class BahLocalGame extends LocalGame {
                 else if(gameState.getCustomerDialogueType() == 4){
                     if(gameState.getDialogueIndex() + 1 >= gameState.getCustomer().getLoreLength()){
                         gameState.setDialogueIndex(0);
-                        customer.setPlayersTurn(true);
-                    } else{
-
+                    }
+                    else{
+                        gameState.setDialogueIndex(0);
                     }
                 }
                 //Goodbye
@@ -251,15 +249,8 @@ public class BahLocalGame extends LocalGame {
                         gameState.setDialogueIndex(gameState.getDialogueIndex() + 1);
                     }
                 }
-
-
-                //todo add the same type of if elses for the other dialogue sets
-                //if Dialogue == goodbye
-                //Update the text to the next text in the goodbye-text Array
-                //if last-of-goodbye-array-text
-                //ProgressStory + 1
-                //make it players turn
             }
+            customer.setPlayersTurn(true);
             return true;
 
         }
