@@ -93,7 +93,7 @@ public class BahLocalGame extends LocalGame {
         else if (action instanceof BahActionButton) {
 
             //This action is valid when it is the players turn
-            if(customer.getPlayersTurn()){
+            if(customer.getPlayersTurn() && (!customer.getHasGottenAnswer())){
                 //If the buttons is the good button
                 if (customer.getGoodButton() == ((BahActionButton) action).getWhichButton()) {
                     // Update the counter values based upon the action
@@ -102,6 +102,7 @@ public class BahLocalGame extends LocalGame {
                     gameState.setCustomerDialogueType(2);
                     //The customer gives the item, we can changes this later to better fit the game.
                     customer.setHasGiven(true);
+                    customer.setHasGottenAnswer(true);
 
                 }
                 //if the button is the bad button
@@ -110,13 +111,14 @@ public class BahLocalGame extends LocalGame {
                     gameState.setDialogueIndex(0);
                     //set the next set of dialogue to be the customer's negative response
                     gameState.setCustomerDialogueType(3);
+                    customer.setHasGottenAnswer(true);
                 }
                 //make it so the player can only click the text now
                 customer.setPlayersTurn(false);
                 // denote that this was a legal/successful move
                 return true;
             }
-
+            gameState.setDialogueIndex(0);
         }
 
         //If an Item is clicked
