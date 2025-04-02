@@ -138,6 +138,11 @@ public class BahLocalGame extends LocalGame {
                         gameState.setCustomerDialogueType(4);
                         gameState.setDialogueIndex(0);
                         customer.setPlayersTurn(false);
+                        if(gameState.getMoneyCount() <= 30){
+                            goodEnding();
+                        } else {
+                            badEnding();
+                        }
                     }
                     else{
                         return false;
@@ -309,11 +314,11 @@ public class BahLocalGame extends LocalGame {
      * ENDINGS
      */
     private void goodEnding(){
-        //todo
+        //todo switch to good ending xml
     }
 
     private void badEnding(){
-        //todo
+        //todo switch to bad ending xml
     }
 
     private void loreEnding(){
