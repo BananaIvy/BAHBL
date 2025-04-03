@@ -327,11 +327,11 @@ public class BahLocalGame extends LocalGame {
      * ENDINGS
      */
     private void goodEnding(){
-        //todo switch to good ending xml
+        //todo
     }
 
     private void badEnding(){
-        //todo switch to bad ending xml
+        //todo
     }
 
     private void loreEnding(){
