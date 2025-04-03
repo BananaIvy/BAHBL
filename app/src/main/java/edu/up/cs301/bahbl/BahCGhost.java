@@ -78,17 +78,17 @@ public class BahCGhost extends BahCustomerBase {
 
     }
 
-    public BahCGhost(BahCustomerBase introGhost){
+    public BahCGhost(BahCustomerBase pastSelf){
         super();
         setCustomerName("Ghost");
-        setLikeability(introGhost.getLikeability());
-        setHasGiven(introGhost.isHasGiven());
-        setHasReceived(introGhost.isHasReceived());
+        setLikeability(pastSelf.getLikeability());
+        setHasGiven(pastSelf.isHasGiven());
+        setHasReceived(pastSelf.isHasReceived());
         setItem(1);
         setBadButton(1);
         setGoodButton(2);
         resetDialogue();
-        setMoney(introGhost.getMoney());
+        setMoney(pastSelf.getMoney());
 
         /* dialogues */
         //greeting responses ("Welcome to BAHBL!");
