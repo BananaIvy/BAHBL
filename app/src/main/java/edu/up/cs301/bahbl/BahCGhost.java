@@ -106,10 +106,10 @@ public class BahCGhost extends BahCustomerBase {
         addMadResponse("Give me the key. Now. Let me see what you've done.");
 
         //lore responses
-        addLoreDialogue("What if we used this lore dialogue as the go-to closing text for a good ending");
+        addLoreDialogue("This string shouldn't be called upon");
 
         //farewell responses
-        addFarewellDialogue("and this farewell dialogue as the go-to closing text for a bad ending?");
+        addFarewellDialogue("Fix the code so this doesn't get reached");
 
         //button text responses
         setGoodButtonText("No problems! Went fine!");
