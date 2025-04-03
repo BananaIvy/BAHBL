@@ -80,7 +80,7 @@ public class BahCGhost extends BahCustomerBase {
 
     public BahCGhost(BahCustomerBase pastSelf){
         super();
-        setCustomerName("Ghost");
+        setCustomerName("Ghost2");
         setLikeability(pastSelf.getLikeability());
         setHasGiven(pastSelf.isHasGiven());
         setHasReceived(pastSelf.isHasReceived());
