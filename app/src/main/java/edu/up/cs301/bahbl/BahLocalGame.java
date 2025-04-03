@@ -75,19 +75,22 @@ public class BahLocalGame extends LocalGame {
         //If the register is clicked, adds money collected, displays the farewellDialogue
         //ends the Customer's interaction
         if (action instanceof BahActionRegister) {
-            gameState.addMoney(customer.getMoney());
-            customer.setMoney(0);
-            //if the response buttons (good and bad) are still visible, make them invisible
-            gameState.setButtonIsVisible(false);
-            //Set text to goodbye
-            gameState.setDialogueIndex(0);
-            gameState.setCustomerDialogueType(5);
-            //it is now the next customer's turn to talk, so the player cannot click anything but the dialogue
-            customer.setPlayersTurn(false);
-            return true;
-            //todo set something in customer so they respond negatively if you immediately press register w/o talking to them
-            //todo will need booleans and crap, might take a hot minute
-            //todo need to have no money if bad button
+            if(customer.getCustomerName() != "Ghost2") {
+                gameState.addMoney(customer.getMoney());
+                customer.setMoney(0);
+                //if the response buttons (good and bad) are still visible, make them invisible
+                gameState.setButtonIsVisible(false);
+                //Set text to goodbye
+                gameState.setDialogueIndex(0);
+                gameState.setCustomerDialogueType(5);
+                //it is now the next customer's turn to talk, so the player cannot click anything but the dialogue
+                customer.setPlayersTurn(false);
+                return true;
+                //todo set something in customer so they respond negatively if you immediately press register w/o talking to them
+                //todo will need booleans and crap, might take a hot minute
+                //todo need to have no money if bad button
+            }
+            return false;
         }
         //If one of the buttons is pressed
         else if (action instanceof BahActionButton) {
