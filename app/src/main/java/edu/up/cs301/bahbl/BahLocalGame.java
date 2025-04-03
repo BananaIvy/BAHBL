@@ -103,7 +103,6 @@ public class BahLocalGame extends LocalGame {
                     //The customer gives the item, we can changes this later to better fit the game.
                     customer.setHasGiven(true);
                     customer.setHasGottenAnswer(true);
-
                 }
                 //if the button is the bad button
                 if (customer.getBadButton() == ((BahActionButton) action).getWhichButton()) {
@@ -115,10 +114,14 @@ public class BahLocalGame extends LocalGame {
                 }
                 //make it so the player can only click the text now
                 customer.setPlayersTurn(false);
+                //set the dialogue back to the first index so they start their next sentence at the beginning
+                gameState.setDialogueIndex(0);
                 // denote that this was a legal/successful move
                 return true;
             }
-            gameState.setDialogueIndex(0);
+            //I'm commenting this guy for now. He doesn't go here rn but he might need to come back eventually
+            // gameState.setDialogueIndex(0);
+            return false;
         }
 
         //If an Item is clicked
@@ -135,10 +138,11 @@ public class BahLocalGame extends LocalGame {
                         //todo set an if case for how much money you have to determine if
                         //todo THIS IS WHERE WE SHOULD TRIGGER ENDING EVENTS
                         gameState.setHasKey(false);
+                        //todo add something in here so that it will not set to type 4 if it's end of game
                         gameState.setCustomerDialogueType(4);
                         gameState.setDialogueIndex(0);
                         customer.setPlayersTurn(false);
-                        if(gameState.getMoneyCount() >= 240){
+                        if(gameState.getMoneyCount() >= 280){
                             goodEnding();
                         } else {
                             badEnding();
@@ -208,9 +212,9 @@ public class BahLocalGame extends LocalGame {
                     }
 
                 }
-                return true;
-            } //Action Item
-        }
+                return false;
+            }
+        }//Action Item
         //Progresses the text
         else if (action instanceof BahActionProgressText) {
             //This action is valid when it's not the players turn to press a button
@@ -307,8 +311,7 @@ public class BahLocalGame extends LocalGame {
                     }
                 }
             }
-            return true;
-
+            return false;
         }
         gameState.setDialogueIndex(0);
         return false;
