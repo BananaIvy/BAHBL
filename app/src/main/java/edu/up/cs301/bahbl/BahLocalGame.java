@@ -45,7 +45,7 @@ public class BahLocalGame extends LocalGame {
     @Override
     protected String checkIfGameOver() {
         if(gameState.getStoryProgress() >= 6){
-            return "You reached the end! Game is Over";
+            return "You reached the end! Game is Over ";
         }
 
         return null;
