@@ -281,7 +281,9 @@ public class BahLocalGame extends LocalGame {
                         //gameState.setDialogueIndex(0);
                         customer.setPlayersTurn(true);
                         //Sets the different items as showing given depending on the customer
-                        if(customer.getCustomerName().equals("Pokeangel")){
+                        if(customer.getCustomerName().equals("Ghost")) {
+                            gameState.setHasPokeball(true);
+                        }else if(customer.getCustomerName().equals("Pokeangel")){
                             gameState.setHasInfoBot(true);
                         }else if (customer.getCustomerName().equals("Lug")) {
                             gameState.setHasBag(true);
@@ -308,7 +310,6 @@ public class BahLocalGame extends LocalGame {
                         gameState.nextCustomer();
                         gameState.setStoryProgress(gameState.getStoryProgress() + 1);
                         if(customer.getCustomerName().equals("Ghost")) {
-                            gameState.setHasPokeball(true);
                             //todo : For now we get the key back. Make endings!!
                             gameState.setHasKey(true);
                         }
