@@ -44,7 +44,7 @@ public class BahLocalGame extends LocalGame {
 
     @Override
     protected String checkIfGameOver() {
-        if(gameState.getStoryProgress() >= 5){
+        if(gameState.getStoryProgress() >= 6){
             return "You reached the end! Game is Over";
         }
 
@@ -293,6 +293,9 @@ public class BahLocalGame extends LocalGame {
                 else if(gameState.getCustomerDialogueType() == 5){
                     if(gameState.getDialogueIndex() + 1 < gameState.getCustomer().getFarewellLength()){
                         gameState.setDialogueIndex(gameState.getDialogueIndex() + 1);
+                    }
+                    else if(gameState.getStoryProgress() >= 5) {
+                        gameState.setStoryProgress(gameState.getStoryProgress() + 1);
                     }
                     else{
                         //gameState.setDialogueIndex(0);

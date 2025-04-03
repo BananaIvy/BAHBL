@@ -175,8 +175,8 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			customerDialogue.setClickable(true);
 		}
 
-		//
-		if((state.getStoryProgress() == 5) && (state.getCustomerDialogueType() == 5) && (state.getDialogueIndex() == state.getCustomer().getFarewellLength())){
+		//IF IT's THE ENDING
+		if((state.getStoryProgress() >= 6)){
 			if(state.getMoneyCount() > 5) {
 				this.myActivity.setContentView(R.layout.bahbl_good_ending);
 			}
