@@ -5,7 +5,7 @@ package edu.up.cs301.bahbl;
  * implements the variables and the methods from
  * the CustomerBase class
  * <p>
- * @author Laura Patla
+ * @author Laura Patla & Savannah M
  * @version 2/26/25
  */
 public class BahCGhost extends BahCustomerBase {
@@ -78,4 +78,42 @@ public class BahCGhost extends BahCustomerBase {
 
     }
 
+    public BahCGhost(BahCustomerBase introGhost){
+        super();
+        setCustomerName("Ghost");
+        setLikeability(introGhost.getLikeability());
+        setHasGiven(introGhost.isHasGiven());
+        setHasReceived(introGhost.isHasReceived());
+        setItem(1);
+        setBadButton(1);
+        setGoodButton(2);
+        resetDialogue();
+        setMoney(introGhost.getMoney());
+
+        /* dialogues */
+        //greeting responses ("Welcome to BAHBL!");
+        addGreetingDialogue("You survived the day, congrats.");
+        addGreetingDialogue("How'd it go?");
+
+        //happy response
+        addHappyResponse("Glad to hear that. I would hate to hear otherwise.");
+        addHappyResponse("Don't worry about closing since it's your first day.");
+        addHappyResponse("Just hand me the key & I'll take care of the rest");
+
+        //mad response
+        addMadResponse("w h a t ?");
+        addMadResponse("w h a t  d i d  y o u  d o ?");
+        addMadResponse("Give me the key. Now. Let me see what you've done.");
+
+        //lore responses
+        addLoreDialogue("What if we used this lore dialogue as the go-to closing text for a good ending");
+
+        //farewell responses
+        addFarewellDialogue("and this farewell dialogue as the go-to closing text for a bad ending?");
+
+        //button text responses
+        setGoodButtonText("No problems! Went fine!");
+        setBadButtonText("Well....... ehhhh");
+
+    }
 }

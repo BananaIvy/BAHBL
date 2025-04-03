@@ -14,8 +14,8 @@ public class BahGameState extends GameState {
 	//Tracks where in the story we are
 	private int storyProgress;
 	private int moneyCount;
-
-	private BahCustomerBase[] customers = {new BahCGhost(), new BahCPokeangel(), new BahCLug(), new BahCMysticMan(), new BahCNux(), new BahCGhost()};
+	private BahCustomerBase manager = new BahCGhost();
+	private BahCustomerBase[] customers = {manager, new BahCPokeangel(), new BahCLug(), new BahCMysticMan(), new BahCNux(), new BahCGhost(manager)};
 	private int customerIndex;
 	private BahCustomerBase customer;
 	//this int represents which set of customer dialogue we're currently on. The ints have the following meanings:
