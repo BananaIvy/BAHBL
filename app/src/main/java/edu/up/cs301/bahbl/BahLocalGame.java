@@ -301,6 +301,7 @@ public class BahLocalGame extends LocalGame {
                         //gameState.setDialogueIndex(0);
                         customer.setPlayersTurn(true);
                         gameState.setCustomerDialogueType(1);
+                        gameState.setDialogueIndex(0);
                         gameState.nextCustomer();
                         gameState.setStoryProgress(gameState.getStoryProgress() + 1);
                     }
