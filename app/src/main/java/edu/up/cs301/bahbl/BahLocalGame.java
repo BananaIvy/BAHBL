@@ -212,8 +212,8 @@ public class BahLocalGame extends LocalGame {
                     }
 
                 }
-                return false;
             }
+            return false;
         }//Action Item
         //Progresses the text
         else if (action instanceof BahActionProgressText) {
