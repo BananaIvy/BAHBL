@@ -75,7 +75,7 @@ public class BahLocalGame extends LocalGame {
         //If the register is clicked, adds money collected, displays the farewellDialogue
         //ends the Customer's interaction
         if (action instanceof BahActionRegister) {
-
+            if(customer.getCustomerName() != "Ghost2") {
                 gameState.addMoney(customer.getMoney());
                 customer.setMoney(0);
                 //if the response buttons (good and bad) are still visible, make them invisible
@@ -89,7 +89,8 @@ public class BahLocalGame extends LocalGame {
                 //todo set something in customer so they respond negatively if you immediately press register w/o talking to them
                 //todo will need booleans and crap, might take a hot minute
                 //todo need to have no money if bad button
-
+            }
+            return false;
         }
         //If one of the buttons is pressed
         //todo get rid of the text on the buttons
@@ -137,7 +138,8 @@ public class BahLocalGame extends LocalGame {
                     //If it is, update having the item to false & change the text to loreDialogue
                     //If it's not, return false or flash the screen.
 
-                    if(customer.getItem() == 1){
+                    if(customer.getItem() == 1 && customer.getCustomerName() != "Ghost2"){
+                        //todo set an if case for how much money you have to determine if
                         //todo THIS IS WHERE WE SHOULD TRIGGER ENDING EVENTS
                         //TODO MAKE IT SO THE LORE DIALOGUE DOESN'T GET CALLED ON GHOST2 at end of game
                         gameState.setHasKey(false);
@@ -151,6 +153,9 @@ public class BahLocalGame extends LocalGame {
                         } else {
                             badEnding();
                         }
+                    }
+                    else if(customer.getItem() == 1 && customer.getCustomerName() == "Ghost2"){
+                        gameState.setStoryProgress(gameState.getStoryProgress() + 1);
                     }
                     else{
                         return false;
