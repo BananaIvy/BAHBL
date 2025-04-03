@@ -270,23 +270,24 @@ public class BahLocalGame extends LocalGame {
                 }
                 //Lore
                 else if(gameState.getCustomerDialogueType() == 4){
-                    if(gameState.getDialogueIndex() + 1 < gameState.getCustomer().getLoreLength()) {
-                        gameState.setDialogueIndex(gameState.getDialogueIndex() + 1);
-                    }
-                    else{
-                        //gameState.setDialogueIndex(0);
-                        customer.setPlayersTurn(true);
-                        //Sets the different items as showing given depending on the customer
-                        if(customer.getCustomerName().equals("Ghost")) {
-                            gameState.setHasPokeball(true);
-                        }else if(customer.getCustomerName().equals("Pokeangel")){
-                            gameState.setHasInfoBot(true);
-                        }else if (customer.getCustomerName().equals("Lug")) {
-                            gameState.setHasBag(true);
-                        }else if(customer.getCustomerName().equals("Mystic Man")){
-                            gameState.setHasPokeDex(true);
-                        } else if(customer.getCustomerName().equals("Demon Lord Nux")){
-                            gameState.setHasKey(true);
+                    if(customer.getCustomerName() != "Ghost2") {
+                        if (gameState.getDialogueIndex() + 1 < gameState.getCustomer().getLoreLength()) {
+                            gameState.setDialogueIndex(gameState.getDialogueIndex() + 1);
+                        } else {
+                            //gameState.setDialogueIndex(0);
+                            customer.setPlayersTurn(true);
+                            //Sets the different items as showing given depending on the customer
+                            if (customer.getCustomerName().equals("Ghost")) {
+                                gameState.setHasPokeball(true);
+                            } else if (customer.getCustomerName().equals("Pokeangel")) {
+                                gameState.setHasInfoBot(true);
+                            } else if (customer.getCustomerName().equals("Lug")) {
+                                gameState.setHasBag(true);
+                            } else if (customer.getCustomerName().equals("Mystic Man")) {
+                                gameState.setHasPokeDex(true);
+                            } else if (customer.getCustomerName().equals("Demon Lord Nux")) {
+                                gameState.setHasKey(true);
+                            }
                         }
                     }
                 }
