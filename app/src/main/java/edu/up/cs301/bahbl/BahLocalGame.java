@@ -63,10 +63,6 @@ public class BahLocalGame extends LocalGame {
         super.state = state;
     }
 
-    /**
-     * The only type of GameAction that should be sent is CounterMoveAction
-     */
-
     protected boolean makeMove(GameAction action) {
         Log.i("action", action.getClass().toString());
 
@@ -237,7 +233,7 @@ public class BahLocalGame extends LocalGame {
 
                         //Enable button's as part of the conversation.
                         gameState.setButtonIsVisible(true);
-                        gameState.setBadButtonText(customer.getBadButtonText());
+                        gameState.setBadButtonText(customer.getBadButtonText());//todo set the text sooner or else make invisible
                         gameState.setGoodButtonText(customer.getGoodButtonText());
                     }
                 }
@@ -270,7 +266,7 @@ public class BahLocalGame extends LocalGame {
                 }
                 //Lore
                 else if(gameState.getCustomerDialogueType() == 4){
-                    if(customer.getCustomerName() != "Ghost2") {
+
                         if (gameState.getDialogueIndex() + 1 < gameState.getCustomer().getLoreLength()) {
                             gameState.setDialogueIndex(gameState.getDialogueIndex() + 1);
                         } else {
@@ -289,7 +285,7 @@ public class BahLocalGame extends LocalGame {
                                 gameState.setHasKey(true);
                             }
                         }
-                    }
+
                 }
                 //Goodbye
                 else if(gameState.getCustomerDialogueType() == 5){
@@ -317,7 +313,6 @@ public class BahLocalGame extends LocalGame {
         }
         gameState.setDialogueIndex(0);
         return false;
-
     }//makeMove
 
     /*

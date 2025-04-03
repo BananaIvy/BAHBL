@@ -92,7 +92,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		}
 		else{
 			tempText = state.getGoodButtonText();
-			button2.setText(tempText);
+			button2.setText(tempText);//todo maybe this is where we fix what buttons display?
 
 			tempText = state.getBadButtonText();
 			button1.setText(tempText);
@@ -187,40 +187,25 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 	}
 
-	/**
-	 * this method gets called when the user clicks the '+' or '-' button. It
-	 * creates a new CounterMoveAction to return to the parent activity.
-	 * 
-	 * @param button
-	 * 		the button that was clicked
-	 */
 	public void onClick(View button) {
 		// if we are not yet connected to a game, ignore
 		if (game == null) return;
 
 		if(button.getId() == R.id.Option1){
 			game.sendAction(new BahActionButton(this, button));
-
 		}
 		else if(button.getId() == R.id.Option2){
 			game.sendAction(new BahActionButton(this, button));
-
 		}
 		else if(button.getId() == R.id.customerDialogue){
 			game.sendAction(new BahActionProgressText(this));
-
 		}
 		else if(button.getId() == R.id.total_monitor){
 			game.sendAction(new BahActionRegister(this));
-
 		}
 		else if(isItem(button)){
 			game.sendAction(new BahActionItem(this, button));
-
 		}
-
-
-
 	}// onClick
 
 	public boolean isItem(View button){
