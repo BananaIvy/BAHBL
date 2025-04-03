@@ -139,6 +139,7 @@ public class BahLocalGame extends LocalGame {
 
                     if(customer.getItem() == 1){
                         //todo THIS IS WHERE WE SHOULD TRIGGER ENDING EVENTS
+                        //TODO MAKE IT SO THE LORE DIALOGUE DOESN'T GET CALLED ON GHOST2 at end of game
                         gameState.setHasKey(false);
                         //todo add something in here so that it will not set to type 4 if it's end of game
                         customer.addMoney(10);
