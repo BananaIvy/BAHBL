@@ -89,10 +89,12 @@ public class BahLocalGame extends LocalGame {
                 //todo set something in customer so they respond negatively if you immediately press register w/o talking to them
                 //todo will need booleans and crap, might take a hot minute
                 //todo need to have no money if bad button
+                //todo make register not clickable when not needed as it skips the dialogue
             }
             return false;
         }
         //If one of the buttons is pressed
+        //todo get rid of the text on the buttons
         else if (action instanceof BahActionButton) {
 
             //This action is valid when it is the players turn
