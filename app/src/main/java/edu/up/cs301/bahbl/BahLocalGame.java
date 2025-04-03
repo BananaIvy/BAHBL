@@ -138,10 +138,10 @@ public class BahLocalGame extends LocalGame {
                     //If it's not, return false or flash the screen.
 
                     if(customer.getItem() == 1){
-                        //todo set an if case for how much money you have to determine if
                         //todo THIS IS WHERE WE SHOULD TRIGGER ENDING EVENTS
                         gameState.setHasKey(false);
                         //todo add something in here so that it will not set to type 4 if it's end of game
+                        customer.addMoney(10);
                         gameState.setCustomerDialogueType(4);
                         gameState.setDialogueIndex(0);
                         customer.setPlayersTurn(false);
@@ -168,7 +168,6 @@ public class BahLocalGame extends LocalGame {
                     } else {
                         return false;
                     }
-
                 }
                 else if(((BahActionItem) action).getThisItem() == 3 && gameState.isHasBag()){
                     //Needs to check whether or not the item is the customers item
@@ -183,7 +182,6 @@ public class BahLocalGame extends LocalGame {
                     } else {
                         return false;
                     }
-
                 }
                 else if(((BahActionItem) action).getThisItem() == 4 && gameState.isHasPokeball()){
                     //Needs to check whether or not the item is the customers item
@@ -198,7 +196,6 @@ public class BahLocalGame extends LocalGame {
                     } else {
                         return false;
                     }
-
                 }
                 else if(((BahActionItem) action).getThisItem() == 5 && gameState.isHasPokeDex()){
                     //Needs to check whether or not the item is the customers item
@@ -213,7 +210,6 @@ public class BahLocalGame extends LocalGame {
                     } else {
                         return false;
                     }
-
                 }
             }
             return false;
@@ -237,7 +233,6 @@ public class BahLocalGame extends LocalGame {
                         customer.setPlayersTurn(true);
                         //Reset the Index
                         //gameState.setDialogueIndex(0);
-
 
                         //Enable button's as part of the conversation.
                         gameState.setButtonIsVisible(true);
