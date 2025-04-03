@@ -42,6 +42,7 @@ public class BahCLug extends BahCustomerBase {
         addHappyResponse("I shall condense my sentiment into,");
         addHappyResponse("A single, efficient statement:");
         addHappyResponse("Thank you!");
+        addHappyResponse("Take the money now!");
 
         //mad response
         addMadResponse("Ahhh!");
@@ -52,6 +53,7 @@ public class BahCLug extends BahCustomerBase {
         addMadResponse("A most encouraging probability!");
         addMadResponse("Unless of course my math is incorrect...");
         addMadResponse("Which is statistically impossible!");
+        addMadResponse("Ugh take the money...");
 
         //lore response
         addLoreDialogue("This infoBot was the last thing I needed to get back!");
