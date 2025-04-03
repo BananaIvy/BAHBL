@@ -138,7 +138,7 @@ public class BahLocalGame extends LocalGame {
                         gameState.setCustomerDialogueType(4);
                         gameState.setDialogueIndex(0);
                         customer.setPlayersTurn(false);
-                        if(gameState.getMoneyCount() <= 30){
+                        if(gameState.getMoneyCount() >= 240){
                             goodEnding();
                         } else {
                             badEnding();

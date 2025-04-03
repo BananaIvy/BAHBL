@@ -132,6 +132,9 @@ public abstract class BahCustomerBase {
     public void setMadResponse(String madResponse, int index) {this.madResponse[index] = madResponse;}
     public void setLoreDialogue(String loreDialogue, int index) {this.loreDialogue[index] = loreDialogue;}
    //Appends the dialogue into the array
+    public void addMoney(int plus) {
+        this.money += plus;
+    }
     public void addFarewellDialogue(String dialogue) {
         String[] temptText = new String[this.farewellDialogue.length + 1];
         int i = 0;
