@@ -139,7 +139,13 @@ public class BahLocalGame extends LocalGame {
                         gameState.setHasKey(false);
                         //todo add something in here so that it will not set to type 4 if it's end of game
                         customer.addMoney(10);
-                        gameState.setCustomerDialogueType(4);
+                        //This only checks the end of the game to ensure the lore dialogue for the ghost isn't called.
+                        if(customer.getCustomerName().equals("Ghost2")){
+
+                        }else{
+                            gameState.setCustomerDialogueType(4);
+                        }
+
                         gameState.setDialogueIndex(0);
                         customer.setPlayersTurn(false);
                         if(gameState.getMoneyCount() >= 280){
