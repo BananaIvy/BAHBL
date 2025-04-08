@@ -325,15 +325,15 @@ public class BahLocalGame extends LocalGame {
      * ENDINGS
      */
     private void goodEnding(){
-        //todo
+        //todo if we want the ending screens interactable
     }
 
     private void badEnding(){
-        //todo
+        //todo if we want the ending screens interactable
     }
 
     private void loreEnding(){
-        //todo
+        //todo if we want the ending screens interactable
     }
 
 }
