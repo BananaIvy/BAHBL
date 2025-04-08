@@ -102,6 +102,8 @@ public class BahLocalGame extends LocalGame {
                     //The customer gives the item, we can changes this later to better fit the game.
                     customer.setHasGiven(true);
                     customer.setHasGottenAnswer(true);
+                    gameState.setGoodButtonText(null);
+                    gameState.setBadButtonText(null);
                 }
                 //if the button is the bad button
                 if (customer.getBadButton() == ((BahActionButton) action).getWhichButton()) {
@@ -110,6 +112,8 @@ public class BahLocalGame extends LocalGame {
                     //set the next set of dialogue to be the customer's negative response
                     gameState.setCustomerDialogueType(3);
                     customer.setHasGottenAnswer(true);
+                    gameState.setGoodButtonText(null);
+                    gameState.setBadButtonText(null);
                 }
 
                 //Makes it so we don't start the game with the key and only get it from the first
