@@ -80,7 +80,7 @@ public class BahLocalGame extends LocalGame {
         //If the register is clicked, adds money collected, displays the farewellDialogue
         //ends the Customer's interaction
         if (action instanceof BahActionRegister) {
-            if(customer.getPlayersTurn()) {
+            if(customer.getPlayersTurn() && !customer.getCustomerName().equals("Ghost2")) {
                 gameState.addMoney(customer.getMoney());
                 customer.setMoney(0);
                 //if the response buttons (good and bad) are still visible, make them invisible
@@ -147,6 +147,11 @@ public class BahLocalGame extends LocalGame {
         else if (action instanceof BahActionItem) {
             //This action is valid when it is the players turn
             if(customer.getPlayersTurn()){
+                if(customer.getCustomerName().equals("Ghost2")) {
+                    if(gameState.getCustomerDialogueType()<2) {
+                        return false;
+                    }
+                }
                 //Checks if we have the item that was clicked
                 if(((BahActionItem) action).getThisItem() == 1 && gameState.isHasKey()){
                     //Needs to check whether or not the item is the customers item
@@ -157,11 +162,11 @@ public class BahLocalGame extends LocalGame {
                         //todo THIS IS WHERE WE SHOULD TRIGGER ENDING EVENTS
                         //TODO MAKE IT SO THE LORE DIALOGUE DOESN'T GET CALLED ON GHOST2 at end of game
                         gameState.setHasKey(false);
-                        //todo add something in here so that it will not set to type 4 if it's end of game
                         customer.addMoney(10);
                         //This only checks the end of the game to ensure the lore dialogue for the ghost isn't called.
                         if(customer.getCustomerName().equals("Ghost2")){
                             gameState.setStoryProgress(gameState.getStoryProgress()+1);
+                            return true;
                         }
                         else {
                             gameState.setCustomerDialogueType(4);
