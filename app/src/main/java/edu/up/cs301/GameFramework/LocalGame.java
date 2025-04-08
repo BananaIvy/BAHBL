@@ -277,7 +277,7 @@ public abstract class LocalGame implements Game, Tickable {
 
     /**
      * Handles an action that is sent to the game, checking to ensure
-     * checkIfGameOver player is allowed to move, that the move is legal, etc.
+     * checkIfGameOver, if the player is allowed to move, that the move is legal, etc.
      *
      * @param action
      * 			the action that was sent

@@ -27,7 +27,7 @@ public class BahCGhost extends BahCustomerBase {
         /* dialogues */
         //happy response
         addHappyResponse("Great! I'm glad to hear it!");
-        addHappyResponse("Here is a pokeball looking thing...");
+        addHappyResponse("Here is a little ball I found lying on the floor...");
         addHappyResponse("It may come in handy...keep it close...");
         addHappyResponse("You can also give people items!");
         addHappyResponse("Try with the key!");
@@ -58,7 +58,7 @@ public class BahCGhost extends BahCustomerBase {
         addLoreDialogue("Now, they may try to offer you items,");
         addLoreDialogue("Which you can keep under the register if you'd like,");
         addLoreDialogue("But, don't take anything dangerous!");
-        addLoreDialogue("Some of the folks in these parts a little unsavory.");
+        addLoreDialogue("Some of the folks in these parts are a little unsavory.");
         addLoreDialogue("Feel free to give away anything you have under the counter.");
         addLoreDialogue("Besides the key of course! ;)");
         addLoreDialogue("But note that most customers won't want those items.");

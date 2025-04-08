@@ -44,6 +44,11 @@ public class BahLocalGame extends LocalGame {
     @Override
     protected String checkIfGameOver() {
         if(gameState.getStoryProgress() >= 6){
+            if(gameState.getMoneyCount() >= 280){
+                goodEnding();
+            } else {
+                badEnding();
+            }
             return "You reached the end! Game is Over ";
         }
 
@@ -61,6 +66,10 @@ public class BahLocalGame extends LocalGame {
         this.gameState = (BahGameState) state;
         super.state = state;
     }
+
+    /**
+     * The only type of GameAction that should be sent is CounterMoveAction
+     */
 
     protected boolean makeMove(GameAction action) {
         Log.i("action", action.getClass().toString());
@@ -96,7 +105,7 @@ public class BahLocalGame extends LocalGame {
      * Progresses to goodbye dialogue & adds money to the register.
      */
     private boolean actRegister(){
-        if(customer.getCustomerName() != "Ghost2") {
+        if(customer.getPlayersTurn() && !customer.getCustomerName().equals("Ghost2")) {
             gameState.addMoney(customer.getMoney());
             customer.setMoney(0);
             //if the response buttons (good and bad) are still visible, make them invisible
@@ -130,6 +139,8 @@ public class BahLocalGame extends LocalGame {
                 //The customer gives the item, we can changes this later to better fit the game.
                 customer.setHasGiven(true);
                 customer.setHasGottenAnswer(true);
+                gameState.setGoodButtonText(null);
+                gameState.setBadButtonText(null);
             }
             //if the button is the bad button
             if (customer.getBadButton() == ((BahActionButton) action).getWhichButton()) {
@@ -138,16 +149,25 @@ public class BahLocalGame extends LocalGame {
                 //set the next set of dialogue to be the customer's negative response
                 gameState.setCustomerDialogueType(3);
                 customer.setHasGottenAnswer(true);
+                gameState.setGoodButtonText(null);
+                gameState.setBadButtonText(null);
             }
+
+            //Makes it so we don't start the game with the key and only get it from the first
+            //interaction with the ghost
+            if(customer.getCustomerName().equals("Ghost")){
+                gameState.setHasKey(true);
+            }
+
             //make it so the player can only click the text now
             customer.setPlayersTurn(false);
+
             //set the dialogue back to the first index so they start their next sentence at the beginning
             gameState.setDialogueIndex(0);
+
             // denote that this was a legal/successful move
             return true;
         }
-        //I'm commenting this guy for now. He doesn't go here rn but he might need to come back eventually
-        // gameState.setDialogueIndex(0);
         return false;
     }
 
@@ -158,6 +178,11 @@ public class BahLocalGame extends LocalGame {
     private boolean actItem(GameAction action){
         //This action is valid when it is the players turn
         if(customer.getPlayersTurn()){
+            if(customer.getCustomerName().equals("Ghost2")) {
+                if(gameState.getCustomerDialogueType()<2) {
+                    return false;
+                }
+            }
             //Checks if we have the item that was clicked
             if(((BahActionItem) action).getThisItem() == 1 && gameState.isHasKey()){
                 //Needs to check whether or not the item is the customers item
@@ -168,21 +193,16 @@ public class BahLocalGame extends LocalGame {
                     //todo THIS IS WHERE WE SHOULD TRIGGER ENDING EVENTS
                     //TODO MAKE IT SO THE LORE DIALOGUE DOESN'T GET CALLED ON GHOST2 at end of game
                     gameState.setHasKey(false);
-                    //todo add something in here so that it will not set to type 4 if it's end of game
                     customer.addMoney(10);
                     //This only checks the end of the game to ensure the lore dialogue for the ghost isn't called.
                     if(customer.getCustomerName().equals("Ghost2")){
-
-                    }else{
-                        gameState.setCustomerDialogueType(4);
+                        gameState.setStoryProgress(gameState.getStoryProgress()+1);
+                        return true;
                     }
-
-                    gameState.setDialogueIndex(0);
-                    customer.setPlayersTurn(false);
-                    if(gameState.getMoneyCount() >= 280){
-                        goodEnding();
-                    } else {
-                        badEnding();
+                    else {
+                        gameState.setCustomerDialogueType(4);
+                        gameState.setDialogueIndex(0);
+                        customer.setPlayersTurn(false);
                     }
                 }
                 else{
@@ -273,7 +293,7 @@ public class BahLocalGame extends LocalGame {
 
                     //Enable button's as part of the conversation.
                     gameState.setButtonIsVisible(true);
-                    gameState.setBadButtonText(customer.getBadButtonText());//todo set the text sooner or else make invisible
+                    gameState.setBadButtonText(customer.getBadButtonText());
                     gameState.setGoodButtonText(customer.getGoodButtonText());
                 }
             }
@@ -306,26 +326,26 @@ public class BahLocalGame extends LocalGame {
             }
             //Lore
             else if(gameState.getCustomerDialogueType() == 4){
-
-                if (gameState.getDialogueIndex() + 1 < gameState.getCustomer().getLoreLength()) {
-                    gameState.setDialogueIndex(gameState.getDialogueIndex() + 1);
-                } else {
-                    //gameState.setDialogueIndex(0);
-                    customer.setPlayersTurn(true);
-                    //Sets the different items as showing given depending on the customer
-                    if (customer.getCustomerName().equals("Ghost")) {
-                        gameState.setHasPokeball(true);
-                    } else if (customer.getCustomerName().equals("Pokeangel")) {
-                        gameState.setHasInfoBot(true);
-                    } else if (customer.getCustomerName().equals("Lug")) {
-                        gameState.setHasBag(true);
-                    } else if (customer.getCustomerName().equals("Mystic Man")) {
-                        gameState.setHasPokeDex(true);
-                    } else if (customer.getCustomerName().equals("Demon Lord Nux")) {
-                        gameState.setHasKey(true);
+                if(!customer.getCustomerName().equals("Ghost2")) {
+                    if (gameState.getDialogueIndex() + 1 < gameState.getCustomer().getLoreLength()) {
+                        gameState.setDialogueIndex(gameState.getDialogueIndex() + 1);
+                    } else {
+                        //gameState.setDialogueIndex(0);
+                        customer.setPlayersTurn(true);
+                        //Sets the different items as showing given depending on the customer
+                        if (customer.getCustomerName().equals("Ghost")) {
+                            gameState.setHasPokeball(true);
+                        } else if (customer.getCustomerName().equals("Pokeangel")) {
+                            gameState.setHasInfoBot(true);
+                        } else if (customer.getCustomerName().equals("Lug")) {
+                            gameState.setHasBag(true);
+                        } else if (customer.getCustomerName().equals("Mystic Man")) {
+                            gameState.setHasPokeDex(true);
+                        } else if (customer.getCustomerName().equals("Demon Lord Nux")) {
+                            gameState.setHasKey(true);
+                        }
                     }
                 }
-
             }
             //Goodbye
             else if(gameState.getCustomerDialogueType() == 5){
@@ -343,7 +363,6 @@ public class BahLocalGame extends LocalGame {
                     gameState.nextCustomer();
                     gameState.setStoryProgress(gameState.getStoryProgress() + 1);
                     if(customer.getCustomerName().equals("Ghost")) {
-                        //todo : For now we get the key back. Make endings!!
                         gameState.setHasKey(true);
                     }
                 }
@@ -358,15 +377,15 @@ public class BahLocalGame extends LocalGame {
      * ENDINGS
      */
     private void goodEnding(){
-        //todo
+        //todo if we want the ending screens interactable
     }
 
     private void badEnding(){
-        //todo
+        //todo if we want the ending screens interactable
     }
 
     private void loreEnding(){
-        //todo
+        //todo if we want the ending screens interactable
     }
 
 }
