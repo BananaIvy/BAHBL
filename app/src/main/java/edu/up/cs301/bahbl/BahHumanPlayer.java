@@ -21,6 +21,10 @@ import android.view.View.OnClickListener;
  * 
  * @author Steven R. Vegdahl
  * @author Andrew M. Nuxoll
+ * @author Savannah I. Macdonald
+ * @author Laura A. Patly
+ * @author Madilynn Greenup
+ * @author Alex Baker
  * @version July 2013
  */
 public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
@@ -76,10 +80,9 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		// Customer text/Dialogue
 		String tempText = state.getCustomerDialogue();
 		customerDialogue.setText(tempText);
-		tempText = "" + state.getMoneyCount();
 
 		// Register Text
-		tempText = "" + Integer.toString(state.getMoneyCount());
+		tempText = Integer.toString(state.getMoneyCount());
 		registerMoney.setText(tempText);
 
 		//Button Texts

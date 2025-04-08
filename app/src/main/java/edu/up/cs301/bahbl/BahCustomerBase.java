@@ -2,7 +2,10 @@ package edu.up.cs301.bahbl;
 
 /**
  * this is the base that all the different customers are based on.
- * @author Laura Patla, Savannah
+ * @author Savannah I. Macdonald
+ * @author Laura A. Patly
+ * @author Madilynn Greenup
+ * @author Alex Baker
  * @version 2/26/25
  */
 public abstract class BahCustomerBase {
@@ -126,11 +129,7 @@ public abstract class BahCustomerBase {
     public void setGoodButtonText(String goodButtonText) {this.goodButtonText = goodButtonText;}
     //For overwriting dialogue within the array
     public void setHasFinishedResponse(boolean hasFinishedResponse) {this.hasFinishedResponse = hasFinishedResponse;}
-    public void setFarewellDialogue(String farewellDialogue, int index) {this.farewellDialogue[index] = farewellDialogue;}
-    public void setGreetingDialogue(String greetingDialogue, int index) {this.greetingDialogue[index] = greetingDialogue;}
-    public void setHappyResponse(String happyResponse, int index) {this.happyResponse[index] = happyResponse;}
-    public void setMadResponse(String madResponse, int index) {this.madResponse[index] = madResponse;}
-    public void setLoreDialogue(String loreDialogue, int index) {this.loreDialogue[index] = loreDialogue;}
+
    //Appends the dialogue into the array
     public void addMoney(int plus) {
         this.money += plus;
