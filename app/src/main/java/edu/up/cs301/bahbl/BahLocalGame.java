@@ -111,10 +111,19 @@ public class BahLocalGame extends LocalGame {
                     gameState.setCustomerDialogueType(3);
                     customer.setHasGottenAnswer(true);
                 }
+
+                //Makes it so we don't start the game with the key and only get it from the first
+                //interaction with the ghost
+                if(customer.getCustomerName().equals("Ghost")){
+                    gameState.setHasKey(true);
+                }
+
                 //make it so the player can only click the text now
                 customer.setPlayersTurn(false);
+
                 //set the dialogue back to the first index so they start their next sentence at the beginning
                 gameState.setDialogueIndex(0);
+
                 // denote that this was a legal/successful move
                 return true;
             }
