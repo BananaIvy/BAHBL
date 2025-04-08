@@ -45,6 +45,11 @@ public class BahLocalGame extends LocalGame {
     @Override
     protected String checkIfGameOver() {
         if(gameState.getStoryProgress() >= 6){
+            if(gameState.getMoneyCount() >= 280){
+                goodEnding();
+            } else {
+                badEnding();
+            }
             return "You reached the end! Game is Over ";
         }
 
@@ -63,6 +68,10 @@ public class BahLocalGame extends LocalGame {
         super.state = state;
     }
 
+    /**
+     * The only type of GameAction that should be sent is CounterMoveAction
+     */
+
     protected boolean makeMove(GameAction action) {
         Log.i("action", action.getClass().toString());
 
@@ -71,7 +80,7 @@ public class BahLocalGame extends LocalGame {
         //If the register is clicked, adds money collected, displays the farewellDialogue
         //ends the Customer's interaction
         if (action instanceof BahActionRegister) {
-            if(customer.getCustomerName() != "Ghost2") {
+            if(customer.getPlayersTurn()) {
                 gameState.addMoney(customer.getMoney());
                 customer.setMoney(0);
                 //if the response buttons (good and bad) are still visible, make them invisible
@@ -131,8 +140,6 @@ public class BahLocalGame extends LocalGame {
                 // denote that this was a legal/successful move
                 return true;
             }
-            //I'm commenting this guy for now. He doesn't go here rn but he might need to come back eventually
-            // gameState.setDialogueIndex(0);
             return false;
         }
 
@@ -154,17 +161,12 @@ public class BahLocalGame extends LocalGame {
                         customer.addMoney(10);
                         //This only checks the end of the game to ensure the lore dialogue for the ghost isn't called.
                         if(customer.getCustomerName().equals("Ghost2")){
-
-                        }else{
-                            gameState.setCustomerDialogueType(4);
+                            gameState.setStoryProgress(gameState.getStoryProgress()+1);
                         }
-
-                        gameState.setDialogueIndex(0);
-                        customer.setPlayersTurn(false);
-                        if(gameState.getMoneyCount() >= 280){
-                            goodEnding();
-                        } else {
-                            badEnding();
+                        else {
+                            gameState.setCustomerDialogueType(4);
+                            gameState.setDialogueIndex(0);
+                            customer.setPlayersTurn(false);
                         }
                     }
                     else{
@@ -252,7 +254,7 @@ public class BahLocalGame extends LocalGame {
 
                         //Enable button's as part of the conversation.
                         gameState.setButtonIsVisible(true);
-                        gameState.setBadButtonText(customer.getBadButtonText());//todo set the text sooner or else make invisible
+                        gameState.setBadButtonText(customer.getBadButtonText());
                         gameState.setGoodButtonText(customer.getGoodButtonText());
                     }
                 }
@@ -285,7 +287,7 @@ public class BahLocalGame extends LocalGame {
                 }
                 //Lore
                 else if(gameState.getCustomerDialogueType() == 4){
-
+                    if(!customer.getCustomerName().equals("Ghost2")) {
                         if (gameState.getDialogueIndex() + 1 < gameState.getCustomer().getLoreLength()) {
                             gameState.setDialogueIndex(gameState.getDialogueIndex() + 1);
                         } else {
@@ -304,7 +306,7 @@ public class BahLocalGame extends LocalGame {
                                 gameState.setHasKey(true);
                             }
                         }
-
+                    }
                 }
                 //Goodbye
                 else if(gameState.getCustomerDialogueType() == 5){
@@ -322,7 +324,6 @@ public class BahLocalGame extends LocalGame {
                         gameState.nextCustomer();
                         gameState.setStoryProgress(gameState.getStoryProgress() + 1);
                         if(customer.getCustomerName().equals("Ghost")) {
-                            //todo : For now we get the key back. Make endings!!
                             gameState.setHasKey(true);
                         }
                     }
@@ -332,6 +333,7 @@ public class BahLocalGame extends LocalGame {
         }
         gameState.setDialogueIndex(0);
         return false;
+
     }//makeMove
 
     /*
