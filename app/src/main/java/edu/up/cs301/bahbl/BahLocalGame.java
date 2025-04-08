@@ -105,22 +105,25 @@ public class BahLocalGame extends LocalGame {
      * Progresses to goodbye dialogue & adds money to the register.
      */
     private boolean actRegister(){
+        //Register is clickable when the customers not talking and it's not the last interaction
         if(customer.getPlayersTurn() && !customer.getCustomerName().equals("Ghost2")) {
+
+            //Customer empties their wallets into the register
             gameState.addMoney(customer.getMoney());
             customer.setMoney(0);
-            //if the response buttons (good and bad) are still visible, make them invisible
+            //todo Change $ amount based on good/bad interactions (aka customer likeability)
+
+            //Set up for goodbye dialogue conditions
             gameState.setButtonIsVisible(false);
-            //Set text to goodbye
             gameState.setDialogueIndex(0);
             gameState.setCustomerDialogueType(5);
+
             //it is now the next customer's turn to talk, so the player cannot click anything but the dialogue
             customer.setPlayersTurn(false);
-            return true;
-            //todo set something in customer so they respond negatively if you immediately press register w/o talking to them
-            //todo will need booleans and crap, might take a hot minute
-            //todo need to have no money if bad button
+
+            return true; //legal
         }
-        return false;
+        return false; //illegal
     }
 
     /**
@@ -128,29 +131,32 @@ public class BahLocalGame extends LocalGame {
      * Figures out which button is which & adjusts response accordingly
      */
     private boolean actButton(GameAction action){
-        //This action is valid when it is the players turn
+        //Buttons are clickable when the customers not talking and button has not been clicked prior
         if(customer.getPlayersTurn() && (!customer.getHasGottenAnswer())){
-            //If the buttons is the good button
+
+            //GOOD Button is pressed
             if (customer.getGoodButton() == ((BahActionButton) action).getWhichButton()) {
-                // Update the counter values based upon the action
+
+                //Set up for Happy Response
                 gameState.setDialogueIndex(0);
-                //set the next set of dialogue to be the customer's happy response
                 gameState.setCustomerDialogueType(2);
-                //The customer gives the item, we can changes this later to better fit the game.
+
+                //Update Booleans & reset button text
                 customer.setHasGiven(true);
                 customer.setHasGottenAnswer(true);
-                gameState.setGoodButtonText(null);
-                gameState.setBadButtonText(null);
+                gameState.setButtonIsVisible(false);
             }
-            //if the button is the bad button
+
+            //BAD Button is pressed
             if (customer.getBadButton() == ((BahActionButton) action).getWhichButton()) {
-                // Update the counter values based upon the action
+
+                //Set up for Mad Response
                 gameState.setDialogueIndex(0);
-                //set the next set of dialogue to be the customer's negative response
                 gameState.setCustomerDialogueType(3);
+
+                //Update Booleans & reset button text
                 customer.setHasGottenAnswer(true);
-                gameState.setGoodButtonText(null);
-                gameState.setBadButtonText(null);
+                gameState.setButtonIsVisible(false);
             }
 
             //Makes it so we don't start the game with the key and only get it from the first
@@ -159,16 +165,13 @@ public class BahLocalGame extends LocalGame {
                 gameState.setHasKey(true);
             }
 
-            //make it so the player can only click the text now
+            //Customers turn to talk
             customer.setPlayersTurn(false);
-
-            //set the dialogue back to the first index so they start their next sentence at the beginning
             gameState.setDialogueIndex(0);
 
-            // denote that this was a legal/successful move
-            return true;
+            return true; //legal
         }
-        return false;
+        return false; //illegal
     }
 
     /**
@@ -176,24 +179,29 @@ public class BahLocalGame extends LocalGame {
      * Figures out which item is clicked, makes the item handed to customer
      */
     private boolean actItem(GameAction action){
-        //This action is valid when it is the players turn
         if(customer.getPlayersTurn()){
+
+            //No interrupting ghosts ending dialogue
             if(customer.getCustomerName().equals("Ghost2")) {
                 if(gameState.getCustomerDialogueType()<2) {
                     return false;
                 }
             }
-            //Checks if we have the item that was clicked
-            if(((BahActionItem) action).getThisItem() == 1 && gameState.isHasKey()){
-                //Needs to check whether or not the item is the customers item
-                //If it is, update having the item to false & change the text to loreDialogue
-                //If it's not, return false or flash the screen.
 
+            /*
+             * Conditions that must be met for item actions:
+             * 1. We have the item
+             * 2. The item is the customers item
+             */
+
+            //KEY
+            if(((BahActionItem) action).getThisItem() == 1 && gameState.isHasKey()){
                 if(customer.getItem() == 1){
-                    //todo THIS IS WHERE WE SHOULD TRIGGER ENDING EVENTS
-                    //TODO MAKE IT SO THE LORE DIALOGUE DOESN'T GET CALLED ON GHOST2 at end of game
+
+                    //Gives item to customer & gives them money
                     gameState.setHasKey(false);
                     customer.addMoney(10);
+
                     //This only checks the end of the game to ensure the lore dialogue for the ghost isn't called.
                     if(customer.getCustomerName().equals("Ghost2")){
                         gameState.setStoryProgress(gameState.getStoryProgress()+1);
@@ -208,21 +216,23 @@ public class BahLocalGame extends LocalGame {
                 else{
                     return false;
                 }
-            }
-            else if(((BahActionItem) action).getThisItem() == 2 && gameState.isHasInfoBot()){
-                //Needs to check whether or not the item is the customers item
-                //If it is, update having the item to false & change the text to loreDialogue
-                //If it's not, return false or flash the screen.
+            }//key
 
+            //INFOBOT
+            else if(((BahActionItem) action).getThisItem() == 2 && gameState.isHasInfoBot()){
                 if(customer.getItem() == 2){
+
                     gameState.setHasInfoBot(false);
                     gameState.setCustomerDialogueType(4);
                     gameState.setDialogueIndex(0);
                     customer.setPlayersTurn(false);
-                } else {
+                }
+                else{
                     return false;
                 }
-            }
+            }//infobot
+
+            //BAG
             else if(((BahActionItem) action).getThisItem() == 3 && gameState.isHasBag()){
                 //Needs to check whether or not the item is the customers item
                 //If it is, update having the item to false & change the text to loreDialogue
@@ -236,12 +246,10 @@ public class BahLocalGame extends LocalGame {
                 } else {
                     return false;
                 }
-            }
-            else if(((BahActionItem) action).getThisItem() == 4 && gameState.isHasPokeball()){
-                //Needs to check whether or not the item is the customers item
-                //If it is, update having the item to false & change the text to loreDialogue
-                //If it's not, return false or flash the screen.
+            }//bag
 
+            //POKEBALL
+            else if(((BahActionItem) action).getThisItem() == 4 && gameState.isHasPokeball()){
                 if(customer.getItem() == 4){
                     gameState.setHasPokeball(false);
                     gameState.setCustomerDialogueType(4);
@@ -250,12 +258,10 @@ public class BahLocalGame extends LocalGame {
                 } else {
                     return false;
                 }
-            }
-            else if(((BahActionItem) action).getThisItem() == 5 && gameState.isHasPokeDex()){
-                //Needs to check whether or not the item is the customers item
-                //If it is, update having the item to false & change the text to loreDialogue
-                //If it's not, return false or flash the screen.
+            }//pokeball
 
+            //POKEDEX
+            else if(((BahActionItem) action).getThisItem() == 5 && gameState.isHasPokeDex()){
                 if(customer.getItem() == 5){
                     gameState.setHasPokeDex(false);
                     gameState.setCustomerDialogueType(4);
@@ -264,75 +270,71 @@ public class BahLocalGame extends LocalGame {
                 } else {
                     return false;
                 }
-            }
+            }//pokedex
+            //todo: There's a lot of re-occuring 3 lines of code with the items that may be extractable!
+
         }
-        return false;
-    }
+        return false; //illegal
+    }//actItem
 
     /**
      * Customer Text is clicked
      */
     private boolean actProgressText(){
-        //This action is valid when it's not the players turn to press a button
-        //It's now the customers turn to talk
-
         if(!customer.getPlayersTurn()){
+
             //Greeting dialogue
             if(gameState.getCustomerDialogueType() == 1) {
 
                 //if there's more text to scroll through
                 if (gameState.getDialogueIndex() < customer.getGreetingLength()-1) {
-                    //Go to next Dialogue Index
                     gameState.setDialogueIndex(gameState.getDialogueIndex()+1);
-
                 }
-                else { //End of Greeting Dialogue
+                else { //End of Customers speech
                     customer.setPlayersTurn(true);
-                    //Reset the Index
-                    //gameState.setDialogueIndex(0);
 
-                    //Enable button's as part of the conversation.
+                    //Enable buttons
                     gameState.setButtonIsVisible(true);
                     gameState.setBadButtonText(customer.getBadButtonText());
                     gameState.setGoodButtonText(customer.getGoodButtonText());
                 }
-            }
+            }//Hi!
+
             //Happy Response
             else if(gameState.getCustomerDialogueType() == 2){
-                //if we have more to go in the array, then go ahead and set the textview to the current dialogue, then index to the next line in the array
+
+                //if there's more text to scroll through
                 if(gameState.getDialogueIndex()+1 < customer.getHappyLength()) {
-                    //so in theory, this line isn't necessary because a method somewhere else does it. I'm keeping it in comments in case
-                    //that's untrue, so that we can just uncomment to get it back
-                    // gameState.setCustomerDialogue(customer.getHappyResponse(gameState.getDialogueIndex()));
                     gameState.setDialogueIndex(gameState.getDialogueIndex()+1);
                 }
-                //otherwise set the index back to zero
-                else {
-                    //gameState.setDialogueIndex(0);
+                else { //End of Customers speech
                     customer.setPlayersTurn(true);
                 }
-            }
+            }//:)
+
             //Mad Response
             else if(gameState.getCustomerDialogueType() == 3){
-                //if we have more to go in the array, then go ahead and set the textview to the current dialogue, then index to the next line in the array
+
+                //if there's more text to scroll through
                 if(gameState.getDialogueIndex()+1 < customer.getMadLength()) {
                     gameState.setDialogueIndex(gameState.getDialogueIndex()+1);
                 }
-                //otherwise set the index back to zero
-                else {
-                    //gameState.setDialogueIndex(0);
+                else { //End of Customers speech
                     customer.setPlayersTurn(true);
                 }
             }
+
             //Lore
             else if(gameState.getCustomerDialogueType() == 4){
                 if(!customer.getCustomerName().equals("Ghost2")) {
+
                     if (gameState.getDialogueIndex() + 1 < gameState.getCustomer().getLoreLength()) {
                         gameState.setDialogueIndex(gameState.getDialogueIndex() + 1);
-                    } else {
-                        //gameState.setDialogueIndex(0);
+                    }
+                    else { //End of Customers speech
                         customer.setPlayersTurn(true);
-                        //Sets the different items as showing given depending on the customer
+
+                        //Customer gives an item to use
                         if (customer.getCustomerName().equals("Ghost")) {
                             gameState.setHasPokeball(true);
                         } else if (customer.getCustomerName().equals("Pokeangel")) {
@@ -347,29 +349,32 @@ public class BahLocalGame extends LocalGame {
                     }
                 }
             }
+
             //Goodbye
             else if(gameState.getCustomerDialogueType() == 5){
+
+                //if there's more text to scroll through
                 if(gameState.getDialogueIndex() + 1 < gameState.getCustomer().getFarewellLength()){
                     gameState.setDialogueIndex(gameState.getDialogueIndex() + 1);
                 }
-                else if(gameState.getStoryProgress() >= 5) {
-                    gameState.setStoryProgress(gameState.getStoryProgress() + 1);
-                }
-                else{
-                    //gameState.setDialogueIndex(0);
+                else{ //End of Customers speech
                     customer.setPlayersTurn(true);
+
+                    //Set to next customers introduction
                     gameState.setCustomerDialogueType(1);
                     gameState.setDialogueIndex(0);
                     gameState.nextCustomer();
                     gameState.setStoryProgress(gameState.getStoryProgress() + 1);
+
+                    //Intro Ghost gives key after goodbye
                     if(customer.getCustomerName().equals("Ghost")) {
                         gameState.setHasKey(true);
                     }
                 }
-            }
+            }//bai!
         }
-        return false;
-    }
+        return false; //illegal
+    }//actProgressText
 
 
 
