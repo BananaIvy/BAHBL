@@ -103,7 +103,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 		//Changes the customer to the gamestates one
 		if(state.getCustomer() instanceof BahCGhost) {
-			int resID = R.drawable.pngimg_com___pokemon_squirtle;
+			int resID = R.drawable.ghost;
 			customer.setImageResource(resID);
 		}
 		else if(state.getCustomer() instanceof BahCPokeangel){
