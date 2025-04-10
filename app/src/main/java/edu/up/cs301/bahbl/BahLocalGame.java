@@ -383,6 +383,9 @@ public class BahLocalGame extends LocalGame {
      */
     private void goodEnding(){
         //todo if we want the ending screens interactable
+        //For 'animation' switching or smth idk. Code that may come in handy later.
+        try {Thread.sleep(2000);}
+        catch(InterruptedException ie) { /*no problem*/ }
     }
 
     private void badEnding(){
