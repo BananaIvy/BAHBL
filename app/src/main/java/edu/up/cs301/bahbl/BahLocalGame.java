@@ -44,7 +44,7 @@ public class BahLocalGame extends LocalGame {
     @Override
     protected String checkIfGameOver() {
         if(gameState.getStoryProgress() >= 6){
-            if(customer.getLikeability()>=100) {
+            if(customer.getLikeability()>=70) {
                 loreEnding();
             }
             else if(gameState.getMoneyCount() >= 280){
