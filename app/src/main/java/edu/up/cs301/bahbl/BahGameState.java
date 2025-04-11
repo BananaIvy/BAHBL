@@ -27,6 +27,7 @@ public class BahGameState extends GameState {
 	private String customerDialogue;
 	private int storyProgress;
 	private int moneyCount;
+	private int totalLikeability;
 
 	//Tells us what we have in our inventory
 	private boolean hasKey;
@@ -42,6 +43,7 @@ public class BahGameState extends GameState {
 	public BahGameState(){
 		storyProgress = 0;
 		moneyCount = 0;
+		totalLikeability = 0;
 		hasKey = false;
 		hasPokeball = false;
 		hasInfoBot = false;
@@ -127,6 +129,9 @@ public class BahGameState extends GameState {
 	public Boolean getButtonIsVisible() {return buttonIsVisible;}
 	public int getStoryProgress() {return storyProgress;}
 	public int getMoneyCount() {return moneyCount;}
+	public int getTotalLikeability() {
+		return totalLikeability;
+	}
 	public BahCustomerBase getCustomer() {return customers[customerIndex];}
 	public boolean isHasBag() {return hasBag;}
 	public boolean isHasInfoBot() {return hasInfoBot;}
@@ -152,9 +157,10 @@ public class BahGameState extends GameState {
 	//We don't want to be able to set the money, just add or lose money.
 	public void addMoney(int moneyCount) {this.moneyCount += moneyCount;}
 	public void loseMoney(int moneyCount) {this.moneyCount -= moneyCount;}
+	public void addLikeability(int opinion) {this.totalLikeability += opinion;}
+	public void loseLikeability(int opinion) {this.totalLikeability -= opinion;}
 	public void nextCustomer(){
 		customerIndex++;
 	}
-
 
 }

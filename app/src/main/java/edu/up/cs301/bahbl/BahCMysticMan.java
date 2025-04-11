@@ -10,6 +10,7 @@ public class BahCMysticMan extends BahCustomerBase {
         setGoodButton(2);
         resetDialogue();
         setMoney(40);
+        setLikeability(20);
 
         /* dialogues */
 

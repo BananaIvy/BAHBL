@@ -14,7 +14,6 @@ public class BahCLug extends BahCustomerBase {
     public BahCLug(){
         super();
         setCustomerName("Lug");
-        setLikeability(75);
         setHasGiven(false);
         setHasReceived(false);
         setItem(2);
@@ -22,7 +21,7 @@ public class BahCLug extends BahCustomerBase {
         setGoodButton(2);
         resetDialogue();
         setMoney(45);
-
+        setLikeability(80);
 
         /* dialogues */
 
@@ -31,7 +30,7 @@ public class BahCLug extends BahCustomerBase {
         addGreetingDialogue("My designator is X57345ROBOT!");
         addGreetingDialogue("But you can call me Lug!");
         addGreetingDialogue("It is a pleasure to make your acquaintance!");
-        addGreetingDialogue("I am searching for a small, red infobot. Would you happen to have seen it?");
+        addGreetingDialogue("I am searching for an infobot. It looks like a small computer. Would you happen to have seen it?");
 
         //happy response
         addHappyResponse("Your assistance is most appreciated!");
@@ -39,10 +38,10 @@ public class BahCLug extends BahCustomerBase {
         addHappyResponse("Elaborate fashion,");
         addHappyResponse("But I suspect time is of the essence.");
         addHappyResponse("So instead,");
-        addHappyResponse("I shall condense my sentiment into,");
+        addHappyResponse("I shall condense my sentiment into");
         addHappyResponse("A single, efficient statement:");
         addHappyResponse("Thank you!");
-        addHappyResponse("Take the money now!");
+        addHappyResponse("Have my money now!");
 
         //mad response
         addMadResponse("Ahhh!");
@@ -53,7 +52,7 @@ public class BahCLug extends BahCustomerBase {
         addMadResponse("A most encouraging probability!");
         addMadResponse("Unless of course my math is incorrect...");
         addMadResponse("Which is statistically impossible!");
-        addMadResponse("Ugh take the money...");
+        addMadResponse("Ugh... Here, just take the money...");
 
         //lore response
         addLoreDialogue("This infoBot was the last thing I needed to get back!");

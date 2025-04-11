@@ -14,7 +14,6 @@ public class BahCGhost extends BahCustomerBase {
     public BahCGhost() {
         super();
         setCustomerName("Ghost");
-        setLikeability(75);
         setHasGiven(false);
         setHasReceived(false);
         setItem(1);
@@ -22,7 +21,7 @@ public class BahCGhost extends BahCustomerBase {
         setGoodButton(2);
         resetDialogue();
         setMoney(20);
-
+        setLikeability(70);
 
         /* dialogues */
         //happy response

@@ -134,6 +134,26 @@ public abstract class BahCustomerBase {
     public void addMoney(int plus) {
         this.money += plus;
     }
+    public void addLikeability(int opinion) {
+        if(this.likeability < 120) {
+            if(this.likeability+opinion <= 120) {
+                this.likeability += opinion;
+            }
+            else {
+                this.likeability = 120;
+            }
+        }//outside if
+    }
+    public void loseLikeability(int opinion) {
+        if(this.likeability > 0) {
+            if(this.likeability-opinion >=0) {
+                this.likeability -= opinion;
+            }
+            else {
+                this.likeability = 0;
+            }
+        }//outside if
+    }
     public void addFarewellDialogue(String dialogue) {
         String[] temptText = new String[this.farewellDialogue.length + 1];
         int i = 0;

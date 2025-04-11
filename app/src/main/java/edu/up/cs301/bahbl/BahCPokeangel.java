@@ -14,7 +14,6 @@ public class BahCPokeangel extends BahCustomerBase {
 	public BahCPokeangel(){
 		super();
 		setCustomerName("Pokeangel");
-		setLikeability(50);
 		setHasGiven(false);
 		setHasReceived(false);
 		setItem(4);
@@ -22,7 +21,7 @@ public class BahCPokeangel extends BahCustomerBase {
 		setGoodButton(2);
 		resetDialogue();
 		setMoney(55);
-
+		setLikeability(40);
 
 		/* dialogues */
 		//happy response
