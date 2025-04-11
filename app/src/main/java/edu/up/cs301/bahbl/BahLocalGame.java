@@ -180,6 +180,8 @@ public class BahLocalGame extends LocalGame {
             //Customers turn to talk
             customer.setPlayersTurn(false);
             gameState.setDialogueIndex(0);
+            gameState.setGoodButtonText(null);
+            gameState.setBadButtonText(null);
 
             return true; //legal
         }
