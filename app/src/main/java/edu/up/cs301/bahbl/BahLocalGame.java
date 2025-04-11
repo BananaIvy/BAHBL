@@ -114,11 +114,11 @@ public class BahLocalGame extends LocalGame {
             else {
                 customer.loseLikeability(30);
             }
-
+            //Change $ amount based on good/bad interactions (aka customer likeability)
+            customer.setMoney(customer.getMoney()*customer.getLikeability()/10);
             //Customer empties their wallets into the register
             gameState.addMoney(customer.getMoney());
             customer.setMoney(0);
-            //todo Change $ amount based on good/bad interactions (aka customer likeability)
             //take the customer's likeability for us and add it to our total (stored in gameState)
             gameState.addLikeability(customer.getLikeability());
             //Set up for goodbye dialogue conditions
@@ -288,7 +288,7 @@ public class BahLocalGame extends LocalGame {
                     return false;
                 }
             }//pokedex
-            //todo: There's a lot of re-occuring 3 lines of code with the items that may be extractable!
+            //todo: There's a lot of recurring 3 lines of code with the items that may be extractable!
 
         }
         return false; //illegal
