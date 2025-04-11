@@ -49,9 +49,11 @@ public class BahCPokeangel extends BahCustomerBase {
 		addGreetingDialogue("Therefore, which of these can go through the Green Glass Door?");
 
 		//lore response
-		addLoreDialogue("Alas, I have fallen from grace.");
-		addLoreDialogue("Like a gently floating petal on the wind.");
-		addLoreDialogue("I must earn my way back to my eternal redemption.");
+		addLoreDialogue("Ooohh pretty! It's a little me! I never thought I'd see such a perfect item *here*.");
+		addLoreDialogue("It's a very difficult place to be, hell. If only I hadn't fallen from grace...");
+		addLoreDialogue("...Like a gently floating petal on the wind...");
+		addLoreDialogue("Alas, mortal, I must earn my way back to my eternal redemption.");
+		addLoreDialogue("Until we meet again, at the gates of heaven or hell, young one!");
 
 		//farewell response
 		addFarewellDialogue("Thank you, and may the ruler and overlord of all look kindly on you, mortal.");

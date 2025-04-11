@@ -26,16 +26,16 @@ public class BahCGhost extends BahCustomerBase {
         /* dialogues */
         //happy response
         addHappyResponse("Great! I'm glad to hear it!");
-        addHappyResponse("Here is a little ball I found lying on the floor...");
-        addHappyResponse("It may come in handy...keep it close...");
-        addHappyResponse("You can also give people items!");
-        addHappyResponse("Try with the key!");
+        addHappyResponse("By the way, here's a little ball I found lying on the floor...");
+        addHappyResponse("It may come in handy, perhaps a customer will need it...keep it close...");
+        addHappyResponse("That reminds me! you can give people items.");
+        addHappyResponse("Go ahead and try with the key.");
 
         //mad response
         addMadResponse("Now, come on, I hired you for a reason.");
         addMadResponse("Don't disappoint me!");
-        addMadResponse("You can also give people items!");
-        addMadResponse("Try with the key!");
+        addMadResponse("And don't upset the customers. If they want something specific,");
+        addMadResponse("You can give them items. Try with the key!");
 
         //greeting responses ("Welcome to BAHBL!");
         addGreetingDialogue("Hey, I'm glad you showed up!");
@@ -50,13 +50,13 @@ public class BahCGhost extends BahCustomerBase {
         addGreetingDialogue("SWALLOW IT!");
 
         //lore responses
-        addLoreDialogue("Now, I'll try and keep this simple and quick.");
+        addLoreDialogue("Great! All right, I'll try and keep this simple and quick.");
         addLoreDialogue("When a customer comes up, you'll greet them politely,");
         addLoreDialogue("Tap the register to collect their money,");
         addLoreDialogue("And send them on their way! Simple!");
         addLoreDialogue("Now, they may try to offer you items,");
         addLoreDialogue("Which you can keep under the register if you'd like,");
-        addLoreDialogue("But, don't take anything dangerous!");
+        addLoreDialogue("But don't take anything dangerous!");
         addLoreDialogue("Some of the folks in these parts are a little unsavory.");
         addLoreDialogue("Feel free to give away anything you have under the counter.");
         addLoreDialogue("Besides the key of course! ;)");
