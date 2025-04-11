@@ -118,7 +118,7 @@ public class BahLocalGame extends LocalGame {
                 customer.loseLikeability(30);
             }
             //Change $ amount based on good/bad interactions (aka customer likeability)
-            customer.setMoney(customer.getMoney()*customer.getLikeability()/10);
+            customer.setMoney(customer.getMoney()*customer.getLikeability()/100);
             //Customer empties their wallets into the register
             gameState.addMoney(customer.getMoney());
             customer.setMoney(0);
