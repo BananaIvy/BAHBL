@@ -11,6 +11,7 @@ public class BahCNux extends BahCustomerBase {
         setGoodButton(2);
         resetDialogue();
         setMoney(90);
+        setLikeability(70);
 
         //Greeting Dialogue
         addGreetingDialogue("Well hello past student...funny seeing you here...");
@@ -47,15 +48,16 @@ public class BahCNux extends BahCustomerBase {
         addMadResponse("HERE! MONEY! TAKE! NO POKEMON!");
 
         //Lore Dialogue
-        addLoreDialogue("Ugh. I've been trying to get rid of these things.");
-        addLoreDialogue("I'm going to have to have a word with your boss by having this in store.");
-        addLoreDialogue("As one of my underlings, he should have reported it to me immediately.");
+        addLoreDialogue("UGHHH... oh, thank you for this pokedex. Now I'll be able to identify the pests.");
+        addLoreDialogue("Not that I need to, they say their names out loud, but it will tell me their weaknesses!");
+        addLoreDialogue("I'm going to have to have a word with your boss. I've seen signs of Pokemon around the store.");
+        addLoreDialogue("As one of my underlings, he should have reported them to me immediately.");
         addLoreDialogue("The quest to get rid of all Pokemon has consumed my life...");
         addLoreDialogue("I had to leave my teaching job and come here!");
         addLoreDialogue("BUT ONE DAY I WILL GET RID OF THEM ALL!");
 
         //Farewell Dialogue
-        addFarewellDialogue("I must go now as I need to be on the look out.");
+        addFarewellDialogue("I must go now, as I need to be on the look out.");
         addFarewellDialogue("You never know when pesky Pokemon could be lurking!");
         addFarewellDialogue("Heck! They could be on your back right now and you would never know!");
         addFarewellDialogue("Anyway, I hope your job goes well!");

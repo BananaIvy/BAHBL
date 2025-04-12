@@ -43,7 +43,10 @@ public class BahLocalGame extends LocalGame {
     @Override
     protected String checkIfGameOver() {
         if(gameState.getStoryProgress() >= 6){
-            if(gameState.getMoneyCount() >= 280){
+            if(customer.getLikeability()>=70) {
+                loreEnding();
+            }
+            else if(gameState.getMoneyCount() >= 280){
                 goodEnding();
             } else {
                 actBadEnding();
@@ -112,12 +115,20 @@ public class BahLocalGame extends LocalGame {
     private boolean actRegister(){
         //Register is clickable when the customers not talking and it's not the last interaction
         if(customer.getPlayersTurn() && !customer.getCustomerName().equals("Ghost2")) {
-
+            //check if we went through a whole interaction or if we rushed them rudely
+            if(gameState.getCustomerDialogueType() >= 2) {
+                //good, this means we were polite :)
+            }
+            else {
+                customer.loseLikeability(30);
+            }
+            //Change $ amount based on good/bad interactions (aka customer likeability)
+            customer.setMoney(customer.getMoney()*customer.getLikeability()/100);
             //Customer empties their wallets into the register
             gameState.addMoney(customer.getMoney());
             customer.setMoney(0);
-            //todo Change $ amount based on good/bad interactions (aka customer likeability)
-
+            //take the customer's likeability for us and add it to our total (stored in gameState)
+            gameState.addLikeability(customer.getLikeability());
             //Set up for goodbye dialogue conditions
             gameState.setButtonIsVisible(false);
             gameState.setDialogueIndex(0);
@@ -142,6 +153,8 @@ public class BahLocalGame extends LocalGame {
             //GOOD Button is pressed
             if (customer.getGoodButton() == ((BahActionButton) action).getWhichButton()) {
 
+                //add to likeability - they're happy you chose the correct response
+                customer.addLikeability(20);//we should probably index by values of 10
                 //Set up for Happy Response
                 gameState.setDialogueIndex(0);
                 gameState.setCustomerDialogueType(2);
@@ -155,6 +168,8 @@ public class BahLocalGame extends LocalGame {
             //BAD Button is pressed
             if (customer.getBadButton() == ((BahActionButton) action).getWhichButton()) {
 
+                //subtract from likeability - you upset the customer. tsk tsk
+                customer.loseLikeability(10);//less than is added for the good response, can be changed if desired
                 //Set up for Mad Response
                 gameState.setDialogueIndex(0);
                 gameState.setCustomerDialogueType(3);
@@ -173,6 +188,8 @@ public class BahLocalGame extends LocalGame {
             //Customers turn to talk
             customer.setPlayersTurn(false);
             gameState.setDialogueIndex(0);
+            gameState.setGoodButtonText(null);
+            gameState.setBadButtonText(null);
 
             return true; //legal
         }
@@ -203,7 +220,7 @@ public class BahLocalGame extends LocalGame {
             if(((BahActionItem) action).getThisItem() == 1 && gameState.isHasKey()){
                 if(customer.getItem() == 1){
 
-                    //Gives item to customer & gives them money
+                    //Gives item to customer & gives them more money to pay us with
                     gameState.setHasKey(false);
                     customer.addMoney(10);
 
@@ -213,6 +230,7 @@ public class BahLocalGame extends LocalGame {
                         return true;
                     }
                     else {
+                        customer.addLikeability(30);
                         gameState.setCustomerDialogueType(4);
                         gameState.setDialogueIndex(0);
                         customer.setPlayersTurn(false);
@@ -228,6 +246,7 @@ public class BahLocalGame extends LocalGame {
                 if(customer.getItem() == 2){
 
                     gameState.setHasInfoBot(false);
+                    customer.addLikeability(30);
                     gameState.setCustomerDialogueType(4);
                     gameState.setDialogueIndex(0);
                     customer.setPlayersTurn(false);
@@ -245,6 +264,7 @@ public class BahLocalGame extends LocalGame {
 
                 if(customer.getItem() == 3){
                     gameState.setHasBag(false);
+                    customer.addLikeability(30);
                     gameState.setCustomerDialogueType(4);
                     gameState.setDialogueIndex(0);
                     customer.setPlayersTurn(false);
@@ -257,6 +277,7 @@ public class BahLocalGame extends LocalGame {
             else if(((BahActionItem) action).getThisItem() == 4 && gameState.isHasPokeball()){
                 if(customer.getItem() == 4){
                     gameState.setHasPokeball(false);
+                    customer.addLikeability(30);
                     gameState.setCustomerDialogueType(4);
                     gameState.setDialogueIndex(0);
                     customer.setPlayersTurn(false);
@@ -269,6 +290,7 @@ public class BahLocalGame extends LocalGame {
             else if(((BahActionItem) action).getThisItem() == 5 && gameState.isHasPokeDex()){
                 if(customer.getItem() == 5){
                     gameState.setHasPokeDex(false);
+                    customer.addLikeability(30);
                     gameState.setCustomerDialogueType(4);
                     gameState.setDialogueIndex(0);
                     customer.setPlayersTurn(false);
@@ -276,7 +298,7 @@ public class BahLocalGame extends LocalGame {
                     return false;
                 }
             }//pokedex
-            //todo: There's a lot of re-occuring 3 lines of code with the items that may be extractable!
+            //todo: There's a lot of recurring 3 lines of code with the items that may be extractable!
 
         }
         return false; //illegal

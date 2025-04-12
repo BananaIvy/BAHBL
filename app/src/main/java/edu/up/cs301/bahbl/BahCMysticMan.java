@@ -10,6 +10,7 @@ public class BahCMysticMan extends BahCustomerBase {
         setGoodButton(2);
         resetDialogue();
         setMoney(40);
+        setLikeability(20);
 
         /* dialogues */
 
@@ -34,6 +35,7 @@ public class BahCMysticMan extends BahCustomerBase {
         addMadResponse("I have important people wasting my time already, I don't need you.");
 
         //lore dialogue
+        addLoreDialogue("My spell bag! You found it? Thank you.");
         addLoreDialogue("You know, I wasn't always such a pitiable creature.");
         addLoreDialogue("Believe it or not, I once had kings and queens bowing at my feet.");
         addLoreDialogue("They say that making a deal with the devil will only end poorly.");
