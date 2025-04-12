@@ -73,13 +73,14 @@
         android:layout_gravity="top"
         android:orientation="horizontal">
 
-        <ImageView
+        <ImageButton
             android:id="@+id/register_keyboard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
             android:layout_marginTop="-10dp"
             android:layout_weight="1"
+            android:background="#00FFFFFF"
             android:contentDescription="This the keyboard we don't care about. Tis a visual"
             android:src="@drawable/register_keyboard"/>
 

@@ -38,6 +38,9 @@ public class BahGameState extends GameState {
 	private String goodButtonText;
 	private String badButtonText;
 
+	//For the Bad Ending
+	private int endScene;
+
 	//Constructor for start of game
 	public BahGameState(){
 		storyProgress = 0;
@@ -54,6 +57,7 @@ public class BahGameState extends GameState {
 		buttonIsVisible = false;
 		goodButtonText = "";
 		badButtonText = "";
+		endScene = 0;
 	}
 
 	//Copy Constructor
@@ -72,6 +76,7 @@ public class BahGameState extends GameState {
 		buttonIsVisible = currentState.buttonIsVisible;
 		goodButtonText = currentState.goodButtonText;
 		badButtonText = currentState.badButtonText;
+		endScene = currentState.endScene;
 	}
 
 	//Methods
@@ -134,7 +139,7 @@ public class BahGameState extends GameState {
 	public boolean isHasPokeball() {return hasPokeball;}
 	public boolean isHasPokeDex() {return hasPokeDex;}
 	public int getDialogueIndex() {return dialogueIndex;}
-
+	public int getEndScene() {return endScene;}
 
 	//Setter Methods
 	public void setGoodButtonText(String goodButtonText) {this.goodButtonText = goodButtonText;}
@@ -154,6 +159,15 @@ public class BahGameState extends GameState {
 	public void loseMoney(int moneyCount) {this.moneyCount -= moneyCount;}
 	public void nextCustomer(){
 		customerIndex++;
+	}
+
+	public void nextEndScene(boolean isEnd){
+		if(isEnd){
+			endScene = 4;
+		}
+		else{
+			endScene = (endScene+1)%4;
+		}
 	}
 
 

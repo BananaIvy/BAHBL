@@ -1,6 +1,5 @@
 package edu.up.cs301.bahbl;
 
-import android.util.EventLog;
 import android.util.Log;
 
 import edu.up.cs301.GameFramework.LocalGame;
@@ -47,7 +46,7 @@ public class BahLocalGame extends LocalGame {
             if(gameState.getMoneyCount() >= 280){
                 goodEnding();
             } else {
-                badEnding();
+                actBadEnding();
             }
             return "You reached the end! Game is Over ";
         }
@@ -97,6 +96,12 @@ public class BahLocalGame extends LocalGame {
         }
 
         gameState.setDialogueIndex(0);
+
+        //ENDING
+        if(action instanceof BahActionRun) {
+            return actBadEnding();
+        }
+
         return false;
     }//makeMove
 
@@ -388,8 +393,9 @@ public class BahLocalGame extends LocalGame {
         catch(InterruptedException ie) { /*no problem*/ }
     }
 
-    private void badEnding(){
-        //todo if we want the ending screens interactable
+    private boolean actBadEnding(){
+        gameState.nextEndScene(false);
+        return true;
     }
 
     private void loreEnding(){

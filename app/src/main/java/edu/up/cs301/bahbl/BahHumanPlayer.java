@@ -7,8 +7,12 @@ import edu.up.cs301.GameFramework.infoMessage.GameInfo;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * A GUI of a counter-player. The GUI displays the current value of the counter,
@@ -43,7 +47,13 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	private ImageButton		infoBot				= null;
 	private ImageButton		pokeDex				= null;
 	private ImageButton		bag					= null;
-	private ImageButton     customer           = null;
+	private ImageButton     customer            = null;
+
+	private TextView		run					= null;
+	private TextView		youDied				= null;
+	private ImageView		background			= null;
+
+	private final Timer 	time 				= new Timer(true);
 
 	// the most recent game state, as given to us by the CounterLocalGame
 	private BahGameState state;
@@ -170,7 +180,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		}
 
 
-		if(state.getCustomer().getPlayersTurn() == false){
+		if(!state.getCustomer().getPlayersTurn()){
 			customerDialogue.setClickable(true);
 			//Todo rewrite the players turn implementations so that this can work.
 		}
@@ -180,11 +190,37 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 		//IF IT's THE ENDING
 		if((state.getStoryProgress() >= 6)){
-			if(state.getMoneyCount() > 5) {
+			if(state.getMoneyCount() < 5) {
 				this.myActivity.setContentView(R.layout.bahbl_good_ending);
 			}
 			else{
 				this.myActivity.setContentView(R.layout.bahbl_bad_ending);
+				//this.run.setOnClickListener(this);
+
+				//time.schedule(new BahTimer(state), 2000);
+
+				//run.setClickable(true);
+//				youDied.setVisibility(View.INVISIBLE);
+//
+//				if (state.getEndScene() == 0){
+//					int resId = R.drawable.first;
+//					background.setImageResource(resId);
+//				} else if (state.getEndScene() == 1) {
+//					int resId = R.drawable.second;
+//					background.setImageResource(resId);
+//				} else if (state.getEndScene() == 2) {
+//					int resId = R.drawable.third;
+//					background.setImageResource(resId);
+//				} else if (state.getEndScene() == 3) {
+//					int resId = R.drawable.fourth;
+//					background.setImageResource(resId);
+//				} else {
+//					int resId = R.drawable.death;
+//					background.setImageResource(resId);
+//					run.setClickable(false);
+//					run.setVisibility(View.INVISIBLE);
+//					youDied.setVisibility(View.VISIBLE);
+//				}
 			}
 		}
 
@@ -203,11 +239,14 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		else if(button.getId() == R.id.customerDialogue){
 			game.sendAction(new BahActionProgressText(this));
 		}
-		else if(button.getId() == R.id.total_monitor){
+		else if(button.getId() == R.id.total_monitor || button.getId() == R.id.register_keyboard){
 			game.sendAction(new BahActionRegister(this));
 		}
 		else if(isItem(button)){
 			game.sendAction(new BahActionItem(this, button));
+		}
+		else if(button.getId() == R.id.run){
+			game.sendAction(new BahActionRun(this));
 		}
 	}// onClick
 
@@ -258,7 +297,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		this.customerDialogue = (TextView)activity.findViewById(R.id.customerDialogue);
 		this.button1 = (Button) activity.findViewById(R.id.Option1);
 		this.button2 = (Button) activity.findViewById(R.id.Option2);
-		this.register = (android.widget.ImageButton) activity.findViewById((R.id.register_screen));
+		this.register = (android.widget.ImageButton) activity.findViewById((R.id.register_keyboard));
 		this.infoBot = (android.widget.ImageButton) activity.findViewById(R.id.infoBot);
 		this.bag = (android.widget.ImageButton) activity.findViewById(R.id.bag);
 		this.pokeball = (android.widget.ImageButton) activity.findViewById((R.id.pokeball));
@@ -267,18 +306,22 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		this.registerMoney  = (TextView) activity.findViewById((R.id.total_monitor));
 		this.customer = (ImageButton) activity.findViewById(R.id.customer);
 
-
 		// make this object listen for widget clicks
 		customerDialogue.setOnClickListener(this);
 		button1.setOnClickListener(this);
 		button2.setOnClickListener(this);
 		registerMoney.setOnClickListener(this);
+		register.setOnClickListener(this);
 		infoBot.setOnClickListener(this);
 		bag.setOnClickListener(this);
 		pokeball.setOnClickListener(this);
 		pokeDex.setOnClickListener(this);
 		key.setOnClickListener(this);
 		customer.setOnClickListener(this);
+
+		this.run = (TextView)activity.findViewById(R.id.run);
+		this.youDied = (TextView)activity.findViewById(R.id.deathmessage);
+		this.background = (ImageView)activity.findViewById(R.id.bad_background);
 
 		// if we have a game state, "simulate" that we have just received
 		// the state from the game so that the GUI values are updated
