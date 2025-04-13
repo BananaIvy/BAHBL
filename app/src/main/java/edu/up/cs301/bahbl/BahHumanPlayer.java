@@ -86,141 +86,19 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	 */
 	protected void updateDisplay() {
 
-		// Customer text/Dialogue
-		String tempText = state.getCustomerDialogue();
-		customerDialogue.setText(tempText);
+		setUpTexts();
 
-		// Register Text
-		tempText = Integer.toString(state.getMoneyCount());
-		registerMoney.setText(tempText);
+		setUpCustomer();
 
-		//Button Texts
-		if (state.getCustomer().getGoodButton() == 1) {
-			tempText = state.getGoodButtonText();
-			button1.setText(tempText);
-
-			tempText = state.getBadButtonText();
-			button2.setText(tempText);
-		}
-		else{
-			tempText = state.getGoodButtonText();
-			button2.setText(tempText);//todo maybe this is where we fix what buttons display?
-
-			tempText = state.getBadButtonText();
-			button1.setText(tempText);
-		}
-
-		//Changes the customer to the gamestates one
-		if(state.getCustomer() instanceof BahCGhost) {
-			int resID = R.drawable.ghost;
-			customer.setImageResource(resID);
-		}
-		else if(state.getCustomer() instanceof BahCPokeangel){
-			int resID = R.drawable.pokeangel;
-			customer.setImageResource(resID);
-		}
-		else if(state.getCustomer() instanceof BahCLug){
-			int resID = R.drawable.lug;
-			customer.setImageResource(resID);
-		}
-		else if(state.getCustomer() instanceof BahCMysticMan){
-			int resID = R.drawable.mysticman;
-			customer.setImageResource(resID);
-		}
-		else if(state.getCustomer() instanceof BahCNux){
-			int resID = R.drawable.nux;
-			customer.setImageResource(resID);
-		}
-		else{
-			int resID = R.drawable.purple_delete_button;
-			customer.setImageResource(resID);
-		}
-
-		//Items
-		if(state.isHasKey()){
-			key.setClickable(true);
-			key.setVisibility(View.VISIBLE);
-		}
-		else{
-			key.setClickable(false);
-			key.setVisibility(View.INVISIBLE);
-		}
-		if(state.isHasPokeball()){
-			pokeball.setClickable(true);
-			pokeball.setVisibility(View.VISIBLE);
-		}
-		else{
-			pokeball.setClickable(false);
-			pokeball.setVisibility(View.INVISIBLE);
-		}
-		if(state.isHasBag()){
-			bag.setClickable(true);
-			bag.setVisibility(View.VISIBLE);
-		}
-		else{
-			bag.setClickable(false);
-			bag.setVisibility(View.INVISIBLE);
-		}
-		if(state.isHasInfoBot()){
-			infoBot.setClickable(true);
-			infoBot.setVisibility(View.VISIBLE);
-		}
-		else{
-			infoBot.setClickable(false);
-			infoBot.setVisibility(View.INVISIBLE);
-		}
-		if(state.isHasPokeDex()){
-			pokeDex.setClickable(true);
-			pokeDex.setVisibility(View.VISIBLE);
-		}
-		else{
-			pokeDex.setClickable(false);
-			pokeDex.setVisibility(View.INVISIBLE);
-		}
-
-
-		if(!state.getCustomer().getPlayersTurn()){
-			customerDialogue.setClickable(true);
-			//Todo rewrite the players turn implementations so that this can work.
-		}
-		else{
-			customerDialogue.setClickable(true);
-		}
+		setUpItems();
 
 		//IF IT's THE ENDING
 		if((state.getStoryProgress() >= 6)){
-			if(state.getMoneyCount() < 5) {
-				this.myActivity.setContentView(R.layout.bahbl_good_ending);
+			if(state.getMoneyCount() < 5) { //todo fix this condition after fixing $ amounts.
+				goodLayout();
 			}
 			else{
-				myActivity.setContentView(R.layout.bahbl_bad_ending);
-				this.run = (TextView) myActivity.findViewById(R.id.run);
-				this.youDied = (TextView) myActivity.findViewById(R.id.deathmessage);
-				this.background = (ImageView) myActivity.findViewById(R.id.bad_background);
-				this.run.setOnClickListener(this);
-				run.setClickable(true);
-				youDied.setVisibility(View.INVISIBLE);
-
-
-				if (state.getEndScene() == 0){
-					int resId = R.drawable.first;
-					background.setImageResource(resId);
-				} else if (state.getEndScene() == 1) {
-					int resId = R.drawable.second;
-					background.setImageResource(resId);
-				} else if (state.getEndScene() == 2) {
-					int resId = R.drawable.third;
-					background.setImageResource(resId);
-				} else if (state.getEndScene() == 3) {
-					int resId = R.drawable.fourth;
-					background.setImageResource(resId);
-				} else {
-					int resId = R.drawable.death;
-					background.setImageResource(resId);
-					run.setClickable(false);
-					run.setVisibility(View.INVISIBLE);
-					youDied.setVisibility(View.VISIBLE);
-				}
+				badLayout();
 			}
 		}
 
@@ -324,6 +202,149 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		if (state != null) {
 			receiveInfo(state);
 		}
+	}
+
+	public void setUpTexts(){
+		// Customer text/Dialogue
+		String tempText = state.getCustomerDialogue();
+		customerDialogue.setText(tempText);
+
+		// Register Text
+		tempText = Integer.toString(state.getMoneyCount());
+		registerMoney.setText(tempText);
+
+		//Button Texts
+		if (state.getCustomer().getGoodButton() == 1) {
+			tempText = state.getGoodButtonText();
+			button1.setText(tempText);
+
+			tempText = state.getBadButtonText();
+			button2.setText(tempText);
+		}
+		else{
+			tempText = state.getGoodButtonText();
+			button2.setText(tempText);//todo maybe this is where we fix what buttons display?
+
+			tempText = state.getBadButtonText();
+			button1.setText(tempText);
+		}
+
+		customerDialogue.setClickable(true);
+
+	}//texts
+
+	public void setUpCustomer(){
+		//Changes the customer to the gamestates one
+		if(state.getCustomer() instanceof BahCGhost) {
+			int resID = R.drawable.ghost;
+			customer.setImageResource(resID);
+		}
+		else if(state.getCustomer() instanceof BahCPokeangel){
+			int resID = R.drawable.pokeangel;
+			customer.setImageResource(resID);
+		}
+		else if(state.getCustomer() instanceof BahCLug){
+			int resID = R.drawable.lug;
+			customer.setImageResource(resID);
+		}
+		else if(state.getCustomer() instanceof BahCMysticMan){
+			int resID = R.drawable.mysticman;
+			customer.setImageResource(resID);
+		}
+		else if(state.getCustomer() instanceof BahCNux){
+			int resID = R.drawable.nux;
+			customer.setImageResource(resID);
+		}
+		else{
+			int resID = R.drawable.purple_delete_button;
+			customer.setImageResource(resID);
+		}
+	}//customers
+
+	public void setUpItems(){
+		//Items
+		if(state.isHasKey()){
+			key.setClickable(true);
+			key.setVisibility(View.VISIBLE);
+		}
+		else{
+			key.setClickable(false);
+			key.setVisibility(View.INVISIBLE);
+		}
+		if(state.isHasPokeball()){
+			pokeball.setClickable(true);
+			pokeball.setVisibility(View.VISIBLE);
+		}
+		else{
+			pokeball.setClickable(false);
+			pokeball.setVisibility(View.INVISIBLE);
+		}
+		if(state.isHasBag()){
+			bag.setClickable(true);
+			bag.setVisibility(View.VISIBLE);
+		}
+		else{
+			bag.setClickable(false);
+			bag.setVisibility(View.INVISIBLE);
+		}
+		if(state.isHasInfoBot()){
+			infoBot.setClickable(true);
+			infoBot.setVisibility(View.VISIBLE);
+		}
+		else{
+			infoBot.setClickable(false);
+			infoBot.setVisibility(View.INVISIBLE);
+		}
+		if(state.isHasPokeDex()){
+			pokeDex.setClickable(true);
+			pokeDex.setVisibility(View.VISIBLE);
+		}
+		else{
+			pokeDex.setClickable(false);
+			pokeDex.setVisibility(View.INVISIBLE);
+		}
+	}//items
+
+	public void badLayout(){
+		//Initialize the xml View
+		myActivity.setContentView(R.layout.bahbl_bad_ending);
+		this.run = (TextView) myActivity.findViewById(R.id.run);
+		this.youDied = (TextView) myActivity.findViewById(R.id.deathmessage);
+		this.background = (ImageView) myActivity.findViewById(R.id.bad_background);
+
+		//The run text
+		this.run.setOnClickListener(this);
+
+		run.setClickable(true);
+		youDied.setVisibility(View.INVISIBLE);
+
+		//Cycles through the corridor animation
+		if (state.getEndScene() == 0){
+			int resId = R.drawable.first;
+			background.setImageResource(resId);
+		} else if (state.getEndScene() == 1) {
+			int resId = R.drawable.second;
+			background.setImageResource(resId);
+		} else if (state.getEndScene() == 2) {
+			int resId = R.drawable.third;
+			background.setImageResource(resId);
+		} else if (state.getEndScene() == 3) {
+			int resId = R.drawable.fourth;
+			background.setImageResource(resId);
+		} else {
+
+			//End screen!
+			int resId = R.drawable.death;
+			background.setImageResource(resId);
+
+			run.setClickable(false);
+			run.setVisibility(View.INVISIBLE);
+			youDied.setVisibility(View.VISIBLE);
+		}
+	}//badLayout
+
+	public void goodLayout(){
+		this.myActivity.setContentView(R.layout.bahbl_good_ending);
 	}
 
 }// class CounterHumanPlayer

@@ -44,7 +44,7 @@ public class BahLocalGame extends LocalGame {
 
     @Override
     protected String checkIfGameOver() {
-        if(gameState.getStoryProgress() >= 9){
+        if(gameState.getStoryProgress() >= 8){
             if(customer.getLikeability()>=70) {
                 loreEnding();
             }
@@ -72,7 +72,7 @@ public class BahLocalGame extends LocalGame {
     }
 
     /**
-     * The only type of GameAction that should be sent is CounterMoveAction
+     * hi
      */
 
     protected boolean makeMove(GameAction action) {
