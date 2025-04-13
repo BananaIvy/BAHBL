@@ -431,4 +431,8 @@ public class BahLocalGame extends LocalGame {
         //todo if we want the ending screens interactable
     }
 
+    private void triviaScreen(){
+
+    }
+
 }

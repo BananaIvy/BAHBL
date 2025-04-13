@@ -29,6 +29,7 @@ public class BahCPokeangel extends BahCustomerBase {
 		addHappyResponse("You are wise beyond your years mortal!");
 		addHappyResponse("May you bloom and bear rich fruit,");
 		addHappyResponse("Ere your time here comes to an end!");
+		addHappyResponse("Please play this trivia game with me!");
 
 		//mad response
 		addMadResponse("Alas,");
