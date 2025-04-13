@@ -1,5 +1,7 @@
 package edu.up.cs301.bahbl;
 
+import java.util.Timer;
+
 import edu.up.cs301.GameFramework.infoMessage.GameState;
 
 /**
@@ -15,6 +17,8 @@ import edu.up.cs301.GameFramework.infoMessage.GameState;
  */
 public class BahGameState extends GameState {
 
+	private final Timer time = new Timer(true);
+	public long endSceneStartTime = -1;
 	private final BahCustomerBase manager = new BahCGhost();
 	private final BahCustomerBase[] customers = {manager, new BahCPokeangel(), new BahCLug(), new BahCMysticMan(), new BahCNux(), new BahCGhost(manager)};
 	private int customerIndex;
@@ -155,7 +159,7 @@ public class BahGameState extends GameState {
 	public void setHasKey(boolean hasKey) {this.hasKey = hasKey;}
 	public void setHasPokeball(boolean hasPokeball) {this.hasPokeball = hasPokeball;}
 	public void setHasPokeDex(boolean hasPokeDex) {this.hasPokeDex = hasPokeDex;}
-	public void setStoryProgress(int storyProgress) {this.storyProgress = storyProgress;}
+	public void progressStory() {this.storyProgress++;}
 
 	//We don't want to be able to set the money, just add or lose money.
 	public void addMoney(int moneyCount) {this.moneyCount += moneyCount;}
@@ -169,9 +173,14 @@ public class BahGameState extends GameState {
 	public void nextEndScene(boolean isEnd){
 		if(isEnd){
 			endScene = 4;
+			progressStory();
 		}
 		else{
-			endScene = (endScene+1)%4;
+			if (endSceneStartTime == -1) {
+				endSceneStartTime = System.currentTimeMillis(); // set when first called
+			}
+			endScene = (endScene + 1) % 4;
+			time.schedule(new BahTimer(this), 10000); // wait 10s before next step
 		}
 	}
 

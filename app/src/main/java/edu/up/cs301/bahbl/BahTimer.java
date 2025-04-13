@@ -11,6 +11,9 @@ public class BahTimer extends TimerTask {
 
     @Override
     public void run() {
-        gameState.nextEndScene(true);
+        long now = System.currentTimeMillis();
+        if (now - gameState.endSceneStartTime >= 20000) {
+            gameState.nextEndScene(true);  // final end screen
+        }
     }
 }

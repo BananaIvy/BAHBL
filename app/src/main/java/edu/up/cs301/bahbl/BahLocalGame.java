@@ -2,6 +2,8 @@ package edu.up.cs301.bahbl;
 
 import android.util.Log;
 
+import java.util.Timer;
+
 import edu.up.cs301.GameFramework.LocalGame;
 import edu.up.cs301.GameFramework.actionMessage.GameAction;
 import edu.up.cs301.GameFramework.infoMessage.GameState;
@@ -42,7 +44,7 @@ public class BahLocalGame extends LocalGame {
 
     @Override
     protected String checkIfGameOver() {
-        if(gameState.getStoryProgress() >= 6){
+        if(gameState.getStoryProgress() >= 9){
             if(customer.getLikeability()>=70) {
                 loreEnding();
             }
@@ -226,7 +228,7 @@ public class BahLocalGame extends LocalGame {
 
                     //This only checks the end of the game to ensure the lore dialogue for the ghost isn't called.
                     if(customer.getCustomerName().equals("Ghost2")){
-                        gameState.setStoryProgress(gameState.getStoryProgress()+1);
+                        gameState.progressStory();
                         return true;
                     }
                     else {
@@ -391,7 +393,7 @@ public class BahLocalGame extends LocalGame {
                     gameState.setCustomerDialogueType(1);
                     gameState.setDialogueIndex(0);
                     gameState.nextCustomer();
-                    gameState.setStoryProgress(gameState.getStoryProgress() + 1);
+                    gameState.progressStory();
 
                     //Intro Ghost gives key after goodbye
                     if(customer.getCustomerName().equals("Ghost")) {
@@ -416,7 +418,12 @@ public class BahLocalGame extends LocalGame {
     }
 
     private boolean actBadEnding(){
-        gameState.nextEndScene(false);
+        if(gameState.getEndScene() != 4) {
+            gameState.nextEndScene(false);
+        }
+        else{
+            gameState.nextEndScene(true);
+        }
         return true;
     }
 

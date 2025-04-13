@@ -53,8 +53,6 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	private TextView		youDied				= null;
 	private ImageView		background			= null;
 
-	private final Timer 	time 				= new Timer(true);
-
 	// the most recent game state, as given to us by the CounterLocalGame
 	private BahGameState state;
 
@@ -87,6 +85,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	 * sets the dialog in the text view
 	 */
 	protected void updateDisplay() {
+
 		// Customer text/Dialogue
 		String tempText = state.getCustomerDialogue();
 		customerDialogue.setText(tempText);
@@ -194,33 +193,34 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 				this.myActivity.setContentView(R.layout.bahbl_good_ending);
 			}
 			else{
-				this.myActivity.setContentView(R.layout.bahbl_bad_ending);
-				//this.run.setOnClickListener(this);
+				myActivity.setContentView(R.layout.bahbl_bad_ending);
+				this.run = (TextView) myActivity.findViewById(R.id.run);
+				this.youDied = (TextView) myActivity.findViewById(R.id.deathmessage);
+				this.background = (ImageView) myActivity.findViewById(R.id.bad_background);
+				this.run.setOnClickListener(this);
+				run.setClickable(true);
+				youDied.setVisibility(View.INVISIBLE);
 
-				//time.schedule(new BahTimer(state), 2000);
 
-				//run.setClickable(true);
-//				youDied.setVisibility(View.INVISIBLE);
-//
-//				if (state.getEndScene() == 0){
-//					int resId = R.drawable.first;
-//					background.setImageResource(resId);
-//				} else if (state.getEndScene() == 1) {
-//					int resId = R.drawable.second;
-//					background.setImageResource(resId);
-//				} else if (state.getEndScene() == 2) {
-//					int resId = R.drawable.third;
-//					background.setImageResource(resId);
-//				} else if (state.getEndScene() == 3) {
-//					int resId = R.drawable.fourth;
-//					background.setImageResource(resId);
-//				} else {
-//					int resId = R.drawable.death;
-//					background.setImageResource(resId);
-//					run.setClickable(false);
-//					run.setVisibility(View.INVISIBLE);
-//					youDied.setVisibility(View.VISIBLE);
-//				}
+				if (state.getEndScene() == 0){
+					int resId = R.drawable.first;
+					background.setImageResource(resId);
+				} else if (state.getEndScene() == 1) {
+					int resId = R.drawable.second;
+					background.setImageResource(resId);
+				} else if (state.getEndScene() == 2) {
+					int resId = R.drawable.third;
+					background.setImageResource(resId);
+				} else if (state.getEndScene() == 3) {
+					int resId = R.drawable.fourth;
+					background.setImageResource(resId);
+				} else {
+					int resId = R.drawable.death;
+					background.setImageResource(resId);
+					run.setClickable(false);
+					run.setVisibility(View.INVISIBLE);
+					youDied.setVisibility(View.VISIBLE);
+				}
 			}
 		}
 
@@ -288,13 +288,12 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		
 		// remember the activity
 		this.myActivity = activity;
-		
-	    // Load the layout resource for our GUI
+
+		// Load the layout resource for our GUI
 		activity.setContentView(R.layout.bahbl_human_player);
 
-
 		//Initialize the widget reference member variables
-		this.customerDialogue = (TextView)activity.findViewById(R.id.customerDialogue);
+		this.customerDialogue = (TextView) activity.findViewById(R.id.customerDialogue);
 		this.button1 = (Button) activity.findViewById(R.id.Option1);
 		this.button2 = (Button) activity.findViewById(R.id.Option2);
 		this.register = (android.widget.ImageButton) activity.findViewById((R.id.register_keyboard));
@@ -302,8 +301,8 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		this.bag = (android.widget.ImageButton) activity.findViewById(R.id.bag);
 		this.pokeball = (android.widget.ImageButton) activity.findViewById((R.id.pokeball));
 		this.pokeDex = (android.widget.ImageButton) activity.findViewById((R.id.pokedex));
-		this.key  = (android.widget.ImageButton) activity.findViewById((R.id.key));
-		this.registerMoney  = (TextView) activity.findViewById((R.id.total_monitor));
+		this.key = (android.widget.ImageButton) activity.findViewById((R.id.key));
+		this.registerMoney = (TextView) activity.findViewById((R.id.total_monitor));
 		this.customer = (ImageButton) activity.findViewById(R.id.customer);
 
 		// make this object listen for widget clicks
@@ -319,9 +318,6 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		key.setOnClickListener(this);
 		customer.setOnClickListener(this);
 
-		this.run = (TextView)activity.findViewById(R.id.run);
-		this.youDied = (TextView)activity.findViewById(R.id.deathmessage);
-		this.background = (ImageView)activity.findViewById(R.id.bad_background);
 
 		// if we have a game state, "simulate" that we have just received
 		// the state from the game so that the GUI values are updated

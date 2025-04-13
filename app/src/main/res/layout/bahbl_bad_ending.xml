@@ -31,7 +31,7 @@
             android:textColor="@color/black"
             android:textSize="150dp"
             android:layout_gravity="center"
-            android:layout_marginTop="310dp"
+            android:layout_marginTop="200dp"
             android:shadowColor="@color/red"
             android:shadowDx="15"
             android:shadowDy="-15"
