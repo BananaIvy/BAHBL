@@ -339,6 +339,7 @@ public class BahLocalGame extends LocalGame {
                 else { //End of Customers speech
                     customer.setPlayersTurn(true);
                 }//todo make them call on the mini game to start now
+                //todo make this its own method, not just a bunch of if statements in the dialogue stuff
 
                 //Prompts Pokeangel's Trivia Screen
                 if(customer.getCustomerName() == "Pokeangel"){
@@ -369,7 +370,7 @@ public class BahLocalGame extends LocalGame {
                     else { //End of Customers speech
                         customer.setPlayersTurn(true);
 
-                        //Customer gives an item to use
+    //todo make this its own method probably                    //Customer gives an item to use
                         if (customer.getCustomerName().equals("Ghost")) {
                             gameState.setHasPokeball(true);
                         } else if (customer.getCustomerName().equals("Pokeangel")) {
