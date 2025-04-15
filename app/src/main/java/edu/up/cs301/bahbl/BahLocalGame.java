@@ -316,8 +316,8 @@ public class BahLocalGame extends LocalGame {
             if(gameState.getCustomerDialogueType() == 1) {
 
                 //if there's more text to scroll through
-                if (gameState.getDialogueIndex() < customer.getGreetingLength()-1) {
-                    gameState.setDialogueIndex(gameState.getDialogueIndex()+1);
+                if (gameState.getDialogueIndex()+1 < customer.getGreetingLength()) {
+                    gameState.nextDialogue();
                 }
                 else { //End of Customers speech
                     customer.setPlayersTurn(true);
@@ -334,7 +334,7 @@ public class BahLocalGame extends LocalGame {
 
                 //if there's more text to scroll through
                 if(gameState.getDialogueIndex()+1 < customer.getHappyLength()) {
-                    gameState.setDialogueIndex(gameState.getDialogueIndex()+1);
+                    gameState.nextDialogue();
                 }
                 else { //End of Customers speech
                     customer.setPlayersTurn(true);
@@ -346,7 +346,7 @@ public class BahLocalGame extends LocalGame {
 
                 //if there's more text to scroll through
                 if(gameState.getDialogueIndex()+1 < customer.getMadLength()) {
-                    gameState.setDialogueIndex(gameState.getDialogueIndex()+1);
+                    gameState.nextDialogue();
                 }
                 else { //End of Customers speech
                     customer.setPlayersTurn(true);
@@ -358,7 +358,7 @@ public class BahLocalGame extends LocalGame {
                 if(!customer.getCustomerName().equals("Ghost2")) {
 
                     if (gameState.getDialogueIndex() + 1 < gameState.getCustomer().getLoreLength()) {
-                        gameState.setDialogueIndex(gameState.getDialogueIndex() + 1);
+                        gameState.nextDialogue();
                     }
                     else { //End of Customers speech
                         customer.setPlayersTurn(true);
@@ -384,7 +384,7 @@ public class BahLocalGame extends LocalGame {
 
                 //if there's more text to scroll through
                 if(gameState.getDialogueIndex() + 1 < gameState.getCustomer().getFarewellLength()){
-                    gameState.setDialogueIndex(gameState.getDialogueIndex() + 1);
+                    gameState.nextDialogue();
                 }
                 else{ //End of Customers speech
                     customer.setPlayersTurn(true);

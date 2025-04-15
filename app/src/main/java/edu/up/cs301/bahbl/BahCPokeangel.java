@@ -32,7 +32,7 @@ public class BahCPokeangel extends BahCustomerBase {
 
 		//mad response
 		addMadResponse("Alas,");
-		addMadResponse("You have disappointed me :(");
+		addMadResponse("You disappoint me :(");
 		addMadResponse("I am afraid I must depart...");
 		addMadResponse("Your presence sickens me.");
 

@@ -23,45 +23,46 @@ public class BahCGhost extends BahCustomerBase {
         setMoney(20);
         setLikeability(70);
 
-        /* dialogues */
+        /** dialogues */
         //happy response
         addHappyResponse("Great! I'm glad to hear it!");
         addHappyResponse("By the way, here's a little ball I found lying on the floor...");
-        addHappyResponse("It may come in handy, perhaps a customer will need it...keep it close...");
-        addHappyResponse("That reminds me! you can give people items.");
-        addHappyResponse("Go ahead and try with the key.");
+        addHappyResponse("See if one of the regular customers left it behind.");
+        addHappyResponse("Just click an item to hand it to a customer.");
+        addHappyResponse("Hand me the key if you don't feel ready and want more instruction");
 
         //mad response
-        addMadResponse("Now, come on, I hired you for a reason.");
-        addMadResponse("Don't disappoint me!");
-        addMadResponse("And don't upset the customers. If they want something specific,");
-        addMadResponse("You can give them items. Try with the key!");
+        addMadResponse("Feeling nervous? Noted.");
+        addMadResponse("Just...Don't disappoint me!");
+        addMadResponse("And D O N T upset the customers. Give them whatever they want!");
+        addMadResponse("Hand me the key if you'd like me to elaborate.");
 
         //greeting responses ("Welcome to BAHBL!");
-        addGreetingDialogue("Hey, I'm glad you showed up!");
+        addGreetingDialogue("Hey, I'm glad you showed up! \n \n-(Click text to progress)-");
         addGreetingDialogue("I wasn't too sure you would.");
         addGreetingDialogue("The last guy quit suddenly and,");
         addGreetingDialogue("well...");
         addGreetingDialogue("Let's just say you didn't look the most trustworthy yourself.");
         addGreetingDialogue("But, don't worry about it.");
         addGreetingDialogue("I'm sure you'll be great for the job!");
-        addGreetingDialogue("Now, there's a key to the register under the desk!");
-        addGreetingDialogue("And if anyone tries to rob you...");
+        addGreetingDialogue("In a moment I'll give you the store key.");
+        addGreetingDialogue("If anyone tries to rob you...");
         addGreetingDialogue("SWALLOW IT!");
 
         //lore responses
         addLoreDialogue("Great! All right, I'll try and keep this simple and quick.");
-        addLoreDialogue("When a customer comes up, you'll greet them politely,");
+        addLoreDialogue("Customers may make weird requests of you. Be polite and don't refuse.");
         addLoreDialogue("Tap the register to collect their money,");
-        addLoreDialogue("And send them on their way! Simple!");
-        addLoreDialogue("Now, they may try to offer you items,");
-        addLoreDialogue("Which you can keep under the register if you'd like,");
-        addLoreDialogue("But don't take anything dangerous!");
-        addLoreDialogue("Some of the folks in these parts are a little unsavory.");
+        addLoreDialogue("and send them on their way. Simple, right?");
+        addLoreDialogue("Customers may give you items if they like you enough,");
+        addLoreDialogue("Which you can keep under the register if you want,");
+        addLoreDialogue("Keep in mind that they're probably stolen items.");
+        addLoreDialogue("Folks that end up here in hell tend to be unsavory.");
         addLoreDialogue("Feel free to give away anything you have under the counter.");
         addLoreDialogue("Besides the key of course! ;)");
-        addLoreDialogue("But note that most customers won't want those items.");
-        addLoreDialogue("Now, if you have absolutely no more questions,");
+        addLoreDialogue("But note that most customers won't want stolen items for liability purposes");
+        addLoreDialogue("If they're getting rid of the item, somebody's probably on their trail.");
+        addLoreDialogue("Now, that concludes your training!");
         addLoreDialogue("Tap the register to start your shift!");
 
         //farewell responses
@@ -69,7 +70,7 @@ public class BahCGhost extends BahCustomerBase {
         addFarewellDialogue("And remember,");
         addFarewellDialogue("If you die...");
         addFarewellDialogue("That waiver you signed...");
-        addFarewellDialogue("Means I can't be held accountable.");
+        addFarewellDialogue("Means I can't be held accountable. =)");
 
         //button text responses
         setGoodButtonText("I've got this, no worries!");

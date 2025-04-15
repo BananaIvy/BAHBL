@@ -94,7 +94,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 		//IF IT's THE ENDING
 		if((state.getStoryProgress() >= 6)){
-			if(state.getMoneyCount() < 5) { //todo fix this condition after fixing $ amounts.
+			if(state.getMoneyCount() > 71) { //todo fix this condition after fixing $ amounts.
 				goodLayout();
 			}
 			else{

@@ -184,5 +184,9 @@ public class BahGameState extends GameState {
 		}
 	}
 
+	public void nextDialogue(){
+		dialogueIndex++;
+	}
+
 
 }
