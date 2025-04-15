@@ -339,6 +339,12 @@ public class BahLocalGame extends LocalGame {
                 else { //End of Customers speech
                     customer.setPlayersTurn(true);
                 }
+
+                //Prompts Pokeangel's Trivia Screen
+                if(customer.getCustomerName() == "Pokeangel"){
+                    gameState.setTriviaTime(true);
+                }
+
             }//:)
 
             //Mad Response

@@ -111,6 +111,10 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			}
 		}
 
+		if((state.isTriviaTime() == true)){
+			triviaLayout();
+		}
+
 	}
 
 	public void onClick(View button) {
@@ -136,12 +140,16 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			game.sendAction(new BahActionRun(this));
 
 		} else if(button.getId() == R.id.Trivia1){
+			game.sendAction(new BahTriviaButton(this, button));
 
 		}else if(button.getId() == R.id.Trivia2){
+			game.sendAction(new BahTriviaButton(this, button));
 
 		}else if(button.getId() == R.id.Trivia3){
+			game.sendAction(new BahTriviaButton(this, button));
 
 		}else if(button.getId() == R.id.Trivia4){
+			game.sendAction(new BahTriviaButton(this, button));
 
 		}
 	}// onClick
@@ -380,6 +388,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		triviaOptionTwo.setOnClickListener(myActivity);
 		triviaOptionThree.setOnClickListener(myActivity);
 		triviaOptionFour.setOnClickListener(myActivity);
+
 
 	}//triviaLayout
 
