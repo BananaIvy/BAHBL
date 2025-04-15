@@ -16,7 +16,7 @@ import edu.up.cs301.GameFramework.players.GamePlayer;
  * @author Steven R. Vegdahl
  * @author Andrew M. Nuxoll
  * @author Savannah I. Macdonald
- * @author Laura A. Patly
+ * @author Laura A. Patla
  * @author Madilynn Greenup
  * @author Alex Baker
  * @version July 2013
@@ -338,7 +338,7 @@ public class BahLocalGame extends LocalGame {
                 }
                 else { //End of Customers speech
                     customer.setPlayersTurn(true);
-                }
+                }//todo make them call on the mini game to start now
 
                 //Prompts Pokeangel's Trivia Screen
                 if(customer.getCustomerName() == "Pokeangel"){

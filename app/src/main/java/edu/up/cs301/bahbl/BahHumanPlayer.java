@@ -26,7 +26,7 @@ import java.util.TimerTask;
  * @author Steven R. Vegdahl
  * @author Andrew M. Nuxoll
  * @author Savannah I. Macdonald
- * @author Laura A. Patly
+ * @author Laura A. Patla
  * @author Madilynn Greenup
  * @author Alex Baker
  * @version July 2013

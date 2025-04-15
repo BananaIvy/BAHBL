@@ -10,7 +10,7 @@ import edu.up.cs301.GameFramework.infoMessage.GameState;
  * the story progress, dialogue indexs, etc.
  *
  * @author Savannah I. Macdonald
- * @author Laura A. Patly
+ * @author Laura A. Patla
  * @author Madilynn Greenup
  * @author Alex Baker
  * @version Feb 2025
@@ -24,7 +24,7 @@ public class BahGameState extends GameState {
 	private int customerIndex;
 	/**
 	 * this int represents which set of customer dialogue we're currently on. The ints have the following meanings:
-	 * 1: greeting, 2: happy response, 3: mad response, 4: lore 5: goodbye
+	 * 1: greeting, 2: happy response, 3: mad response, 4: lore 5: goodbye, 6: game talk
 	*/
 	private int customerDialogueType;
 	private int dialogueIndex;

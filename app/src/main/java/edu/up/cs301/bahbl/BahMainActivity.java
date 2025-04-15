@@ -11,8 +11,12 @@ import edu.up.cs301.GameFramework.gameConfiguration.*;
 /**
  * this is the primary activity for Counter game
  * 
- * @author Andrew M. Nuxoll
- * @author Steven R. Vegdahl
+ * @author Andrew Nuxoll
+ * @author Steven Vegdahl
+ * @author Laura Patla
+ * @author Madilynn Greenup
+ * @author Savannah Macdonald?
+ * @author Alex Baker
  * @version July 2013
  */
 public class BahMainActivity extends GameMainActivity {

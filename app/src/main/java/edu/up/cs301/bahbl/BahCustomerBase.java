@@ -3,7 +3,7 @@ package edu.up.cs301.bahbl;
 /**
  * this is the base that all the different customers are based on.
  * @author Savannah I. Macdonald
- * @author Laura A. Patly
+ * @author Laura A. Patla
  * @author Madilynn Greenup
  * @author Alex Baker
  * @version 2/26/25
