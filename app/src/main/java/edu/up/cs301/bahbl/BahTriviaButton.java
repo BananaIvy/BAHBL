@@ -14,6 +14,8 @@ public class BahTriviaButton extends GameAction {
     public final int button2 = 2;
     public final int button3 = 3;
     public final int button4 = 4;
+    public final int wrongButton = 5;
+    public final int rightButton = 6;
 
 
     /**
@@ -36,10 +38,14 @@ public class BahTriviaButton extends GameAction {
         else if(button.getId() == R.id.Trivia4){
             thisButton = button4;
         }
+        else if(button.getId() == R.id.wrong){
+            thisButton = wrongButton;
+        }
+        else if(button.getId() == R.id.right){
+            thisButton = rightButton;
+        }
 
     }
 
-
-
-
+    public int getThisButton() {return thisButton;}
 }

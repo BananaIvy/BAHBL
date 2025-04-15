@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="#40D0A4"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/wrong"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:backgroundTint="#C3FAF4"
+        android:fontFamily="monospace"
+        android:text="WRONG!"
+        android:textSize="280dp" />
+</LinearLayout>

@@ -48,11 +48,11 @@ public class BahGameState extends GameState {
 
 	//For Trivia Mini Game
 	private int correctAnswers;
-	private String triviaQuestions;
-	private String triviaAnswer1;
-	private String triviaAnswer2;
-	private String triviaAnswer3;
-	private String triviaAnswer4;
+	private String[] triviaQuestions = new String[6];
+	private String[] triviaAnswer1 = new String[6];
+	private String[] triviaAnswer2= new String[6];
+	private String[] triviaAnswer3 = new String[6];
+	private String[] triviaAnswer4 = new String[6];
 	private boolean triviaTime;
 
 	//Constructor for start of game
@@ -74,11 +74,11 @@ public class BahGameState extends GameState {
 		badButtonText = "";
 		endScene = 0;
 		correctAnswers = 0;
-		triviaQuestions = "What should I quiz you on?";
-		triviaAnswer1 = "Pokemon";
-		triviaAnswer2 = "Cats";
-		triviaAnswer3 = "Nothing";
-		triviaAnswer4 = "Everything";
+		triviaQuestions[] = "What should I quiz you on?";
+		triviaAnswer1[] = "Pokemon";
+		triviaAnswer2[] = "Cats";
+		triviaAnswer3[] = "Nothing";
+		triviaAnswer4[] = "Everything";
 		triviaTime = false;
 	}
 
@@ -158,11 +158,11 @@ public class BahGameState extends GameState {
 
 	public boolean isTriviaTime(){return triviaTime;}
 	public int getCorrectAnswers() {return correctAnswers;}
-	public String getTriviaQuestions() {return triviaQuestions;}
-	public String getTriviaAnswer1() {return triviaAnswer1;}
-	public String getTriviaAnswer2() {return triviaAnswer2;}
-	public String getTriviaAnswer3() {return triviaAnswer3;}
-	public String getTriviaAnswer4() {return triviaAnswer4;}
+	public String getTriviaQuestions(int i) {return triviaQuestions[i];}
+	public String getTriviaAnswer1(int i) {return triviaAnswer1[i];}
+	public String getTriviaAnswer2(int i) {return triviaAnswer2[i];}
+	public String getTriviaAnswer3(int i) {return triviaAnswer3[i];}
+	public String getTriviaAnswer4(int i) {return triviaAnswer4[i];}
 	public int getCustomerDialogueType() {return customerDialogueType;}
 	public String getGoodButtonText() {return goodButtonText;}
 	public String getBadButtonText() {return badButtonText;}
@@ -182,11 +182,11 @@ public class BahGameState extends GameState {
 	//Setter Methods
 	public void setTriviaTime(boolean triviaTime){this.triviaTime = triviaTime;}
 	public void setCorrectAnswers(int correctAnswers) {this.correctAnswers = correctAnswers;}
-	public void setTriviaQuestions(String triviaQuestions) {this.triviaQuestions = triviaQuestions;}
-	public void setTriviaAnswer1(String triviaAnswer1) {this.triviaAnswer1 = triviaAnswer1;}
-	public void setTriviaAnswer2(String triviaAnswer2) {this.triviaAnswer2 = triviaAnswer2;}
-	public void setTriviaAnswer3(String triviaAnswer3) {this.triviaAnswer3 = triviaAnswer3;}
-	public void setTriviaAnswer4(String triviaAnswer4) {this.triviaAnswer4 = triviaAnswer4;}
+	public void setTriviaQuestions(String triviaQuestions, int i) {this.triviaQuestions[i] = triviaQuestions;}
+	public void setTriviaAnswer1(String triviaAnswer1, int i) {this.triviaAnswer1[i] = triviaAnswer1;}
+	public void setTriviaAnswer2(String triviaAnswer2, int i) {this.triviaAnswer2[i] = triviaAnswer2;}
+	public void setTriviaAnswer3(String triviaAnswer3, int i) {this.triviaAnswer3[i] = triviaAnswer3;}
+	public void setTriviaAnswer4(String triviaAnswer4, int i) {this.triviaAnswer4[i] = triviaAnswer4;}
 	public void setGoodButtonText(String goodButtonText) {this.goodButtonText = goodButtonText;}
 	public void setBadButtonText(String badButtonText) {this.badButtonText = badButtonText;}
 	public void setButtonIsVisible(Boolean buttonIsVisible) {this.buttonIsVisible = buttonIsVisible;}

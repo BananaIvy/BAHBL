@@ -60,6 +60,8 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	private Button          triviaOptionTwo    = null;
 	private Button          triviaOptionThree     = null;
 	private Button          triviaOptionFour     = null;
+	private Button          triviaRightButton    = null;
+	private Button          triviaWrongButton    = null;
 
 
 	// the most recent game state, as given to us by the CounterLocalGame
@@ -149,6 +151,12 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			game.sendAction(new BahTriviaButton(this, button));
 
 		}else if(button.getId() == R.id.Trivia4){
+			game.sendAction(new BahTriviaButton(this, button));
+
+		}else if(button.getId() == R.id.wrong){
+			game.sendAction(new BahTriviaButton(this, button));
+
+		}else if(button.getId() == R.id.right){
 			game.sendAction(new BahTriviaButton(this, button));
 
 		}
@@ -391,6 +399,26 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 
 	}//triviaLayout
+
+	public void triviaWrongLayout(){
+		//The xml view
+		this.myActivity.setContentView(R.layout.bahbl_trivia_wrong_screen);
+
+		//sets up the one button
+		this.triviaWrongButton = (Button) myActivity.findViewById(R.id.wrong);
+		triviaWrongButton.setOnClickListener(myActivity);
+	}
+
+	public void triviaRightLayout(){
+		//The xml view
+		this.myActivity.setContentView(R.layout.bahbl_trivia_right_screen);
+
+		//sets up the one button
+		this.triviaRightButton = (Button) myActivity.findViewById(R.id.right);
+		triviaRightButton.setOnClickListener(myActivity);
+	}
+
+
 
 }// class CounterHumanPlayer
 

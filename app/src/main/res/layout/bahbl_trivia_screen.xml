@@ -46,6 +46,10 @@
                     android:text="Hmmmm.... \nwhat things can I ask you?"
                     android:textColor="#120C4B"
                     android:textSize="50dp" />
+
+
+
+
             </LinearLayout>
 
             <ImageButton

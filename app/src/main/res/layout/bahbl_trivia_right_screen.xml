@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#B8EDA1"
+    android:backgroundTint="#B8FAAC"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/right"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:backgroundTint="#CCFFCE"
+        android:fontFamily="cursive"
+        android:text="RIGHT :("
+        android:textSize="280dp" />
+</LinearLayout>

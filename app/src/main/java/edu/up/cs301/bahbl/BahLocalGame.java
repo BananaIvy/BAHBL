@@ -165,6 +165,7 @@ public class BahLocalGame extends LocalGame {
                 customer.setHasGiven(true);
                 customer.setHasGottenAnswer(true);
                 gameState.setButtonIsVisible(false);
+
             }
 
             //BAD Button is pressed
@@ -301,6 +302,18 @@ public class BahLocalGame extends LocalGame {
                 }
             }//pokedex
             //todo: There's a lot of recurring 3 lines of code with the items that may be extractable!
+
+            //Trivia Button
+            if(((BahTriviaButton) action).getThisButton() == 1){
+
+            } else if (((BahTriviaButton) action).getThisButton() == 2){
+
+            } else if(((BahTriviaButton) action).getThisButton() == 3){
+
+            }else if(((BahTriviaButton) action).getThisButton() == 4){
+
+            }
+
 
         }
         return false; //illegal
