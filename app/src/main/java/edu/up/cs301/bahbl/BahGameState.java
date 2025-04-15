@@ -24,7 +24,7 @@ public class BahGameState extends GameState {
 	private int customerIndex;
 	/**
 	 * this int represents which set of customer dialogue we're currently on. The ints have the following meanings:
-	 * 1: greeting, 2: happy response, 3: mad response, 4: lore 5: goodbye, 6: game talk
+	 * 1: greeting, 2: happy response, 3: mad response, 4: lore 5: goodbye
 	*/
 	private int customerDialogueType;
 	private int dialogueIndex;
@@ -180,7 +180,7 @@ public class BahGameState extends GameState {
 	public int getEndScene() {return endScene;}
 
 	//Setter Methods
-	public void setTriviaTime(boolean triviaTime){this.triviaTime = triviaTime;}
+	public void setGameTime(boolean triviaTime){this.gameTime = gameTime;}
 	public void setCorrectAnswers(int correctAnswers) {this.correctAnswers = correctAnswers;}
 	public void setTriviaQuestions(String triviaQuestions, int i) {this.triviaQuestions[i] = triviaQuestions;}
 	public void setTriviaAnswer1(String triviaAnswer1, int i) {this.triviaAnswer1[i] = triviaAnswer1;}

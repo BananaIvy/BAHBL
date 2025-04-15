@@ -350,15 +350,8 @@ public class BahLocalGame extends LocalGame {
                     gameState.nextDialogue();
                 }
                 else { //End of Customers speech
-                    customer.setPlayersTurn(true);
+
                 }//todo make them call on the mini game to start now
-                //todo make this its own method, not just a bunch of if statements in the dialogue stuff
-
-                //Prompts Pokeangel's Trivia Screen
-                if(customer.getCustomerName() == "Pokeangel"){
-                    gameState.setTriviaTime(true);
-                }
-
             }//:)
 
             //Mad Response
@@ -445,6 +438,13 @@ public class BahLocalGame extends LocalGame {
             gameState.nextEndScene(true);
         }
         return true;
+    }
+
+    private void initGameTime() {
+        //Prompts Pokeangel's Trivia Screen
+        if(customer.getCustomerName() == "Pokeangel"){
+            gameState.setGameTime(true);
+        }
     }
 
     private void loreEnding(){
