@@ -53,7 +53,7 @@ public class BahGameState extends GameState {
 	private String[] triviaAnswer2= new String[6];
 	private String[] triviaAnswer3 = new String[6];
 	private String[] triviaAnswer4 = new String[6];
-	private boolean triviaTime;
+    private boolean gameTime;
 	private boolean correctAnswer;
 
 	//Constructor for start of game
@@ -81,7 +81,6 @@ public class BahGameState extends GameState {
 		triviaAnswer3[] = "Nothing";
 		triviaAnswer4[] = "Everything";
 		triviaTime = false;
-		correctAnswer = false;
 	}
 
 	//Copy Constructor
@@ -107,7 +106,7 @@ public class BahGameState extends GameState {
 		triviaAnswer2 = currentState.triviaAnswer2;
 		triviaAnswer3 = currentState.triviaAnswer3;
 		triviaAnswer4 = currentState.triviaAnswer4;
-		triviaTime = currentState.triviaTime;
+        gameTime = currentState.gameTime;
 		correctAnswer = currentState.correctAnswer;
 	}
 
@@ -159,8 +158,8 @@ public class BahGameState extends GameState {
 		return "somethings wrong with getCustomerDialogue";
 	}
 
-	public boolean isCorrectAnswer(){return correctAnswer;}
-	public boolean isTriviaTime(){return triviaTime;}
+    public boolean isCorrectAnswer(){return correctAnswer;}
+    public boolean isGameTime(){return gameTime;}
 	public int getCorrectAnswers() {return correctAnswers;}
 	public String getTriviaQuestions(int i) {return triviaQuestions[i];}
 	public String getTriviaAnswer1(int i) {return triviaAnswer1[i];}
