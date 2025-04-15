@@ -80,7 +80,7 @@ public class BahGameState extends GameState {
 		triviaAnswer2[] = "Cats";
 		triviaAnswer3[] = "Nothing";
 		triviaAnswer4[] = "Everything";
-		triviaTime = false;
+
 	}
 
 	//Copy Constructor
