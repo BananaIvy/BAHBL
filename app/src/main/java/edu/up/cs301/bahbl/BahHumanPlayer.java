@@ -49,9 +49,18 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	private ImageButton		bag					= null;
 	private ImageButton     customer            = null;
 
+	//Bad ending widgets
 	private TextView		run					= null;
 	private TextView		youDied				= null;
 	private ImageView		background			= null;
+
+	//Trivia widgets
+	private TextView        questions           = null;
+	private Button          triviaOptionOne     = null;
+	private Button          triviaOptionTwo    = null;
+	private Button          triviaOptionThree     = null;
+	private Button          triviaOptionFour     = null;
+
 
 	// the most recent game state, as given to us by the CounterLocalGame
 	private BahGameState state;
@@ -102,6 +111,10 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			}
 		}
 
+		if((state.isTriviaTime() == true)){
+			triviaLayout();
+		}
+
 	}
 
 	public void onClick(View button) {
@@ -125,6 +138,19 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		}
 		else if(button.getId() == R.id.run){
 			game.sendAction(new BahActionRun(this));
+
+		} else if(button.getId() == R.id.Trivia1){
+			game.sendAction(new BahTriviaButton(this, button));
+
+		}else if(button.getId() == R.id.Trivia2){
+			game.sendAction(new BahTriviaButton(this, button));
+
+		}else if(button.getId() == R.id.Trivia3){
+			game.sendAction(new BahTriviaButton(this, button));
+
+		}else if(button.getId() == R.id.Trivia4){
+			game.sendAction(new BahTriviaButton(this, button));
+
 		}
 	}// onClick
 
@@ -346,6 +372,25 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	public void goodLayout(){
 		this.myActivity.setContentView(R.layout.bahbl_good_ending);
 	}
+
+	public void triviaLayout(){
+		//The xml view
+		this.myActivity.setContentView(R.layout.bahbl_trivia_screen);
+
+		//Sets up so we can change the question and button options
+		this.questions = (TextView) myActivity.findViewById(R.id.Questions);
+		this.triviaOptionOne = (Button) myActivity.findViewById(R.id.Trivia1);
+		this.triviaOptionTwo = (Button) myActivity.findViewById(R.id.Trivia2);
+		this.triviaOptionThree = (Button) myActivity.findViewById(R.id.Trivia3);
+		this.triviaOptionFour = (Button) myActivity.findViewById(R.id.Trivia4);
+
+		triviaOptionOne.setOnClickListener(myActivity);
+		triviaOptionTwo.setOnClickListener(myActivity);
+		triviaOptionThree.setOnClickListener(myActivity);
+		triviaOptionFour.setOnClickListener(myActivity);
+
+
+	}//triviaLayout
 
 }// class CounterHumanPlayer
 

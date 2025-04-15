@@ -46,6 +46,15 @@ public class BahGameState extends GameState {
 	//For the Bad Ending
 	private int endScene;
 
+	//For Trivia Mini Game
+	private int correctAnswers;
+	private String triviaQuestions;
+	private String triviaAnswer1;
+	private String triviaAnswer2;
+	private String triviaAnswer3;
+	private String triviaAnswer4;
+	private boolean triviaTime;
+
 	//Constructor for start of game
 	public BahGameState(){
 		storyProgress = 0;
@@ -64,6 +73,13 @@ public class BahGameState extends GameState {
 		goodButtonText = "";
 		badButtonText = "";
 		endScene = 0;
+		correctAnswers = 0;
+		triviaQuestions = "What should I quiz you on?";
+		triviaAnswer1 = "Pokemon";
+		triviaAnswer2 = "Cats";
+		triviaAnswer3 = "Nothing";
+		triviaAnswer4 = "Everything";
+		triviaTime = false;
 	}
 
 	//Copy Constructor
@@ -83,6 +99,13 @@ public class BahGameState extends GameState {
 		goodButtonText = currentState.goodButtonText;
 		badButtonText = currentState.badButtonText;
 		endScene = currentState.endScene;
+		correctAnswers = currentState.correctAnswers;
+		triviaQuestions = currentState.triviaQuestions;
+		triviaAnswer1 = currentState.triviaAnswer1;
+		triviaAnswer2 = currentState.triviaAnswer2;
+		triviaAnswer3 = currentState.triviaAnswer3;
+		triviaAnswer4 = currentState.triviaAnswer4;
+		triviaTime = currentState.triviaTime;
 	}
 
 	//Methods
@@ -132,6 +155,14 @@ public class BahGameState extends GameState {
 		}
 		return "somethings wrong with getCustomerDialogue";
 	}
+
+	public boolean isTriviaTime(){return triviaTime;}
+	public int getCorrectAnswers() {return correctAnswers;}
+	public String getTriviaQuestions() {return triviaQuestions;}
+	public String getTriviaAnswer1() {return triviaAnswer1;}
+	public String getTriviaAnswer2() {return triviaAnswer2;}
+	public String getTriviaAnswer3() {return triviaAnswer3;}
+	public String getTriviaAnswer4() {return triviaAnswer4;}
 	public int getCustomerDialogueType() {return customerDialogueType;}
 	public String getGoodButtonText() {return goodButtonText;}
 	public String getBadButtonText() {return badButtonText;}
@@ -149,6 +180,13 @@ public class BahGameState extends GameState {
 	public int getEndScene() {return endScene;}
 
 	//Setter Methods
+	public void setTriviaTime(boolean triviaTime){this.triviaTime = triviaTime;}
+	public void setCorrectAnswers(int correctAnswers) {this.correctAnswers = correctAnswers;}
+	public void setTriviaQuestions(String triviaQuestions) {this.triviaQuestions = triviaQuestions;}
+	public void setTriviaAnswer1(String triviaAnswer1) {this.triviaAnswer1 = triviaAnswer1;}
+	public void setTriviaAnswer2(String triviaAnswer2) {this.triviaAnswer2 = triviaAnswer2;}
+	public void setTriviaAnswer3(String triviaAnswer3) {this.triviaAnswer3 = triviaAnswer3;}
+	public void setTriviaAnswer4(String triviaAnswer4) {this.triviaAnswer4 = triviaAnswer4;}
 	public void setGoodButtonText(String goodButtonText) {this.goodButtonText = goodButtonText;}
 	public void setBadButtonText(String badButtonText) {this.badButtonText = badButtonText;}
 	public void setButtonIsVisible(Boolean buttonIsVisible) {this.buttonIsVisible = buttonIsVisible;}

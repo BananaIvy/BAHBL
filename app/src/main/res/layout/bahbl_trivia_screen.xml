@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#96CCC7"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_weight="2"
+            >
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                >
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/agbalumo"
+                    android:text="TRIVIA TIME!"
+                    android:textColor="#120C4B"
+                    android:textSize="80dp" />
+
+                <TextView
+                    android:id="@+id/Questions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTintMode="src_in"
+                    android:text="Hmmmm.... \nwhat things can I ask you?"
+                    android:textColor="#120C4B"
+                    android:textSize="50dp" />
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/triviaPokeangle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="2"
+                android:background="#00FFFFFF"
+                app:srcCompat="@drawable/pokeangel" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_weight="2"
+            >
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/Trivia1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="70dp"
+                android:text="Pokemon?"
+                android:layout_gravity="left"
+                android:layout_marginRight="0dp"
+                android:layout_weight="3"
+                />
+
+            <Button
+                android:id="@+id/Trivia2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:textSize="70dp"
+                android:text="Cats?"
+                android:layout_weight="3"
+                />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_weight="2"
+            >
+
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/Trivia3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="70dp"
+                android:layout_marginRight="0dp"
+                android:text="Nothing?"
+                android:layout_weight="3"
+                />
+
+            <Button
+                android:id="@+id/Trivia4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="70dp"
+                android:text="Everything?"
+                android:layout_weight="3"
+                />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
