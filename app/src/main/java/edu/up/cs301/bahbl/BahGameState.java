@@ -53,7 +53,7 @@ public class BahGameState extends GameState {
 	private String[] triviaAnswer2= new String[6];
 	private String[] triviaAnswer3 = new String[6];
 	private String[] triviaAnswer4 = new String[6];
-	private boolean triviaTime;
+	private boolean gameTime;
 
 	//Constructor for start of game
 	public BahGameState(){
@@ -105,7 +105,7 @@ public class BahGameState extends GameState {
 		triviaAnswer2 = currentState.triviaAnswer2;
 		triviaAnswer3 = currentState.triviaAnswer3;
 		triviaAnswer4 = currentState.triviaAnswer4;
-		triviaTime = currentState.triviaTime;
+		gameTime = currentState.gameTime;
 	}
 
 	//Methods
@@ -156,7 +156,7 @@ public class BahGameState extends GameState {
 		return "somethings wrong with getCustomerDialogue";
 	}
 
-	public boolean isTriviaTime(){return triviaTime;}
+	public boolean isGameTime(){return gameTime;}
 	public int getCorrectAnswers() {return correctAnswers;}
 	public String getTriviaQuestions(int i) {return triviaQuestions[i];}
 	public String getTriviaAnswer1(int i) {return triviaAnswer1[i];}

@@ -418,7 +418,5 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		triviaRightButton.setOnClickListener(myActivity);
 	}
 
-
-
 }// class CounterHumanPlayer
 
