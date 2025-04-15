@@ -196,9 +196,12 @@ public class BahLocalGame extends LocalGame {
 
             return true; //legal
         }
+
         //trivia button
+        //The correct answers go in the order 2, 4, 1, 4, 2
         else if(((BahTriviaButton) action).getThisButton() == 1){
                 //do stuff here
+
                 //say it was a legal move
                 return true;
             }
@@ -211,10 +214,16 @@ public class BahLocalGame extends LocalGame {
             else if(((BahTriviaButton) action).getThisButton() == 4){
                 return true;
             }
+            //The wrong answer
             else if(((BahTriviaButton) action).getThisButton() == 5) {
+
+                gameState.setTriviaButtonClicked(false);
                 return true;
             }
+            //The right answer
             else if(((BahTriviaButton) action).getThisButton() == 6) {
+
+                gameState.setTriviaButtonClicked(false);
                 return true;
             }
         return false; //illegal

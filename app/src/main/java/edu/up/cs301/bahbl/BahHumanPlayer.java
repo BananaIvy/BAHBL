@@ -11,9 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 /**
  * A GUI of a counter-player. The GUI displays the current value of the counter,
  * and allows the human player to press the '+' and '-' buttons in order to
@@ -62,6 +59,9 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	private Button          triviaOptionFour     = null;
 	private Button          triviaRightButton    = null;
 	private Button          triviaWrongButton    = null;
+
+	//To update the trivia questions
+	private int triviaSection = 1;
 
 
 	// the most recent game state, as given to us by the CounterLocalGame
@@ -113,16 +113,24 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			}
 		}
 
-		if((state.isGameTime())){
+		if((state.isGameTime()) && (state.isTriviaButtonClicked() == false)){
 			if((state.getCustomer()).getCustomerName() == "Pokeangel"){
-			triviaLayout();
+
+				questions.setText(""+ state.getTriviaQuestions(triviaSection));
+				triviaOptionOne.setText(""+state.getTriviaAnswer1(triviaSection));
+				triviaOptionTwo.setText(""+state.getTriviaAnswer2(triviaSection));
+				triviaOptionThree.setText(""+state.getTriviaAnswer3(triviaSection));
+				triviaOptionFour.setText(""+state.getTriviaAnswer4(triviaSection));
+				triviaLayout();
 			}
 		}
 
-		if(state.isCorrectAnswer() && state.isTriviaButtonClicked()){
+		if((state.isCorrectAnswer() == true) && (state.isTriviaButtonClicked() == true)){
 			triviaRightLayout();
-		} else if (state.isCorrectAnswer() == false && state.isTriviaButtonClicked()){
+			triviaSection++;
+		} else if ((state.isCorrectAnswer() == false) && state.isTriviaButtonClicked() == true){
 			triviaWrongLayout();
+			triviaSection++;
 		}
 
 	}
@@ -164,8 +172,10 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		}else if(button.getId() == R.id.wrong){
 			game.sendAction(new BahTriviaButton(this, button));
 
+
 		}else if(button.getId() == R.id.right){
 			game.sendAction(new BahTriviaButton(this, button));
+
 
 		}
 	}// onClick

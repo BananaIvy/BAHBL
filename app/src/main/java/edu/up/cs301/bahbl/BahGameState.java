@@ -47,7 +47,7 @@ public class BahGameState extends GameState {
 	private int endScene;
 
 	//For Trivia Mini Game
-	private int correctAnswers;
+	private int correctAnswersCount;
 
 	//The correct answers go in the order 2, 4, 1, 4, 2
 	private String[] triviaQuestions = {"What should I quiz you on?", "Okay so, what is the mascot of Pokemon?",
@@ -78,7 +78,7 @@ public class BahGameState extends GameState {
 		goodButtonText = "";
 		badButtonText = "";
 		endScene = 0;
-		correctAnswers = 0;
+		correctAnswersCount = 0;
 		triviaButtonClicked = false;
 
 	}
@@ -100,7 +100,7 @@ public class BahGameState extends GameState {
 		goodButtonText = currentState.goodButtonText;
 		badButtonText = currentState.badButtonText;
 		endScene = currentState.endScene;
-		correctAnswers = currentState.correctAnswers;
+		correctAnswersCount = currentState.correctAnswersCount;
 		triviaQuestions = currentState.triviaQuestions;
 		triviaAnswer1 = currentState.triviaAnswer1;
 		triviaAnswer2 = currentState.triviaAnswer2;
@@ -158,9 +158,10 @@ public class BahGameState extends GameState {
 		}
 		return "somethings wrong with getCustomerDialogue";
 	}
-
+	public boolean isCorrectAnswer(){return correctAnswer;}
+	public boolean isTriviaButtonClicked() {return triviaButtonClicked;}
 	public boolean isGameTime(){return gameTime;}
-	public int getCorrectAnswers() {return correctAnswers;}
+	public int getCorrectAnswersCount() {return correctAnswersCount;}
 	public String getTriviaQuestions(int i) {return triviaQuestions[i];}
 	public String getTriviaAnswer1(int i) {return triviaAnswer1[i];}
 	public String getTriviaAnswer2(int i) {return triviaAnswer2[i];}
@@ -183,8 +184,10 @@ public class BahGameState extends GameState {
 	public int getEndScene() {return endScene;}
 
 	//Setter Methods
+	public void setCorrectAnswer(boolean correctAnswer){this.correctAnswer = correctAnswer;}
+	public void setTriviaButtonClicked(boolean triviaButtonClicked){this.triviaButtonClicked = triviaButtonClicked;}
 	public void setGameTime(boolean triviaTime){this.gameTime = gameTime;}
-	public void setCorrectAnswers(int correctAnswers) {this.correctAnswers = correctAnswers;}
+	public void setCorrectAnswersCount(int correctAnswersCount) {this.correctAnswersCount = correctAnswersCount;}
 	public void setTriviaQuestions(String triviaQuestions, int i) {this.triviaQuestions[i] = triviaQuestions;}
 	public void setTriviaAnswer1(String triviaAnswer1, int i) {this.triviaAnswer1[i] = triviaAnswer1;}
 	public void setTriviaAnswer2(String triviaAnswer2, int i) {this.triviaAnswer2[i] = triviaAnswer2;}
