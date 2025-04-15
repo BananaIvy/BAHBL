@@ -108,7 +108,8 @@
 
         <TextView
             android:id="@+id/customerDialogue"
-            android:layout_width="350dp"
+            android:layout_width="320dp"
+            android:layout_marginRight="20dp"
             android:layout_height="140dp"
             android:layout_weight="10"
             android:clickable="true"

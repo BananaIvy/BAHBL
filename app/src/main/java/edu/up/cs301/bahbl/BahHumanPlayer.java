@@ -26,7 +26,7 @@ import java.util.TimerTask;
  * @author Steven R. Vegdahl
  * @author Andrew M. Nuxoll
  * @author Savannah I. Macdonald
- * @author Laura A. Patly
+ * @author Laura A. Patla
  * @author Madilynn Greenup
  * @author Alex Baker
  * @version July 2013
@@ -105,7 +105,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 		//IF IT's THE ENDING
 		if((state.getStoryProgress() >= 6)){
-			if(state.getMoneyCount() < 5) { //todo fix this condition after fixing $ amounts.
+			if(state.getMoneyCount() > 71) { //todo fix this condition after fixing $ amounts.
 				goodLayout();
 			}
 			else{

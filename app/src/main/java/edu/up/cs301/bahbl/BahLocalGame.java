@@ -16,7 +16,7 @@ import edu.up.cs301.GameFramework.players.GamePlayer;
  * @author Steven R. Vegdahl
  * @author Andrew M. Nuxoll
  * @author Savannah I. Macdonald
- * @author Laura A. Patly
+ * @author Laura A. Patla
  * @author Madilynn Greenup
  * @author Alex Baker
  * @version July 2013
@@ -329,8 +329,8 @@ public class BahLocalGame extends LocalGame {
             if(gameState.getCustomerDialogueType() == 1) {
 
                 //if there's more text to scroll through
-                if (gameState.getDialogueIndex() < customer.getGreetingLength()-1) {
-                    gameState.setDialogueIndex(gameState.getDialogueIndex()+1);
+                if (gameState.getDialogueIndex()+1 < customer.getGreetingLength()) {
+                    gameState.nextDialogue();
                 }
                 else { //End of Customers speech
                     customer.setPlayersTurn(true);
@@ -347,11 +347,12 @@ public class BahLocalGame extends LocalGame {
 
                 //if there's more text to scroll through
                 if(gameState.getDialogueIndex()+1 < customer.getHappyLength()) {
-                    gameState.setDialogueIndex(gameState.getDialogueIndex()+1);
+                    gameState.nextDialogue();
                 }
                 else { //End of Customers speech
                     customer.setPlayersTurn(true);
-                }
+                }//todo make them call on the mini game to start now
+                //todo make this its own method, not just a bunch of if statements in the dialogue stuff
 
                 //Prompts Pokeangel's Trivia Screen
                 if(customer.getCustomerName() == "Pokeangel"){
@@ -365,7 +366,7 @@ public class BahLocalGame extends LocalGame {
 
                 //if there's more text to scroll through
                 if(gameState.getDialogueIndex()+1 < customer.getMadLength()) {
-                    gameState.setDialogueIndex(gameState.getDialogueIndex()+1);
+                    gameState.nextDialogue();
                 }
                 else { //End of Customers speech
                     customer.setPlayersTurn(true);
@@ -377,12 +378,12 @@ public class BahLocalGame extends LocalGame {
                 if(!customer.getCustomerName().equals("Ghost2")) {
 
                     if (gameState.getDialogueIndex() + 1 < gameState.getCustomer().getLoreLength()) {
-                        gameState.setDialogueIndex(gameState.getDialogueIndex() + 1);
+                        gameState.nextDialogue();
                     }
                     else { //End of Customers speech
                         customer.setPlayersTurn(true);
 
-                        //Customer gives an item to use
+    //todo make this its own method probably                    //Customer gives an item to use
                         if (customer.getCustomerName().equals("Ghost")) {
                             gameState.setHasPokeball(true);
                         } else if (customer.getCustomerName().equals("Pokeangel")) {
@@ -403,7 +404,7 @@ public class BahLocalGame extends LocalGame {
 
                 //if there's more text to scroll through
                 if(gameState.getDialogueIndex() + 1 < gameState.getCustomer().getFarewellLength()){
-                    gameState.setDialogueIndex(gameState.getDialogueIndex() + 1);
+                    gameState.nextDialogue();
                 }
                 else{ //End of Customers speech
                     customer.setPlayersTurn(true);
