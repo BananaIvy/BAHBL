@@ -196,6 +196,27 @@ public class BahLocalGame extends LocalGame {
 
             return true; //legal
         }
+        //trivia button
+        else if(((BahTriviaButton) action).getThisButton() == 1){
+                //do stuff here
+                //say it was a legal move
+                return true;
+            }
+            else if (((BahTriviaButton) action).getThisButton() == 2){
+                return true;
+            }
+            else if(((BahTriviaButton) action).getThisButton() == 3){
+                return true;
+            }
+            else if(((BahTriviaButton) action).getThisButton() == 4){
+                return true;
+            }
+            else if(((BahTriviaButton) action).getThisButton() == 5) {
+                return true;
+            }
+            else if(((BahTriviaButton) action).getThisButton() == 6) {
+                return true;
+            }
         return false; //illegal
     }
 
@@ -303,26 +324,6 @@ public class BahLocalGame extends LocalGame {
             }//pokedex
             //todo: There's a lot of recurring 3 lines of code with the items that may be extractable!
 
-            //Trivia Button
-            if(((BahTriviaButton) action).getThisButton() == 1){
-
-            } else if (((BahTriviaButton) action).getThisButton() == 2){
-
-            } else if(((BahTriviaButton) action).getThisButton() == 3){
-
-            }else if(((BahTriviaButton) action).getThisButton() == 4){
-
-            } else if(((BahTriviaButton) action).getThisButton() == 5) {
-
-                gameState.setTriviaButtonClicked(false);
-
-            }else if(((BahTriviaButton) action).getThisButton() == 6) {
-
-                gameState.setTriviaButtonClicked(false);
-
-            }
-
-
             }
         return false; //illegal
     }//actItem
@@ -358,13 +359,8 @@ public class BahLocalGame extends LocalGame {
                     gameState.nextDialogue();
                 }
                 else { //End of Customers speech
-                    customer.setPlayersTurn(true);
-                }//todo make them call on the mini game to start now
-                //todo make this its own method, not just a bunch of if statements in the dialogue stuff
-
-                //Prompts Pokeangel's Trivia Screen
-                if(customer.getCustomerName() == "Pokeangel"){
-                    gameState.setTriviaTime(true);
+                    //call on the mini game to start now
+                    gameState.setGameTime(true);
                 }
 
             }//:)
@@ -390,19 +386,7 @@ public class BahLocalGame extends LocalGame {
                     }
                     else { //End of Customers speech
                         customer.setPlayersTurn(true);
-
-    //todo make this its own method probably                    //Customer gives an item to use
-                        if (customer.getCustomerName().equals("Ghost")) {
-                            gameState.setHasPokeball(true);
-                        } else if (customer.getCustomerName().equals("Pokeangel")) {
-                            gameState.setHasInfoBot(true);
-                        } else if (customer.getCustomerName().equals("Lug")) {
-                            gameState.setHasBag(true);
-                        } else if (customer.getCustomerName().equals("Mystic Man")) {
-                            gameState.setHasPokeDex(true);
-                        } else if (customer.getCustomerName().equals("Demon Lord Nux")) {
-                            gameState.setHasKey(true);
-                        }
+                        giveItem();
                     }
                 }
             }
@@ -455,6 +439,19 @@ public class BahLocalGame extends LocalGame {
         return true;
     }
 
+    private void giveItem() {
+        if (customer.getCustomerName().equals("Ghost")) {
+            gameState.setHasPokeball(true);
+        } else if (customer.getCustomerName().equals("Pokeangel")) {
+            gameState.setHasInfoBot(true);
+        } else if (customer.getCustomerName().equals("Lug")) {
+            gameState.setHasBag(true);
+        } else if (customer.getCustomerName().equals("Mystic Man")) {
+            gameState.setHasPokeDex(true);
+        } else if (customer.getCustomerName().equals("Demon Lord Nux")) {
+            gameState.setHasKey(true);
+        }
+    }
     private void loreEnding(){
         //todo if we want the ending screens interactable
     }
