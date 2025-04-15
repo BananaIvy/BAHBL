@@ -314,7 +314,11 @@ public class BahLocalGame extends LocalGame {
 
             } else if(((BahTriviaButton) action).getThisButton() == 5) {
 
+                gameState.setTriviaButtonClicked(false);
+
             }else if(((BahTriviaButton) action).getThisButton() == 6) {
+
+                gameState.setTriviaButtonClicked(false);
 
             }
 

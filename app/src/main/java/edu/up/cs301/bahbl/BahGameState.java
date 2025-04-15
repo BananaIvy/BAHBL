@@ -48,13 +48,17 @@ public class BahGameState extends GameState {
 
 	//For Trivia Mini Game
 	private int correctAnswers;
-	private String[] triviaQuestions = new String[6];
-	private String[] triviaAnswer1 = new String[6];
-	private String[] triviaAnswer2= new String[6];
-	private String[] triviaAnswer3 = new String[6];
-	private String[] triviaAnswer4 = new String[6];
+
+	//The correct answers go in the order 2, 4, 1, 4, 2
+	private String[] triviaQuestions = {"What should I quiz you on?", "Okay so, what is the mascot of Pokemon?",
+			"Which one of these is a God Pokemon?", "Which of these is a Pokemon?", "Am I adorable?" };
+	private String[] triviaAnswer1= {"Cats", "Squirtle", "Mew", "Luxiq", "No way"};
+	private String[] triviaAnswer2= {"Pokemon", "Bongo Cat", "Pikachu", "Ticlid", "Just a little"};
+	private String[] triviaAnswer3= {"Nothing", "Charzard", "Abra", "Carnitor", "Nope"};
+	private String[] triviaAnswer4= {"Everything", "Pikachu", "Ditto", "Sentret", "Very, like a pet"};
     private boolean gameTime;
 	private boolean correctAnswer;
+	private boolean triviaButtonClicked;
 
 	//Constructor for start of game
 	public BahGameState(){
@@ -75,11 +79,7 @@ public class BahGameState extends GameState {
 		badButtonText = "";
 		endScene = 0;
 		correctAnswers = 0;
-		triviaQuestions[] = "What should I quiz you on?";
-		triviaAnswer1[] = "Pokemon";
-		triviaAnswer2[] = "Cats";
-		triviaAnswer3[] = "Nothing";
-		triviaAnswer4[] = "Everything";
+		triviaButtonClicked = false;
 
 	}
 
@@ -108,6 +108,7 @@ public class BahGameState extends GameState {
 		triviaAnswer4 = currentState.triviaAnswer4;
         gameTime = currentState.gameTime;
 		correctAnswer = currentState.correctAnswer;
+		triviaButtonClicked = currentState.triviaButtonClicked;
 	}
 
 	//Methods
@@ -157,7 +158,7 @@ public class BahGameState extends GameState {
 		}
 		return "somethings wrong with getCustomerDialogue";
 	}
-
+	public boolean isTriviaButtonClicked(){return triviaButtonClicked;}
     public boolean isCorrectAnswer(){return correctAnswer;}
     public boolean isGameTime(){return gameTime;}
 	public int getCorrectAnswers() {return correctAnswers;}
@@ -183,6 +184,7 @@ public class BahGameState extends GameState {
 	public int getEndScene() {return endScene;}
 
 	//Setter Methods
+	public void setTriviaButtonClicked(boolean triviaButtonClicked){this.triviaButtonClicked = triviaButtonClicked;}
 	public void setCorrectAnswer(boolean correctAnswer){this.correctAnswer = correctAnswer;}
 	public void setTriviaTime(boolean triviaTime){this.triviaTime = triviaTime;}
 	public void setCorrectAnswers(int correctAnswers) {this.correctAnswers = correctAnswers;}
