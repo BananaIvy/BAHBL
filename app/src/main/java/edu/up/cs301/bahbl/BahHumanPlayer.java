@@ -113,8 +113,14 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			}
 		}
 
-		if((state.isTriviaTime() == true)){
+		if((state.isTriviaTime())){
 			triviaLayout();
+		}
+
+		if(state.isCorrectAnswer() && button click){
+			triviaRightLayout();
+		} else if (state.isCorrectAnswer() == false && button click){
+			triviaWrongLayout();
 		}
 
 	}

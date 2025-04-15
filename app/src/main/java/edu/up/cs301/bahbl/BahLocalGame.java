@@ -312,10 +312,14 @@ public class BahLocalGame extends LocalGame {
 
             }else if(((BahTriviaButton) action).getThisButton() == 4){
 
+            } else if(((BahTriviaButton) action).getThisButton() == 5) {
+
+            }else if(((BahTriviaButton) action).getThisButton() == 6) {
+
             }
 
 
-        }
+            }
         return false; //illegal
     }//actItem
 
