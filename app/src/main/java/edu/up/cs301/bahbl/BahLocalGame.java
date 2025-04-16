@@ -386,7 +386,11 @@ public class BahLocalGame extends LocalGame {
                 }
                 else { //End of Customers speech
                     //call on the mini game to start now
-                    gameState.setGameTime(true);
+                    if(customer.getCustomerName() != "Ghost" && customer.getCustomerName() != "Ghost2"){
+                        gameState.setGameTime(true);
+                    } else{
+                        customer.setPlayersTurn(true);
+                    }
                 }
 
             }//:)
