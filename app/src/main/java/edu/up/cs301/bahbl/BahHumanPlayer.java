@@ -109,6 +109,16 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			}
 		}
 
+		//if the game screen is triggered for the ghost
+		if(state.isGameTime() == true && state.getCustomer().equals("Ghost")){
+			state.setGameTime(false);
+		}
+		if(state.isGameTime() == true && state.getCustomer().equals("Ghost2")){
+			state.setGameTime(false);
+		}
+
+
+// for the trivia screen
 		if((state.isGameTime()) && (state.isTriviaButtonClicked() == false)){
 			if((state.getCustomer()).getCustomerName() == "Pokeangel"){
 
@@ -130,7 +140,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			state.setTriviaSection(state.getTriviaSection() + 1);
 			triviaWrongLayout();
 		}
-
+//end of trivia code
 	}
 
 	public void onClick(View button) {
