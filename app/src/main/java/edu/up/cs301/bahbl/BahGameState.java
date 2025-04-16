@@ -59,6 +59,9 @@ public class BahGameState extends GameState {
     private boolean gameTime;
 	private boolean correctAnswer;
 	private boolean triviaButtonClicked;
+	//To update the trivia questions
+	private int triviaSection;
+
 
 	//Constructor for start of game
 	public BahGameState(){
@@ -80,6 +83,7 @@ public class BahGameState extends GameState {
 		endScene = 0;
 		correctAnswersCount = 0;
 		triviaButtonClicked = false;
+		triviaSection = 1;
 
 	}
 
@@ -109,6 +113,7 @@ public class BahGameState extends GameState {
         gameTime = currentState.gameTime;
 		correctAnswer = currentState.correctAnswer;
 		triviaButtonClicked = currentState.triviaButtonClicked;
+		triviaSection = currentState.triviaSection;
 	}
 
 	//Methods
@@ -158,6 +163,7 @@ public class BahGameState extends GameState {
 		}
 		return "somethings wrong with getCustomerDialogue";
 	}
+	public int getTriviaSection(){return triviaSection;}
 	public boolean isCorrectAnswer(){return correctAnswer;}
 	public boolean isTriviaButtonClicked() {return triviaButtonClicked;}
 	public boolean isGameTime(){return gameTime;}
@@ -184,6 +190,7 @@ public class BahGameState extends GameState {
 	public int getEndScene() {return endScene;}
 
 	//Setter Methods
+	public void setTriviaSection(int triviaSection){this.triviaSection = triviaSection;}
 	public void setCorrectAnswer(boolean correctAnswer){this.correctAnswer = correctAnswer;}
 	public void setTriviaButtonClicked(boolean triviaButtonClicked){this.triviaButtonClicked = triviaButtonClicked;}
 	public void setGameTime(boolean triviaTime){this.gameTime = gameTime;}

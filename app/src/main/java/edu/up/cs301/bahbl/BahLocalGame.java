@@ -201,17 +201,34 @@ public class BahLocalGame extends LocalGame {
         //The correct answers go in the order 2, 4, 1, 4, 2
         else if(((BahTriviaButton) action).getThisButton() == 1){
                 //do stuff here
-
+            if(gameState.getTriviaSection() == 3){
+                gameState.setCorrectAnswer(true);
+            }
+                gameState.setTriviaButtonClicked(true);
                 //say it was a legal move
                 return true;
             }
             else if (((BahTriviaButton) action).getThisButton() == 2){
+
+                if(gameState.getTriviaSection() == 1 || gameState.getTriviaSection() == 5){
+                    gameState.setCorrectAnswer(true);
+                }
+
+                gameState.setTriviaButtonClicked(true);
                 return true;
             }
             else if(((BahTriviaButton) action).getThisButton() == 3){
+
+                gameState.setCorrectAnswer(false);
+                gameState.setTriviaButtonClicked(true);
                 return true;
             }
             else if(((BahTriviaButton) action).getThisButton() == 4){
+
+                if(gameState.getTriviaSection() == 2 || gameState.getTriviaSection() == 4){
+                    gameState.setCorrectAnswer(true);
+                }
+                gameState.setTriviaButtonClicked(true);
                 return true;
             }
             //The wrong answer

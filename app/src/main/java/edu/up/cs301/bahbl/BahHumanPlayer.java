@@ -60,10 +60,6 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	private Button          triviaRightButton    = null;
 	private Button          triviaWrongButton    = null;
 
-	//To update the trivia questions
-	private int triviaSection = 1;
-
-
 	// the most recent game state, as given to us by the CounterLocalGame
 	private BahGameState state;
 
@@ -116,21 +112,23 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		if((state.isGameTime()) && (state.isTriviaButtonClicked() == false)){
 			if((state.getCustomer()).getCustomerName() == "Pokeangel"){
 
-				questions.setText(""+ state.getTriviaQuestions(triviaSection));
-				triviaOptionOne.setText(""+state.getTriviaAnswer1(triviaSection));
-				triviaOptionTwo.setText(""+state.getTriviaAnswer2(triviaSection));
-				triviaOptionThree.setText(""+state.getTriviaAnswer3(triviaSection));
-				triviaOptionFour.setText(""+state.getTriviaAnswer4(triviaSection));
+				questions.setText(""+ state.getTriviaQuestions(state.getTriviaSection()));
+				triviaOptionOne.setText(""+state.getTriviaAnswer1(state.getTriviaSection()));
+				triviaOptionTwo.setText(""+state.getTriviaAnswer2(state.getTriviaSection()));
+				triviaOptionThree.setText(""+state.getTriviaAnswer3(state.getTriviaSection()));
+				triviaOptionFour.setText(""+state.getTriviaAnswer4(state.getTriviaSection()));
 				triviaLayout();
 			}
 		}
 
 		if((state.isCorrectAnswer() == true) && (state.isTriviaButtonClicked() == true)){
+
+			state.setTriviaSection(state.getTriviaSection() + 1);
 			triviaRightLayout();
-			triviaSection++;
 		} else if ((state.isCorrectAnswer() == false) && state.isTriviaButtonClicked() == true){
+
+			state.setTriviaSection(state.getTriviaSection() + 1);
 			triviaWrongLayout();
-			triviaSection++;
 		}
 
 	}
