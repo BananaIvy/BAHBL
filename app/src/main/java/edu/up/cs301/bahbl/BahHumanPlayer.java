@@ -107,7 +107,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	 */
 	protected void updateDisplay() {
 
-
+		//MAIN GAME-LINE
 		if(!state.isGameTime()){
 			setUpTexts();
 
@@ -123,6 +123,20 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 					badLayout();
 				}
 			}
+
+		//POKEMON INTERACTION
+		} else if (state.isGameTime() && state.getCustomer().getCustomerName().equals("Demon Lord Nux")) {
+			boolean nextGameScreen = false;
+			for(BahPokemon poke : state.getPokemons()){
+				if(poke.isCatchable()){
+					nextGameScreen = true;
+				}
+			}
+			if(!nextGameScreen){
+				nuxLayout();
+			}else{
+				pokeBattleLayout();
+			}
 		}
 
 		//if the game screen is triggered for the ghost
@@ -135,7 +149,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		}
 
 
-// for the trivia screen
+		// for the trivia screen
 		else if((state.isGameTime()) && (state.isTriviaButtonClicked() == false)){
 			if((state.getCustomer()).getCustomerName().equals("Pokeangel")){
 
@@ -510,6 +524,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 		pokeballl.setOnClickListener(this);
 	}
+
 
 }// class CounterHumanPlayer
 

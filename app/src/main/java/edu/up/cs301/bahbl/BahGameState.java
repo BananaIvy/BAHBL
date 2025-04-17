@@ -62,6 +62,8 @@ public class BahGameState extends GameState {
 	//To update the trivia questions
 	private int triviaSection;
 
+	private BahPokemon[] pokemons = {new BahPokemon("bell"),new BahPokemon("ghast"),new BahPokemon("pikachu"),new BahPokemon("egg"),new BahPokemon("worm"),new BahPokemon("geode"),new BahPokemon("diglett"),new BahPokemon("ditto")};
+
 
 	//Constructor for start of game
 	public BahGameState(){
@@ -188,6 +190,7 @@ public class BahGameState extends GameState {
 	public boolean isHasPokeDex() {return hasPokeDex;}
 	public int getDialogueIndex() {return dialogueIndex;}
 	public int getEndScene() {return endScene;}
+	public BahPokemon[] getPokemons(){return pokemons;}
 
 	//Setter Methods
 	public void setTriviaSection(int triviaSection){this.triviaSection = triviaSection;}

@@ -105,10 +105,12 @@ public class BahLocalGame extends LocalGame {
             return actBadEnding();
         }
 
+        //Pokeball is pressed
         else if(action instanceof BahActionCatch){
             return actPokeCatch();
         }
 
+        //Pokemon is selected
         else if(action instanceof BahActionBattle){
             return actpokeBattle((BahActionBattle) action);
         }
@@ -500,14 +502,25 @@ public class BahLocalGame extends LocalGame {
     }
 
     private boolean actpokeBattle(BahActionBattle action){
-        if(action.getThisPokemon() == "egg"){
-            return true;
+        //Find which pokemon wasishasbeing battled
+        for(BahPokemon poke : gameState.getPokemons()){
+            if(action.getThisPokemon() == poke.getName()){
+                poke.battle();
+                return true;
+            }
         }
         return false;
     }
 
     private boolean actPokeCatch() {
-        return true;
+        //Find which pokemon wasishasbeing captured
+        for(BahPokemon poke : gameState.getPokemons()){
+            if(poke.isCatchable()){
+                poke.capture(true);
+                return true;
+            }
+        }
+        return false;
     }
 
 }
