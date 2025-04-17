@@ -127,22 +127,24 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 
 // for the trivia screen
-		else if((state.isGameTime()) &&(state.isTriviaButtonClicked() == false)){
-			if((state.getCustomer()).getCustomerName().equals("Pokeangel")){
+		else if((state.isGameTime()) && (state.getCustomer()).getCustomerName().equals("Pokeangel")){
+			if((!state.isTriviaButtonClicked())){
 
-				triviaLayout();
-				questions.setText(""+ state.getTriviaQuestions(state.getTriviaSection()));
-				triviaOptionOne.setText(""+state.getTriviaAnswer1(state.getTriviaSection()));
-				triviaOptionTwo.setText(""+state.getTriviaAnswer2(state.getTriviaSection()));
-				triviaOptionThree.setText(""+state.getTriviaAnswer3(state.getTriviaSection()));
-				triviaOptionFour.setText(""+state.getTriviaAnswer4(state.getTriviaSection()));
-
-				if ((state.isCorrectAnswer() == true) && (state.isTriviaButtonClicked() == true)){
+				if(!state.isCorrectAnswer() && !state.isTriviaButtonClicked()) {
+					triviaLayout();
+					questions.setText("" + state.getTriviaQuestions(state.getTriviaSection()));
+					triviaOptionOne.setText("" + state.getTriviaAnswer1(state.getTriviaSection()));
+					triviaOptionTwo.setText("" + state.getTriviaAnswer2(state.getTriviaSection()));
+					triviaOptionThree.setText("" + state.getTriviaAnswer3(state.getTriviaSection()));
+					triviaOptionFour.setText("" + state.getTriviaAnswer4(state.getTriviaSection()));
+				}
+				else if ((state.isCorrectAnswer() == true) && (state.isTriviaButtonClicked() == true)){
 
 					triviaRightLayout();
 					state.setTriviaSection(state.getTriviaSection() + 1);
 
-				} else if ((state.isCorrectAnswer() == false) && state.isTriviaButtonClicked() == true){
+				}
+				else if ((state.isCorrectAnswer() == false) && state.isTriviaButtonClicked() == true){
 
 					triviaWrongLayout();
 					state.setTriviaSection(state.getTriviaSection() + 1);

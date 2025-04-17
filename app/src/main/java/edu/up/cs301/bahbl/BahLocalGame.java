@@ -253,13 +253,17 @@ public class BahLocalGame extends LocalGame {
             //The wrong answer
             else if (((BahActionTriviaButton) action).getWhichButton() == 5) {
 
+                gameState.setCorrectAnswer(false);
                 gameState.setTriviaButtonClicked(false);
+
                 return true;
             }
             //The right answer
             else if (((BahActionTriviaButton) action).getWhichButton() == 6) {
 
+                gameState.setCorrectAnswer(false);
                 gameState.setTriviaButtonClicked(false);
+
                 return true;
             }
         }

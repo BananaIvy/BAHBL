@@ -54,7 +54,7 @@ public class BahGameState extends GameState {
 			"Which one of these is a God Pokemon?", "Which of these is a Pokemon?", "Am I adorable?" };
 	private String[] triviaAnswer1= {"Cats", "Squirtle", "Mew", "Luxiq", "No way"};
 	private String[] triviaAnswer2= {"Pokemon", "Bongo Cat", "Pikachu", "Ticlid", "Just a little"};
-	private String[] triviaAnswer3= {"Nothing", "Charzard", "Abra", "Carnitor", "Nope"};
+	private String[] triviaAnswer3= {"Nothing", "Charizard", "Abra", "Carnitor", "Nope"};
 	private String[] triviaAnswer4= {"Everything", "Pikachu", "Ditto", "Sentret", "Very, like a pet"};
     private boolean gameTime;
 	private boolean correctAnswer;
