@@ -128,9 +128,9 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 // for the trivia screen
 		else if((state.isGameTime()) && (state.getCustomer()).getCustomerName().equals("Pokeangel")){
-			if((!state.isTriviaButtonClicked())){
 
-				if(!state.isCorrectAnswer() && !state.isTriviaButtonClicked()) {
+
+				if(!state.isTriviaButtonClicked()) {
 					triviaLayout();
 					questions.setText("" + state.getTriviaQuestions(state.getTriviaSection()));
 					triviaOptionOne.setText("" + state.getTriviaAnswer1(state.getTriviaSection()));
@@ -151,7 +151,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 				}
 
-			}
+
 		}
 //end of trivia code
 	}
@@ -478,10 +478,10 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		this.triviaOptionFour = (Button) myActivity.findViewById(R.id.Trivia4);
 		this.triviaPokeangel = (ImageView) myActivity.findViewById(R.id.triviaPokeangel);
 
-		triviaOptionOne.setOnClickListener(myActivity);
-		triviaOptionTwo.setOnClickListener(myActivity);
-		triviaOptionThree.setOnClickListener(myActivity);
-		triviaOptionFour.setOnClickListener(myActivity);
+		triviaOptionOne.setOnClickListener(this);
+		triviaOptionTwo.setOnClickListener(this);
+		triviaOptionThree.setOnClickListener(this);
+		triviaOptionFour.setOnClickListener(this);
 
 
 	}//triviaLayout
@@ -492,7 +492,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 		//sets up the one button
 		this.triviaWrongButton = (Button) myActivity.findViewById(R.id.wrong);
-		triviaWrongButton.setOnClickListener(myActivity);
+		triviaWrongButton.setOnClickListener(this);
 	}
 
 	public void triviaRightLayout(){
@@ -501,7 +501,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 		//sets up the one button
 		this.triviaRightButton = (Button) myActivity.findViewById(R.id.right);
-		triviaRightButton.setOnClickListener(myActivity);
+		triviaRightButton.setOnClickListener(this);
 	}
 
 	public void nuxLayout(){
