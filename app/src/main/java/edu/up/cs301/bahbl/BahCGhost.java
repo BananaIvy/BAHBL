@@ -23,11 +23,11 @@ public class BahCGhost extends BahCustomerBase {
         setMoney(20);
         setLikeability(70);
 
-        /** dialogues */
+        /* dialogues */
         //happy response
         addHappyResponse("Great! I'm glad to hear it!");
         addHappyResponse("By the way, here's a little ball I found lying on the floor...");
-        addHappyResponse("See if one of the regular customers left it behind.");
+        addHappyResponse("See if one of the regulars left it behind.");
         addHappyResponse("Just click an item to hand it to a customer.");
         addHappyResponse("Hand me the key and I'll finish explaining your tasks to you.");
 

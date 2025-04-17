@@ -225,12 +225,14 @@ public class BahLocalGame extends LocalGame {
 
                 gameState.setTriviaButtonClicked(true);
                 return true;
-            } else if (((BahActionTriviaButton) action).getWhichButton() == 3) {
+            }
+            else if (((BahActionTriviaButton) action).getWhichButton() == 3) {
 
                 gameState.setCorrectAnswer(false);
                 gameState.setTriviaButtonClicked(true);
                 return true;
-            } else if (((BahActionTriviaButton) action).getWhichButton() == 4) {
+            }
+            else if (((BahActionTriviaButton) action).getWhichButton() == 4) {
 
                 if (gameState.getTriviaSection() == 2 || gameState.getTriviaSection() == 4) {
                     gameState.setCorrectAnswer(true);
