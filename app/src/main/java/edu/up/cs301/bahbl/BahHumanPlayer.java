@@ -74,10 +74,6 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 
 
-	//To update the trivia questions
-	private int triviaSection = 1;
-
-
 	// the most recent game state, as given to us by the CounterLocalGame
 	private BahGameState state;
 
@@ -127,26 +123,38 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			}
 		}
 
+		//if the game screen is triggered for the ghost
+		if(state.isGameTime() == true && state.getCustomer().equals("Ghost")){
+			state.setGameTime(false);
+		}
+		if(state.isGameTime() == true && state.getCustomer().equals("Ghost2")){
+			state.setGameTime(false);
+		}
+
+
+// for the trivia screen
 		if((state.isGameTime()) && (state.isTriviaButtonClicked() == false)){
 			if((state.getCustomer()).getCustomerName() == "Pokeangel"){
 
-				questions.setText(""+ state.getTriviaQuestions(triviaSection));
-				triviaOptionOne.setText(""+state.getTriviaAnswer1(triviaSection));
-				triviaOptionTwo.setText(""+state.getTriviaAnswer2(triviaSection));
-				triviaOptionThree.setText(""+state.getTriviaAnswer3(triviaSection));
-				triviaOptionFour.setText(""+state.getTriviaAnswer4(triviaSection));
+				questions.setText(""+ state.getTriviaQuestions(state.getTriviaSection()));
+				triviaOptionOne.setText(""+state.getTriviaAnswer1(state.getTriviaSection()));
+				triviaOptionTwo.setText(""+state.getTriviaAnswer2(state.getTriviaSection()));
+				triviaOptionThree.setText(""+state.getTriviaAnswer3(state.getTriviaSection()));
+				triviaOptionFour.setText(""+state.getTriviaAnswer4(state.getTriviaSection()));
 				triviaLayout();
 			}
 		}
 
 		if((state.isCorrectAnswer() == true) && (state.isTriviaButtonClicked() == true)){
-			triviaRightLayout();
-			triviaSection++;
-		} else if ((state.isCorrectAnswer() == false) && state.isTriviaButtonClicked() == true){
-			triviaWrongLayout();
-			triviaSection++;
-		}
 
+			state.setTriviaSection(state.getTriviaSection() + 1);
+			triviaRightLayout();
+		} else if ((state.isCorrectAnswer() == false) && state.isTriviaButtonClicked() == true){
+
+			state.setTriviaSection(state.getTriviaSection() + 1);
+			triviaWrongLayout();
+		}
+//end of trivia code
 	}
 
 	public void onClick(View button) {
