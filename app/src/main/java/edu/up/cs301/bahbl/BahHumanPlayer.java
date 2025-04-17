@@ -59,6 +59,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	private Button          triviaOptionFour    = null;
 	private Button          triviaRightButton   = null;
 	private Button          triviaWrongButton   = null;
+	private ImageView       triviaPokeangel     = null;
 
 	//Pokemon widgets
 	//If time & energy exists, convert this all to an array.
@@ -126,24 +127,26 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 
 // for the trivia screen
-		else if((state.isGameTime()) && state.getStoryProgress() > 1 &&(state.isTriviaButtonClicked() == false)){
+		else if((state.isGameTime()) &&(state.isTriviaButtonClicked() == false)){
 			if((state.getCustomer()).getCustomerName().equals("Pokeangel")){
 
+				triviaLayout();
 				questions.setText(""+ state.getTriviaQuestions(state.getTriviaSection()));
 				triviaOptionOne.setText(""+state.getTriviaAnswer1(state.getTriviaSection()));
 				triviaOptionTwo.setText(""+state.getTriviaAnswer2(state.getTriviaSection()));
 				triviaOptionThree.setText(""+state.getTriviaAnswer3(state.getTriviaSection()));
 				triviaOptionFour.setText(""+state.getTriviaAnswer4(state.getTriviaSection()));
-				triviaLayout();
 
 				if ((state.isCorrectAnswer() == true) && (state.isTriviaButtonClicked() == true)){
 
-					state.setTriviaSection(state.getTriviaSection() + 1);
 					triviaRightLayout();
+					state.setTriviaSection(state.getTriviaSection() + 1);
+
 				} else if ((state.isCorrectAnswer() == false) && state.isTriviaButtonClicked() == true){
 
-					state.setTriviaSection(state.getTriviaSection() + 1);
 					triviaWrongLayout();
+					state.setTriviaSection(state.getTriviaSection() + 1);
+
 				}
 
 			}
@@ -471,6 +474,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		this.triviaOptionTwo = (Button) myActivity.findViewById(R.id.Trivia2);
 		this.triviaOptionThree = (Button) myActivity.findViewById(R.id.Trivia3);
 		this.triviaOptionFour = (Button) myActivity.findViewById(R.id.Trivia4);
+		this.triviaPokeangel = (ImageView) myActivity.findViewById(R.id.triviaPokeangel);
 
 		triviaOptionOne.setOnClickListener(myActivity);
 		triviaOptionTwo.setOnClickListener(myActivity);
