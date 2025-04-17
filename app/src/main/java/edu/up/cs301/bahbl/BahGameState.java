@@ -84,6 +84,7 @@ public class BahGameState extends GameState {
 		correctAnswersCount = 0;
 		triviaButtonClicked = false;
 		triviaSection = 1;
+		gameTime = false;
 
 	}
 
@@ -114,6 +115,7 @@ public class BahGameState extends GameState {
 		correctAnswer = currentState.correctAnswer;
 		triviaButtonClicked = currentState.triviaButtonClicked;
 		triviaSection = currentState.triviaSection;
+		gameTime = currentState.gameTime;
 	}
 
 	//Methods
@@ -193,7 +195,7 @@ public class BahGameState extends GameState {
 	public void setTriviaSection(int triviaSection){this.triviaSection = triviaSection;}
 	public void setCorrectAnswer(boolean correctAnswer){this.correctAnswer = correctAnswer;}
 	public void setTriviaButtonClicked(boolean triviaButtonClicked){this.triviaButtonClicked = triviaButtonClicked;}
-	public void setGameTime(boolean triviaTime){this.gameTime = gameTime;}
+	public void setGameTime(boolean gameTime){this.gameTime = gameTime;}
 	public void setCorrectAnswersCount(int correctAnswersCount) {this.correctAnswersCount = correctAnswersCount;}
 	public void setTriviaQuestions(String triviaQuestions, int i) {this.triviaQuestions[i] = triviaQuestions;}
 	public void setTriviaAnswer1(String triviaAnswer1, int i) {this.triviaAnswer1[i] = triviaAnswer1;}

@@ -109,11 +109,9 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 
 		if(!state.isGameTime()){
-			setUpTexts();
 
-			setUpCustomer();
+			mainLayout();
 
-			setUpItems();
 			//IF IT's THE ENDING
 			if((state.getStoryProgress() >= 6)){
 				if(state.getMoneyCount() > 71) { //todo fix this condition after fixing $ amounts.
@@ -125,18 +123,10 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			}
 		}
 
-		//if the game screen is triggered for the ghost
-		else if(state.isGameTime() == true && state.getCustomer().getCustomerName().equals("Ghost")){
-
-			state.setGameTime(false);
-		} else if(state.isGameTime() == true && state.getCustomer().getCustomerName().equals("Ghost2")){
-
-			state.setGameTime(false);
-		}
 
 
 // for the trivia screen
-		else if((state.isGameTime()) && (state.isTriviaButtonClicked() == false)){
+		else if((state.isGameTime()) && state.getStoryProgress() > 1 &&(state.isTriviaButtonClicked() == false)){
 			if((state.getCustomer()).getCustomerName().equals("Pokeangel")){
 
 				questions.setText(""+ state.getTriviaQuestions(state.getTriviaSection()));
@@ -184,14 +174,14 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			game.sendAction(new BahActionRun(this));
 
 		} else if(isTriviaButton(button)){
-			game.sendAction(new BahTriviaButton(this, button));
+			game.sendAction(new BahActionTriviaButton(this, button));
 
 		}else if(button.getId() == R.id.wrong){
-			game.sendAction(new BahTriviaButton(this, button));
+			game.sendAction(new BahActionTriviaButton(this, button));
 
 
 		}else if(button.getId() == R.id.right){
-			game.sendAction(new BahTriviaButton(this, button));
+			game.sendAction(new BahActionTriviaButton(this, button));
 
 		}else if (button.getId() == R.id.pokeballl) {
 			game.sendAction(new BahActionCatch(this));
@@ -392,6 +382,42 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			pokeDex.setVisibility(View.INVISIBLE);
 		}
 	}//items
+
+	public void mainLayout(){
+
+		// Load the layout resource for our GUI
+		myActivity.setContentView(R.layout.bahbl_human_player);
+
+		//Initialize the widget reference member variables
+		this.customerDialogue = (TextView) myActivity.findViewById(R.id.customerDialogue);
+		this.button1 = (Button) myActivity.findViewById(R.id.Option1);
+		this.button2 = (Button) myActivity.findViewById(R.id.Option2);
+		this.register = (android.widget.ImageButton) myActivity.findViewById((R.id.register_keyboard));
+		this.infoBot = (android.widget.ImageButton) myActivity.findViewById(R.id.infoBot);
+		this.bag = (android.widget.ImageButton) myActivity.findViewById(R.id.bag);
+		this.pokeball = (android.widget.ImageButton) myActivity.findViewById((R.id.pokeball));
+		this.pokeDex = (android.widget.ImageButton) myActivity.findViewById((R.id.pokedex));
+		this.key = (android.widget.ImageButton) myActivity.findViewById((R.id.key));
+		this.registerMoney = (TextView) myActivity.findViewById((R.id.total_monitor));
+		this.customer = (ImageButton) myActivity.findViewById(R.id.customer);
+
+		// make this object listen for widget clicks
+		customerDialogue.setOnClickListener(this);
+		button1.setOnClickListener(this);
+		button2.setOnClickListener(this);
+		registerMoney.setOnClickListener(this);
+		register.setOnClickListener(this);
+		infoBot.setOnClickListener(this);
+		bag.setOnClickListener(this);
+		pokeball.setOnClickListener(this);
+		pokeDex.setOnClickListener(this);
+		key.setOnClickListener(this);
+		customer.setOnClickListener(this);
+
+		setUpCustomer();
+		setUpTexts();
+		setUpItems();
+	}
 
 	public void badLayout(){
 		//Initialize the xml View
