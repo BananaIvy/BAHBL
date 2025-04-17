@@ -4,6 +4,7 @@ import edu.up.cs301.GameFramework.actionMessage.GameAction;
 import edu.up.cs301.GameFramework.players.GamePlayer;
 
 public class BahActionCatch extends GameAction {
+
     /**
      * constructor for GameAction
      *

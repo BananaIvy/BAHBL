@@ -100,15 +100,24 @@ public class BahLocalGame extends LocalGame {
             return actProgressText();
         }
 
-        gameState.setDialogueIndex(0);
-
         //ENDING
-        if(action instanceof BahActionRun) {
+        else if(action instanceof BahActionRun) {
             return actBadEnding();
         }
 
+        else if(action instanceof BahActionCatch){
+            return actPokeCatch();
+        }
+
+        else if(action instanceof BahActionBattle){
+            return actpokeBattle((BahActionBattle) action);
+        }
+
+
+        gameState.setDialogueIndex(0);
         return false;
     }//makeMove
+
 
     /**
      * Register is clicked -
@@ -385,12 +394,13 @@ public class BahLocalGame extends LocalGame {
                     gameState.nextDialogue();
                 }
                 else { //End of Customers speech
+                    giveItem();
                     //call on the mini game to start now
-                    if(customer.getCustomerName() != "Ghost" && customer.getCustomerName() != "Ghost2"){
-                        gameState.setGameTime(true);
-                    } else{
-                        customer.setPlayersTurn(true);
-                    }
+//                    if(customer.getCustomerName() != "Ghost" && customer.getCustomerName() != "Ghost2"){
+//                        gameState.setGameTime(true);
+//                    } else{
+//                        customer.setPlayersTurn(true);
+//                    }
                 }
 
             }//:)
@@ -416,7 +426,6 @@ public class BahLocalGame extends LocalGame {
                     }
                     else { //End of Customers speech
                         customer.setPlayersTurn(true);
-                        giveItem();
                     }
                 }
             }
@@ -488,6 +497,17 @@ public class BahLocalGame extends LocalGame {
 
     private void triviaScreen(){
 
+    }
+
+    private boolean actpokeBattle(BahActionBattle action){
+        if(action.getThisPokemon() == "egg"){
+            return true;
+        }
+        return false;
+    }
+
+    private boolean actPokeCatch() {
+        return true;
     }
 
 }

@@ -132,7 +132,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		}
 
 
-// for the trivia screen
+		// for the trivia screen
 		if((state.isGameTime()) && (state.isTriviaButtonClicked() == false)){
 			if((state.getCustomer()).getCustomerName() == "Pokeangel"){
 
