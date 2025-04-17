@@ -100,15 +100,24 @@ public class BahLocalGame extends LocalGame {
             return actProgressText();
         }
 
-        gameState.setDialogueIndex(0);
-
         //ENDING
-        if(action instanceof BahActionRun) {
+        else if(action instanceof BahActionRun) {
             return actBadEnding();
         }
 
+        else if(action instanceof BahActionCatch){
+            return actPokeCatch();
+        }
+
+        else if(action instanceof BahActionBattle){
+            return actpokeBattle((BahActionBattle) action);
+        }
+
+
+        gameState.setDialogueIndex(0);
         return false;
     }//makeMove
+
 
     /**
      * Register is clicked -
@@ -196,25 +205,51 @@ public class BahLocalGame extends LocalGame {
 
             return true; //legal
         }
+
         //trivia button
+        //The correct answers go in the order 2, 4, 1, 4, 2
         else if(((BahTriviaButton) action).getThisButton() == 1){
                 //do stuff here
+            if(gameState.getTriviaSection() == 3){
+                gameState.setCorrectAnswer(true);
+            }
+                gameState.setTriviaButtonClicked(true);
                 //say it was a legal move
                 return true;
             }
             else if (((BahTriviaButton) action).getThisButton() == 2){
+
+                if(gameState.getTriviaSection() == 1 || gameState.getTriviaSection() == 5){
+                    gameState.setCorrectAnswer(true);
+                }
+
+                gameState.setTriviaButtonClicked(true);
                 return true;
             }
             else if(((BahTriviaButton) action).getThisButton() == 3){
+
+                gameState.setCorrectAnswer(false);
+                gameState.setTriviaButtonClicked(true);
                 return true;
             }
             else if(((BahTriviaButton) action).getThisButton() == 4){
+
+                if(gameState.getTriviaSection() == 2 || gameState.getTriviaSection() == 4){
+                    gameState.setCorrectAnswer(true);
+                }
+                gameState.setTriviaButtonClicked(true);
                 return true;
             }
+            //The wrong answer
             else if(((BahTriviaButton) action).getThisButton() == 5) {
+
+                gameState.setTriviaButtonClicked(false);
                 return true;
             }
+            //The right answer
             else if(((BahTriviaButton) action).getThisButton() == 6) {
+
+                gameState.setTriviaButtonClicked(false);
                 return true;
             }
         return false; //illegal
@@ -359,9 +394,15 @@ public class BahLocalGame extends LocalGame {
                     gameState.nextDialogue();
                 }
                 else { //End of Customers speech
+                    giveItem();
                     //call on the mini game to start now
-                    gameState.setGameTime(true);
+//                    if(customer.getCustomerName() != "Ghost" && customer.getCustomerName() != "Ghost2"){
+//                        gameState.setGameTime(true);
+//                    } else{
+//                        customer.setPlayersTurn(true);
+//                    }
                 }
+
             }//:)
 
             //Mad Response
@@ -385,7 +426,6 @@ public class BahLocalGame extends LocalGame {
                     }
                     else { //End of Customers speech
                         customer.setPlayersTurn(true);
-                        giveItem();
                     }
                 }
             }
@@ -457,6 +497,17 @@ public class BahLocalGame extends LocalGame {
 
     private void triviaScreen(){
 
+    }
+
+    private boolean actpokeBattle(BahActionBattle action){
+        if(action.getThisPokemon() == "egg"){
+            return true;
+        }
+        return false;
+    }
+
+    private boolean actPokeCatch() {
+        return true;
     }
 
 }
