@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:layout_width="1333dp"
+    android:layout_height="669dp"
     android:background="@drawable/background"
-    android:gravity="bottom">
+    android:gravity="bottom"
+    android:orientation="vertical">
 
 
     <!--this is the top half -->
@@ -26,28 +26,28 @@
             android:id="@+id/register_screen"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:adjustViewBounds="true"
-            android:scaleY="1.3"
-            android:scaleX="1.4"
             android:layout_marginTop="50dp"
             android:layout_marginBottom="-10dp"
             android:layout_weight="1"
+            android:adjustViewBounds="true"
             android:background="#00FFFFFF"
             android:contentDescription="This is the screen that's clickable"
-            android:src="@drawable/register_screen_"/>
+            android:scaleX="1.4"
+            android:scaleY="1.3"
+            android:src="@drawable/register_screen_" />
 
 
         <TextView
             android:id="@+id/total_monitor"
             android:layout_width="200dp"
             android:layout_height="180dp"
-            android:layout_marginTop="125dp"
             android:layout_marginLeft="-520dp"
+            android:layout_marginTop="125dp"
             android:layout_marginRight="410dp"
-            android:textAlignment="viewEnd"
             android:layout_weight="1"
             android:background="#00FFFFFF"
             android:text=".0"
+            android:textAlignment="viewEnd"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             android:textColor="#7FD06E"
             android:textSize="105sp" />
@@ -56,21 +56,21 @@
             android:id="@+id/customer"
             android:layout_width="500dp"
             android:layout_height="match_parent"
+            android:layout_gravity="top"
             android:layout_marginLeft="-330dp"
             android:layout_marginRight="50dp"
-            android:layout_gravity="top"
             android:layout_weight="1"
             android:background="#00FFFFFF"
             android:contentDescription="This is the customer!"
-            android:src="@drawable/pokeangel"/>
+            android:src="@drawable/pokeangel" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:layout_gravity="top"
+        android:layout_weight="1"
         android:orientation="horizontal">
 
         <ImageButton
@@ -82,14 +82,14 @@
             android:layout_weight="1"
             android:background="#00FFFFFF"
             android:contentDescription="This the keyboard we don't care about. Tis a visual"
-            android:src="@drawable/register_keyboard"/>
+            android:src="@drawable/register_keyboard" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_gravity="top"
             android:layout_weight="2"
-            android:layout_gravity="top">
+            android:orientation="vertical">
 
             <Button
                 android:id="@+id/Option1"
@@ -109,11 +109,11 @@
         <TextView
             android:id="@+id/customerDialogue"
             android:layout_width="320dp"
-            android:layout_marginRight="20dp"
             android:layout_height="140dp"
+            android:layout_gravity="top"
+            android:layout_marginRight="20dp"
             android:layout_weight="10"
             android:clickable="true"
-            android:layout_gravity="top"
             android:text="BATTLE ME!!!!!!!!!"
             android:textColor="#FFFFFF"
             android:textSize="30sp" />
@@ -123,70 +123,68 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="left"
         android:layout_marginTop="-30dp"
-        android:orientation="horizontal"
         android:layout_weight="3"
-        android:layout_gravity="left">
+        android:orientation="horizontal">
 
         <ImageButton
             android:id="@+id/key"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_marginLeft="490dp"
-            android:clickable="true"
-            android:src="@drawable/subject"
-            android:text="key"
             android:background="#00FFFFFF"
+            android:clickable="true"
             android:contentDescription="This is the key's slot"
-            />
+            android:src="@drawable/subject"
+            android:text="key" />
 
         <ImageButton
             android:id="@+id/pokeball"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:clickable="true"
-            android:src="@drawable/pokeball"
-            android:text="pokeball"
             android:background="#00FFFFFF"
+            android:clickable="true"
             android:contentDescription="This is the pokeballs slot"
-            />
+            android:src="@drawable/pokeball"
+            android:text="pokeball" />
 
         <ImageButton
             android:id="@+id/infoBot"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:clickable="true"
             android:background="#00FFFFFF"
-            android:src="@drawable/in"
+            android:clickable="true"
             android:contentDescription="This is the infobots slot"
+            android:src="@drawable/in"
             android:text="empty" />
 
         <ImageButton
             android:id="@+id/pokedex"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:clickable="true"
-            android:src="@drawable/pokedex"
             android:background="#00FFFFFF"
+            android:clickable="true"
             android:contentDescription="This is the pokedex's slot"
+            android:src="@drawable/pokedex"
             android:text="empty" />
 
         <ImageButton
             android:id="@+id/bag"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:clickable="true"
             android:background="#00FFFFFF"
-            android:src="@drawable/bag"
+            android:clickable="true"
             android:contentDescription="This is the bags slot"
+            android:src="@drawable/bag"
             android:text="empty" />
 
         <ImageButton
             android:id="@+id/emptySlot4"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:clickable="true"
             android:background="#00FFFFFF"
+            android:clickable="true"
             android:contentDescription="This is an empty slot"
             android:text="empty" />
 
@@ -194,8 +192,8 @@
             android:id="@+id/emptySlot5"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:clickable="true"
             android:background="#00FFFFFF"
+            android:clickable="true"
             android:contentDescription="This is an empty slot"
             android:text="empty" />
 
