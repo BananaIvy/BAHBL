@@ -6,7 +6,7 @@ import android.widget.Button;
 import edu.up.cs301.GameFramework.actionMessage.GameAction;
 import edu.up.cs301.GameFramework.players.GamePlayer;
 
-public class BahTriviaButton extends GameAction {
+public class BahTriviaButton extends BahActionButton {
 
 
     public int thisButton = 0;
@@ -37,12 +37,13 @@ public class BahTriviaButton extends GameAction {
         }
         else if(button.getId() == R.id.Trivia4){
             thisButton = button4;
-        }
-        else if(button.getId() == R.id.wrong){
+
+        }else if(button.getId() == R.id.wrong){
             thisButton = wrongButton;
-        }
-        else if(button.getId() == R.id.right){
+
+        }else if(button.getId() == R.id.right){
             thisButton = rightButton;
+
         }
 
     }

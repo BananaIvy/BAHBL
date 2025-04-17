@@ -93,34 +93,37 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	 */
 	protected void updateDisplay() {
 
-		setUpTexts();
 
-		setUpCustomer();
+		if(!state.isGameTime()){
+			setUpTexts();
 
-		setUpItems();
+			setUpCustomer();
 
-		//IF IT's THE ENDING
-		if((state.getStoryProgress() >= 6)){
-			if(state.getMoneyCount() > 71) { //todo fix this condition after fixing $ amounts.
-				goodLayout();
-			}
-			else{
-				badLayout();
+			setUpItems();
+			//IF IT's THE ENDING
+			if((state.getStoryProgress() >= 6)){
+				if(state.getMoneyCount() > 71) { //todo fix this condition after fixing $ amounts.
+					goodLayout();
+				}
+				else{
+					badLayout();
+				}
 			}
 		}
 
 		//if the game screen is triggered for the ghost
-		if(state.isGameTime() == true && state.getCustomer().equals("Ghost")){
+		else if(state.isGameTime() == true && state.getCustomer().getCustomerName().equals("Ghost")){
+
 			state.setGameTime(false);
-		}
-		if(state.isGameTime() == true && state.getCustomer().equals("Ghost2")){
+		} else if(state.isGameTime() == true && state.getCustomer().getCustomerName().equals("Ghost2")){
+
 			state.setGameTime(false);
 		}
 
 
 // for the trivia screen
-		if((state.isGameTime()) && (state.isTriviaButtonClicked() == false)){
-			if((state.getCustomer()).getCustomerName() == "Pokeangel"){
+		else if((state.isGameTime()) && (state.isTriviaButtonClicked() == false)){
+			if((state.getCustomer()).getCustomerName().equals("Pokeangel")){
 
 				questions.setText(""+ state.getTriviaQuestions(state.getTriviaSection()));
 				triviaOptionOne.setText(""+state.getTriviaAnswer1(state.getTriviaSection()));
@@ -128,17 +131,18 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 				triviaOptionThree.setText(""+state.getTriviaAnswer3(state.getTriviaSection()));
 				triviaOptionFour.setText(""+state.getTriviaAnswer4(state.getTriviaSection()));
 				triviaLayout();
+
+				if ((state.isCorrectAnswer() == true) && (state.isTriviaButtonClicked() == true)){
+
+					state.setTriviaSection(state.getTriviaSection() + 1);
+					triviaRightLayout();
+				} else if ((state.isCorrectAnswer() == false) && state.isTriviaButtonClicked() == true){
+
+					state.setTriviaSection(state.getTriviaSection() + 1);
+					triviaWrongLayout();
+				}
+
 			}
-		}
-
-		if((state.isCorrectAnswer() == true) && (state.isTriviaButtonClicked() == true)){
-
-			state.setTriviaSection(state.getTriviaSection() + 1);
-			triviaRightLayout();
-		} else if ((state.isCorrectAnswer() == false) && state.isTriviaButtonClicked() == true){
-
-			state.setTriviaSection(state.getTriviaSection() + 1);
-			triviaWrongLayout();
 		}
 //end of trivia code
 	}
