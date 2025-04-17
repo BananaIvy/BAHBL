@@ -29,7 +29,7 @@ public class BahCGhost extends BahCustomerBase {
         addHappyResponse("By the way, here's a little ball I found lying on the floor...");
         addHappyResponse("See if one of the regular customers left it behind.");
         addHappyResponse("Just click an item to hand it to a customer.");
-        addHappyResponse("Hand me the key if you don't feel ready and want more instruction");
+        addHappyResponse("Hand me the key and I'll finish explaining your tasks to you.");
 
         //mad response
         addMadResponse("Feeling nervous? Noted.");
