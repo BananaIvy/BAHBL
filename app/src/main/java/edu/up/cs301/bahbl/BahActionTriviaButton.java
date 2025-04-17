@@ -1,12 +1,11 @@
 package edu.up.cs301.bahbl;
 
 import android.view.View;
-import android.widget.Button;
 
 import edu.up.cs301.GameFramework.actionMessage.GameAction;
 import edu.up.cs301.GameFramework.players.GamePlayer;
 
-public class BahTriviaButton extends BahActionButton {
+public class BahActionTriviaButton extends GameAction {
 
 
     public int thisButton = 0;
@@ -23,7 +22,7 @@ public class BahTriviaButton extends BahActionButton {
      *
      * @param player the player who created the action
      */
-    public BahTriviaButton(GamePlayer player, View button) {
+    public BahActionTriviaButton(GamePlayer player, View button) {
         super(player);
 
         if(button.getId() == R.id.Trivia1){
@@ -48,5 +47,6 @@ public class BahTriviaButton extends BahActionButton {
 
     }
 
-    public int getThisButton() {return thisButton;}
+
+    public int getWhichButton() {return thisButton;}
 }

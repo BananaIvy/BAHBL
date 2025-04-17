@@ -2,8 +2,6 @@ package edu.up.cs301.bahbl;
 
 import android.util.Log;
 
-import java.util.Timer;
-
 import edu.up.cs301.GameFramework.LocalGame;
 import edu.up.cs301.GameFramework.actionMessage.GameAction;
 import edu.up.cs301.GameFramework.infoMessage.GameState;
@@ -88,6 +86,10 @@ public class BahLocalGame extends LocalGame {
         //If one of the buttons is pressed
         else if (action instanceof BahActionButton) {
             return actButton(action);
+        }
+
+        else if (action instanceof  BahActionTriviaButton){
+            return actTrivia(action);
         }
 
         //If an Item is clicked
@@ -208,52 +210,7 @@ public class BahLocalGame extends LocalGame {
             return true; //legal
         }
 
-        //trivia button
-        //The correct answers go in the order 2, 4, 1, 4, 2
-        else if(((BahTriviaButton) action).getThisButton() == 1){
-                //do stuff here
-            if(gameState.getTriviaSection() == 3){
-                gameState.setCorrectAnswer(true);
-            }
-                gameState.setTriviaButtonClicked(true);
-                //say it was a legal move
-                return true;
-            }
-            else if (((BahTriviaButton) action).getThisButton() == 2){
 
-                if(gameState.getTriviaSection() == 1 || gameState.getTriviaSection() == 5){
-                    gameState.setCorrectAnswer(true);
-                }
-
-                gameState.setTriviaButtonClicked(true);
-                return true;
-            }
-            else if(((BahTriviaButton) action).getThisButton() == 3){
-
-                gameState.setCorrectAnswer(false);
-                gameState.setTriviaButtonClicked(true);
-                return true;
-            }
-            else if(((BahTriviaButton) action).getThisButton() == 4){
-
-                if(gameState.getTriviaSection() == 2 || gameState.getTriviaSection() == 4){
-                    gameState.setCorrectAnswer(true);
-                }
-                gameState.setTriviaButtonClicked(true);
-                return true;
-            }
-            //The wrong answer
-            else if(((BahTriviaButton) action).getThisButton() == 5) {
-
-                gameState.setTriviaButtonClicked(false);
-                return true;
-            }
-            //The right answer
-            else if(((BahTriviaButton) action).getThisButton() == 6) {
-
-                gameState.setTriviaButtonClicked(false);
-                return true;
-            }
         return false; //illegal
     }
 
@@ -398,11 +355,11 @@ public class BahLocalGame extends LocalGame {
                 else { //End of Customers speech
                     giveItem();
                     //call on the mini game to start now
-//                    if(customer.getCustomerName() != "Ghost" && customer.getCustomerName() != "Ghost2"){
-//                        gameState.setGameTime(true);
-//                    } else{
-//                        customer.setPlayersTurn(true);
-//                    }
+                    if(customer.getCustomerName() != "Ghost" && customer.getCustomerName() != "Ghost2"){
+                       gameState.setGameTime(true);
+                    } else{
+                       customer.setPlayersTurn(true);
+                    }
                 }
 
             }//:)
@@ -458,6 +415,73 @@ public class BahLocalGame extends LocalGame {
         return false; //illegal
     }//actProgressText
 
+    public boolean actTrivia(GameAction action){
+        //trivia button
+        //The correct answers go in the order 2, 4, 1, 4, 2
+
+            if(((BahActionTriviaButton) action).getWhichButton() == 1) {
+                //do stuff here
+                if (gameState.getTriviaSection() == 3) {
+
+                    gameState.setCorrectAnswer(true);
+                    gameState.setCorrectAnswersCount(gameState.getCorrectAnswersCount() + 1);
+
+                }
+
+                gameState.setTriviaButtonClicked(true);
+
+                //say it was a legal move
+                return true;
+            }
+            else if (((BahActionTriviaButton) action).getWhichButton() == 2) {
+
+                if (gameState.getTriviaSection() == 1 || gameState.getTriviaSection() == 5) {
+
+                    gameState.setCorrectAnswer(true);
+                    gameState.setCorrectAnswersCount(gameState.getCorrectAnswersCount() + 1);
+                }
+
+                gameState.setTriviaButtonClicked(true);
+
+                return true;
+            }
+            else if (((BahActionTriviaButton) action).getWhichButton() == 3) {
+
+                gameState.setCorrectAnswer(false);
+                gameState.setTriviaButtonClicked(true);
+
+                return true;
+            }
+            else if (((BahActionTriviaButton) action).getWhichButton() == 4) {
+
+                if (gameState.getTriviaSection() == 2 || gameState.getTriviaSection() == 4) {
+
+                    gameState.setCorrectAnswer(true);
+                    gameState.setCorrectAnswersCount(gameState.getCorrectAnswersCount() + 1);
+
+                }
+                gameState.setTriviaButtonClicked(true);
+                return true;
+            }
+            //The wrong answer
+            else if (((BahActionTriviaButton) action).getWhichButton() == 5) {
+
+                gameState.setCorrectAnswer(false);
+                gameState.setTriviaButtonClicked(false);
+
+                return true;
+            }
+            //The right answer
+            else if (((BahActionTriviaButton) action).getWhichButton() == 6) {
+
+                gameState.setCorrectAnswer(false);
+                gameState.setTriviaButtonClicked(false);
+
+                return true;
+            }
+
+        return false; //Illegal
+    }
 
 
     /*
