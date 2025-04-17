@@ -54,11 +54,25 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	//Trivia widgets
 	private TextView        questions           = null;
 	private Button          triviaOptionOne     = null;
-	private Button          triviaOptionTwo    = null;
-	private Button          triviaOptionThree     = null;
-	private Button          triviaOptionFour     = null;
-	private Button          triviaRightButton    = null;
-	private Button          triviaWrongButton    = null;
+	private Button          triviaOptionTwo    	= null;
+	private Button          triviaOptionThree   = null;
+	private Button          triviaOptionFour    = null;
+	private Button          triviaRightButton   = null;
+	private Button          triviaWrongButton   = null;
+
+	//Pokemon widgets
+	//If time & energy exists, convert this all to an array.
+	private ImageView		bell				= null;
+	private ImageView		ghast				= null;
+	private ImageView		pikachu				= null;
+	private ImageView		geode				= null;
+	private ImageView		diglett				= null;
+	private ImageView		ditto				= null;
+	private ImageView		egg					= null;
+	private ImageView		worm				= null;
+	private ImageView		pokeballl			= null; //extra l because there's 2 pokeballs lol
+
+
 
 	// the most recent game state, as given to us by the CounterLocalGame
 	private BahGameState state;
@@ -169,16 +183,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		else if(button.getId() == R.id.run){
 			game.sendAction(new BahActionRun(this));
 
-		} else if(button.getId() == R.id.Trivia1){
-			game.sendAction(new BahTriviaButton(this, button));
-
-		}else if(button.getId() == R.id.Trivia2){
-			game.sendAction(new BahTriviaButton(this, button));
-
-		}else if(button.getId() == R.id.Trivia3){
-			game.sendAction(new BahTriviaButton(this, button));
-
-		}else if(button.getId() == R.id.Trivia4){
+		} else if(isTriviaButton(button)){
 			game.sendAction(new BahTriviaButton(this, button));
 
 		}else if(button.getId() == R.id.wrong){
@@ -188,12 +193,31 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		}else if(button.getId() == R.id.right){
 			game.sendAction(new BahTriviaButton(this, button));
 
+		}else if (button.getId() == R.id.pokeballl) {
+			game.sendAction(new BahActionCatch(this));
+
+		}else if (isPokemon(button)) {
+			game.sendAction((new BahActionBattle(this, button)));
 
 		}
 	}// onClick
 
 	public boolean isItem(View button){
 		if(button.getId() == R.id.infoBot || button.getId() == R.id.bag || button.getId() == R.id.pokedex || button.getId() == R.id.pokeball || button.getId() == R.id.key){
+			return true;
+		}
+		return false;
+	}
+
+	public boolean isPokemon(View button){
+		if(button.getId() == R.id.ditto || button.getId() == R.id.diglett || button.getId() == R.id.geode || button.getId() == R.id.egg || button.getId() == R.id.bell || button.getId() == R.id.pikachu || button.getId() == R.id.worm || button.getId() == R.id.ghast){
+			return true;
+		}
+		return false;
+	}
+
+	public boolean isTriviaButton(View button){
+		if(button.getId() == R.id.Trivia1 || button.getId() == R.id.Trivia2 || button.getId() == R.id.Trivia3 || button.getId() == R.id.Trivia4){
 			return true;
 		}
 		return false;
@@ -446,6 +470,45 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		//sets up the one button
 		this.triviaRightButton = (Button) myActivity.findViewById(R.id.right);
 		triviaRightButton.setOnClickListener(myActivity);
+	}
+
+	public void nuxLayout(){
+		myActivity.setContentView(R.layout.bahbl_pokemon);
+
+		bell = myActivity.findViewById(R.id.bell);
+		ghast = myActivity.findViewById(R.id.ghast);
+		pikachu = myActivity.findViewById(R.id.pikachu);
+		worm = myActivity.findViewById(R.id.worm);
+		diglett = myActivity.findViewById(R.id.diglett);
+		ditto = myActivity.findViewById(R.id.ditto);
+		geode = myActivity.findViewById(R.id.geode);
+		egg = myActivity.findViewById(R.id.egg);
+
+		bell.setOnClickListener(this);
+		ghast.setOnClickListener(this);
+		pikachu.setOnClickListener(this);
+		worm.setOnClickListener(this);
+		diglett.setOnClickListener(this);
+		ditto.setOnClickListener(this);
+		geode.setOnClickListener(this);
+		egg.setOnClickListener(this);
+
+	}
+
+	public void pokeBattleLayout(){
+		myActivity.setContentView(R.layout.bahbl_pokemon_fight);
+
+		bell = myActivity.findViewById(R.id.bell);
+		ghast = myActivity.findViewById(R.id.ghast);
+		pikachu = myActivity.findViewById(R.id.pikachu);
+		worm = myActivity.findViewById(R.id.worm);
+		diglett = myActivity.findViewById(R.id.diglett);
+		ditto = myActivity.findViewById(R.id.ditto);
+		geode = myActivity.findViewById(R.id.geode);
+		egg = myActivity.findViewById(R.id.egg);
+		pokeballl = myActivity.findViewById(R.id.pokeballl);
+
+		pokeballl.setOnClickListener(this);
 	}
 
 }// class CounterHumanPlayer

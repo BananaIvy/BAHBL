@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="1333dp"
+    android:layout_height="669dp"
+    android:background="@drawable/pokebattle"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_weight="4">
+
+            <ImageView
+                android:id="@+id/egg"
+                android:scaleY=".8"
+                android:scaleX=".8"
+                android:layout_marginLeft="500dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:visibility="invisible"
+                android:src="@drawable/fullegg" />
+
+            <ImageView
+                android:id="@+id/bell"
+                android:rotation="-30"
+                android:layout_marginLeft="500dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:visibility="invisible"
+                android:src="@drawable/bell" />
+
+            <ImageView
+                android:id="@+id/ghast"
+                android:rotation="-90"
+                android:scrollX="50dp"
+                android:scrollY="50dp"
+                android:layout_marginLeft="500dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:visibility="invisible"
+                android:src="@drawable/ghostly" />
+
+            <ImageView
+                android:id="@+id/pikachu"
+                android:layout_marginLeft="500dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:visibility="invisible"
+                android:src="@drawable/pika" />
+
+            <ImageView
+                android:id="@+id/ditto"
+                android:layout_marginLeft="500dp"
+                android:scaleX="0.5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:visibility="invisible"
+                android:src="@drawable/ditto" />
+
+            <ImageView
+                android:id="@+id/diglett"
+                android:scrollY="-100dp"
+                android:layout_marginLeft="500dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:translationY="-70dp"
+                android:layout_weight="4"
+                android:visibility="invisible"
+                android:src="@drawable/diglet" />
+
+            <ImageView
+                android:id="@+id/worm"
+                android:rotation="80"
+                android:layout_marginLeft="500dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:visibility="invisible"
+                android:src="@drawable/worm" />
+        </FrameLayout>
+
+        <ImageButton
+            android:id="@+id/pokeballl"
+            android:layout_marginLeft="300dp"
+            android:layout_width="243dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:scaleY="3"
+            android:scaleX="3"
+            android:background="#00FFFFFF"
+            android:contentDescription="mwahahahahah"
+            android:src="@drawable/pokeball" />
+    </LinearLayout>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
