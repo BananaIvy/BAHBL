@@ -358,8 +358,8 @@ public class BahLocalGame extends LocalGame {
                     if(customer.getCustomerName() != "Ghost" && customer.getCustomerName() != "Ghost2"){
 
                        gameState.setGameTime(true);
-                       gameState.setCustomerDialogueType(5);
-                        gameState.setDialogueIndex(0);
+                       gameState.setCustomerDialogueType(6);
+                       gameState.setDialogueIndex(0);
 
                     } else{
 
@@ -422,8 +422,8 @@ public class BahLocalGame extends LocalGame {
     }//actProgressText
 
     public boolean actTrivia(GameAction action){
-        //trivia button
 
+        //trivia button
 
         //The correct answers go in the order 2, 4, 1, 4, 2
 
@@ -511,7 +511,6 @@ public class BahLocalGame extends LocalGame {
 
                     if(gameState.getCorrectAnswersCount() == 5){
                         gameState.setHasPokeball(true);
-                        gameState.addMoney(40);
                         gameState.addLikeability(20);
                     }
 

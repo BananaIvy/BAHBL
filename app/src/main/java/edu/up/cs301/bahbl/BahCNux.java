@@ -56,6 +56,10 @@ public class BahCNux extends BahCustomerBase {
         addLoreDialogue("I had to leave my teaching job and come here!");
         addLoreDialogue("BUT ONE DAY I WILL GET RID OF THEM ALL!");
 
+        //After mini game
+        addGameReturn("Well well well");
+        addGameReturn("You came back");
+
         //Farewell Dialogue
         addFarewellDialogue("I must go now, as I need to be on the look out.");
         addFarewellDialogue("You never know when pesky Pokemon could be lurking!");
