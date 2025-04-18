@@ -131,25 +131,29 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 
 				if(!state.isTriviaButtonClicked()) {
+
 					triviaLayout();
 					questions.setText("" + state.getTriviaQuestions(state.getTriviaSection()));
 					triviaOptionOne.setText("" + state.getTriviaAnswer1(state.getTriviaSection()));
 					triviaOptionTwo.setText("" + state.getTriviaAnswer2(state.getTriviaSection()));
 					triviaOptionThree.setText("" + state.getTriviaAnswer3(state.getTriviaSection()));
 					triviaOptionFour.setText("" + state.getTriviaAnswer4(state.getTriviaSection()));
+
+
 				}
 				else if ((state.isCorrectAnswer() == true) && (state.isTriviaButtonClicked() == true)){
 
 					triviaRightLayout();
-					state.setTriviaSection(state.getTriviaSection() + 1);
 
 				}
-				else if ((state.isCorrectAnswer() == false) && state.isTriviaButtonClicked() == true){
+				else if ((state.isCorrectAnswer() == false) && state.isTriviaButtonClicked() == true) {
 
 					triviaWrongLayout();
-					state.setTriviaSection(state.getTriviaSection() + 1);
 
 				}
+
+
+
 
 
 		}

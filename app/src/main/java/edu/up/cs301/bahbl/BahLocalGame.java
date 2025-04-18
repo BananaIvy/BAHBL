@@ -354,7 +354,9 @@ public class BahLocalGame extends LocalGame {
                     giveItem();
                     //call on the mini game to start now
                     if(customer.getCustomerName() != "Ghost" && customer.getCustomerName() != "Ghost2"){
+
                        gameState.setGameTime(true);
+
                     } else{
                        customer.setPlayersTurn(true);
                     }
@@ -415,11 +417,14 @@ public class BahLocalGame extends LocalGame {
 
     public boolean actTrivia(GameAction action){
         //trivia button
+        gameState.setQuestionsAnwsered((gameState.getQuestionsAnwsered() + 1));
+
         //The correct answers go in the order 2, 4, 1, 4, 2
+
 
             if(((BahActionTriviaButton) action).getWhichButton() == 1) {
                 //do stuff here
-                if (gameState.getTriviaSection() == 3) {
+                if (gameState.getTriviaSection() == 2) {
 
                     gameState.setCorrectAnswer(true);
                     gameState.setCorrectAnswersCount(gameState.getCorrectAnswersCount() + 1);
@@ -433,7 +438,7 @@ public class BahLocalGame extends LocalGame {
             }
             else if (((BahActionTriviaButton) action).getWhichButton() == 2) {
 
-                if (gameState.getTriviaSection() == 1 || gameState.getTriviaSection() == 5) {
+                if (gameState.getTriviaSection() == 0 || gameState.getTriviaSection() == 4) {
 
                     gameState.setCorrectAnswer(true);
                     gameState.setCorrectAnswersCount(gameState.getCorrectAnswersCount() + 1);
@@ -452,12 +457,13 @@ public class BahLocalGame extends LocalGame {
             }
             else if (((BahActionTriviaButton) action).getWhichButton() == 4) {
 
-                if (gameState.getTriviaSection() == 2 || gameState.getTriviaSection() == 4) {
+                if ((gameState.getTriviaSection() == 1) || (gameState.getTriviaSection() == 3)) {
 
                     gameState.setCorrectAnswer(true);
                     gameState.setCorrectAnswersCount(gameState.getCorrectAnswersCount() + 1);
 
                 }
+
                 gameState.setTriviaButtonClicked(true);
                 return true;
             }
@@ -467,6 +473,16 @@ public class BahLocalGame extends LocalGame {
                 gameState.setCorrectAnswer(false);
                 gameState.setTriviaButtonClicked(false);
 
+                if(gameState.getTriviaSection() < 4) {
+                    gameState.setTriviaSection();
+                }
+
+                if (gameState.getQuestionsAnwsered() == 5){
+
+                    gameState.setGameTime(false);
+
+                }
+
                 return true;
             }
             //The right answer
@@ -475,8 +491,28 @@ public class BahLocalGame extends LocalGame {
                 gameState.setCorrectAnswer(false);
                 gameState.setTriviaButtonClicked(false);
 
+                if(gameState.getTriviaSection() < 4) {
+                    gameState.setTriviaSection();
+                }
+
+                if (gameState.getQuestionsAnwsered() == 5){
+
+                    if(gameState.getCorrectAnswersCount() == 5){
+                        gameState.setHasPokeball(true);
+                    }
+
+                    gameState.setGameTime(false);
+
+                }
+
+
+
+
                 return true;
             }
+
+
+
 
         return false; //Illegal
     }
