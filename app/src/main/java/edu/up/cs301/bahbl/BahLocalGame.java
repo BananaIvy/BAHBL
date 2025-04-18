@@ -358,9 +358,13 @@ public class BahLocalGame extends LocalGame {
                     if(customer.getCustomerName() != "Ghost" && customer.getCustomerName() != "Ghost2"){
 
                        gameState.setGameTime(true);
+                       gameState.setCustomerDialogueType(5);
+                        gameState.setDialogueIndex(0);
 
                     } else{
+
                        customer.setPlayersTurn(true);
+
                     }
                 }
 
