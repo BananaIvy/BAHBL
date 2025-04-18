@@ -132,7 +132,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 				}
 			}
 			if(!nextGameScreen){
-				nuxLayout();
+				nuxBattleLayout();
 			}else{
 				pokeBattleLayout();
 			}
@@ -324,7 +324,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		}
 		else{
 			tempText = state.getGoodButtonText();
-			button2.setText(tempText);//todo maybe this is where we fix what buttons display?
+			button2.setText(tempText);
 
 			tempText = state.getBadButtonText();
 			button1.setText(tempText);
@@ -527,7 +527,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		triviaRightButton.setOnClickListener(this);
 	}
 
-	public void nuxLayout(){
+	public void nuxBattleLayout(){
 		myActivity.setContentView(R.layout.bahbl_pokemon);
 
 		bell = myActivity.findViewById(R.id.bell);
