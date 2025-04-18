@@ -354,7 +354,7 @@ public class BahLocalGame extends LocalGame {
                 else { //End of Customers speech
                     giveItem();
                     //call on the mini game to start now
-                    if(customer.getCustomerName() == "Pokeangel"){// || customer.getCustomerName() == "DemonLordNux"){
+                    if(customer.getCustomerName() == "Pokeangel" || customer.getCustomerName() == "DemonLordNux"){
 
                        gameState.setGameTime(true);
                        gameState.setCustomerDialogueType(6);
@@ -534,7 +534,7 @@ public class BahLocalGame extends LocalGame {
             gameState.setHasBag(true);
         } else if (customer.getCustomerName().equals("Mystic Man")) {
             gameState.setHasPokeDex(true);
-        } else if (customer.getCustomerName().equals("Demon Lord Nux")) {
+        } else if (customer.getCustomerName().equals("DemonLordNux")) {
             gameState.setHasKey(true);
         }
     }
