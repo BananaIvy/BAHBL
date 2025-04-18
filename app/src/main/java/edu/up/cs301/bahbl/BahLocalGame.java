@@ -478,7 +478,6 @@ public class BahLocalGame extends LocalGame {
 
                 if ((gameState.getTriviaSection() == 1) || (gameState.getTriviaSection() == 3)) {
 
-
                     gameState.setCorrectAnswer(true);
                     gameState.setCorrectAnswersCount(gameState.getCorrectAnswersCount() + 1);
 
@@ -487,6 +486,7 @@ public class BahLocalGame extends LocalGame {
                 gameState.setQuestionsAnwsered((gameState.getQuestionsAnwsered() + 1));
                 gameState.setTriviaButtonClicked(true);
                 return true;
+
             }
             //The wrong answer
             else if (((BahActionTriviaButton) action).getWhichButton() == 5) {
@@ -495,6 +495,7 @@ public class BahLocalGame extends LocalGame {
                 gameState.setTriviaButtonClicked(false);
 
                 if(gameState.getTriviaSection() < 4) {
+                    //This increments the trivia section by one
                     gameState.setTriviaSection();
                 }
 
@@ -514,6 +515,7 @@ public class BahLocalGame extends LocalGame {
                 gameState.setTriviaButtonClicked(false);
 
                 if(gameState.getTriviaSection() < 4) {
+                    //This adds one to the trivia section
                     gameState.setTriviaSection();
                 }
 
