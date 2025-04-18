@@ -60,6 +60,7 @@ public class BahCPokeangel extends BahCustomerBase {
 
 		//the after trivia game response
 		addGameReturn("Thank you for playing my trivia game, it was a lot of fun.");
+		addGameReturn("I'd like to buy my items, now. I have important demons to fight.");
 
 		//farewell response
 		addFarewellDialogue("Thank you, and may the ruler and overlord of all look kindly on you, mortal.");
