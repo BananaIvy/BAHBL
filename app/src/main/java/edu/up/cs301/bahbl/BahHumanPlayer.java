@@ -71,8 +71,15 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	private ImageView		ditto				= null;
 	private ImageView		egg					= null;
 	private ImageView		worm				= null;
+	private ImageButton		nbell				= null;
+	private ImageButton		nghast				= null;
+	private ImageButton		npikachu			= null;
+	private ImageButton		ngeode				= null;
+	private ImageButton		ndiglett			= null;
+	private ImageButton		nditto				= null;
+	private ImageButton		negg				= null;
+	private ImageButton		nworm				= null;
 	private ImageView		pokeballl			= null; //extra l because there's 2 pokeballs lol
-
 
 
 	// the most recent game state, as given to us by the CounterLocalGame
@@ -143,7 +150,6 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 // for the trivia screen
 		else if((state.isGameTime()) && (state.getCustomer()).getCustomerName().equals("Pokeangel")){
 
-
 				if(!state.isTriviaButtonClicked()) {
 
 					triviaLayout();
@@ -152,7 +158,6 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 					triviaOptionTwo.setText("" + state.getTriviaAnswer2(state.getTriviaSection()));
 					triviaOptionThree.setText("" + state.getTriviaAnswer3(state.getTriviaSection()));
 					triviaOptionFour.setText("" + state.getTriviaAnswer4(state.getTriviaSection()));
-
 
 				}
 				else if ((state.isCorrectAnswer() == true) && (state.isTriviaButtonClicked() == true)){
@@ -165,10 +170,6 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 					triviaWrongLayout();
 
 				}
-
-
-
-
 
 		}
 //end of trivia code
@@ -202,7 +203,6 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		}else if(button.getId() == R.id.wrong){
 			game.sendAction(new BahActionTriviaButton(this, button));
 
-
 		}else if(button.getId() == R.id.right){
 			game.sendAction(new BahActionTriviaButton(this, button));
 
@@ -223,7 +223,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	}
 
 	public boolean isPokemon(View button){
-		if(button.getId() == R.id.ditto || button.getId() == R.id.diglett || button.getId() == R.id.geode || button.getId() == R.id.egg || button.getId() == R.id.bell || button.getId() == R.id.pikachu || button.getId() == R.id.worm || button.getId() == R.id.ghast){
+		if(button.getId() == R.id.nditto || button.getId() == R.id.ndiglett || button.getId() == R.id.ngeode || button.getId() == R.id.negg || button.getId() == R.id.nbell || button.getId() == R.id.npikachu || button.getId() == R.id.nworm || button.getId() == R.id.nghast){
 			return true;
 		}
 		return false;
@@ -354,7 +354,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		}
 		else if(state.getCustomer() instanceof BahCNux){
 			int resID = R.drawable.purple_delete_button;
-			if(state.getCustomer().getLikeability() > 70){
+			if(state.getCustomer().getLikeability() < 71){
 				resID = R.drawable.nux;
 			}else {
 				resID = R.drawable.happynux;
@@ -530,75 +530,73 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	public void nuxLayout(){
 		myActivity.setContentView(R.layout.bahbl_pokemon);
 
-		bell = myActivity.findViewById(R.id.bell);
-		ghast = myActivity.findViewById(R.id.ghast);
-		pikachu = myActivity.findViewById(R.id.pikachu);
-		worm = myActivity.findViewById(R.id.worm);
-		diglett = myActivity.findViewById(R.id.diglett);
-		ditto = myActivity.findViewById(R.id.ditto);
-		geode = myActivity.findViewById(R.id.geode);
-		egg = myActivity.findViewById(R.id.egg);
+		nbell = myActivity.findViewById(R.id.nbell);
+		nghast = myActivity.findViewById(R.id.nghast);
+		npikachu = myActivity.findViewById(R.id.npikachu);
+		nworm = myActivity.findViewById(R.id.nworm);
+		ndiglett = myActivity.findViewById(R.id.ndiglett);
+		nditto = myActivity.findViewById(R.id.nditto);
+		ngeode = myActivity.findViewById(R.id.ngeode);
+		negg = myActivity.findViewById(R.id.negg);
 
-		bell.setOnClickListener(this);
-		ghast.setOnClickListener(this);
-		pikachu.setOnClickListener(this);
-		worm.setOnClickListener(this);
-		diglett.setOnClickListener(this);
-		ditto.setOnClickListener(this);
-		geode.setOnClickListener(this);
-		egg.setOnClickListener(this);
+		nbell.setOnClickListener(this);
+		nghast.setOnClickListener(this);
+		npikachu.setOnClickListener(this);
+		nworm.setOnClickListener(this);
+		ndiglett.setOnClickListener(this);
+		nditto.setOnClickListener(this);
+		ngeode.setOnClickListener(this);
+		negg.setOnClickListener(this);
 
-		int caughtCount = 0;
-		for(BahPokemon poke : state.getPokemons()){
-			//finds the catchable pokemon & makes them visible
-			if(poke.isOnNux()){
-				if(poke.getName() == "bell"){
-					bell.setVisibility(View.VISIBLE);
-				}else if (poke.getName() == "ghast") {
-					ghast.setVisibility(View.VISIBLE);
-				}else if (poke.getName() == "pikachu") {
-					pikachu.setVisibility(View.VISIBLE);
-				}else if (poke.getName() == "egg") {
-					egg.setVisibility(View.VISIBLE);
-				}else if (poke.getName() == "worm") {
-					worm.setVisibility(View.VISIBLE);
-				}else if (poke.getName() == "geode") {
-					geode.setVisibility(View.VISIBLE);
-				}else if (poke.getName() == "diglett") {
-					diglett.setVisibility(View.VISIBLE);
-				}else if (poke.getName() == "ditto") {
-					ditto.setVisibility(View.VISIBLE);
+		for (BahPokemon poke : state.getPokemons()) {
+			// finds the catchable pokemon & makes them visible
+			if (poke.isOnNux()) {
+				if ("bell".equals(poke.getName())) {
+					nbell.setVisibility(View.VISIBLE);
+				} else if ("ghast".equals(poke.getName())) {
+					nghast.setVisibility(View.VISIBLE);
+				} else if ("pikachu".equals(poke.getName())) {
+					npikachu.setVisibility(View.VISIBLE);
+				} else if ("egg".equals(poke.getName())) {
+					negg.setVisibility(View.VISIBLE);
+				} else if ("worm".equals(poke.getName())) {
+					nworm.setVisibility(View.VISIBLE);
+				} else if ("geode".equals(poke.getName())) {
+					ngeode.setVisibility(View.VISIBLE);
+				} else if ("diglett".equals(poke.getName())) {
+					ndiglett.setVisibility(View.VISIBLE);
+				} else if ("ditto".equals(poke.getName())) {
+					nditto.setVisibility(View.VISIBLE);
 				}
-			}
-			else{
-				caughtCount++;
-				if(poke.getName() == "bell"){
-					bell.setVisibility(View.INVISIBLE);
-					bell.setClickable(false);
-				}else if (poke.getName() == "ghast") {
-					ghast.setVisibility(View.INVISIBLE);
-					ghast.setClickable(false);
-				}else if (poke.getName() == "pikachu") {
-					pikachu.setVisibility(View.INVISIBLE);
-					pikachu.setClickable(false);
-				}else if (poke.getName() == "egg") {
-					egg.setVisibility(View.INVISIBLE);
-					egg.setClickable(false);
-				}else if (poke.getName() == "worm") {
-					worm.setVisibility(View.INVISIBLE);
-					worm.setClickable(false);
-				}else if (poke.getName() == "geode") {
-					geode.setVisibility(View.INVISIBLE);
-					geode.setClickable(false);
-				}else if (poke.getName() == "diglett") {
-					diglett.setVisibility(View.INVISIBLE);
-					diglett.setClickable(false);
-				}else if (poke.getName() == "ditto") {
-					ditto.setVisibility(View.INVISIBLE);
-					ditto.setClickable(false);
+			} else {
+				if ("bell".equals(poke.getName())) {
+					nbell.setVisibility(View.INVISIBLE);
+					nbell.setClickable(false);
+				} else if ("ghast".equals(poke.getName())) {
+					nghast.setVisibility(View.INVISIBLE);
+					nghast.setClickable(false);
+				} else if ("pikachu".equals(poke.getName())) {
+					npikachu.setVisibility(View.INVISIBLE);
+					npikachu.setClickable(false);
+				} else if ("egg".equals(poke.getName())) {
+					negg.setVisibility(View.INVISIBLE);
+					negg.setClickable(false);
+				} else if ("worm".equals(poke.getName())) {
+					nworm.setVisibility(View.INVISIBLE);
+					nworm.setClickable(false);
+				} else if ("geode".equals(poke.getName())) {
+					ngeode.setVisibility(View.INVISIBLE);
+					ngeode.setClickable(false);
+				} else if ("diglett".equals(poke.getName())) {
+					ndiglett.setVisibility(View.INVISIBLE);
+					ndiglett.setClickable(false);
+				} else if ("ditto".equals(poke.getName())) {
+					nditto.setVisibility(View.INVISIBLE);
+					nditto.setClickable(false);
 				}
 			}
 		}
+
 
 	}
 
@@ -644,3 +642,4 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 }// class CounterHumanPlayer
 
+//hi

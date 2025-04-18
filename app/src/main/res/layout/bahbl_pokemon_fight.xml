@@ -91,6 +91,17 @@
                 android:layout_weight="4"
                 android:visibility="invisible"
                 android:src="@drawable/worm" />
+
+            <ImageView
+                android:id="@+id/geode"
+                android:rotation="-20"
+                android:scrollY="40dp"
+                android:layout_marginLeft="500dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:visibility="visible"
+                android:src="@drawable/geode" />
         </FrameLayout>
 
         <ImageButton

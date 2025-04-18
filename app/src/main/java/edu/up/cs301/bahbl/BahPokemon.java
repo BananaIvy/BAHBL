@@ -11,6 +11,12 @@ public class BahPokemon {
         catchable = false;
     }
 
+    public BahPokemon(BahPokemon pokemon){
+        this.name = pokemon.name;
+        this.isOnNux = pokemon.isOnNux;
+        this.catchable = pokemon.catchable;
+    }
+
     public void battle(){
         isOnNux = false;
         catchable = true;

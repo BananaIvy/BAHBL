@@ -576,7 +576,7 @@ public class BahLocalGame extends LocalGame {
     private boolean actpokeBattle(BahActionBattle action){
         //Find which pokemon wasishasbeing battled
         for(BahPokemon poke : gameState.getPokemons()){
-            if(action.getThisPokemon() == poke.getName()){
+            if(action.getThisPokemon().equals(poke.getName())){
                 poke.battle();
                 return true;
             }
@@ -600,7 +600,7 @@ public class BahLocalGame extends LocalGame {
         }
         if(caught > 7){
             gameState.setGameTime(false);
-            gameState.getCustomer().addLikeability(20);
+            customer.addLikeability(20);
         }
         return true;
     }

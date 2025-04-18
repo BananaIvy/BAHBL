@@ -63,8 +63,8 @@ public class BahGameState extends GameState {
 	//To update the trivia questions
 	private int triviaSection;
 
-	private BahPokemon[] pokemons = {new BahPokemon("bell"),new BahPokemon("ghast"),new BahPokemon("pikachu"),new BahPokemon("egg"),new BahPokemon("worm"),new BahPokemon("geode"),new BahPokemon("diglett"),new BahPokemon("ditto")};
-
+	private BahPokemon[] pokemons;
+	int caughtCount;
 
 	//Constructor for start of game
 	public BahGameState(){
@@ -89,7 +89,9 @@ public class BahGameState extends GameState {
 		triviaSection = 0;
 		gameTime = false;
 		questionsAnwsered = 0;
-
+		caughtCount = 0;
+		this.pokemons = new BahPokemon[]
+				{new BahPokemon("bell"),new BahPokemon("ghast"),new BahPokemon("pikachu"),new BahPokemon("egg"),new BahPokemon("worm"),new BahPokemon("geode"),new BahPokemon("diglett"),new BahPokemon("ditto")};
 	}
 
 	//Copy Constructor
@@ -121,6 +123,11 @@ public class BahGameState extends GameState {
 		triviaSection = currentState.triviaSection;
 		gameTime = currentState.gameTime;
 		questionsAnwsered = currentState.questionsAnwsered;
+		caughtCount = currentState.getCaughtCount();
+		this.pokemons = new BahPokemon[currentState.pokemons.length];
+		for(int i = 0; i < pokemons.length; i++) {
+			pokemons[i] = new BahPokemon(currentState.pokemons[i]);
+		}
 	}
 
 	//Methods
@@ -171,6 +178,9 @@ public class BahGameState extends GameState {
 		return "somethings wrong with getCustomerDialogue";
 	}
 	public int getQuestionsAnwsered(){return questionsAnwsered;}
+
+	public int getCaughtCount() {return caughtCount;}
+
 	public int getTriviaSection(){return triviaSection;}
 	public boolean isCorrectAnswer(){return correctAnswer;}
 	public boolean isTriviaButtonClicked() {return triviaButtonClicked;}

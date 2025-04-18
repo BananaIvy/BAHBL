@@ -25,7 +25,7 @@
             android:layout_height="match_parent">
 
             <ImageButton
-                android:id="@+id/diglett"
+                android:id="@+id/ndiglett"
                 android:contentDescription="best pokemon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
-                android:id="@+id/bell"
+                android:id="@+id/nbell"
                 android:contentDescription="wut the flip was it's name again?"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <ImageButton
-                android:id="@+id/pikachu"
+                android:id="@+id/npikachu"
                 android:contentDescription="eevee"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
-                android:id="@+id/ditto"
+                android:id="@+id/nditto"
                 android:contentDescription="ditto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -81,7 +81,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
-                android:id="@+id/egg"
+                android:id="@+id/negg"
                 android:contentDescription="egg"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
@@ -95,7 +95,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
-                android:id="@+id/ghast"
+                android:id="@+id/nghast"
                 android:contentDescription="ghost type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -109,7 +109,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
-                android:id="@+id/worm"
+                android:id="@+id/nworm"
                 android:contentDescription="he hanging"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -123,7 +123,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
-                android:id="@+id/geode"
+                android:id="@+id/ngeode"
                 android:contentDescription="goge. I write these to confuse you."
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

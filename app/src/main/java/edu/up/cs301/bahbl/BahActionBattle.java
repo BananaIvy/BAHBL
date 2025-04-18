@@ -24,21 +24,21 @@ public class BahActionBattle extends GameAction {
      */
     public BahActionBattle(GamePlayer player, View pokemon) {
         super(player);
-        if(pokemon.getId() == R.id.bell){
+        if(pokemon.getId() == R.id.nbell){
             thisPokemon = bell;
-        } else if (pokemon.getId() == R.id.ghast) {
+        } else if (pokemon.getId() == R.id.nghast) {
             thisPokemon = ghast;
-        }else if (pokemon.getId() == R.id.pikachu) {
+        }else if (pokemon.getId() == R.id.npikachu) {
             thisPokemon = pikachu;
-        }else if (pokemon.getId() == R.id.egg) {
+        }else if (pokemon.getId() == R.id.negg) {
             thisPokemon = egg;
-        }else if (pokemon.getId() == R.id.worm) {
+        }else if (pokemon.getId() == R.id.nworm) {
             thisPokemon = worm;
-        }else if (pokemon.getId() == R.id.geode) {
+        }else if (pokemon.getId() == R.id.ngeode) {
             thisPokemon = geode;
-        }else if (pokemon.getId() == R.id.diglett) {
+        }else if (pokemon.getId() == R.id.ndiglett) {
             thisPokemon = diglett;
-        }else if (pokemon.getId() == R.id.ditto) {
+        }else if (pokemon.getId() == R.id.nditto) {
             thisPokemon = ditto;
         }
     }
