@@ -444,9 +444,7 @@ public class BahLocalGame extends LocalGame {
 
                     gameState.setCorrectAnswer(true);
                     gameState.setCorrectAnswersCount(gameState.getCorrectAnswersCount() + 1);
-
                 }
-
                 gameState.setQuestionsAnwsered((gameState.getQuestionsAnwsered() + 1));
                 gameState.setTriviaButtonClicked(true);
 
@@ -460,7 +458,6 @@ public class BahLocalGame extends LocalGame {
                     gameState.setCorrectAnswer(true);
                     gameState.setCorrectAnswersCount(gameState.getCorrectAnswersCount() + 1);
                 }
-
                 gameState.setQuestionsAnwsered((gameState.getQuestionsAnwsered() + 1));
                 gameState.setTriviaButtonClicked(true);
 
@@ -471,7 +468,6 @@ public class BahLocalGame extends LocalGame {
                 gameState.setQuestionsAnwsered((gameState.getQuestionsAnwsered() + 1));
                 gameState.setCorrectAnswer(false);
                 gameState.setTriviaButtonClicked(true);
-
                 return true;
             }
             else if (((BahActionTriviaButton) action).getWhichButton() == 4) {
@@ -481,9 +477,7 @@ public class BahLocalGame extends LocalGame {
 
                     gameState.setCorrectAnswer(true);
                     gameState.setCorrectAnswersCount(gameState.getCorrectAnswersCount() + 1);
-
                 }
-
                 gameState.setQuestionsAnwsered((gameState.getQuestionsAnwsered() + 1));
                 gameState.setTriviaButtonClicked(true);
                 return true;
@@ -501,10 +495,9 @@ public class BahLocalGame extends LocalGame {
                 if (gameState.getQuestionsAnwsered() == 5){
 
                     gameState.setGameTime(false);
+                    gameState.setCustomerDialogueType(6);
                     customer.setPlayersTurn(false);
-
                 }
-
                 return true;
             }
             //The right answer
@@ -524,21 +517,12 @@ public class BahLocalGame extends LocalGame {
                         gameState.addMoney(40);
                         gameState.addLikeability(20);
                     }
-
                     gameState.setGameTime(false);
+                    gameState.setCustomerDialogueType(6);
                     customer.setPlayersTurn(false);
-
-
                 }
-
-
-
-
                 return true;
             }
-
-
-
 
         return false; //Illegal
     }
