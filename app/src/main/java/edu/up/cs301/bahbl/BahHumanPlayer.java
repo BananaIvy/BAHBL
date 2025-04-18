@@ -140,32 +140,24 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 // for the trivia screen
 		else if((state.isGameTime()) && (state.getCustomer()).getCustomerName().equals("Pokeangel")){
 
+			if(!state.isTriviaButtonClicked()) {
 
-				if(!state.isTriviaButtonClicked()) {
+				triviaLayout();
+				questions.setText("" + state.getTriviaQuestions(state.getTriviaSection()));
+				triviaOptionOne.setText("" + state.getTriviaAnswer1(state.getTriviaSection()));
+				triviaOptionTwo.setText("" + state.getTriviaAnswer2(state.getTriviaSection()));
+				triviaOptionThree.setText("" + state.getTriviaAnswer3(state.getTriviaSection()));
+				triviaOptionFour.setText("" + state.getTriviaAnswer4(state.getTriviaSection()));
 
-					triviaLayout();
-					questions.setText("" + state.getTriviaQuestions(state.getTriviaSection()));
-					triviaOptionOne.setText("" + state.getTriviaAnswer1(state.getTriviaSection()));
-					triviaOptionTwo.setText("" + state.getTriviaAnswer2(state.getTriviaSection()));
-					triviaOptionThree.setText("" + state.getTriviaAnswer3(state.getTriviaSection()));
-					triviaOptionFour.setText("" + state.getTriviaAnswer4(state.getTriviaSection()));
+			}
+			else if ((state.isCorrectAnswer() == true) && (state.isTriviaButtonClicked() == true)){
 
+				triviaRightLayout();
+			}
+			else if ((state.isCorrectAnswer() == false) && state.isTriviaButtonClicked() == true) {
 
-				}
-				else if ((state.isCorrectAnswer() == true) && (state.isTriviaButtonClicked() == true)){
-
-					triviaRightLayout();
-
-				}
-				else if ((state.isCorrectAnswer() == false) && state.isTriviaButtonClicked() == true) {
-
-					triviaWrongLayout();
-
-				}
-
-
-
-
+				triviaWrongLayout();
+			}
 
 		}
 //end of trivia code
@@ -600,8 +592,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 				}
 			}
 		}
-
-	}
+	}//nux battle layout
 	public void pokeBattleLayout(){
 		myActivity.setContentView(R.layout.bahbl_pokemon_fight);
 

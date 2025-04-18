@@ -28,6 +28,7 @@ public class BahCMysticMan extends BahCustomerBase {
         //happy response
         addHappyResponse("Excellent! Perhaps you aren't yet a lost cause.");
         addHappyResponse("The spirits that tear at your soul may still be tamed in time.");
+        addHappyResponse("Here, take this pokedex. I think it may be useful for one of your other customers");
 
         //mad response
         addMadResponse("Of course you haven't! I don't know why I expected any better!");
@@ -35,17 +36,17 @@ public class BahCMysticMan extends BahCustomerBase {
         addMadResponse("I have important people wasting my time already, I don't need you.");
 
         //lore dialogue
-        addLoreDialogue("My spell bag! You found it? Thank you.");
+        addLoreDialogue("You found my spell bag! Thank you.");
         addLoreDialogue("You know, I wasn't always such a pitiable creature.");
         addLoreDialogue("Believe it or not, I once had kings and queens bowing at my feet.");
         addLoreDialogue("They say that making a deal with the devil will only end poorly.");
         addLoreDialogue("But they really don't know the half of it");
         addLoreDialogue("Satan is a man of his word,");
-        addLoreDialogue("which is more than I can say for myself, unfortunately");
+        addLoreDialogue("which is more than I can say for myself, unfortunately.");
         addLoreDialogue("You have a spark in your aura, young one.");
         addLoreDialogue("Perhaps there is still a chance for you, after all.");
         addLoreDialogue("As for me, I dug my grave, as they say,");
-        addLoreDialogue("and now I'll lie in it");
+        addLoreDialogue("and now I'll lie in it.");
 
         //farewell dialogue
         addFarewellDialogue("Well, I've wasted enough time here already.");
