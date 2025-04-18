@@ -62,7 +62,7 @@
             android:layout_weight="1"
             android:background="#00FFFFFF"
             android:contentDescription="This is the customer!"
-            android:src="@drawable/pokeangel" />
+            android:src="@drawable/happynux" />
 
     </LinearLayout>
 

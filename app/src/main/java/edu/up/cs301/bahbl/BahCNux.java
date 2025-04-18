@@ -17,35 +17,33 @@ public class BahCNux extends BahCustomerBase {
         addGreetingDialogue("Well hello past student...funny seeing you here...");
         addGreetingDialogue("How did you end up here?");
         addGreetingDialogue("Ah well it doesn't matter.");
-        addGreetingDialogue("I'm here to check on your boss.");
-        addGreetingDialogue("He's had some shady goings-on in the past");
-        addGreetingDialogue("I have to make sure all my stores are in working order.");
-        addGreetingDialogue("...and remove any pesky pokemon.");
-        addGreetingDialogue("I CAN'T SEEM TO GET RID OF THEM!");
+        addGreetingDialogue("I'm here because of a... pokemon problem.");
+        addGreetingDialogue("I may have told my students no pokemon...");
+        addGreetingDialogue("They. chose. pokemon.");
         addGreetingDialogue("CONSTANTLY. POKEMON. EVERYWHERE!!!");
         addGreetingDialogue("EVERYWHERE I GO, THEY FOLLOW ME.");
         addGreetingDialogue("I CAN'T SEEM TO ESCAPE!");
         addGreetingDialogue("IS THIS MY ETERNAL PUNISHMENT?!?");
         addGreetingDialogue("Sorry, not sure what came over me there.");
-        addGreetingDialogue("If you see any Pokemon around here, you must tell me.");
-        addGreetingDialogue("Have you seen any Pokemon?");
+        addGreetingDialogue("If only I could know how to get rid of them...");
+        addGreetingDialogue("Will you help me get rid of these pests?");
 
         //Button responses
-        setGoodButtonText("Nope. None in this store!");
-        setBadButtonText("Yeah! They're all over the place!");
+        setGoodButtonText("I may be able to help!");
+        setBadButtonText("You secretly wanted pokemon, didn't you.");
 
         //Good Response
-        addHappyResponse("EXCELLENT! Perhaps that pesticide worked this time.");
+        addHappyResponse("EXCELLENT!");
         addHappyResponse("Be sure to stay vigilant. We cannot let them overrun this store.");
         addHappyResponse("For your troubles I have something for you...");
         addHappyResponse("-YEOWWCH!!!");
-        addHappyResponse("MONEY! TAKE! NO POKEMON! AGHHGHGH!!!");
+        addHappyResponse("IT BIT MY EAR!!!!");
 
         //Mad Response
-        addMadResponse("NO! I THOUGHT I GOT RID OF THEM!");
-        addMadResponse("NOW I HAVE TO BURN THIS STORE TO THE GROUND AND REBUILD!");
-        addMadResponse("I MUST PLAN THIS OUT!");
-        addMadResponse("HERE! MONEY! TAKE! NO POKEMON!");
+        addMadResponse("WHAT PART OF NO DO STUDENTS NOT UNDERSTAND??");
+        addMadResponse("This is why you were my least favorite student.");
+        addMadResponse("...");
+        addMadResponse("I'm no longer a teacher, I can diss you all I want.");
 
         //Lore Dialogue
         addLoreDialogue("UGHHH... oh, thank you for this pokedex. Now I'll be able to identify the pests.");
@@ -57,8 +55,11 @@ public class BahCNux extends BahCustomerBase {
         addLoreDialogue("BUT ONE DAY I WILL GET RID OF THEM ALL!");
 
         //After mini game
-        addGameReturn("Well well well");
-        addGameReturn("You came back");
+        addGameReturn("THANK YOU!");
+        addGameReturn("You were always my favorite student!");
+        addGameReturn("Allow me to repay you with... uhh..");
+        addGameReturn("What do I have on me... oh!");
+        addGameReturn("I 'found' this. All yours now!");
 
         //Farewell Dialogue
         addFarewellDialogue("I must go now, as I need to be on the look out.");
