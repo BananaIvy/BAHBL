@@ -577,10 +577,20 @@ public class BahLocalGame extends LocalGame {
         for(BahPokemon poke : gameState.getPokemons()){
             if(poke.isCatchable()){
                 poke.capture(true);
-                return true;
             }
         }
-        return false;
+        //check whether or not every pokemon has been caught
+        int caught = 0;
+        for(BahPokemon poke : gameState.getPokemons()){
+            if(poke.isOnNux()){
+                caught++;
+            }
+        }
+        if(caught > 7){
+            gameState.setGameTime(false);
+            gameState.getCustomer().addLikeability(20);
+        }
+        return true;
     }
 
 }
