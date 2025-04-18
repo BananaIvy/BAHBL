@@ -281,7 +281,6 @@ public abstract class GameHumanPlayer implements GamePlayer, Tickable {
             else if (myInfo instanceof GameOverInfo) {
                 // if we're being notified the game is over, finish up
 
-
                 // if our activity is non-null (which it should be), mark the activity as over
                 if (myActivity != null) myActivity.setGameOver(true);
 

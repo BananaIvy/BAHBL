@@ -43,18 +43,18 @@ public class BahLocalGame extends LocalGame {
     @Override
     protected String checkIfGameOver() {
         if(gameState.getStoryProgress() >= 8){
-            if(customer.getLikeability()>=70) {
+            if(gameState.getTotalLikeability()>=70) {
                 loreEnding();
             }
             else if(gameState.getMoneyCount() >= 280){
                 goodEnding();
-            } else {
+            }
+            else {
                 actBadEnding();
             }
             return "You reached the end! Game is Over ";
         }
-
-        return null;
+        else{return null;}
     }
 
     /**
@@ -244,6 +244,9 @@ public class BahLocalGame extends LocalGame {
 
                     //This only checks the end of the game to ensure the lore dialogue for the ghost isn't called.
                     if(customer.getCustomerName().equals("Ghost2")){
+                        if(customer.getLikeability()>100) {
+                            gameState.addLikeability(900);
+                        }
                         gameState.progressStory();
                         return true;
                     }
@@ -361,13 +364,12 @@ public class BahLocalGame extends LocalGame {
                        gameState.setCustomerDialogueType(6);
                        gameState.setDialogueIndex(0);
 
-                    } else{
+                    }
+                    else{
 
                        customer.setPlayersTurn(true);
-
                     }
                 }
-
             }//:)
 
             //Mad Response
@@ -528,6 +530,19 @@ public class BahLocalGame extends LocalGame {
         return false; //Illegal
     }
 
+    private void giveItem() {
+        if (customer.getCustomerName().equals("Ghost")) {
+            gameState.setHasPokeball(true);
+        } else if (customer.getCustomerName().equals("Pokeangel")) {
+            gameState.setHasInfoBot(true);
+        } else if (customer.getCustomerName().equals("Lug")) {
+            gameState.setHasBag(true);
+        } else if (customer.getCustomerName().equals("Mystic Man")) {
+            gameState.setHasPokeDex(true);
+        } else if (customer.getCustomerName().equals("Demon Lord Nux")) {
+            gameState.setHasKey(true);
+        }
+    }
 
     /*
      * ENDINGS
@@ -549,19 +564,6 @@ public class BahLocalGame extends LocalGame {
         return true;
     }
 
-    private void giveItem() {
-        if (customer.getCustomerName().equals("Ghost")) {
-            gameState.setHasPokeball(true);
-        } else if (customer.getCustomerName().equals("Pokeangel")) {
-            gameState.setHasInfoBot(true);
-        } else if (customer.getCustomerName().equals("Lug")) {
-            gameState.setHasBag(true);
-        } else if (customer.getCustomerName().equals("Mystic Man")) {
-            gameState.setHasPokeDex(true);
-        } else if (customer.getCustomerName().equals("Demon Lord Nux")) {
-            gameState.setHasKey(true);
-        }
-    }
     private void loreEnding(){
         //todo if we want the ending screens interactable
     }

@@ -641,6 +641,5 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		}
 	}
 
-
-}// class CounterHumanPlayer
+}// class BahHumanPlayer
 
