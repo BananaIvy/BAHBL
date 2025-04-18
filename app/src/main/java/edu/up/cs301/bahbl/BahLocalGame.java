@@ -419,7 +419,7 @@ public class BahLocalGame extends LocalGame {
             }//bai!
             else if(gameState.getCustomerDialogueType() == 6) {
                 //if there's more text to scroll through
-                if(gameState.getDialogueIndex() + 1 < gameState.getCustomer().getFarewellLength()){
+                if(gameState.getDialogueIndex() + 1 < gameState.getCustomer().getGameReturnLength()){
                     gameState.nextDialogue();
                 }
                 else {
