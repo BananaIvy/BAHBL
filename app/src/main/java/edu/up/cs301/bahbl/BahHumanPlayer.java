@@ -108,7 +108,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	 */
 	protected void updateDisplay() {
 
-
+		//MAIN GAME-LINE
 		if(!state.isGameTime()){
 
 			mainLayout();
@@ -121,6 +121,20 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 				else{
 					badLayout();
 				}
+			}
+
+		//POKEMON INTERACTION
+		} else if (state.isGameTime() && state.getCustomer().getCustomerName().equals("Demon Lord Nux")) {
+			boolean nextGameScreen = false;
+			for(BahPokemon poke : state.getPokemons()){
+				if(poke.isCatchable()){
+					nextGameScreen = true;
+				}
+			}
+			if(!nextGameScreen){
+				nuxLayout();
+			}else{
+				pokeBattleLayout();
 			}
 		}
 
@@ -546,6 +560,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 		pokeballl.setOnClickListener(this);
 	}
+
 
 }// class CounterHumanPlayer
 
