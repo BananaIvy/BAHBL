@@ -58,6 +58,9 @@ public class BahCPokeangel extends BahCustomerBase {
 		addLoreDialogue("Alas, mortal, I must earn my way back to my eternal redemption.");
 		addLoreDialogue("Until we meet again, at the gates of heaven or hell, young one!");
 
+		//the after trivia game response
+		addGameReturn("Thank you for playing my trivia game, it was a lot of fun.");
+
 		//farewell response
 		addFarewellDialogue("Thank you, and may the ruler and overlord of all look kindly on you, mortal.");
 		addFarewellDialogue("Your current soul is too scarred to find rest here.");
