@@ -12,13 +12,7 @@ import android.widget.TextView;
 import android.view.View.OnClickListener;
 
 /**
- * A GUI of a counter-player. The GUI displays the current value of the counter,
- * and allows the human player to press the '+' and '-' buttons in order to
- * send moves to the game.
- * 
- * Just for fun, the GUI is implemented so that if the player presses either button
- * when the counter-value is zero, the screen flashes briefly, with the flash-color
- * being dependent on whether the player is player 0 or player 1.
+ *description of class here
  * 
  * @author Steven R. Vegdahl
  * @author Andrew M. Nuxoll
@@ -114,11 +108,14 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			mainLayout();
 
 			//IF IT's THE ENDING
-			if((state.getStoryProgress() >= 6)){
-				if(state.getMoneyCount() > 71) { //todo fix this condition after fixing $ amounts.
+			if ((state.getStoryProgress() >= 6)) {
+				if (state.getTotalLikeability() >= 5) {
+					loreLayout();
+				}
+				else if (state.getMoneyCount() >= 28) {
 					goodLayout();
 				}
-				else{
+				else {
 					badLayout();
 				}
 			}
@@ -487,7 +484,11 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 	public void goodLayout(){
 		this.myActivity.setContentView(R.layout.bahbl_good_ending);
-	}
+	}//goodLayout
+
+	public void loreLayout() {
+		this.myActivity.setContentView(R.layout.bahbl_lore_ending);
+	}//loreLayout
 
 	public void triviaLayout(){
 		//The xml view
@@ -601,7 +602,6 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		}
 
 	}
-
 	public void pokeBattleLayout(){
 		myActivity.setContentView(R.layout.bahbl_pokemon_fight);
 

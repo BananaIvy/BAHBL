@@ -11,7 +11,7 @@ public class BahCNux extends BahCustomerBase {
         setGoodButton(2);
         resetDialogue();
         setMoney(90);
-        setLikeability(70);
+        setLikeability(60);
 
         //Greeting Dialogue
         addGreetingDialogue("Well hello past student...funny seeing you here...");

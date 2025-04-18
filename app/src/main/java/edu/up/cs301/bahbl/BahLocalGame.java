@@ -227,7 +227,6 @@ public class BahLocalGame extends LocalGame {
                     return false;
                 }
             }
-
             /*
              * Conditions that must be met for item actions:
              * 1. We have the item
@@ -244,9 +243,6 @@ public class BahLocalGame extends LocalGame {
 
                     //This only checks the end of the game to ensure the lore dialogue for the ghost isn't called.
                     if(customer.getCustomerName().equals("Ghost2")){
-                        if(customer.getLikeability()>100) {
-                            gameState.addLikeability(900);
-                        }
                         gameState.progressStory();
                         return true;
                     }
@@ -358,7 +354,7 @@ public class BahLocalGame extends LocalGame {
                 else { //End of Customers speech
                     giveItem();
                     //call on the mini game to start now
-                    if(customer.getCustomerName() != "Ghost" && customer.getCustomerName() != "Ghost2"){
+                    if(customer.getCustomerName() == "Pokeangel" || customer.getCustomerName() == "DemonLordNux"){
 
                        gameState.setGameTime(true);
                        gameState.setCustomerDialogueType(6);
@@ -426,7 +422,6 @@ public class BahLocalGame extends LocalGame {
                 }
                 else {
                     customer.setPlayersTurn(true);
-                    gameState.setDialogueIndex(0);
                 }
             }
         }
@@ -518,7 +513,7 @@ public class BahLocalGame extends LocalGame {
 
                     if(gameState.getCorrectAnswersCount() == 5){
                         gameState.setHasPokeball(true);
-                        gameState.addLikeability(20);
+                        customer.addLikeability(20);
                     }
                     gameState.setGameTime(false);
                     gameState.setCustomerDialogueType(6);
