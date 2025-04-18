@@ -56,6 +56,7 @@ public class BahGameState extends GameState {
 	private String[] triviaAnswer2= {"Pokemon", "Bongo Cat", "Pikachu", "Ticlid", "Just a little"};
 	private String[] triviaAnswer3= {"Nothing", "Charizard", "Abra", "Carnitor", "Nope"};
 	private String[] triviaAnswer4= {"Everything", "Pikachu", "Ditto", "Sentret", "Very, like a pet"};
+	private int questionsAnwsered;
     private boolean gameTime;
 	private boolean correctAnswer;
 	private boolean triviaButtonClicked;
@@ -85,8 +86,9 @@ public class BahGameState extends GameState {
 		endScene = 0;
 		correctAnswersCount = 0;
 		triviaButtonClicked = false;
-		triviaSection = 1;
+		triviaSection = 0;
 		gameTime = false;
+		questionsAnwsered = 0;
 
 	}
 
@@ -118,6 +120,7 @@ public class BahGameState extends GameState {
 		triviaButtonClicked = currentState.triviaButtonClicked;
 		triviaSection = currentState.triviaSection;
 		gameTime = currentState.gameTime;
+		questionsAnwsered = currentState.questionsAnwsered;
 	}
 
 	//Methods
@@ -167,6 +170,7 @@ public class BahGameState extends GameState {
 		}
 		return "somethings wrong with getCustomerDialogue";
 	}
+	public int getQuestionsAnwsered(){return questionsAnwsered;}
 	public int getTriviaSection(){return triviaSection;}
 	public boolean isCorrectAnswer(){return correctAnswer;}
 	public boolean isTriviaButtonClicked() {return triviaButtonClicked;}
@@ -195,7 +199,10 @@ public class BahGameState extends GameState {
 	public BahPokemon[] getPokemons(){return pokemons;}
 
 	//Setter Methods
-	public void setTriviaSection(int triviaSection){this.triviaSection = triviaSection;}
+
+	//For trivia section we only increase by one each time
+	public void setQuestionsAnwsered(int questionsAnwsered){this.questionsAnwsered = questionsAnwsered;}
+	public void setTriviaSection(){this.triviaSection++;}
 	public void setCorrectAnswer(boolean correctAnswer){this.correctAnswer = correctAnswer;}
 	public void setTriviaButtonClicked(boolean triviaButtonClicked){this.triviaButtonClicked = triviaButtonClicked;}
 	public void setGameTime(boolean gameTime){this.gameTime = gameTime;}
