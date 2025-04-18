@@ -539,6 +539,58 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		geode.setOnClickListener(this);
 		egg.setOnClickListener(this);
 
+		int caughtCount = 0;
+		for(BahPokemon poke : state.getPokemons()){
+			//finds the catchable pokemon & makes them visible
+			if(poke.isOnNux()){
+				if(poke.getName() == "bell"){
+					bell.setVisibility(View.VISIBLE);
+				}else if (poke.getName() == "ghast") {
+					ghast.setVisibility(View.VISIBLE);
+				}else if (poke.getName() == "pikachu") {
+					pikachu.setVisibility(View.VISIBLE);
+				}else if (poke.getName() == "egg") {
+					egg.setVisibility(View.VISIBLE);
+				}else if (poke.getName() == "worm") {
+					worm.setVisibility(View.VISIBLE);
+				}else if (poke.getName() == "geode") {
+					geode.setVisibility(View.VISIBLE);
+				}else if (poke.getName() == "diglett") {
+					diglett.setVisibility(View.VISIBLE);
+				}else if (poke.getName() == "ditto") {
+					ditto.setVisibility(View.VISIBLE);
+				}
+			}
+			else{
+				caughtCount++;
+				if(poke.getName() == "bell"){
+					bell.setVisibility(View.INVISIBLE);
+					bell.setClickable(false);
+				}else if (poke.getName() == "ghast") {
+					ghast.setVisibility(View.INVISIBLE);
+					ghast.setClickable(false);
+				}else if (poke.getName() == "pikachu") {
+					pikachu.setVisibility(View.INVISIBLE);
+					pikachu.setClickable(false);
+				}else if (poke.getName() == "egg") {
+					egg.setVisibility(View.INVISIBLE);
+					egg.setClickable(false);
+				}else if (poke.getName() == "worm") {
+					worm.setVisibility(View.INVISIBLE);
+					worm.setClickable(false);
+				}else if (poke.getName() == "geode") {
+					geode.setVisibility(View.INVISIBLE);
+					geode.setClickable(false);
+				}else if (poke.getName() == "diglett") {
+					diglett.setVisibility(View.INVISIBLE);
+					diglett.setClickable(false);
+				}else if (poke.getName() == "ditto") {
+					ditto.setVisibility(View.INVISIBLE);
+					ditto.setClickable(false);
+				}
+			}
+		}
+
 	}
 
 	public void pokeBattleLayout(){
@@ -555,6 +607,29 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		pokeballl = myActivity.findViewById(R.id.pokeballl);
 
 		pokeballl.setOnClickListener(this);
+
+		for(BahPokemon poke : state.getPokemons()){
+			//finds the catchable pokemon & makes them visible
+			if(poke.isCatchable()){
+				if(poke.getName() == "bell"){
+					bell.setVisibility(View.VISIBLE);
+				}else if (poke.getName() == "ghast") {
+					ghast.setVisibility(View.VISIBLE);
+				}else if (poke.getName() == "pikachu") {
+					pikachu.setVisibility(View.VISIBLE);
+				}else if (poke.getName() == "egg") {
+					egg.setVisibility(View.VISIBLE);
+				}else if (poke.getName() == "worm") {
+					worm.setVisibility(View.VISIBLE);
+				}else if (poke.getName() == "geode") {
+					geode.setVisibility(View.VISIBLE);
+				}else if (poke.getName() == "diglett") {
+					diglett.setVisibility(View.VISIBLE);
+				}else if (poke.getName() == "ditto") {
+					ditto.setVisibility(View.VISIBLE);
+				}
+			}
+		}
 	}
 
 
