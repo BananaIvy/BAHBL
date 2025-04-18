@@ -358,9 +358,13 @@ public class BahLocalGame extends LocalGame {
                     if(customer.getCustomerName() != "Ghost" && customer.getCustomerName() != "Ghost2"){
 
                        gameState.setGameTime(true);
+                       gameState.setCustomerDialogueType(5);
+                        gameState.setDialogueIndex(0);
 
                     } else{
+
                        customer.setPlayersTurn(true);
+
                     }
                 }
 
@@ -419,7 +423,7 @@ public class BahLocalGame extends LocalGame {
 
     public boolean actTrivia(GameAction action){
         //trivia button
-        gameState.setQuestionsAnwsered((gameState.getQuestionsAnwsered() + 1));
+
 
         //The correct answers go in the order 2, 4, 1, 4, 2
 
@@ -433,6 +437,7 @@ public class BahLocalGame extends LocalGame {
 
                 }
 
+                gameState.setQuestionsAnwsered((gameState.getQuestionsAnwsered() + 1));
                 gameState.setTriviaButtonClicked(true);
 
                 //say it was a legal move
@@ -446,12 +451,14 @@ public class BahLocalGame extends LocalGame {
                     gameState.setCorrectAnswersCount(gameState.getCorrectAnswersCount() + 1);
                 }
 
+                gameState.setQuestionsAnwsered((gameState.getQuestionsAnwsered() + 1));
                 gameState.setTriviaButtonClicked(true);
 
                 return true;
             }
             else if (((BahActionTriviaButton) action).getWhichButton() == 3) {
 
+                gameState.setQuestionsAnwsered((gameState.getQuestionsAnwsered() + 1));
                 gameState.setCorrectAnswer(false);
                 gameState.setTriviaButtonClicked(true);
 
@@ -461,11 +468,13 @@ public class BahLocalGame extends LocalGame {
 
                 if ((gameState.getTriviaSection() == 1) || (gameState.getTriviaSection() == 3)) {
 
+
                     gameState.setCorrectAnswer(true);
                     gameState.setCorrectAnswersCount(gameState.getCorrectAnswersCount() + 1);
 
                 }
 
+                gameState.setQuestionsAnwsered((gameState.getQuestionsAnwsered() + 1));
                 gameState.setTriviaButtonClicked(true);
                 return true;
             }
@@ -482,6 +491,7 @@ public class BahLocalGame extends LocalGame {
                 if (gameState.getQuestionsAnwsered() == 5){
 
                     gameState.setGameTime(false);
+                    customer.setPlayersTurn(false);
 
                 }
 
@@ -504,6 +514,8 @@ public class BahLocalGame extends LocalGame {
                     }
 
                     gameState.setGameTime(false);
+                    customer.setPlayersTurn(false);
+
 
                 }
 
