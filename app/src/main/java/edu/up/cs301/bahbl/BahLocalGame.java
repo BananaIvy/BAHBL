@@ -354,7 +354,7 @@ public class BahLocalGame extends LocalGame {
                 else { //End of Customers speech
                     giveItem();
                     //call on the mini game to start now
-                    if(customer.getCustomerName() == "Pokeangel" || customer.getCustomerName() == "DemonLordNux"){
+                    if(customer.getCustomerName() == "Pokeangel"){// || customer.getCustomerName() == "DemonLordNux"){
 
                        gameState.setGameTime(true);
                        gameState.setCustomerDialogueType(6);
