@@ -29,6 +29,7 @@ public abstract class BahCustomerBase {
     private String[] madResponse;       //3
     private String[] loreDialogue;      //4
     private String[] farewellDialogue;  //5
+    private String[] gameReturn; //6
 
     //If goodButton = 1, then that's the top button. If 2, then bottom button
     private int goodButton;
@@ -68,6 +69,8 @@ public abstract class BahCustomerBase {
         loreDialogue = new String[2];
         loreDialogue[0] = "This item once killed my father.";
         loreDialogue[1] = "It also was once my father.";
+        gameReturn = new String[1];
+        gameReturn[0] = "thanks for playing my game i guess?";
 
         goodButtonText = "You're a good customer :)";
         badButtonText = "You're bad lol >:p";
@@ -80,6 +83,7 @@ public abstract class BahCustomerBase {
         this.madResponse = new String[0];
         this.loreDialogue = new String[0];
         this.farewellDialogue = new String[0];
+        this.gameReturn = new String[0];
     }
 
     @Override
@@ -108,6 +112,8 @@ public abstract class BahCustomerBase {
     public int getGreetingLength() {return greetingDialogue.length;}
     public String getFarewellDialogue(int index) {return farewellDialogue[index];}
     public int getFarewellLength() {return farewellDialogue.length;}
+    public String getGameReturn(int index){return gameReturn[index];}
+    public int getGameReturnLength() {return gameReturn.length;}
     public String getGoodButtonText() {return goodButtonText;}
     public String getBadButtonText() {return badButtonText;}
     public boolean getHasFinishedResponse() {return hasFinishedResponse;}
@@ -180,6 +186,15 @@ public abstract class BahCustomerBase {
         }
         this.loreDialogue = temptText;
         this.loreDialogue[this.loreDialogue.length - 1] = dialogue;
+    }
+    public void addGameReturn(String dialogue) {
+        String[] temptText = new String[this.gameReturn.length + 1];
+        int i = 0;
+        for(String s : this.gameReturn){
+            temptText[i++] = s;
+        }
+        this.gameReturn = temptText;
+        this.gameReturn[this.gameReturn.length - 1] = dialogue;
     }
     public void addHappyResponse(String dialogue) {
         String[] temptText = new String[this.happyResponse.length + 1];

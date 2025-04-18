@@ -5,13 +5,13 @@ public class BahCNux extends BahCustomerBase {
 
     public BahCNux(){
         super();
-        setCustomerName("Demon Lord Nux");
+        setCustomerName("DemonLordNux");
         setItem(5);
         setBadButton(1);
         setGoodButton(2);
         resetDialogue();
         setMoney(90);
-        setLikeability(70);
+        setLikeability(60);
 
         //Greeting Dialogue
         addGreetingDialogue("Well hello past student...funny seeing you here...");
@@ -55,6 +55,10 @@ public class BahCNux extends BahCustomerBase {
         addLoreDialogue("The quest to get rid of all Pokemon has consumed my life...");
         addLoreDialogue("I had to leave my teaching job and come here!");
         addLoreDialogue("BUT ONE DAY I WILL GET RID OF THEM ALL!");
+
+        //After mini game
+        addGameReturn("Well well well");
+        addGameReturn("You came back");
 
         //Farewell Dialogue
         addFarewellDialogue("I must go now, as I need to be on the look out.");

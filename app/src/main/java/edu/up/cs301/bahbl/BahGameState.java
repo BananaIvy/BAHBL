@@ -175,6 +175,9 @@ public class BahGameState extends GameState {
 		if(customerDialogueType == 5){
 			return customers[customerIndex].getFarewellDialogue(dialogueIndex);
 		}
+		if(customerDialogueType == 6) {
+			return customers[customerIndex].getGameReturn(dialogueIndex);
+		}
 		return "somethings wrong with getCustomerDialogue";
 	}
 	public int getQuestionsAnwsered(){return questionsAnwsered;}

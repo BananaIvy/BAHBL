@@ -29,8 +29,8 @@ public class BahCPokeangel extends BahCustomerBase {
 		addHappyResponse("You are wise beyond your years mortal!");
 		addHappyResponse("May you bloom and bear rich fruit,");
 		addHappyResponse("Ere your time here comes to an end!");
-		addHappyResponse("As a reward here is your prize, an info bot!");
-		addHappyResponse("And since you have please me this much...");
+		addHappyResponse("As a reward here is your prize, an infobot!");
+		addHappyResponse("And since you have pleased me...");
 		addHappyResponse("Please play this trivia game with me!");
 
 		//mad response
@@ -57,6 +57,10 @@ public class BahCPokeangel extends BahCustomerBase {
 		addLoreDialogue("...Like a gently floating petal on the wind...");
 		addLoreDialogue("Alas, mortal, I must earn my way back to my eternal redemption.");
 		addLoreDialogue("Until we meet again, at the gates of heaven or hell, young one!");
+
+		//the after trivia game response
+		addGameReturn("Thank you for playing my trivia game, it was a lot of fun.");
+		addGameReturn("I'd like to buy my items, now. I have important demons to fight.");
 
 		//farewell response
 		addFarewellDialogue("Thank you, and may the ruler and overlord of all look kindly on you, mortal.");

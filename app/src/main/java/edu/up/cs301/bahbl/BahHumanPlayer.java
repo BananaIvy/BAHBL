@@ -12,13 +12,7 @@ import android.widget.TextView;
 import android.view.View.OnClickListener;
 
 /**
- * A GUI of a counter-player. The GUI displays the current value of the counter,
- * and allows the human player to press the '+' and '-' buttons in order to
- * send moves to the game.
- * 
- * Just for fun, the GUI is implemented so that if the player presses either button
- * when the counter-value is zero, the screen flashes briefly, with the flash-color
- * being dependent on whether the player is player 0 or player 1.
+ *description of class here
  * 
  * @author Steven R. Vegdahl
  * @author Andrew M. Nuxoll
@@ -121,11 +115,14 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			mainLayout();
 
 			//IF IT's THE ENDING
-			if((state.getStoryProgress() >= 6)){
-				if(state.getMoneyCount() > 71) { //todo fix this condition after fixing $ amounts.
+			if ((state.getStoryProgress() >= 6)) {
+				if (state.getTotalLikeability() >= 5) {
+					loreLayout();
+				}
+				else if (state.getMoneyCount() >= 28) {
 					goodLayout();
 				}
-				else{
+				else {
 					badLayout();
 				}
 			}
@@ -139,7 +136,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 				}
 			}
 			if(!nextGameScreen){
-				nuxLayout();
+				nuxBattleLayout();
 			}else{
 				pokeBattleLayout();
 			}
@@ -150,26 +147,24 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 // for the trivia screen
 		else if((state.isGameTime()) && (state.getCustomer()).getCustomerName().equals("Pokeangel")){
 
-				if(!state.isTriviaButtonClicked()) {
+			if(!state.isTriviaButtonClicked()) {
 
-					triviaLayout();
-					questions.setText("" + state.getTriviaQuestions(state.getTriviaSection()));
-					triviaOptionOne.setText("" + state.getTriviaAnswer1(state.getTriviaSection()));
-					triviaOptionTwo.setText("" + state.getTriviaAnswer2(state.getTriviaSection()));
-					triviaOptionThree.setText("" + state.getTriviaAnswer3(state.getTriviaSection()));
-					triviaOptionFour.setText("" + state.getTriviaAnswer4(state.getTriviaSection()));
+				triviaLayout();
+				questions.setText("" + state.getTriviaQuestions(state.getTriviaSection()));
+				triviaOptionOne.setText("" + state.getTriviaAnswer1(state.getTriviaSection()));
+				triviaOptionTwo.setText("" + state.getTriviaAnswer2(state.getTriviaSection()));
+				triviaOptionThree.setText("" + state.getTriviaAnswer3(state.getTriviaSection()));
+				triviaOptionFour.setText("" + state.getTriviaAnswer4(state.getTriviaSection()));
 
-				}
-				else if ((state.isCorrectAnswer() == true) && (state.isTriviaButtonClicked() == true)){
+			}
+			else if ((state.isCorrectAnswer() == true) && (state.isTriviaButtonClicked() == true)){
 
-					triviaRightLayout();
+				triviaRightLayout();
+			}
+			else if ((state.isCorrectAnswer() == false) && state.isTriviaButtonClicked() == true) {
 
-				}
-				else if ((state.isCorrectAnswer() == false) && state.isTriviaButtonClicked() == true) {
-
-					triviaWrongLayout();
-
-				}
+				triviaWrongLayout();
+			}
 
 		}
 //end of trivia code
@@ -202,6 +197,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 		}else if(button.getId() == R.id.wrong){
 			game.sendAction(new BahActionTriviaButton(this, button));
+
 
 		}else if(button.getId() == R.id.right){
 			game.sendAction(new BahActionTriviaButton(this, button));
@@ -324,7 +320,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		}
 		else{
 			tempText = state.getGoodButtonText();
-			button2.setText(tempText);//todo maybe this is where we fix what buttons display?
+			button2.setText(tempText);
 
 			tempText = state.getBadButtonText();
 			button1.setText(tempText);
@@ -487,7 +483,11 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 	public void goodLayout(){
 		this.myActivity.setContentView(R.layout.bahbl_good_ending);
-	}
+	}//goodLayout
+
+	public void loreLayout() {
+		this.myActivity.setContentView(R.layout.bahbl_lore_ending);
+	}//loreLayout
 
 	public void triviaLayout(){
 		//The xml view
@@ -527,7 +527,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		triviaRightButton.setOnClickListener(this);
 	}
 
-	public void nuxLayout(){
+	public void nuxBattleLayout(){
 		myActivity.setContentView(R.layout.bahbl_pokemon);
 
 		nbell = myActivity.findViewById(R.id.nbell);
@@ -639,7 +639,6 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		}
 	}
 
-
-}// class CounterHumanPlayer
+}// class BahHumanPlayer
 
 //hi

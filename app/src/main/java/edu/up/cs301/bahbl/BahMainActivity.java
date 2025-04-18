@@ -17,7 +17,7 @@ import edu.up.cs301.GameFramework.gameConfiguration.*;
  * @author Madilynn Greenup
  * @author Savannah Macdonald?
  * @author Alex Baker
- * @version July 2013
+ * @version April 2025
  */
 public class BahMainActivity extends GameMainActivity {
 	

@@ -43,18 +43,18 @@ public class BahLocalGame extends LocalGame {
     @Override
     protected String checkIfGameOver() {
         if(gameState.getStoryProgress() >= 8){
-            if(customer.getLikeability()>=70) {
+            if(gameState.getTotalLikeability()>=70) {
                 loreEnding();
             }
             else if(gameState.getMoneyCount() >= 280){
                 goodEnding();
-            } else {
+            }
+            else {
                 actBadEnding();
             }
             return "You reached the end! Game is Over ";
         }
-
-        return null;
+        else{return null;}
     }
 
     /**
@@ -227,7 +227,6 @@ public class BahLocalGame extends LocalGame {
                     return false;
                 }
             }
-
             /*
              * Conditions that must be met for item actions:
              * 1. We have the item
@@ -355,19 +354,18 @@ public class BahLocalGame extends LocalGame {
                 else { //End of Customers speech
                     giveItem();
                     //call on the mini game to start now
-                    if(customer.getCustomerName() != "Ghost" && customer.getCustomerName() != "Ghost2"){
+                    if(customer.getCustomerName() == "Pokeangel" || customer.getCustomerName() == "DemonLordNux"){
 
                        gameState.setGameTime(true);
-                       gameState.setCustomerDialogueType(5);
-                        gameState.setDialogueIndex(0);
-
-                    } else{
-
-                       customer.setPlayersTurn(true);
+                       gameState.setCustomerDialogueType(6);
+                       gameState.setDialogueIndex(0);
 
                     }
-                }
+                    else{
 
+                       customer.setPlayersTurn(true);
+                    }
+                }
             }//:)
 
             //Mad Response
@@ -417,13 +415,22 @@ public class BahLocalGame extends LocalGame {
                     }
                 }
             }//bai!
+            else if(gameState.getCustomerDialogueType() == 6) {
+                //if there's more text to scroll through
+                if(gameState.getDialogueIndex() + 1 < gameState.getCustomer().getGameReturnLength()){
+                    gameState.nextDialogue();
+                }
+                else {
+                    customer.setPlayersTurn(true);
+                }
+            }
         }
         return false; //illegal
     }//actProgressText
 
     public boolean actTrivia(GameAction action){
-        //trivia button
 
+        //trivia button
 
         //The correct answers go in the order 2, 4, 1, 4, 2
 
@@ -434,9 +441,7 @@ public class BahLocalGame extends LocalGame {
 
                     gameState.setCorrectAnswer(true);
                     gameState.setCorrectAnswersCount(gameState.getCorrectAnswersCount() + 1);
-
                 }
-
                 gameState.setQuestionsAnwsered((gameState.getQuestionsAnwsered() + 1));
                 gameState.setTriviaButtonClicked(true);
 
@@ -450,7 +455,6 @@ public class BahLocalGame extends LocalGame {
                     gameState.setCorrectAnswer(true);
                     gameState.setCorrectAnswersCount(gameState.getCorrectAnswersCount() + 1);
                 }
-
                 gameState.setQuestionsAnwsered((gameState.getQuestionsAnwsered() + 1));
                 gameState.setTriviaButtonClicked(true);
 
@@ -461,22 +465,19 @@ public class BahLocalGame extends LocalGame {
                 gameState.setQuestionsAnwsered((gameState.getQuestionsAnwsered() + 1));
                 gameState.setCorrectAnswer(false);
                 gameState.setTriviaButtonClicked(true);
-
                 return true;
             }
             else if (((BahActionTriviaButton) action).getWhichButton() == 4) {
 
                 if ((gameState.getTriviaSection() == 1) || (gameState.getTriviaSection() == 3)) {
 
-
                     gameState.setCorrectAnswer(true);
                     gameState.setCorrectAnswersCount(gameState.getCorrectAnswersCount() + 1);
-
                 }
-
                 gameState.setQuestionsAnwsered((gameState.getQuestionsAnwsered() + 1));
                 gameState.setTriviaButtonClicked(true);
                 return true;
+
             }
             //The wrong answer
             else if (((BahActionTriviaButton) action).getWhichButton() == 5) {
@@ -485,16 +486,16 @@ public class BahLocalGame extends LocalGame {
                 gameState.setTriviaButtonClicked(false);
 
                 if(gameState.getTriviaSection() < 4) {
+                    //This increments the trivia section by one
                     gameState.setTriviaSection();
                 }
 
                 if (gameState.getQuestionsAnwsered() == 5){
 
                     gameState.setGameTime(false);
+                    gameState.setCustomerDialogueType(6);
                     customer.setPlayersTurn(false);
-
                 }
-
                 return true;
             }
             //The right answer
@@ -504,6 +505,7 @@ public class BahLocalGame extends LocalGame {
                 gameState.setTriviaButtonClicked(false);
 
                 if(gameState.getTriviaSection() < 4) {
+                    //This adds one to the trivia section
                     gameState.setTriviaSection();
                 }
 
@@ -511,26 +513,31 @@ public class BahLocalGame extends LocalGame {
 
                     if(gameState.getCorrectAnswersCount() == 5){
                         gameState.setHasPokeball(true);
+                        customer.addLikeability(20);
                     }
-
                     gameState.setGameTime(false);
+                    gameState.setCustomerDialogueType(6);
                     customer.setPlayersTurn(false);
-
-
                 }
-
-
-
-
                 return true;
             }
-
-
-
 
         return false; //Illegal
     }
 
+    private void giveItem() {
+        if (customer.getCustomerName().equals("Ghost")) {
+            gameState.setHasPokeball(true);
+        } else if (customer.getCustomerName().equals("Pokeangel")) {
+            gameState.setHasInfoBot(true);
+        } else if (customer.getCustomerName().equals("Lug")) {
+            gameState.setHasBag(true);
+        } else if (customer.getCustomerName().equals("Mystic Man")) {
+            gameState.setHasPokeDex(true);
+        } else if (customer.getCustomerName().equals("Demon Lord Nux")) {
+            gameState.setHasKey(true);
+        }
+    }
 
     /*
      * ENDINGS
@@ -552,19 +559,6 @@ public class BahLocalGame extends LocalGame {
         return true;
     }
 
-    private void giveItem() {
-        if (customer.getCustomerName().equals("Ghost")) {
-            gameState.setHasPokeball(true);
-        } else if (customer.getCustomerName().equals("Pokeangel")) {
-            gameState.setHasInfoBot(true);
-        } else if (customer.getCustomerName().equals("Lug")) {
-            gameState.setHasBag(true);
-        } else if (customer.getCustomerName().equals("Mystic Man")) {
-            gameState.setHasPokeDex(true);
-        } else if (customer.getCustomerName().equals("Demon Lord Nux")) {
-            gameState.setHasKey(true);
-        }
-    }
     private void loreEnding(){
         //todo if we want the ending screens interactable
     }
