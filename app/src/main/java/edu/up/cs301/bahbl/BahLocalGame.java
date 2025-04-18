@@ -511,6 +511,8 @@ public class BahLocalGame extends LocalGame {
 
                     if(gameState.getCorrectAnswersCount() == 5){
                         gameState.setHasPokeball(true);
+                        gameState.addMoney(40);
+                        gameState.addLikeability(20);
                     }
 
                     gameState.setGameTime(false);
