@@ -97,6 +97,7 @@ public class BahGameState extends GameState {
 	//Copy Constructor
 	public BahGameState(BahGameState currentState){
 		storyProgress = currentState.storyProgress;
+		totalLikeability = currentState.totalLikeability;
 		moneyCount = currentState.moneyCount;
 		hasKey = currentState.hasKey;
 		hasPokeball = currentState.hasPokeball;
@@ -117,7 +118,6 @@ public class BahGameState extends GameState {
 		triviaAnswer2 = currentState.triviaAnswer2;
 		triviaAnswer3 = currentState.triviaAnswer3;
 		triviaAnswer4 = currentState.triviaAnswer4;
-        gameTime = currentState.gameTime;
 		correctAnswer = currentState.correctAnswer;
 		triviaButtonClicked = currentState.triviaButtonClicked;
 		triviaSection = currentState.triviaSection;
