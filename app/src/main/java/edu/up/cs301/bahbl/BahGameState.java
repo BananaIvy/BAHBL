@@ -64,7 +64,7 @@ public class BahGameState extends GameState {
 	private int triviaSection;
 
 	private BahPokemon[] pokemons;
-	int caughtCount;
+	private int caughtCount;
 
 	//Constructor for start of game
 	public BahGameState(){
@@ -263,6 +263,7 @@ public class BahGameState extends GameState {
 	public void nextDialogue(){
 		dialogueIndex++;
 	}
+	public void caught(boolean start){if(start){caughtCount = 0;}else{caughtCount++;}}
 
 
 }

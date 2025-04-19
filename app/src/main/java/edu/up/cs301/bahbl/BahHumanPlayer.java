@@ -349,13 +349,11 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			customer.setImageResource(resID);
 		}
 		else if(state.getCustomer() instanceof BahCNux){
-			int resID = R.drawable.purple_delete_button;
-			if(state.getCustomer().getLikeability() < 71){
-				resID = R.drawable.nux;
+			if(state.getCaughtCount() < 1){
+				customer.setImageResource(R.drawable.nux);
 			}else {
-				resID = R.drawable.happynux;
+				customer.setImageResource(R.drawable.happynux);
 			}
-			customer.setImageResource(resID);
 		}
 		else{
 			int resID = R.drawable.purple_delete_button;

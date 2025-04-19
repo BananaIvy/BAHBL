@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="650dp"
             android:layout_gravity="bottom"
-            android:src="@drawable/nux" />
+            android:src="@drawable/nonux" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -26,12 +26,12 @@
 
             <ImageButton
                 android:id="@+id/ndiglett"
-                android:contentDescription="best pokemon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="588dp"
-                android:layout_marginTop="524dp"
+                android:layout_marginTop="500dp"
                 android:background="#00FFFFFF"
+                android:contentDescription="best pokemon"
                 android:scaleX=".7"
                 android:scaleY=".7"
                 android:src="@drawable/diglet"
@@ -40,14 +40,14 @@
 
             <ImageButton
                 android:id="@+id/nbell"
-                android:contentDescription="wut the flip was it's name again?"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="548dp"
-                android:layout_marginBottom="584dp"
+                android:layout_marginStart="556dp"
+                android:layout_marginBottom="556dp"
                 android:background="#00FFFFFF"
+                android:contentDescription="wut the flip was it's name again?"
                 android:scaleX=".7"
-                android:scaleY=".7"
+                android:scaleY=".9"
                 android:src="@drawable/bell"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -68,12 +68,12 @@
 
             <ImageButton
                 android:id="@+id/nditto"
-                android:contentDescription="ditto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="720dp"
-                android:layout_marginTop="580dp"
+                android:layout_marginStart="716dp"
+                android:layout_marginTop="548dp"
                 android:background="#00FFFFFF"
+                android:contentDescription="ditto"
                 android:scaleX=".7"
                 android:scaleY=".7"
                 android:src="@drawable/ditto"
@@ -96,12 +96,12 @@
 
             <ImageButton
                 android:id="@+id/nghast"
-                android:contentDescription="ghost type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="740dp"
-                android:layout_marginTop="140dp"
+                android:layout_marginStart="736dp"
+                android:layout_marginTop="152dp"
                 android:background="#00FFFFFF"
+                android:contentDescription="ghost type"
                 android:scaleX=".7"
                 android:scaleY=".7"
                 android:src="@drawable/ghostly"
@@ -124,12 +124,12 @@
 
             <ImageButton
                 android:id="@+id/ngeode"
-                android:contentDescription="goge. I write these to confuse you."
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="680dp"
-                android:layout_marginTop="340dp"
+                android:layout_marginStart="684dp"
+                android:layout_marginTop="328dp"
                 android:background="#00FFFFFF"
+                android:contentDescription="goge. I write these to confuse you."
                 android:scaleX=".7"
                 android:scaleY=".7"
                 android:src="@drawable/geode"
