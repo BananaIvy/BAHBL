@@ -2,6 +2,8 @@ package edu.up.cs301.bahbl;
 
 import android.util.Log;
 
+import java.util.Random;
+
 import edu.up.cs301.GameFramework.LocalGame;
 import edu.up.cs301.GameFramework.actionMessage.GameAction;
 import edu.up.cs301.GameFramework.infoMessage.GameState;
@@ -23,6 +25,7 @@ public class BahLocalGame extends LocalGame {
 
     private BahGameState gameState;
     private BahCustomerBase customer;
+    private Random random = new Random();
 
     @Override
     protected void sendUpdatedStateTo(GamePlayer p) {
@@ -582,9 +585,11 @@ public class BahLocalGame extends LocalGame {
         //Find which pokemon wasishasbeing captured
         for(BahPokemon poke : gameState.getPokemons()){
             if(poke.isCatchable()){
-                poke.capture(true);
+                poke.capture(random.nextBoolean());
+                gameState.addFailCount(poke.getFailCount());
             }
         }
+
         //check whether or not every pokemon has been caught
         gameState.caught(true);
         for(BahPokemon poke : gameState.getPokemons()){

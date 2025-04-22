@@ -4,6 +4,7 @@ public class BahPokemon {
     private String name;
     private boolean isOnNux;
     private boolean catchable;
+    private int failCount;
 
     public BahPokemon(String name){
         this.name = name;
@@ -25,6 +26,7 @@ public class BahPokemon {
     public void capture(boolean caught){
         isOnNux = !caught;
         catchable = false;
+        if (!caught) {failCount++;}
     }
 
     public boolean isOnNux(){
@@ -36,4 +38,6 @@ public class BahPokemon {
     }
 
     public String getName() {return name;}
+
+    public int getFailCount(){return failCount;}
 }

@@ -109,8 +109,13 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	 */
 	protected void updateDisplay() {
 
+		//JUMPSCARE CONDITIONS
+		if(state.getFailCount() > 15){
+			jumpscare();
+		}
+
 		//MAIN GAME-LINE
-		if(!state.isGameTime()){
+		else if(!state.isGameTime()){
 
 			mainLayout();
 
@@ -142,9 +147,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			}
 		}
 
-
-
-// for the trivia screen
+		// for the trivia screen
 		else if((state.isGameTime()) && (state.getCustomer()).getCustomerName().equals("Pokeangel")){
 
 			if(!state.isTriviaButtonClicked()) {
@@ -166,9 +169,9 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 				triviaWrongLayout();
 			}
 
-		}
-//end of trivia code
-	}
+		}//end of trivia code
+
+	}//update display
 
 	public void onClick(View button) {
 		// if we are not yet connected to a game, ignore
@@ -642,6 +645,10 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 				}
 			}
 		}
+	}//pokeBattle
+
+	public void jumpscare(){
+
 	}
 
 }// class BahHumanPlayer
