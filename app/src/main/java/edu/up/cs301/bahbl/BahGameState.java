@@ -65,6 +65,7 @@ public class BahGameState extends GameState {
 
 	private BahPokemon[] pokemons;
 	private int caughtCount;
+	private int failCount;
 
 	//jumpscare variable
 
@@ -94,6 +95,7 @@ public class BahGameState extends GameState {
 		gameTime = false;
 		questionsAnwsered = 0;
 		caughtCount = 0;
+		failCount = 0;
 		jumpscareTime = false;
 		this.pokemons = new BahPokemon[]
 				{new BahPokemon("bell"),new BahPokemon("ghast"),new BahPokemon("pikachu"),new BahPokemon("egg"),new BahPokemon("worm"),new BahPokemon("geode"),new BahPokemon("diglett"),new BahPokemon("ditto")};
@@ -130,6 +132,7 @@ public class BahGameState extends GameState {
 		questionsAnwsered = currentState.questionsAnwsered;
 		caughtCount = currentState.getCaughtCount();
 		jumpscareTime = currentState.jumpscareTime;
+		failCount = currentState.failCount;
 		this.pokemons = new BahPokemon[currentState.pokemons.length];
 		for(int i = 0; i < pokemons.length; i++) {
 			pokemons[i] = new BahPokemon(currentState.pokemons[i]);
@@ -276,5 +279,7 @@ public class BahGameState extends GameState {
 	}
 	public void caught(boolean start){if(start){caughtCount = 0;}else{caughtCount++;}}
 
+	public int getFailCount(){return failCount;}
+	public void addFailCount(int fails){failCount += fails;}
 
 }
