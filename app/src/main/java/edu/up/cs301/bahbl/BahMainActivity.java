@@ -1,5 +1,7 @@
 package edu.up.cs301.bahbl;
 
+import android.media.MediaPlayer;
+
 import java.util.ArrayList;
 
 import edu.up.cs301.GameFramework.GameMainActivity;
@@ -24,6 +26,8 @@ public class BahMainActivity extends GameMainActivity {
 	// the port number that this game will use when playing over the network
 	private static final int PORT_NUMBER = 2234;
 
+
+
 	/**
 	 * Create the default configuration for this game:
 	 * - one human player vs. one computer player
@@ -35,7 +39,11 @@ public class BahMainActivity extends GameMainActivity {
 	 */
 	@Override
 	public GameConfig createDefaultConfig() {
-		
+
+
+
+
+
 		// Define the allowed player types
 		ArrayList<GamePlayerType> playerTypes = new ArrayList<GamePlayerType>();
 		
@@ -69,6 +77,8 @@ public class BahMainActivity extends GameMainActivity {
 		
 		// return the configuration
 		return defaultConfig;
+
+
 	}//createDefaultConfig
 
 	/**

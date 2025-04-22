@@ -66,6 +66,10 @@ public class BahGameState extends GameState {
 	private BahPokemon[] pokemons;
 	private int caughtCount;
 
+	//jumpscare variable
+
+	private boolean jumpscareTime;
+
 	//Constructor for start of game
 	public BahGameState(){
 		storyProgress = 0;
@@ -90,6 +94,7 @@ public class BahGameState extends GameState {
 		gameTime = false;
 		questionsAnwsered = 0;
 		caughtCount = 0;
+		jumpscareTime = false;
 		this.pokemons = new BahPokemon[]
 				{new BahPokemon("bell"),new BahPokemon("ghast"),new BahPokemon("pikachu"),new BahPokemon("egg"),new BahPokemon("worm"),new BahPokemon("geode"),new BahPokemon("diglett"),new BahPokemon("ditto")};
 	}
@@ -124,6 +129,7 @@ public class BahGameState extends GameState {
 		gameTime = currentState.gameTime;
 		questionsAnwsered = currentState.questionsAnwsered;
 		caughtCount = currentState.getCaughtCount();
+		jumpscareTime = currentState.jumpscareTime;
 		this.pokemons = new BahPokemon[currentState.pokemons.length];
 		for(int i = 0; i < pokemons.length; i++) {
 			pokemons[i] = new BahPokemon(currentState.pokemons[i]);
@@ -159,6 +165,8 @@ public class BahGameState extends GameState {
 	}
 
 	//Getter Methods
+
+	public boolean isJumpscareTime() {return jumpscareTime;}
 	public String getCustomerDialogue() {
 		if(customerDialogueType == 1){
 			return customers[customerIndex].getGreetingDialogue(dialogueIndex);
@@ -212,6 +220,9 @@ public class BahGameState extends GameState {
 	public BahPokemon[] getPokemons(){return pokemons;}
 
 	//Setter Methods
+
+
+	public void setJumpscareTime(boolean jumpscareTime) {this.jumpscareTime = jumpscareTime;}
 
 	//For trivia section we only increase by one each time
 	public void setQuestionsAnwsered(int questionsAnwsered){this.questionsAnwsered = questionsAnwsered;}

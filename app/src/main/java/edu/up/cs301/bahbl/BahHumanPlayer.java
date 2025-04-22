@@ -4,12 +4,16 @@ import edu.up.cs301.GameFramework.players.GameHumanPlayer;
 import edu.up.cs301.GameFramework.GameMainActivity;
 import edu.up.cs301.GameFramework.actionMessage.GameAction;
 import edu.up.cs301.GameFramework.infoMessage.GameInfo;
+
+import android.media.MediaPlayer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
+
+import java.io.IOException;
 
 /**
  *description of class here
@@ -74,6 +78,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	private ImageButton		negg				= null;
 	private ImageButton		nworm				= null;
 	private ImageView		pokeballl			= null; //extra l because there's 2 pokeballs lol
+	private ImageView       jumpscare           = null;
 
 
 	// the most recent game state, as given to us by the CounterLocalGame
@@ -114,12 +119,26 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 			mainLayout();
 
+			//for jumpscare
+			MediaPlayer sound = MediaPlayer.create(myActivity.getApplicationContext(), R.raw.jumpscare);
+			//Jumpscare stuffs
+			if(state.isJumpscareTime()){
+				jumpscareLayout();
+				sound.start();
+				try{
+					Thread.sleep(200);
+				}  catch (InterruptedException e) {
+                    //nothing
+                }
+
+            }
+
 			//IF IT's THE ENDING
 			if ((state.getStoryProgress() >= 6)) {
-				if (state.getTotalLikeability() >= 5) {
+				if (state.getTotalLikeability() >= 500) {
 					loreLayout();
 				}
-				else if (state.getMoneyCount() >= 28) {
+				else if (state.getMoneyCount() >= 200) {
 					goodLayout();
 				}
 				else {
@@ -335,24 +354,39 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		if(state.getCustomer() instanceof BahCGhost) {
 			int resID = R.drawable.ghost;
 			customer.setImageResource(resID);
+			if(state.isJumpscareTime()){
+				jumpscare.setImageResource(R.drawable.ghostboo);
+			}
 		}
 		else if(state.getCustomer() instanceof BahCPokeangel){
 			int resID = R.drawable.pokeangel;
 			customer.setImageResource(resID);
+			if(state.isJumpscareTime()){
+				jumpscare.setImageResource(R.drawable.pokeangelboo);
+			}
 		}
 		else if(state.getCustomer() instanceof BahCLug){
 			int resID = R.drawable.lug;
 			customer.setImageResource(resID);
+			if(state.isJumpscareTime()){
+				jumpscare.setImageResource(R.drawable.lugboo);
+			}
 		}
 		else if(state.getCustomer() instanceof BahCMysticMan){
 			int resID = R.drawable.mysticman;
 			customer.setImageResource(resID);
+			if(state.isJumpscareTime()){
+				jumpscare.setImageResource(R.drawable.mystery_manboo_);
+			}
 		}
 		else if(state.getCustomer() instanceof BahCNux){
 			if(state.getCaughtCount() < 1){
 				customer.setImageResource(R.drawable.nux);
 			}else {
 				customer.setImageResource(R.drawable.happynux);
+			}
+			if(state.isJumpscareTime()){
+				jumpscare.setImageResource(R.drawable.nuxboo);
 			}
 		}
 		else{
@@ -642,6 +676,12 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 				}
 			}
 		}
+	}
+
+	public void jumpscareLayout(){
+		myActivity.setContentView(R.layout.bahbl_jumpscare);
+
+		jumpscare = myActivity.findViewById(R.id.jumpscare);
 	}
 
 }// class BahHumanPlayer

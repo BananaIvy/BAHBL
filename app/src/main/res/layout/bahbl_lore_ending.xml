@@ -12,5 +12,5 @@
         android:id="@+id/imageView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/untitled_artwork" />
+        android:src="@drawable/untitled_artwork" />
 </androidx.appcompat.widget.LinearLayoutCompat>
