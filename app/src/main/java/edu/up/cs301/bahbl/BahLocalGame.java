@@ -201,6 +201,7 @@ public class BahLocalGame extends LocalGame {
                 //Update Booleans & reset button text
                 customer.setHasGottenAnswer(true);
                 gameState.setButtonIsVisible(false);
+                gameState.setJumpscareTime(true);
             }
 
             //Makes it so we don't start the game with the key and only get it from the first

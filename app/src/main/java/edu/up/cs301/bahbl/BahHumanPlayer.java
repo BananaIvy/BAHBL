@@ -135,7 +135,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 				}  catch (InterruptedException e) {
                     //nothing
                 }
-
+				state.setJumpscareTime(false);
             }
 
 			//IF IT's THE ENDING
