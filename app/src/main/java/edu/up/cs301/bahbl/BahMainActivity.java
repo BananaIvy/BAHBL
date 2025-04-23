@@ -40,10 +40,6 @@ public class BahMainActivity extends GameMainActivity {
 	@Override
 	public GameConfig createDefaultConfig() {
 
-
-
-
-
 		// Define the allowed player types
 		ArrayList<GamePlayerType> playerTypes = new ArrayList<GamePlayerType>();
 		
@@ -77,7 +73,6 @@ public class BahMainActivity extends GameMainActivity {
 		
 		// return the configuration
 		return defaultConfig;
-
 
 	}//createDefaultConfig
 

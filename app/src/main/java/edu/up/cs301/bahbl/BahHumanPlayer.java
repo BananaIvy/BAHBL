@@ -80,7 +80,11 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	private ImageView		pokeballl			= null; //extra l because there's 2 pokeballs lol
 	private ImageView       jumpscare           = null;
 	private TextView		escaped				= null;
-
+	//images and textviews for memory game
+	private ImageView leftImage					= null;
+	private ImageView rightImage				= null;
+	private TextView correctMemory 				= null;
+	private TextView wrongMemory 				= null;
 
 	// the most recent game state, as given to us by the CounterLocalGame
 	private BahGameState state;
@@ -212,24 +216,23 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		}
 		else if(button.getId() == R.id.run){
 			game.sendAction(new BahActionRun(this));
-
-		} else if(isTriviaButton(button)){
+		}
+		else if(isTriviaButton(button)){
 			game.sendAction(new BahActionTriviaButton(this, button));
-
-		}else if(button.getId() == R.id.wrong){
+		}
+		else if(button.getId() == R.id.wrong){
 			game.sendAction(new BahActionTriviaButton(this, button));
-
-
-		}else if(button.getId() == R.id.right){
+		}
+		else if(button.getId() == R.id.right){
 			game.sendAction(new BahActionTriviaButton(this, button));
-
-		}else if (button.getId() == R.id.pokeballl) {
+		}
+		else if (button.getId() == R.id.pokeballl) {
 			game.sendAction(new BahActionCatch(this));
-
-		}else if (isPokemon(button)) {
+		}
+		else if (isPokemon(button)) {
 			game.sendAction((new BahActionBattle(this, button)));
-
-		} else if (button.getId() == R.id.jumpscare){
+		}
+		else if (button.getId() == R.id.jumpscare){
 			game.sendAction(new BahJumpscareButton(this));
 		}
 	}// onClick
@@ -711,6 +714,20 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			}
 		}//pokemon
 	}//pokeBattle
+
+	public void memoryGameLayout() {
+		myActivity.setContentView(R.layout.bahbl_memory_test_game);
+
+		leftImage = myActivity.findViewById(R.id.leftImageMemory);
+		rightImage = myActivity.findViewById(R.id.rightImageMemory);
+		correctMemory = myActivity.findViewById(R.id.correctTextMemory);
+		wrongMemory = myActivity.findViewById(R.id.wrongTextMemory);
+
+		leftImage.setOnClickListener(this);
+		rightImage.setOnClickListener(this);
+
+		//todo add code here that makes either the correct or the wrong button show up depending on if you choose the right image
+	}
 
 	public void jumpscareLayout(){
 		myActivity.setContentView(R.layout.bahbl_jumpscare);

@@ -464,7 +464,7 @@ public class BahLocalGame extends LocalGame {
 
 
             if(((BahActionTriviaButton) action).getWhichButton() == 1) {
-                //do stuff here
+
                 if (gameState.getTriviaSection() == 2) {
 
                     gameState.setCorrectAnswer(true);

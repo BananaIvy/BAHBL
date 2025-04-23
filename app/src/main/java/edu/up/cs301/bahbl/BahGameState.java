@@ -58,10 +58,12 @@ public class BahGameState extends GameState {
 	private String[] triviaAnswer4= {"Everything", "Pikachu", "Ditto", "Sentret", "Very, like a pet"};
 	private int questionsAnwsered;
     private boolean gameTime;
+	private boolean memoryTime;
 	private boolean correctAnswer;
 	private boolean triviaButtonClicked;
 	//To update the trivia questions
 	private int triviaSection;
+	private int memorySection;
 
 	private BahPokemon[] pokemons;
 	private int caughtCount;
@@ -93,9 +95,11 @@ public class BahGameState extends GameState {
 		triviaButtonClicked = false;
 		triviaSection = 0;
 		gameTime = false;
+		memoryTime = false;
 		questionsAnwsered = 0;
 		caughtCount = 0;
 		failCount = 0;
+		memorySection = 0;
 		jumpscareTime = false;
 		this.pokemons = new BahPokemon[]
 				{new BahPokemon("bell"),new BahPokemon("ghast"),new BahPokemon("pikachu"),new BahPokemon("egg"),new BahPokemon("worm"),new BahPokemon("geode"),new BahPokemon("diglett"),new BahPokemon("ditto")};
@@ -129,10 +133,12 @@ public class BahGameState extends GameState {
 		triviaButtonClicked = currentState.triviaButtonClicked;
 		triviaSection = currentState.triviaSection;
 		gameTime = currentState.gameTime;
+		memoryTime = currentState.memoryTime;
 		questionsAnwsered = currentState.questionsAnwsered;
 		caughtCount = currentState.getCaughtCount();
 		jumpscareTime = currentState.jumpscareTime;
 		failCount = currentState.failCount;
+		memorySection = currentState.memorySection;
 		this.pokemons = new BahPokemon[currentState.pokemons.length];
 		for(int i = 0; i < pokemons.length; i++) {
 			pokemons[i] = new BahPokemon(currentState.pokemons[i]);
