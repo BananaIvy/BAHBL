@@ -79,6 +79,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	private ImageButton		nworm				= null;
 	private ImageView		pokeballl			= null; //extra l because there's 2 pokeballs lol
 	private ImageView       jumpscare           = null;
+	private TextView		escaped				= null;
 
 
 	// the most recent game state, as given to us by the CounterLocalGame
@@ -599,6 +600,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		nditto = myActivity.findViewById(R.id.nditto);
 		ngeode = myActivity.findViewById(R.id.ngeode);
 		negg = myActivity.findViewById(R.id.negg);
+		escaped = myActivity.findViewById(R.id.escaped);
 
 		nbell.setOnClickListener(this);
 		nghast.setOnClickListener(this);
@@ -608,6 +610,8 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		nditto.setOnClickListener(this);
 		ngeode.setOnClickListener(this);
 		negg.setOnClickListener(this);
+
+		escaped.setVisibility(View.INVISIBLE);
 
 		for (BahPokemon poke : state.getPokemons()) {
 			// finds the catchable pokemon & makes them visible
@@ -656,10 +660,12 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 					nditto.setClickable(false);
 				}
 			}
-		}
-
-
-	}
+			if(poke.hasEscaped()) {
+				escaped.setVisibility(View.VISIBLE);
+				escaped.setText(poke.getName() + " escaped");
+			}
+		}//pokemon
+	}//nuxLayout
 
 	public void pokeBattleLayout(){
 		myActivity.setContentView(R.layout.bahbl_pokemon_fight);
@@ -704,7 +710,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 					ditto.setVisibility(View.VISIBLE);
 				}
 			}
-		}
+		}//pokemon
 	}//pokeBattle
 
 	public void jumpscareLayout(){

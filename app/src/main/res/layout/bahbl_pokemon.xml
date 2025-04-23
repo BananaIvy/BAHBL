@@ -20,6 +20,19 @@
             android:layout_gravity="bottom"
             android:src="@drawable/nonux" />
 
+        <TextView
+            android:id="@+id/escaped"
+            android:layout_gravity="bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/yellow"
+            android:shadowColor="@color/black"
+            android:shadowRadius="1"
+            android:shadowDy="2"
+            android:shadowDx="2"
+            android:textSize="50dp"
+            android:text="Pokemon escaped" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -54,12 +67,12 @@
 
             <ImageButton
                 android:id="@+id/npikachu"
-                android:contentDescription="eevee"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="440dp"
                 android:layout_marginTop="208dp"
                 android:background="#00FFFFFF"
+                android:contentDescription="eevee"
                 android:scaleX=".7"
                 android:scaleY=".7"
                 android:src="@drawable/pika"
@@ -82,12 +95,12 @@
 
             <ImageButton
                 android:id="@+id/negg"
-                android:contentDescription="egg"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:layout_marginStart="440dp"
                 android:layout_marginTop="340dp"
                 android:background="#00FFFFFF"
+                android:contentDescription="egg"
                 android:scaleX=".7"
                 android:scaleY=".7"
                 android:src="@drawable/egg"
@@ -110,12 +123,12 @@
 
             <ImageButton
                 android:id="@+id/nworm"
-                android:contentDescription="he hanging"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="888dp"
                 android:layout_marginTop="292dp"
                 android:background="#00FFFFFF"
+                android:contentDescription="he hanging"
                 android:scaleX=".7"
                 android:scaleY=".7"
                 android:src="@drawable/worm"
@@ -135,6 +148,7 @@
                 android:src="@drawable/geode"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </FrameLayout>

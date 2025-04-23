@@ -577,6 +577,11 @@ public class BahLocalGame extends LocalGame {
     }
 
     private boolean actpokeBattle(BahActionBattle action){
+        //resets the escaped state of the pokemon
+        for(BahPokemon poke : gameState.getPokemons()){
+            poke.escape(false);
+        }
+
         //Find which pokemon wasishasbeing battled
         for(BahPokemon poke : gameState.getPokemons()){
             if(action.getThisPokemon().equals(poke.getName())){
@@ -591,7 +596,7 @@ public class BahLocalGame extends LocalGame {
         //Find which pokemon wasishasbeing captured
         for(BahPokemon poke : gameState.getPokemons()){
             if(poke.isCatchable()){
-                poke.capture(random.nextBoolean());
+                poke.capture(random.nextInt() > 0.30); //A 70% chance to catch the pokemon
                 gameState.addFailCount(poke.getFailCount());
             }
         }
