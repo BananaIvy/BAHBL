@@ -129,6 +129,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			//Jumpscare stuffs
 			if(state.isJumpscareTime()){
 				jumpscareLayout();
+				setUpJumpscareImages();
 				sound.start();
 				try{
 					Thread.sleep(200);
@@ -352,35 +353,62 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 	}//texts
 
+	public void setUpJumpscareImages(){
+		//Changes the customer to the gamestates one
+		if(state.getCustomer() instanceof BahCGhost) {
+
+				int jID = R.drawable.ghostboo;
+				jumpscare.setImageResource(jID);
+
+		}
+		else if(state.getCustomer() instanceof BahCPokeangel){
+
+				int jID = R.drawable.pokeangelboo;
+				jumpscare.setImageResource(jID);
+
+		}
+		else if(state.getCustomer() instanceof BahCLug){
+
+				int jID = R.drawable.lugboo;
+				jumpscare.setImageResource(jID);
+
+		}
+		else if(state.getCustomer() instanceof BahCMysticMan){
+
+				int jID = R.drawable.mystery_manboo_;
+				jumpscare.setImageResource(jID);
+		}
+		else if(state.getCustomer() instanceof BahCNux){
+				int jID = R.drawable.nuxboo;
+				jumpscare.setImageResource(jID);
+		}
+		else{
+			int resID = R.drawable.purple_delete_button;
+			customer.setImageResource(resID);
+		}
+	}
+
 	public void setUpCustomer(){
 		//Changes the customer to the gamestates one
 		if(state.getCustomer() instanceof BahCGhost) {
 			int resID = R.drawable.ghost;
 			customer.setImageResource(resID);
-			if(state.isJumpscareTime()){
-				jumpscare.setImageResource(R.drawable.ghostboo);
-			}
+
 		}
 		else if(state.getCustomer() instanceof BahCPokeangel){
 			int resID = R.drawable.pokeangel;
 			customer.setImageResource(resID);
-			if(state.isJumpscareTime()){
-				jumpscare.setImageResource(R.drawable.pokeangelboo);
-			}
+
 		}
 		else if(state.getCustomer() instanceof BahCLug){
 			int resID = R.drawable.lug;
 			customer.setImageResource(resID);
-			if(state.isJumpscareTime()){
-				jumpscare.setImageResource(R.drawable.lugboo);
-			}
+
 		}
 		else if(state.getCustomer() instanceof BahCMysticMan){
 			int resID = R.drawable.mysticman;
 			customer.setImageResource(resID);
-			if(state.isJumpscareTime()){
-				jumpscare.setImageResource(R.drawable.mystery_manboo_);
-			}
+
 		}
 		else if(state.getCustomer() instanceof BahCNux){
 			if(state.getCaughtCount() < 1){
@@ -388,9 +416,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			}else {
 				customer.setImageResource(R.drawable.happynux);
 			}
-			if(state.isJumpscareTime()){
-				jumpscare.setImageResource(R.drawable.nuxboo);
-			}
+
 		}
 		else{
 			int resID = R.drawable.purple_delete_button;
