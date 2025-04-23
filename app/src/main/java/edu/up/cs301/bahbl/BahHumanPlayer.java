@@ -78,7 +78,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	private ImageButton		negg				= null;
 	private ImageButton		nworm				= null;
 	private ImageView		pokeballl			= null; //extra l because there's 2 pokeballs lol
-	private ImageView       jumpscare           = null;
+	private ImageButton       jumpscare           = null;
 
 
 	// the most recent game state, as given to us by the CounterLocalGame
@@ -128,15 +128,16 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			MediaPlayer sound = MediaPlayer.create(myActivity.getApplicationContext(), R.raw.jumpscare);
 			//Jumpscare stuffs
 			if(state.isJumpscareTime()){
+
 				jumpscareLayout();
-				setUpJumpscareImages();
 				sound.start();
+
 				try{
-					Thread.sleep(200);
+					Thread.sleep(20);
 				}  catch (InterruptedException e) {
                     //nothing
                 }
-				state.setJumpscareTime(false);
+
             }
 
 			//IF IT's THE ENDING
@@ -231,6 +232,8 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		}else if (isPokemon(button)) {
 			game.sendAction((new BahActionBattle(this, button)));
 
+		} else if (button.getId() == R.id.jumpscare){
+			game.sendAction(new BahJumpscareButton(this));
 		}
 	}// onClick
 
@@ -712,18 +715,11 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 		jumpscare = myActivity.findViewById(R.id.jumpscare);
 
+		jumpscare.setOnClickListener(this);
+
 		//sets which customer you get jumpscared by
-		if(state.getCustomer() instanceof BahCGhost){
-			jumpscare.setImageResource(R.drawable.ghostboo);
-		} else if (state.getCustomer() instanceof BahCPokeangel) {
-			jumpscare.setImageResource(R.drawable.pokeangelboo);
-		}else if (state.getCustomer() instanceof BahCLug) {
-			jumpscare.setImageResource(R.drawable.lugboo);
-		}else if (state.getCustomer() instanceof BahCMysticMan) {
-			jumpscare.setImageResource(R.drawable.mystery_manboo_);
-		}else if (state.getCustomer() instanceof BahCNux) {
-			jumpscare.setImageResource(R.drawable.nuxboo);
-		}
+		setUpJumpscareImages();
+
 	}
 
 }// class BahHumanPlayer

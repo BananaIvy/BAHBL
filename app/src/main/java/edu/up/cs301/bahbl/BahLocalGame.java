@@ -2,7 +2,6 @@ package edu.up.cs301.bahbl;
 
 
 
-import android.media.MediaPlayer;
 import android.util.Log;
 
 import java.util.Random;
@@ -125,6 +124,11 @@ public class BahLocalGame extends LocalGame {
             return actpokeBattle((BahActionBattle) action);
         }
 
+        //For the jumpscare button
+        else if (action instanceof BahJumpscareButton){
+            return actJumpscare();
+        }
+
 
         gameState.setDialogueIndex(0);
         return false;
@@ -201,7 +205,10 @@ public class BahLocalGame extends LocalGame {
                 //Update Booleans & reset button text
                 customer.setHasGottenAnswer(true);
                 gameState.setButtonIsVisible(false);
-                gameState.setJumpscareTime(true);
+
+                if(customer.getCustomerName() != "Ghost2") {
+                    gameState.setJumpscareTime(true);
+                }
             }
 
             //Makes it so we don't start the game with the key and only get it from the first
@@ -437,6 +444,18 @@ public class BahLocalGame extends LocalGame {
         return false; //illegal
     }//actProgressText
 
+    public boolean actJumpscare(){
+
+        if(gameState.isJumpscareTime()) {
+
+            gameState.setJumpscareTime(false);
+
+            return true;
+        }
+
+        return false;
+    }
+
     public boolean actTrivia(GameAction action){
 
         //trivia button
@@ -563,6 +582,7 @@ public class BahLocalGame extends LocalGame {
             gameState.nextEndScene(false);
         }
         else{
+            gameState.setJumpscareTime(true);
             gameState.nextEndScene(true);
         }
         return true;
