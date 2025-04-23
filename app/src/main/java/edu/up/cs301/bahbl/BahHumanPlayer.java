@@ -116,7 +116,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 		//JUMPSCARE CONDITIONS
 		if(state.getFailCount() > 15){
-			jumpscare();
+			jumpscareLayout();
 		}
 
 		//MAIN GAME-LINE
@@ -681,14 +681,23 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		}
 	}//pokeBattle
 
-	public void jumpscare(){
-
-	}
-
 	public void jumpscareLayout(){
 		myActivity.setContentView(R.layout.bahbl_jumpscare);
 
 		jumpscare = myActivity.findViewById(R.id.jumpscare);
+
+		//sets which customer you get jumpscared by
+		if(state.getCustomer() instanceof BahCGhost){
+			jumpscare.setImageResource(R.drawable.ghostboo);
+		} else if (state.getCustomer() instanceof BahCPokeangel) {
+			jumpscare.setImageResource(R.drawable.pokeangelboo);
+		}else if (state.getCustomer() instanceof BahCLug) {
+			jumpscare.setImageResource(R.drawable.lugboo);
+		}else if (state.getCustomer() instanceof BahCMysticMan) {
+			jumpscare.setImageResource(R.drawable.mystery_manboo_);
+		}else if (state.getCustomer() instanceof BahCNux) {
+			jumpscare.setImageResource(R.drawable.nuxboo);
+		}
 	}
 
 }// class BahHumanPlayer
