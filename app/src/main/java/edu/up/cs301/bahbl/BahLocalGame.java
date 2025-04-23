@@ -632,6 +632,10 @@ public class BahLocalGame extends LocalGame {
             gameState.setGameTime(false);
             customer.addLikeability(20);
         }
+        //JUMPSCARE CONDITIONS
+        if(gameState.getFailCount() > 15){
+            gameState.isJumpscareTime();
+        }
         return true;
     }
 

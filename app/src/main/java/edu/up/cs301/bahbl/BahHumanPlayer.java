@@ -115,13 +115,8 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	 */
 	protected void updateDisplay() {
 
-		//JUMPSCARE CONDITIONS
-		if(state.getFailCount() > 15){
-			jumpscareLayout();
-		}
-
 		//MAIN GAME-LINE
-		else if(!state.isGameTime()){
+		if(!state.isGameTime()){
 
 			mainLayout();
 
@@ -156,15 +151,16 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 		//POKEMON INTERACTION
 		} else if (state.isGameTime() && state.getCustomer().getCustomerName().equals("DemonLordNux")) {
+			//Check if we should be on Nux's screen or battling a pokemon
 			boolean nextGameScreen = false;
-			for(BahPokemon poke : state.getPokemons()){
-				if(poke.isCatchable()){
+			for (BahPokemon poke : state.getPokemons()) {
+				if (poke.isCatchable()) {
 					nextGameScreen = true;
 				}
 			}
-			if(!nextGameScreen){
+			if (!nextGameScreen) {
 				nuxBattleLayout();
-			}else{
+			} else {
 				pokeBattleLayout();
 			}
 		}
