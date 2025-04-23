@@ -62,7 +62,7 @@
             android:layout_weight="1"
             android:background="#00FFFFFF"
             android:contentDescription="This is the customer!"
-            android:src="@drawable/happynux" />
+            android:src="@drawable/ghost" />
 
     </LinearLayout>
 
@@ -114,7 +114,7 @@
             android:layout_marginRight="20dp"
             android:layout_weight="10"
             android:clickable="true"
-            android:text="BATTLE ME!!!!!!!!!"
+            android:text="Hi!"
             android:textColor="#FFFFFF"
             android:textSize="30sp" />
 
