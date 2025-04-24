@@ -30,6 +30,7 @@
 
             <ImageButton
                 android:id="@+id/leftImageMemory"
+                android:contentDescription="hi"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -44,6 +45,7 @@
 
                 <TextView
                     android:id="@+id/correctTextMemory"
+                    android:contentDescription="hi"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -56,6 +58,7 @@
 
                 <TextView
                     android:id="@+id/wrongTextMemory"
+                    android:contentDescription="hi"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -68,11 +71,12 @@
             </LinearLayout>
             <ImageButton
                 android:id="@+id/rightImageMemory"
+                android:contentDescription="hi"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="#00FFFFFF"
-                android:src="@drawable/ghost___handsome_">
+                android:src="@drawable/diffghost">
             </ImageButton>
         </LinearLayout>
     </LinearLayout>
