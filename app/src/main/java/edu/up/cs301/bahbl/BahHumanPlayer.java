@@ -689,8 +689,6 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		rightImage.setOnClickListener(this);
 
 
-
-
 		if(state.getMemorySection() == 0){
 			int resId = R.drawable.ghost;
 			leftImage.setImageResource(resId);
@@ -755,25 +753,3 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	}
 
 }// class BahHumanPlayer
-
-//hi
-
-
-
-
-
-
-//welcome to the void :)
-
-
-
-
-
-
-
-//hows your day going?
-
-
-
-
-//ha.

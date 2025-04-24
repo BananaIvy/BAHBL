@@ -105,8 +105,9 @@ public class BahCGhost extends BahCustomerBase {
         addMadResponse("w h a t  d i d  y o u  d o ?");
         addMadResponse("Give me the key. Now. Let me see what you've done.");
 
-        //lore responses
-        addLoreDialogue("This string shouldn't be called upon");
+        //lore dialogue
+        addLoreDialogue("I'm proud of the work you did today...");
+        addLoreDialogue("Say, would you like to get coffee now that your shift is over?");
 
         //farewell responses
         addFarewellDialogue("Fix the code so this doesn't get reached");

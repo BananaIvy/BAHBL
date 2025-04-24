@@ -49,7 +49,7 @@ public class BahLocalGame extends LocalGame {
     @Override
     protected String checkIfGameOver() {
         if(gameState.getStoryProgress() >= 8){
-            if(gameState.getTotalLikeability()>=70) {
+            if(gameState.getTotalLikeability()>=500) {
                 loreEnding();
             }
             else if(gameState.getMoneyCount() >= 280){
@@ -253,9 +253,11 @@ public class BahLocalGame extends LocalGame {
                     gameState.setHasKey(false);
                     customer.addMoney(10);
 
-                    //This only checks the end of the game to ensure the lore dialogue for the ghost isn't called.
+                    //This only checks the end of the game to call the lore dialogue for the ghost's lore ending
                     if(customer.getCustomerName().equals("Ghost2")){
-                        gameState.progressStory();
+                        customer.setPlayersTurn(false);
+                        gameState.setDialogueIndex(0);
+                        gameState.setCustomerDialogueType(4);
                         return true;
                     }
                     else {
@@ -386,14 +388,15 @@ public class BahLocalGame extends LocalGame {
 
             //Lore
             else if(gameState.getCustomerDialogueType() == 4){
-                if(!customer.getCustomerName().equals("Ghost2")) {
 
-                    if (gameState.getDialogueIndex() + 1 < gameState.getCustomer().getLoreLength()) {
-                        gameState.nextDialogue();
-                    }
-                    else { //End of Customers speech
-                        customer.setPlayersTurn(true);
-                    }
+                if (gameState.getDialogueIndex() + 1 < gameState.getCustomer().getLoreLength()) {
+                    gameState.nextDialogue();
+                }
+                else if(customer.getCustomerName().equals("Ghost2")){
+                    gameState.progressStory();
+                }
+                else {
+                    customer.setPlayersTurn(true);
                 }
             }
 
@@ -419,6 +422,7 @@ public class BahLocalGame extends LocalGame {
                     }
                 }
             }//bai!
+
             else if(gameState.getCustomerDialogueType() == 6) {
                 //if there's more text to scroll through
                 if(gameState.getDialogueIndex() + 1 < gameState.getCustomer().getGameReturnLength()){
