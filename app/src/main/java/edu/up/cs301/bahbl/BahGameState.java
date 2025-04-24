@@ -7,13 +7,13 @@ import edu.up.cs301.GameFramework.infoMessage.GameState;
 /**
  * This contains the state for the Counter game. This class contains all the variables
  * that keep track of the progress of the game. For example the array of customers,
- * the story progress, dialogue indexs, etc.
+ * the story progress, dialogue indexes, etc.
  *
  * @author Savannah I. Macdonald
  * @author Laura A. Patla
  * @author Madilynn Greenup
  * @author Alex Baker
- * @version Feb 2025
+ * @version April 2025
  */
 public class BahGameState extends GameState {
 
@@ -62,11 +62,13 @@ public class BahGameState extends GameState {
 	private boolean triviaButtonClicked;
 	//To update the trivia questions
 	private int triviaSection;
-	private int memorySection; //todo: what is this variable for?
+	private int memorySection;
 
 	//for memory minigame
-	private int goodMemory; //todo: initialize these in the constructors & use them in localGame
-	private int badMemory;
+	private String[] memoryQuestions = {"It's important to pay attention to details in hell. \n Which of these is the correct image of your manager?",
+	"Which one is the correct image of Pokeangel?", "What is the correct image of Lug?"};
+	private int[] goodMemory = {1, 2, 1};
+	private int[] badMemory = {2, 1, 2};
 
 	//Pokemon minigame
 	private BahPokemon[] pokemons;
@@ -99,12 +101,12 @@ public class BahGameState extends GameState {
 		triviaButtonClicked = false;
 		triviaSection = 0;
 		gameTime = false;
-		memoryTime = false;
 		questionsAnwsered = 0;
 		caughtCount = 0;
 		failCount = 0;
 		memorySection = 0;
 		jumpscareTime = false;
+		memoryTime = false;
 		this.pokemons = new BahPokemon[]
 				{new BahPokemon("bell"),new BahPokemon("ghast"),new BahPokemon("pikachu"),new BahPokemon("egg"),new BahPokemon("worm"),new BahPokemon("geode"),new BahPokemon("diglett"),new BahPokemon("ditto")};
 	}
@@ -179,6 +181,11 @@ public class BahGameState extends GameState {
 
 	//Getter Methods
 
+	public int getGoodMemory(int i){return goodMemory[i];}
+	public int getBadMemory(int i) {return badMemory[i];}
+	public String getMemoryQuestions(int i){return memoryQuestions[i];}
+	public int getMemorySection(){return memorySection;}
+	public boolean isMemoryTime(){return memoryTime;}
 	public boolean isJumpscareTime() {return jumpscareTime;}
 	public String getCustomerDialogue() {
 		if(customerDialogueType == 1){
@@ -234,9 +241,9 @@ public class BahGameState extends GameState {
 
 	//Setter Methods
 
-
+	public void setMemoryTime(boolean memoryTime){this.memoryTime = memoryTime;}
+	public void setMemorySection(int memorySection) {this.memorySection = memorySection;}
 	public void setJumpscareTime(boolean jumpscareTime) {this.jumpscareTime = jumpscareTime;}
-
 	//For trivia section we only increase by one each time
 	public void setQuestionsAnwsered(int questionsAnwsered){this.questionsAnwsered = questionsAnwsered;}
 	public void setTriviaSection(){this.triviaSection++;}

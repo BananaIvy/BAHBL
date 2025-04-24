@@ -1,5 +1,13 @@
 package edu.up.cs301.bahbl;
 
+/**
+ * class called when the response buttons are pressed during a customer interaction
+ * @author Savannah I. Macdonald
+ * @author Laura A. Patla
+ * @author Madilynn Greenup
+ * @version April 2025
+ */
+
 import android.view.View;
 
 import edu.up.cs301.GameFramework.actionMessage.GameAction;

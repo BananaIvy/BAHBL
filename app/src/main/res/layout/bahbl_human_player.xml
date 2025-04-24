@@ -46,7 +46,7 @@
             android:layout_marginRight="410dp"
             android:layout_weight="1"
             android:background="#00FFFFFF"
-            android:text=".0"
+            android:text="0"
             android:textAlignment="viewEnd"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             android:textColor="#7FD06E"
@@ -55,7 +55,6 @@
         <ImageButton
             android:id="@+id/customer"
             android:layout_width="500dp"
-            android:scrollY="-30dp"
             android:layout_height="match_parent"
             android:layout_gravity="top"
             android:layout_marginLeft="-330dp"
@@ -63,7 +62,9 @@
             android:layout_weight="1"
             android:background="#00FFFFFF"
             android:contentDescription="This is the customer!"
-            android:src="@drawable/lug" />
+            android:scrollY="-50dp"
+            android:src="@drawable/ghost"
+            android:visibility="visible" />
 
     </LinearLayout>
 
@@ -96,15 +97,13 @@
                 android:id="@+id/Option1"
                 android:layout_width="258dp"
                 android:layout_height="64dp"
-                android:layout_weight="1"
-                android:text="SLAP HIM" />
+                android:layout_weight="1" />
 
             <Button
                 android:id="@+id/Option2"
                 android:layout_width="259dp"
                 android:layout_height="66dp"
-                android:layout_weight="1"
-                android:text="'Scram!'" />
+                android:layout_weight="1" />
         </LinearLayout>
 
         <TextView
@@ -115,9 +114,9 @@
             android:layout_marginRight="20dp"
             android:layout_weight="10"
             android:clickable="true"
-            android:text="Hi!"
             android:textColor="#FFFFFF"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            android:visibility="visible" />
 
     </LinearLayout>
 
@@ -138,7 +137,8 @@
             android:clickable="true"
             android:contentDescription="This is the key's slot"
             android:src="@drawable/subject"
-            android:text="key" />
+            android:text="key"
+            android:visibility="invisible" />
 
         <ImageButton
             android:id="@+id/pokeball"
@@ -148,7 +148,8 @@
             android:clickable="true"
             android:contentDescription="This is the pokeballs slot"
             android:src="@drawable/pokeball"
-            android:text="pokeball" />
+            android:text="pokeball"
+            android:visibility="invisible" />
 
         <ImageButton
             android:id="@+id/infoBot"
@@ -158,7 +159,8 @@
             android:clickable="true"
             android:contentDescription="This is the infobots slot"
             android:src="@drawable/in"
-            android:text="empty" />
+            android:text="empty"
+            android:visibility="invisible" />
 
         <ImageButton
             android:id="@+id/pokedex"
@@ -168,7 +170,8 @@
             android:clickable="true"
             android:contentDescription="This is the pokedex's slot"
             android:src="@drawable/pokedex"
-            android:text="empty" />
+            android:text="empty"
+            android:visibility="invisible" />
 
         <ImageButton
             android:id="@+id/bag"
@@ -178,7 +181,8 @@
             android:clickable="true"
             android:contentDescription="This is the bags slot"
             android:src="@drawable/bag"
-            android:text="empty" />
+            android:text="empty"
+            android:visibility="invisible" />
 
         <ImageButton
             android:id="@+id/emptySlot4"

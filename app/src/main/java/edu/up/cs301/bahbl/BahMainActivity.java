@@ -11,13 +11,13 @@ import edu.up.cs301.GameFramework.LocalGame;
 import edu.up.cs301.GameFramework.gameConfiguration.*;
 
 /**
- * this is the primary activity for Counter game
+ * this is the primary activity for bahbl
  * 
  * @author Andrew Nuxoll
  * @author Steven Vegdahl
  * @author Laura Patla
  * @author Madilynn Greenup
- * @author Savannah Macdonald?
+ * @author Savannah Macdonald
  * @author Alex Baker
  * @version April 2025
  */

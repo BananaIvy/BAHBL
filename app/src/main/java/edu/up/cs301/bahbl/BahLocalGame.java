@@ -21,7 +21,7 @@ import edu.up.cs301.GameFramework.players.GamePlayer;
  * @author Laura A. Patla
  * @author Madilynn Greenup
  * @author Alex Baker
- * @version July 2013
+ * @version April 2025
  */
 public class BahLocalGame extends LocalGame {
 
@@ -359,7 +359,7 @@ public class BahLocalGame extends LocalGame {
                     getItem();
 
                     //call on the mini game to start now
-                    if(customer.getCustomerName() == "Pokeangel" || customer.getCustomerName() == "DemonLordNux"){
+                    if(customer.getCustomerName() == "Pokeangel" || customer.getCustomerName() == "DemonLordNux" || customer.getCustomerName() == "Mystic Man"){
                        gameState.setGameTime(true);
                        gameState.setCustomerDialogueType(6);
                        gameState.setDialogueIndex(0);
@@ -506,6 +506,8 @@ public class BahLocalGame extends LocalGame {
 
                 if (gameState.getQuestionsAnwsered() == 5){
 
+                    gameState.setQuestionsAnwsered(0);
+                    gameState.setCorrectAnswersCount(0);
                     gameState.setGameTime(false);
                     gameState.setCustomerDialogueType(6);
                     customer.setPlayersTurn(false);
@@ -578,14 +580,45 @@ public class BahLocalGame extends LocalGame {
         //todo for funz
     }
 
+
     private boolean actMemoryGame(BahActionMemoryButton action){
         //left button was clicked
         if(action.getWhichButton() == 1){
-            //todo: check if left button is the right answer.
+
+            if(gameState.getMemorySection() == 0 || gameState.getMemorySection() == 2){
+
+                gameState.setCorrectAnswersCount(gameState.getCorrectAnswersCount() + 1);
+                gameState.setCorrectAnswer(true);
+
+            }
+
+            gameState.setQuestionsAnwsered(gameState.getQuestionsAnwsered() + 1);
+            gameState.setMemorySection(gameState.getMemorySection() + 1);
         }
         //right button was clicked
         else {
-            //todo: check if this button was the right answer
+
+            if(gameState.getMemorySection() == 1){
+
+                gameState.setQuestionsAnwsered(gameState.getQuestionsAnwsered() + 1);
+                gameState.setCorrectAnswer(false);
+
+
+            }
+
+            gameState.setMemorySection(gameState.getMemorySection() + 1);
+        }
+
+        if(gameState.getMemorySection() == 4){
+
+
+                gameState.setQuestionsAnwsered(0);
+                gameState.setCorrectAnswersCount(0);
+                gameState.setGameTime(false);
+                gameState.setMemoryTime(false);
+                gameState.setCustomerDialogueType(6);
+                customer.setPlayersTurn(false);
+
         }
 
         return true;

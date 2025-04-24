@@ -1,5 +1,12 @@
 package edu.up.cs301.bahbl;
 
+/**
+ * called when the memory game pictures are clicked - sets current button to the one pressed
+ * @author Savannah I. Macdonald
+ * @author Madilynn Greenup
+ * @version April 2025
+ */
+
 import android.view.View;
 
 import edu.up.cs301.GameFramework.actionMessage.GameAction;
