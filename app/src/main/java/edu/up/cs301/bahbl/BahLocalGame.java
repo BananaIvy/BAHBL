@@ -77,7 +77,7 @@ public class BahLocalGame extends LocalGame {
     }
 
     /**
-     * hi
+     * Makes a move
      */
 
     protected boolean makeMove(GameAction action) {
@@ -89,47 +89,42 @@ public class BahLocalGame extends LocalGame {
         if (action instanceof BahActionRegister) {
            return actRegister();
         }
-
-        //If one of the buttons is pressed
-        else if (action instanceof BahActionButton) {
-            return actButton(action);
-        }
-
-        else if (action instanceof  BahActionTriviaButton){
-            return actTrivia(action);
-        }
-
-        //If an Item is clicked
-        else if (action instanceof BahActionItem) {
-            return actItem(action);
-        }
-
         //Customer text is clicked
         else if (action instanceof BahActionProgressText) {
             return actProgressText();
         }
-
+        //If one of the buttons is pressed
+        else if (action instanceof BahActionButton) {
+            return actButton(action);
+        }
+        //If an Item is clicked
+        else if (action instanceof BahActionItem) {
+            return actItem(action);
+        }
         //ENDING
         else if(action instanceof BahActionRun) {
             return actBadEnding();
         }
-
+        //Memory minigame
+        else if (action instanceof  BahActionMemoryButton) {
+            return actMemoryGame((BahActionMemoryButton) action);
+        }
+        //Trivia minigame
+        else if (action instanceof BahActionTriviaButton){
+            return actTrivia(action);
+        }
         //Pokeball is pressed
         else if(action instanceof BahActionCatch){
             return actPokeCatch();
         }
-
         //Pokemon is selected
         else if(action instanceof BahActionBattle){
             return actpokeBattle((BahActionBattle) action);
         }
-
         //For the jumpscare button
         else if (action instanceof BahJumpscareButton){
             return actJumpscare();
         }
-
-
         gameState.setDialogueIndex(0);
         return false;
     }//makeMove
@@ -263,10 +258,7 @@ public class BahLocalGame extends LocalGame {
                         return true;
                     }
                     else {
-                        customer.addLikeability(30);
-                        gameState.setCustomerDialogueType(4);
-                        gameState.setDialogueIndex(0);
-                        customer.setPlayersTurn(false);
+                        gives();
                     }
                 }
                 else{
@@ -277,12 +269,8 @@ public class BahLocalGame extends LocalGame {
             //INFOBOT
             else if(((BahActionItem) action).getThisItem() == 2 && gameState.isHasInfoBot()){
                 if(customer.getItem() == 2){
-
                     gameState.setHasInfoBot(false);
-                    customer.addLikeability(30);
-                    gameState.setCustomerDialogueType(4);
-                    gameState.setDialogueIndex(0);
-                    customer.setPlayersTurn(false);
+                    gives();
                 }
                 else{
                     return false;
@@ -297,10 +285,7 @@ public class BahLocalGame extends LocalGame {
 
                 if(customer.getItem() == 3){
                     gameState.setHasBag(false);
-                    customer.addLikeability(30);
-                    gameState.setCustomerDialogueType(4);
-                    gameState.setDialogueIndex(0);
-                    customer.setPlayersTurn(false);
+                    gives();
                 } else {
                     return false;
                 }
@@ -310,10 +295,7 @@ public class BahLocalGame extends LocalGame {
             else if(((BahActionItem) action).getThisItem() == 4 && gameState.isHasPokeball()){
                 if(customer.getItem() == 4){
                     gameState.setHasPokeball(false);
-                    customer.addLikeability(30);
-                    gameState.setCustomerDialogueType(4);
-                    gameState.setDialogueIndex(0);
-                    customer.setPlayersTurn(false);
+                    gives();
                 } else {
                     return false;
                 }
@@ -323,19 +305,22 @@ public class BahLocalGame extends LocalGame {
             else if(((BahActionItem) action).getThisItem() == 5 && gameState.isHasPokeDex()){
                 if(customer.getItem() == 5){
                     gameState.setHasPokeDex(false);
-                    customer.addLikeability(30);
-                    gameState.setCustomerDialogueType(4);
-                    gameState.setDialogueIndex(0);
-                    customer.setPlayersTurn(false);
+                    gives();
                 } else {
                     return false;
                 }
             }//pokedex
-            //todo: There's a lot of recurring 3 lines of code with the items that may be extractable!
-
             }
         return false; //illegal
     }//actItem
+
+    //for actItem
+    private void gives(){
+        customer.addLikeability(30);
+        gameState.setCustomerDialogueType(4);
+        gameState.setDialogueIndex(0);
+        customer.setPlayersTurn(false);
+    }
 
     /**
      * Customer Text is clicked
@@ -358,7 +343,7 @@ public class BahLocalGame extends LocalGame {
                     gameState.setBadButtonText(customer.getBadButtonText());
                     gameState.setGoodButtonText(customer.getGoodButtonText());
                 }
-            }//Hi!
+            }//Hi! //e
 
             //Happy Response
             else if(gameState.getCustomerDialogueType() == 2){
@@ -368,17 +353,15 @@ public class BahLocalGame extends LocalGame {
                     gameState.nextDialogue();
                 }
                 else { //End of Customers speech
-                    giveItem();
+                    getItem();
+
                     //call on the mini game to start now
                     if(customer.getCustomerName() == "Pokeangel" || customer.getCustomerName() == "DemonLordNux"){
-
                        gameState.setGameTime(true);
                        gameState.setCustomerDialogueType(6);
                        gameState.setDialogueIndex(0);
-
                     }
                     else{
-
                        customer.setPlayersTurn(true);
                     }
                 }
@@ -553,7 +536,7 @@ public class BahLocalGame extends LocalGame {
         return false; //Illegal
     }
 
-    private void giveItem() {
+    private void getItem() {
         if (customer.getCustomerName().equals("Ghost")) {
             gameState.setHasPokeball(true);
         } else if (customer.getCustomerName().equals("Pokeangel")) {
@@ -573,8 +556,8 @@ public class BahLocalGame extends LocalGame {
     private void goodEnding(){
         //todo if we want the ending screens interactable
         //For 'animation' switching or smth idk. Code that may come in handy later.
-        try {Thread.sleep(2000);}
-        catch(InterruptedException ie) { /*no problem*/ }
+        //try {Thread.sleep(2000);}
+        //catch(InterruptedException ie) { /*no problem*/ }
     }
 
     private boolean actBadEnding(){
@@ -589,11 +572,20 @@ public class BahLocalGame extends LocalGame {
     }
 
     private void loreEnding(){
-        //todo if we want the ending screens interactable
+        //todo for funz
     }
 
-    private void triviaScreen(){
+    private boolean actMemoryGame(BahActionMemoryButton action){
+        //left button was clicked
+        if(action.getWhichButton() == 1){
+            //todo: check if left button is the right answer.
+        }
+        //right button was clicked
+        else {
+            //todo: check if this button was the right answer
+        }
 
+        return true;
     }
 
     private boolean actpokeBattle(BahActionBattle action){
