@@ -14,8 +14,8 @@ public class BahCMysticMan extends BahCustomerBase {
         super();
         setCustomerName("Mystic Man");
         setItem(3);
-        setBadButton(1);
-        setGoodButton(2);
+        setBadButton(2);
+        setGoodButton(1);
         resetDialogue();
         setMoney(40);
         setLikeability(20);

@@ -19,8 +19,8 @@ public class BahCPokeangel extends BahCustomerBase {
 		setHasGiven(false);
 		setHasReceived(false);
 		setItem(4);
-		setBadButton(1);
-		setGoodButton(2);
+		setBadButton(2);
+		setGoodButton(1);
 		resetDialogue();
 		setMoney(55);
 		setLikeability(40);

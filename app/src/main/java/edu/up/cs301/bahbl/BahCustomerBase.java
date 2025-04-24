@@ -1,5 +1,7 @@
 package edu.up.cs301.bahbl;
 
+import java.util.Random;
+
 /**
  * this is the base that all the different customers are based on.
  * @author Savannah I. Macdonald

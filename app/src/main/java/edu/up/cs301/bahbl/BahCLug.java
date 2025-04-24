@@ -1,5 +1,7 @@
 package edu.up.cs301.bahbl;
 
+import java.util.Random;
+
 /**
  * This class creates the Customer Character "Lug"
  * implements the variables and the methods from
@@ -9,7 +11,6 @@ package edu.up.cs301.bahbl;
  * @version 02/26/2025
  */
 public class BahCLug extends BahCustomerBase {
-
 
     public BahCLug(){
         super();
