@@ -363,7 +363,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		}
 		else if(state.getCustomer() instanceof BahCLug){
 			customer.setImageResource(R.drawable.lug);
-			customer.setScrollY(0);
+			customer.setScrollY(-30);
 		}
 		else if(state.getCustomer() instanceof BahCMysticMan){
 			customer.setImageResource(R.drawable.mysticman);
