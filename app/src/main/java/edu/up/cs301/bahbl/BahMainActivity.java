@@ -80,7 +80,7 @@ public class BahMainActivity extends GameMainActivity {
 	 * create a local game
 	 * 
 	 * @return
-	 * 		the local game, a counter game
+	 * 		the local game, bahbl
 	 */
 	@Override
 	public LocalGame createLocalGame(GameState state) {
