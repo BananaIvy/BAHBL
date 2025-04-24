@@ -65,9 +65,6 @@ public class BahCNux extends BahCustomerBase {
         //After mini game
         addGameReturn("THANK YOU!");
         addGameReturn("You were always my favorite student!");
-        addGameReturn("Allow me to repay you with... uhh..");
-        addGameReturn("What do I have on me... oh!");
-        addGameReturn("I 'found' this. All yours now!");
 
         //Farewell Dialogue
         addFarewellDialogue("I must go now, as I need to be on the look out.");
