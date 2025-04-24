@@ -399,6 +399,14 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			button1.setText(state.getBadButtonText());
 		}
 
+		//Buttons shouldn't be clickable.
+		if(state.getButtonIsVisible() == false){
+			button1.setText("");
+			button1.setClickable(false);
+			button2.setText("");
+			button2.setClickable(false);
+		}
+
 		customerDialogue.setClickable(true);
 
 	}//texts
