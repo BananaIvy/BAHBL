@@ -311,6 +311,8 @@ public class BahLocalGame extends LocalGame {
                     return false;
                 }
             }//pokedex
+            gameState.setGoodButtonText("");
+            gameState.setBadButtonText("");
             }
         return false; //illegal
     }//actItem
