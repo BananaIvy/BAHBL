@@ -16,7 +16,7 @@ import edu.up.cs301.GameFramework.infoMessage.GameState;
  * @version April 2025
  */
 public class BahGameState extends GameState {
-
+//tee hee
 	private final Timer time = new Timer(true);
 	public long endSceneStartTime = -1;
 	private final BahCustomerBase manager = new BahCGhost();
