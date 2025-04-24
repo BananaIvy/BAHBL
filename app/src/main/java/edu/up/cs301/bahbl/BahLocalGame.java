@@ -160,6 +160,8 @@ public class BahLocalGame extends LocalGame {
             customer.setPlayersTurn(false);
             gameState.setButtonIsVisible(false);
 
+            gameState.setGoodButtonText("");
+            gameState.setBadButtonText("");
             return true; //legal
         }
         return false; //illegal
