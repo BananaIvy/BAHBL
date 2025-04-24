@@ -667,6 +667,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	public void memoryGameLayout() {
 		myActivity.setContentView(R.layout.bahbl_memory_test_game);
 
+		memoryQuestion = myActivity.findViewById(R.id.memoryQuestion);
 		leftImage = myActivity.findViewById(R.id.leftImageMemory);
 		rightImage = myActivity.findViewById(R.id.rightImageMemory);
 		correctMemory = myActivity.findViewById(R.id.correctTextMemory);
@@ -675,15 +676,20 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		leftImage.setOnClickListener(this);
 		rightImage.setOnClickListener(this);
 
+		if(state.getMemorySection() < 3) {
+			memoryQuestion.setText("" + state.getMemoryQuestions(state.getMemorySection()));
+		}
+
+
 		if(state.getMemorySection() == 0){
 			int resId = R.drawable.ghost;
 			leftImage.setImageResource(resId);
 			resId = R.drawable.diffghost;
 			rightImage.setImageResource(resId);
 		}else if (state.getMemorySection() == 1){
-			int resId = R.drawable.pokeangel;
+			int resId = R.drawable.diffpokeangel;
 			leftImage.setImageResource(resId);
-			resId = R.drawable.diffpokeangel;
+			resId = R.drawable.pokeangel;
 			rightImage.setImageResource(resId);
 		} else{
 			int resId = R.drawable.lug;
@@ -692,10 +698,15 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			rightImage.setImageResource(resId);
 		}
 
-		if(state.isCorrectAnswer()){
+        if(state.getMemorySection() == 0){
+			wrongMemory.setVisibility(View.INVISIBLE);
+			correctMemory.setVisibility(View.INVISIBLE);
+		}
+		else if(state.isCorrectAnswer()){
 			wrongMemory.setVisibility(View.INVISIBLE);
 			correctMemory.setVisibility(View.VISIBLE);
-		} else if (!state.isCorrectAnswer()){
+		}
+		else if (!state.isCorrectAnswer()){
 			correctMemory.setVisibility(View.INVISIBLE);
 			wrongMemory.setVisibility(View.VISIBLE);
 		}
