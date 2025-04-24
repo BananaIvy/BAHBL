@@ -43,7 +43,6 @@ public class BahCNux extends BahCustomerBase {
         //Good Response
         addHappyResponse("EXCELLENT!");
         addHappyResponse("Be sure to stay vigilant. We cannot let them overrun this store.");
-        addHappyResponse("For your troubles I have something for you...");
         addHappyResponse("-YEOWWCH!!!");
         addHappyResponse("IT BIT MY EAR!!!!");
 
