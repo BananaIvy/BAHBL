@@ -646,7 +646,7 @@ public class BahLocalGame extends LocalGame {
         //Find which pokemon wasishasbeing captured
         for(BahPokemon poke : gameState.getPokemons()){
             if(poke.isCatchable()){
-                poke.capture(random.nextInt() > 0.30); //A 70% chance to catch the pokemon
+                poke.capture(random.nextInt() > 0.40); //A 70% chance to catch the pokemon
                 gameState.addFailCount(poke.getFailCount());
             }
         }
