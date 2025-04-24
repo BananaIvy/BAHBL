@@ -174,6 +174,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 		//MYSTERY MAN MINIGAME
 		else if(state.getCustomer() instanceof BahCMysticMan){
+			state.setCorrectAnswersCount(0);
 			memoryGameLayout();
 		}//mysticmangame
 
@@ -668,6 +669,31 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 		leftImage.setOnClickListener(this);
 		rightImage.setOnClickListener(this);
+
+		if(state.getMemorySection() == 1){
+			int resId = R.drawable.ghost;
+			leftImage.setImageResource(resId);
+			resId = R.drawable.diffghost;
+			rightImage.setImageResource(resId);
+		}else if (state.getMemorySection() == 2){
+			int resId = R.drawable.pokeangel;
+			leftImage.setImageResource(resId);
+			resId = R.drawable.diffpokeangel;
+			rightImage.setImageResource(resId);
+		} else{
+			int resId = R.drawable.lug;
+			leftImage.setImageResource(resId);
+			resId = R.drawable.difflug;
+			rightImage.setImageResource(resId);
+		}
+
+		if(state.isCorrectAnswer()){
+			wrongMemory.setVisibility(View.INVISIBLE);
+			correctMemory.setVisibility(View.VISIBLE);
+		} else if (!state.isCorrectAnswer()){
+			correctMemory.setVisibility(View.INVISIBLE);
+			wrongMemory.setVisibility(View.VISIBLE);
+		}
 
 		//todo add code here that makes either the correct or the wrong button show up depending on if you choose the right image
 	}

@@ -575,14 +575,31 @@ public class BahLocalGame extends LocalGame {
         //todo for funz
     }
 
+
     private boolean actMemoryGame(BahActionMemoryButton action){
         //left button was clicked
         if(action.getWhichButton() == 1){
             //todo: check if left button is the right answer.
+            if(gameState.getMemorySection() == 1 || gameState.getMemorySection() == 3){
+
+                gameState.setCorrectAnswer(true);
+
+            }
+
+
+            gameState.setMemorySection(gameState.getMemorySection() + 1);
         }
         //right button was clicked
         else {
             //todo: check if this button was the right answer
+            if(gameState.getMemorySection() == 2){
+
+                gameState.setCorrectAnswer(false);
+
+
+            }
+
+            gameState.setMemorySection(gameState.getMemorySection() + 1);
         }
 
         return true;
