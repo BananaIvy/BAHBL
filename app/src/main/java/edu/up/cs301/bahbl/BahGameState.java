@@ -7,7 +7,7 @@ import edu.up.cs301.GameFramework.infoMessage.GameState;
 /**
  * This contains the state for the Counter game. This class contains all the variables
  * that keep track of the progress of the game. For example the array of customers,
- * the story progress, dialogue indexs, etc.
+ * the story progress, dialogue indexes, etc.
  *
  * @author Savannah I. Macdonald
  * @author Laura A. Patla
@@ -66,7 +66,7 @@ public class BahGameState extends GameState {
 
 	//for memory minigame
 	private String[] memoryQuestions = {"It's important to pay attention to details in hell. \n Which of these is the correct image of your manager?",
-	"Which one is the correct image of Pokeangel?", "What is the correct image of lug?"};
+	"Which one is the correct image of Pokeangel?", "What is the correct image of Lug?"};
 	private int[] goodMemory = {1, 2, 1};
 	private int[] badMemory = {2, 1, 2};
 
