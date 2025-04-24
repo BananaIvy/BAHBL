@@ -81,6 +81,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	private TextView		escaped				= null;
 
 	//images and textviews for memory game
+	private TextView memoryQuestion            = null;
 	private ImageView leftImage					= null;
 	private ImageView rightImage				= null;
 	private TextView correctMemory 				= null;
@@ -176,6 +177,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		else if(state.getCustomer() instanceof BahCMysticMan){
 
 			memoryGameLayout();
+
 		}//mysticmangame
 
 		//NUX MINIGAME
@@ -235,6 +237,9 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		}
 		else if (button.getId() == R.id.jumpscare){
 			game.sendAction(new BahJumpscareButton(this));
+		}
+		else if(button.getId() == R.id.leftImageMemory|| button.getId() == R.id.rightImageMemory){
+			game.sendAction(new BahActionMemoryButton(this, button));
 		}
 	}// onClick
 
@@ -670,12 +675,12 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		leftImage.setOnClickListener(this);
 		rightImage.setOnClickListener(this);
 
-		if(state.getMemorySection() == 1){
+		if(state.getMemorySection() == 0){
 			int resId = R.drawable.ghost;
 			leftImage.setImageResource(resId);
 			resId = R.drawable.diffghost;
 			rightImage.setImageResource(resId);
-		}else if (state.getMemorySection() == 2){
+		}else if (state.getMemorySection() == 1){
 			int resId = R.drawable.pokeangel;
 			leftImage.setImageResource(resId);
 			resId = R.drawable.diffpokeangel;

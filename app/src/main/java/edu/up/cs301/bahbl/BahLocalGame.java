@@ -585,7 +585,7 @@ public class BahLocalGame extends LocalGame {
         //left button was clicked
         if(action.getWhichButton() == 1){
 
-            if(gameState.getMemorySection() == 1 || gameState.getMemorySection() == 3){
+            if(gameState.getMemorySection() == 0 || gameState.getMemorySection() == 2){
 
                 gameState.setCorrectAnswersCount(gameState.getCorrectAnswersCount() + 1);
                 gameState.setCorrectAnswer(true);
@@ -598,7 +598,7 @@ public class BahLocalGame extends LocalGame {
         //right button was clicked
         else {
 
-            if(gameState.getMemorySection() == 2){
+            if(gameState.getMemorySection() == 1){
 
                 gameState.setQuestionsAnwsered(gameState.getQuestionsAnwsered() + 1);
                 gameState.setCorrectAnswer(false);
