@@ -1,5 +1,13 @@
 package edu.up.cs301.bahbl;
 
+/**
+ * called when an item is handed to the customer, sets the current item to the one clicked
+ * @author Savannah I. Macdonald
+ * @author Laura A. Patla
+ * @author Madilynn Greenup
+ * @version April 2025
+ */
+
 import android.view.View;
 import android.widget.ImageButton;
 import edu.up.cs301.GameFramework.actionMessage.GameAction;

@@ -6,7 +6,7 @@ package edu.up.cs301.bahbl;
  * the CustomerBase class
  * <p>
  * @author Laura Patla & Savannah M
- * @version 2/26/25
+ * @version April 2025
  */
 public class BahCGhost extends BahCustomerBase {
 

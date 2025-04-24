@@ -1,5 +1,13 @@
 package edu.up.cs301.bahbl;
 
+/**
+ * this is Nux's customer setup
+ * @author Savannah I. Macdonald
+ * @author Laura A. Patla
+ * @author Madilynn Greenup
+ * @author Alex Baker
+ * @version April 2025
+ */
 public class BahCNux extends BahCustomerBase {
 
 

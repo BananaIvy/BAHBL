@@ -1,5 +1,11 @@
 package edu.up.cs301.bahbl;
 
+/**
+ * setup for the *not a pokemon battle* mini game; holds the variables to determine if the pokemon are captured and whatnot
+ * @author Savannah I. Macdonald
+ * @version April 2025
+ */
+
 public class BahPokemon {
     private String name;
     private boolean isOnNux;
