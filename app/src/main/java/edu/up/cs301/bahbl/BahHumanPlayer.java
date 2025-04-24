@@ -174,7 +174,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 		//MYSTIC MAN MINIGAME
 		else if(state.getCustomer() instanceof BahCMysticMan){
-			state.setCorrectAnswersCount(0);
+
 			memoryGameLayout();
 		}//mysticmangame
 

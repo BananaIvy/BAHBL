@@ -241,7 +241,7 @@ public class BahGameState extends GameState {
 
 	//Setter Methods
 
-
+	public void setMemoryTime(boolean memoryTime){this.memoryTime = memoryTime;}
 	public void setMemorySection(int memorySection) {this.memorySection = memorySection;}
 	public void setJumpscareTime(boolean jumpscareTime) {this.jumpscareTime = jumpscareTime;}
 	//For trivia section we only increase by one each time
