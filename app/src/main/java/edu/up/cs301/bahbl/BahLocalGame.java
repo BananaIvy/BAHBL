@@ -254,7 +254,7 @@ public class BahLocalGame extends LocalGame {
                     customer.addMoney(10);
 
                     //This only checks the end of the game to call the lore dialogue for the ghost's lore ending
-                    if(customer.getCustomerName().equals("Ghost2")){
+                    if(customer.getCustomerName().equals("Ghost2") && gameState.getTotalLikeability() >= 500){
                         customer.setPlayersTurn(false);
                         gameState.setDialogueIndex(0);
                         gameState.setCustomerDialogueType(4);
