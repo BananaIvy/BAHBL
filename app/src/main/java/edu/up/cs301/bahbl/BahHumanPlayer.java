@@ -154,7 +154,8 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			}
 
 		//POKEMON INTERACTION
-		} else if (state.isGameTime() && state.getCustomer().getCustomerName().equals("DemonLordNux")) {
+		}
+		if (state.isGameTime() && state.getCustomer().getCustomerName().equals("DemonLordNux")) {
 			//Check if we should be on Nux's screen or battling a pokemon
 			boolean nextGameScreen = false;
 			for (BahPokemon poke : state.getPokemons()) {
