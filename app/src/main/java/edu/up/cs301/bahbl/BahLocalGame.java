@@ -603,7 +603,7 @@ public class BahLocalGame extends LocalGame {
             if(gameState.getMemorySection() == 1){
 
                 gameState.setQuestionsAnwsered(gameState.getQuestionsAnwsered() + 1);
-                gameState.setCorrectAnswer(false);
+                gameState.setCorrectAnswer(true);
 
 
             }

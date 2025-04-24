@@ -60,7 +60,7 @@ public class BahCLug extends BahCustomerBase {
         addLoreDialogue("But with this infobot, I have all the information necessary to finish my expedition!");
 
         //Game return
-        addGameReturn("Welcome Back.");
+        addGameReturn("I appreciate your participation in that activity.");
 
         //farewell response
         addFarewellDialogue("If I was coded with feelings and emotions,");
