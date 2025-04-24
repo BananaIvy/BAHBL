@@ -321,6 +321,8 @@ public class BahLocalGame extends LocalGame {
         gameState.setCustomerDialogueType(4);
         gameState.setDialogueIndex(0);
         customer.setPlayersTurn(false);
+        gameState.setButtonIsVisible(false);
+
     }
 
     /**
