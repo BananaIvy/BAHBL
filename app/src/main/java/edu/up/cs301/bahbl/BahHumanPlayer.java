@@ -30,8 +30,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 	/* instance variables */
 
-	// Initializes all the widgets
-	//private TextView 		testResultsTextView	= null;
+	// Initializes all the widgets to null
 	private TextView 		customerDialogue 	= null;
 	private TextView 		registerMoney 		= null;
 	private	Button 			button1 			= null;
@@ -80,6 +79,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	private ImageView		pokeballl			= null; //extra l because there's 2 pokeballs lol
 	private ImageView       jumpscare           = null;
 	private TextView		escaped				= null;
+
 	//images and textviews for memory game
 	private ImageView leftImage					= null;
 	private ImageView rightImage				= null;
@@ -119,19 +119,16 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 	 */
 	protected void updateDisplay() {
 
-		//MAIN GAME-LINE
+		//MAIN STORY-LAYOUTS SETUP (not minigames)
 		if(!state.isGameTime()){
 
 			mainLayout();
 
-			//for jumpscare
+			//Jumpscare stuff:
 			MediaPlayer sound = MediaPlayer.create(myActivity.getApplicationContext(), R.raw.jumpscare);
-			//Jumpscare stuffs
 			if(state.isJumpscareTime()){
-
 				jumpscareLayout();
 				sound.start();
-
 				try{
 					Thread.sleep(20);
 				}  catch (InterruptedException e) {
@@ -152,25 +149,9 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 					badLayout();
 				}
 			}
+		}//main game
 
-		//POKEMON INTERACTION
-		}
-		if (state.isGameTime() && state.getCustomer().getCustomerName().equals("DemonLordNux")) {
-			//Check if we should be on Nux's screen or battling a pokemon
-			boolean nextGameScreen = false;
-			for (BahPokemon poke : state.getPokemons()) {
-				if (poke.isCatchable()) {
-					nextGameScreen = true;
-				}
-			}
-			if (!nextGameScreen) {
-				nuxBattleLayout();
-			} else {
-				pokeBattleLayout();
-			}
-		}
-
-		// for the trivia screen
+		//POKEANGEL MINIGAME
 		else if((state.isGameTime()) && (state.getCustomer()).getCustomerName().equals("Pokeangel")){
 
 			if(!state.isTriviaButtonClicked()) {
@@ -184,15 +165,33 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 			}
 			else if ((state.isCorrectAnswer() == true) && (state.isTriviaButtonClicked() == true)){
-
 				triviaRightLayout();
 			}
 			else if ((state.isCorrectAnswer() == false) && state.isTriviaButtonClicked() == true) {
-
 				triviaWrongLayout();
 			}
+		}//pokeangel minigame
 
-		}//end of trivia code
+		//MYSTERY MAN MINIGAME
+		else if(state.getCustomer() instanceof BahCMysticMan){
+			memoryGameLayout();
+		}//mysticmangame
+
+		//NUX MINIGAME
+		else if (state.isGameTime() && state.getCustomer().getCustomerName().equals("DemonLordNux")) {
+			//Check if we should be on Nux's screen or battling a pokemon
+			boolean nextGameScreen = false;
+			for (BahPokemon poke : state.getPokemons()) {
+				if (poke.isCatchable()) {
+					nextGameScreen = true;
+				}
+			}
+			if (!nextGameScreen) {
+				nuxBattleLayout();
+			} else {
+				pokeBattleLayout();
+			}
+		}//nux minigame
 
 	}//update display
 
@@ -291,21 +290,39 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		// remember the activity
 		this.myActivity = activity;
 
-		// Load the layout resource for our GUI
+		// DO NOT DELETE: chooses the starting display, if deleted, game crashes
 		activity.setContentView(R.layout.bahbl_human_player);
 
+		// if we have a game state, "simulate" that we have just received
+		// the state from the game so that the GUI values are updated
+		if (state != null) {
+			receiveInfo(state);
+		}
+
+	}
+
+	/**
+	 * mainlayout method - Used in updateDisplay() to initialize the main game xml:
+	 * Initializes relevant Views
+	 * Does all the set onClickListeners
+	 */
+	public void mainLayout(){
+
+		// Load the layout resource for our GUI
+		myActivity.setContentView(R.layout.bahbl_human_player);
+
 		//Initialize the widget reference member variables
-		this.customerDialogue = (TextView) activity.findViewById(R.id.customerDialogue);
-		this.button1 = (Button) activity.findViewById(R.id.Option1);
-		this.button2 = (Button) activity.findViewById(R.id.Option2);
-		this.register = (android.widget.ImageButton) activity.findViewById((R.id.register_keyboard));
-		this.infoBot = (android.widget.ImageButton) activity.findViewById(R.id.infoBot);
-		this.bag = (android.widget.ImageButton) activity.findViewById(R.id.bag);
-		this.pokeball = (android.widget.ImageButton) activity.findViewById((R.id.pokeball));
-		this.pokeDex = (android.widget.ImageButton) activity.findViewById((R.id.pokedex));
-		this.key = (android.widget.ImageButton) activity.findViewById((R.id.key));
-		this.registerMoney = (TextView) activity.findViewById((R.id.total_monitor));
-		this.customer = (ImageButton) activity.findViewById(R.id.customer);
+		this.customerDialogue = (TextView) myActivity.findViewById(R.id.customerDialogue);
+		this.button1 = (Button) myActivity.findViewById(R.id.Option1);
+		this.button2 = (Button) myActivity.findViewById(R.id.Option2);
+		this.register = (android.widget.ImageButton) myActivity.findViewById((R.id.register_keyboard));
+		this.infoBot = (android.widget.ImageButton) myActivity.findViewById(R.id.infoBot);
+		this.bag = (android.widget.ImageButton) myActivity.findViewById(R.id.bag);
+		this.pokeball = (android.widget.ImageButton) myActivity.findViewById((R.id.pokeball));
+		this.pokeDex = (android.widget.ImageButton) myActivity.findViewById((R.id.pokedex));
+		this.key = (android.widget.ImageButton) myActivity.findViewById((R.id.key));
+		this.registerMoney = (TextView) myActivity.findViewById((R.id.total_monitor));
+		this.customer = (ImageButton) myActivity.findViewById(R.id.customer);
 
 		// make this object listen for widget clicks
 		customerDialogue.setOnClickListener(this);
@@ -320,99 +337,31 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		key.setOnClickListener(this);
 		customer.setOnClickListener(this);
 
-
-		// if we have a game state, "simulate" that we have just received
-		// the state from the game so that the GUI values are updated
-		if (state != null) {
-			receiveInfo(state);
-		}
+		setUpCustomer();
+		setUpTexts();
+		setUpItems();
 	}
 
-	public void setUpTexts(){
-		// Customer text/Dialogue
-		String tempText = state.getCustomerDialogue();
-		customerDialogue.setText(tempText);
-
-		// Register Text
-		tempText = Integer.toString(state.getMoneyCount());
-		registerMoney.setText(tempText);
-
-		//Button Texts
-		if (state.getCustomer().getGoodButton() == 1) {
-			tempText = state.getGoodButtonText();
-			button1.setText(tempText);
-
-			tempText = state.getBadButtonText();
-			button2.setText(tempText);
-		}
-		else{
-			tempText = state.getGoodButtonText();
-			button2.setText(tempText);
-
-			tempText = state.getBadButtonText();
-			button1.setText(tempText);
-		}
-
-		customerDialogue.setClickable(true);
-
-	}//texts
-
-	public void setUpJumpscareImages(){
-		//Changes the customer to the gamestates one
-		if(state.getCustomer() instanceof BahCGhost) {
-
-				int jID = R.drawable.ghostboo;
-				jumpscare.setImageResource(jID);
-
-		}
-		else if(state.getCustomer() instanceof BahCPokeangel){
-
-				int jID = R.drawable.pokeangelboo;
-				jumpscare.setImageResource(jID);
-
-		}
-		else if(state.getCustomer() instanceof BahCLug){
-
-				int jID = R.drawable.lugboo;
-				jumpscare.setImageResource(jID);
-
-		}
-		else if(state.getCustomer() instanceof BahCMysticMan){
-
-				int jID = R.drawable.mystery_manboo_;
-				jumpscare.setImageResource(jID);
-		}
-		else if(state.getCustomer() instanceof BahCNux){
-				int jID = R.drawable.nuxboo;
-				jumpscare.setImageResource(jID);
-		}
-		else{
-			int resID = R.drawable.purple_delete_button;
-			customer.setImageResource(resID);
-		}
-	}
-
+	/**
+		Figures out what customer we are talking to & sets the resource
+	 */
 	public void setUpCustomer(){
 		//Changes the customer to the gamestates one
 		if(state.getCustomer() instanceof BahCGhost) {
-			int resID = R.drawable.ghost;
-			customer.setImageResource(resID);
-
+			customer.setImageResource(R.drawable.ghost);
+			customer.setScrollY(-50);
 		}
 		else if(state.getCustomer() instanceof BahCPokeangel){
-			int resID = R.drawable.pokeangel;
-			customer.setImageResource(resID);
-
+			customer.setImageResource(R.drawable.pokeangel);
+			customer.setScrollY(0);
 		}
 		else if(state.getCustomer() instanceof BahCLug){
-			int resID = R.drawable.lug;
-			customer.setImageResource(resID);
-
+			customer.setImageResource(R.drawable.lug);
+			customer.setScrollY(0);
 		}
 		else if(state.getCustomer() instanceof BahCMysticMan){
-			int resID = R.drawable.mysticman;
-			customer.setImageResource(resID);
-
+			customer.setImageResource(R.drawable.mysticman);
+			customer.setScrollY(0);
 		}
 		else if(state.getCustomer() instanceof BahCNux){
 			if(state.getCaughtCount() < 1){
@@ -420,14 +369,37 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			}else {
 				customer.setImageResource(R.drawable.happynux);
 			}
-
-		}
-		else{
-			int resID = R.drawable.purple_delete_button;
-			customer.setImageResource(resID);
+			customer.setScrollY(0);
 		}
 	}//customers
 
+	/**
+	 * Sets up Customer Dialogue, Button Dialogues, & Register Dialogues
+	 */
+	public void setUpTexts(){
+		// Customer text/Dialogue
+		customerDialogue.setText(state.getCustomerDialogue());
+
+		// Register Text
+		registerMoney.setText(Integer.toString(state.getMoneyCount()));
+
+		//Button Texts
+		if (state.getCustomer().getGoodButton() == 1) {
+			button1.setText(state.getGoodButtonText());
+			button2.setText(state.getBadButtonText());
+		}
+		else{
+			button2.setText(state.getGoodButtonText());
+			button1.setText(state.getBadButtonText());
+		}
+
+		customerDialogue.setClickable(true);
+
+	}//texts
+
+	/**
+	 * Each item will be set up to be clickable & visible or invisible & not clickable.
+	 */
 	public void setUpItems(){
 		//Items
 		if(state.isHasKey()){
@@ -472,42 +444,6 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		}
 	}//items
 
-	public void mainLayout(){
-
-		// Load the layout resource for our GUI
-		myActivity.setContentView(R.layout.bahbl_human_player);
-
-		//Initialize the widget reference member variables
-		this.customerDialogue = (TextView) myActivity.findViewById(R.id.customerDialogue);
-		this.button1 = (Button) myActivity.findViewById(R.id.Option1);
-		this.button2 = (Button) myActivity.findViewById(R.id.Option2);
-		this.register = (android.widget.ImageButton) myActivity.findViewById((R.id.register_keyboard));
-		this.infoBot = (android.widget.ImageButton) myActivity.findViewById(R.id.infoBot);
-		this.bag = (android.widget.ImageButton) myActivity.findViewById(R.id.bag);
-		this.pokeball = (android.widget.ImageButton) myActivity.findViewById((R.id.pokeball));
-		this.pokeDex = (android.widget.ImageButton) myActivity.findViewById((R.id.pokedex));
-		this.key = (android.widget.ImageButton) myActivity.findViewById((R.id.key));
-		this.registerMoney = (TextView) myActivity.findViewById((R.id.total_monitor));
-		this.customer = (ImageButton) myActivity.findViewById(R.id.customer);
-
-		// make this object listen for widget clicks
-		customerDialogue.setOnClickListener(this);
-		button1.setOnClickListener(this);
-		button2.setOnClickListener(this);
-		registerMoney.setOnClickListener(this);
-		register.setOnClickListener(this);
-		infoBot.setOnClickListener(this);
-		bag.setOnClickListener(this);
-		pokeball.setOnClickListener(this);
-		pokeDex.setOnClickListener(this);
-		key.setOnClickListener(this);
-		customer.setOnClickListener(this);
-
-		setUpCustomer();
-		setUpTexts();
-		setUpItems();
-	}
-
 	public void badLayout(){
 		//Initialize the xml View
 		myActivity.setContentView(R.layout.bahbl_bad_ending);
@@ -535,7 +471,6 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			int resId = R.drawable.fourth;
 			background.setImageResource(resId);
 		} else {
-
 			//End screen!
 			int resId = R.drawable.death;
 			background.setImageResource(resId);
@@ -592,6 +527,9 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		triviaRightButton.setOnClickListener(this);
 	}
 
+	/**
+	 * This is for Nux's minigame.
+	 */
 	public void nuxBattleLayout(){
 		myActivity.setContentView(R.layout.bahbl_pokemon);
 
@@ -670,6 +608,9 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		}//pokemon
 	}//nuxLayout
 
+	/**
+	 * This is for Nux's minigame: specifically after you've clicked a pokemon
+	 */
 	public void pokeBattleLayout(){
 		myActivity.setContentView(R.layout.bahbl_pokemon_fight);
 
@@ -716,6 +657,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		}//pokemon
 	}//pokeBattle
 
+
 	public void memoryGameLayout() {
 		myActivity.setContentView(R.layout.bahbl_memory_test_game);
 
@@ -741,7 +683,45 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		setUpJumpscareImages();
 
 	}
+	public void setUpJumpscareImages(){
+		//Changes the customer to the gamestates one
+		if(state.getCustomer() instanceof BahCGhost) {
+			jumpscare.setImageResource(R.drawable.ghostboo);
+		}
+		else if(state.getCustomer() instanceof BahCPokeangel){
+			jumpscare.setImageResource(R.drawable.pokeangelboo);
+		}
+		else if(state.getCustomer() instanceof BahCLug){
+			jumpscare.setImageResource(R.drawable.lugboo);
+		}
+		else if(state.getCustomer() instanceof BahCMysticMan){
+			jumpscare.setImageResource(R.drawable.mystery_manboo_);
+		}
+		else if(state.getCustomer() instanceof BahCNux){
+			jumpscare.setImageResource(R.drawable.nuxboo);
+		}
+	}
 
 }// class BahHumanPlayer
 
 //hi
+
+
+
+
+
+
+//welcome to the void :)
+
+
+
+
+
+
+
+//hows your day going?
+
+
+
+
+//ha.

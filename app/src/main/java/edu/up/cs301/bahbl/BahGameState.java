@@ -48,7 +48,6 @@ public class BahGameState extends GameState {
 
 	//For Trivia Mini Game
 	private int correctAnswersCount;
-
 	//The correct answers go in the order 2, 4, 1, 4, 2
 	private String[] triviaQuestions = {"What should I quiz you on?", "Okay so, what is the mascot of Pokemon?",
 			"Which one of these is a God Pokemon?", "Which of these is a Pokemon?", "Am I adorable?" };
@@ -63,8 +62,13 @@ public class BahGameState extends GameState {
 	private boolean triviaButtonClicked;
 	//To update the trivia questions
 	private int triviaSection;
-	private int memorySection;
+	private int memorySection; //todo: what is this variable for?
 
+	//for memory minigame
+	private int goodMemory; //todo: initialize these in the constructors & use them in localGame
+	private int badMemory;
+
+	//Pokemon minigame
 	private BahPokemon[] pokemons;
 	private int caughtCount;
 	private int failCount;
