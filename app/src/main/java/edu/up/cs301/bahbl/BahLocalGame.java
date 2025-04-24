@@ -158,6 +158,7 @@ public class BahLocalGame extends LocalGame {
 
             //it is now the next customer's turn to talk, so the player cannot click anything but the dialogue
             customer.setPlayersTurn(false);
+            gameState.setButtonIsVisible(false);
 
             return true; //legal
         }
