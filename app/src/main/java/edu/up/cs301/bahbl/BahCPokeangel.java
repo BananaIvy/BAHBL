@@ -6,7 +6,9 @@ package edu.up.cs301.bahbl;
  * the CustomerBase class
  * <p>
  * @author Laura Patla
- * @version 3/17/25
+ * @author Madilynn Greenup
+ * @author Savannah Macdonald
+ * @version April 2025
  */
 public class BahCPokeangel extends BahCustomerBase {
 

@@ -21,7 +21,7 @@ import edu.up.cs301.GameFramework.players.GamePlayer;
  * @author Laura A. Patla
  * @author Madilynn Greenup
  * @author Alex Baker
- * @version July 2013
+ * @version April 2025
  */
 public class BahLocalGame extends LocalGame {
 

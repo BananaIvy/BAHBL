@@ -1,5 +1,11 @@
 package edu.up.cs301.bahbl;
 
+/**
+ * this is the action class for the *totally not a pokemon battle*
+ * @author Savannah I. Macdonald
+ * @version April 2025
+ */
+
 import android.view.View;
 
 import edu.up.cs301.GameFramework.actionMessage.GameAction;

@@ -24,7 +24,7 @@ import java.io.IOException;
  * @author Laura A. Patla
  * @author Madilynn Greenup
  * @author Alex Baker
- * @version July 2013
+ * @version April 2025
  */
 public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 

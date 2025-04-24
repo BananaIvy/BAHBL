@@ -1,5 +1,13 @@
 package edu.up.cs301.bahbl;
 
+/**
+ * initializes the mystic man customer variables
+ * @author Savannah I. Macdonald
+ * @author Laura A. Patla
+ * @author Madilynn Greenup
+ * @version April 2025
+ */
+
 public class BahCMysticMan extends BahCustomerBase {
 
     public BahCMysticMan(){

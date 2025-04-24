@@ -1,5 +1,13 @@
 package edu.up.cs301.bahbl;
 
+/**
+ * when trivia buttons are pressed, sets the current button to the one pressed, which gets accessed by localgame
+ * @author Savannah I. Macdonald
+ * @author Laura A. Patla
+ * @author Madilynn Greenup
+ * @version April 2025
+ */
+
 import android.view.View;
 
 import edu.up.cs301.GameFramework.actionMessage.GameAction;
@@ -46,7 +54,6 @@ public class BahActionTriviaButton extends GameAction {
         }
 
     }
-
 
     public int getWhichButton() {return thisButton;}
 }

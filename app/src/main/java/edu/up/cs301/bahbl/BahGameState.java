@@ -13,7 +13,7 @@ import edu.up.cs301.GameFramework.infoMessage.GameState;
  * @author Laura A. Patla
  * @author Madilynn Greenup
  * @author Alex Baker
- * @version Feb 2025
+ * @version April 2025
  */
 public class BahGameState extends GameState {
 
