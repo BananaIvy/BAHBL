@@ -65,7 +65,7 @@ public class BahGameState extends GameState {
 	private int memorySection;
 
 	//for memory minigame
-	private String[] memoryQuestions = {"It's important to pay attention to details in hell. \n Which of these is the correct image of your manager?",
+	private String[] memoryQuestions = {"It's important to pay attention to details in hell. \n Which of these is correct?",
 	"Which one is the correct image of Pokeangel?", "What is the correct image of Lug?"};
 	private int[] goodMemory = {1, 2, 1};
 	private int[] badMemory = {2, 1, 2};

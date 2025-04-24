@@ -176,7 +176,11 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		//MYSTIC MAN MINIGAME
 		else if(state.getCustomer() instanceof BahCMysticMan){
 
+
 			memoryGameLayout();
+			if(state.getMemorySection() < 3) {
+				memoryQuestion.setText("" + state.getMemoryQuestions(state.getMemorySection()));
+			}
 
 		}//mysticmangame
 
@@ -684,9 +688,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		leftImage.setOnClickListener(this);
 		rightImage.setOnClickListener(this);
 
-		if(state.getMemorySection() < 3) {
-			memoryQuestion.setText("" + state.getMemoryQuestions(state.getMemorySection()));
-		}
+
 
 
 		if(state.getMemorySection() == 0){
