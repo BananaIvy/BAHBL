@@ -609,7 +609,7 @@ public class BahLocalGame extends LocalGame {
             gameState.setMemorySection(gameState.getMemorySection() + 1);
         }
 
-        if(gameState.getMemorySection() == 4){
+        if(gameState.getMemorySection() == 3){
 
 
                 gameState.setQuestionsAnwsered(0);

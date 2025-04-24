@@ -56,6 +56,10 @@ public class BahCMysticMan extends BahCustomerBase {
         addLoreDialogue("As for me, I dug my grave, as they say,");
         addLoreDialogue("and now I'll lie in it.");
 
+        //Game Return
+        addGameReturn("...Interesting...");
+        addGameReturn("I would like to purchase my items now.");
+
         //farewell dialogue
         addFarewellDialogue("Well, I've wasted enough time here already.");
         addFarewellDialogue("Woe on he who heeds sweet Lucifer's call.");

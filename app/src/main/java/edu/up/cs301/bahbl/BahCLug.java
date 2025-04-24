@@ -58,6 +58,9 @@ public class BahCLug extends BahCustomerBase {
         addLoreDialogue("I did not have the coordinates to my home planet or to Clank's residence.");
         addLoreDialogue("But with this infobot, I have all the information necessary to finish my expedition!");
 
+        //Game return
+        addGameReturn("Welcome Back.");
+
         //farewell response
         addFarewellDialogue("If I was coded with feelings and emotions,");
         addFarewellDialogue("I would be sad about my departure... :(");
