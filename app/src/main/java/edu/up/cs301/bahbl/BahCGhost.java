@@ -57,13 +57,13 @@ public class BahCGhost extends BahCustomerBase {
         addLoreDialogue("Customers may give you items if they like you enough,");
         addLoreDialogue("Which you can keep under the register if you want,");
         addLoreDialogue("Keep in mind that they're probably stolen items.");
-        addLoreDialogue("Folks that end up here in hell tend to be unsavory.");
+        addLoreDialogue("Folks that end up here in hell tend to be unsavory...");
         addLoreDialogue("Feel free to give away anything you have under the counter.");
         addLoreDialogue("Besides the key of course! ;)");
-        addLoreDialogue("But note that most customers won't want stolen items for liability purposes");
+        addLoreDialogue("But note that most customers won't want stolen items for liability purposes.");
         addLoreDialogue("If they're getting rid of the item, somebody's probably on their trail.");
         addLoreDialogue("Now, that concludes your training!");
-        addLoreDialogue("Tap the register to start your shift!");
+        addLoreDialogue("Tap the register to start your shift, and here's some change to start off!");
 
         //farewell responses
         addFarewellDialogue("All right, get to work");

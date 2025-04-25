@@ -39,7 +39,7 @@ public class BahCLug extends BahCustomerBase {
         addHappyResponse("Elaborate fashion,");
         addHappyResponse("But I suspect time is of the essence. So instead,");
         addHappyResponse("I shall condense my sentiment into");
-        addHappyResponse("A single, efficient statement: Thank you!");
+        addHappyResponse("a single, efficient statement: Thank you!");
         addHappyResponse("Would you be able to give it to me?");
 
         //mad response

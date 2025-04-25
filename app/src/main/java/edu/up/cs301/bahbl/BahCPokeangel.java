@@ -28,9 +28,9 @@ public class BahCPokeangel extends BahCustomerBase {
 		/* dialogues */
 		//happy response
 		addHappyResponse("Indeed!");
-		addHappyResponse("You are wise beyond your years mortal!");
+		addHappyResponse("You are wise beyond your years, mortal!");
 		addHappyResponse("May you bloom and bear rich fruit,");
-		addHappyResponse("Ere your time here comes to an end!");
+		addHappyResponse("ere your time here comes to an end!");
 		addHappyResponse("As a reward here is your prize, an infobot!");
 		addHappyResponse("And since you have pleased me...");
 		addHappyResponse("Please play this trivia game with me!");
@@ -46,7 +46,7 @@ public class BahCPokeangel extends BahCustomerBase {
 		addGreetingDialogue("I seek sustenance in this fine establishment.");
 		addGreetingDialogue("However, all who encounter me must first answer my riddle.");
 		addGreetingDialogue("Only then will you be allowed to remain in my holy presence.");
-		addGreetingDialogue("Here is the riddle.");
+		addGreetingDialogue("Here is the riddle:");
 		addGreetingDialogue("A puppy can go through the Green Glass Door...");
 		addGreetingDialogue("But a dog cannot!");
 		addGreetingDialogue("A school can go through the Green Glass Door...");
