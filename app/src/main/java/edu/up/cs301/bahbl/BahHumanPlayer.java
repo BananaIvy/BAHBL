@@ -143,16 +143,20 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 				if (state.getTotalLikeability() >= 500) {
 					loreLayout();
 				}
-				else if (state.getMoneyCount() >= 200) {
+				else if (state.getMoneyCount() >= 280) {
 					goodLayout();
 				}
 				else {
+					MediaPlayer runsound = MediaPlayer.create(myActivity.getApplicationContext(), R.raw.runsound);
 					badLayout();
+					runsound.start();
 				}
 			}
 		}//main game
 
-		//POKEANGEL MINIGAME
+		/**
+		 * POKEANGEL MINIGAME
+		 */
 		else if((state.isGameTime()) && (state.getCustomer()).getCustomerName().equals("Pokeangel")){
 
 			if(!state.isTriviaButtonClicked()) {
@@ -175,7 +179,6 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 		//MYSTIC MAN MINIGAME
 		else if(state.getCustomer() instanceof BahCMysticMan){
-
 
 			memoryGameLayout();
 			if(state.getMemorySection() < 3) {
@@ -675,7 +678,9 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		}//pokemon
 	}//pokeBattle
 
-
+	/**
+	 * set up the layout for mystic man's memory mini game
+	 */
 	public void memoryGameLayout() {
 		myActivity.setContentView(R.layout.bahbl_memory_test_game);
 
@@ -690,16 +695,21 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 
 		if(state.getMemorySection() == 0){
+			//if first section of memory game, set to the ghost images
 			int resId = R.drawable.ghost;
 			leftImage.setImageResource(resId);
 			resId = R.drawable.diffghost;
 			rightImage.setImageResource(resId);
-		}else if (state.getMemorySection() == 1){
+		}
+		else if (state.getMemorySection() == 1){
+			//second section is the pokeangel images
 			int resId = R.drawable.diffpokeangel;
 			leftImage.setImageResource(resId);
 			resId = R.drawable.pokeangel;
 			rightImage.setImageResource(resId);
-		} else{
+		}
+		else{
+			//and third is lug
 			int resId = R.drawable.lug;
 			leftImage.setImageResource(resId);
 			resId = R.drawable.difflug;
@@ -707,6 +717,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 		}
 
         if(state.getMemorySection() == 0){
+			//if it's the first section of the memory game, hide the correct and wrong words until the answer has been chosen
 			wrongMemory.setVisibility(View.INVISIBLE);
 			correctMemory.setVisibility(View.INVISIBLE);
 		}
@@ -718,8 +729,6 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 			correctMemory.setVisibility(View.INVISIBLE);
 			wrongMemory.setVisibility(View.VISIBLE);
 		}
-
-		//todo add code here that makes either the correct or the wrong button show up depending on if you choose the right image
 	}
 
 	public void jumpscareLayout(){
