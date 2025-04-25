@@ -202,7 +202,7 @@ public class BahLocalGame extends LocalGame {
                 customer.setHasGottenAnswer(true);
                 gameState.setButtonIsVisible(false);
 
-                if(customer.getCustomerName() != "Ghost2") {
+                if(customer.getCustomerName() != "Ghost") {
                     gameState.setJumpscareTime(true);
                 }
             }

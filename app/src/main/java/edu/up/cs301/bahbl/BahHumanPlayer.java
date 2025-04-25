@@ -149,6 +149,7 @@ public class BahHumanPlayer extends GameHumanPlayer implements OnClickListener {
 				else {
 					MediaPlayer runsound = MediaPlayer.create(myActivity.getApplicationContext(), R.raw.runsound);
 					badLayout();
+					runsound.seekTo(20000);
 					runsound.start();
 				}
 			}
